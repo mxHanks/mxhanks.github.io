@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="c++,信息竞赛," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说来，我和信息竞赛也挺有缘分的…">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSP-J游记">
+<meta property="og:url" content="https://mxhanks.github.io/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/index.html">
+<meta property="og:site_name" content="mxHanks的Blog">
+<meta property="og:description" content="如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说来，我和信息竞赛也挺有缘分的…">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-06T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-01T09:42:04.319Z">
+<meta property="article:author" content="mxHanks">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="信息竞赛">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mxhanks.github.io/2021/11/07/CSP-J游记/"/>
+
+
+
+
+
+  <title>CSP-J游记 | mxHanks的Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cc0faeea10b9766683abd0ba6b57498d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mxHanks的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mxhanks.github.io/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://www.gx8899.com/uploads/allimg/2016072420/mx2ajr15fsg.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mxHanks的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">CSP-J游记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-11-07T00:00:00+08:00">
+                2021-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%94%9F%E6%B4%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">生活</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说来，我和信息竞赛也挺有缘分的…</p>
+</blockquote>
+<span id="more"></span>
+<blockquote>
+<p>五年级开始钻研各种电脑上的东西，在上初中之前学<code>Java</code>也学到了<code>SpringMMC</code>。对于<code>Java</code>这么早学到这种程度的估计除了我也没多少人。但是<code>学程序设计</code>和<code>web</code>也对主要为<code>算法竞赛</code>的信息竞赛来说，也没什么帮助，所以我在班上也一直和别的同学差不多，并没有显得特别突出。</p>
+<p>在初一上学期的时候我的成绩也不是很好，所以当时班主任也和我说过，<span style="background-color: #f5f5dc; border-radius: 010% ">“你说你成绩也不是很好，就别学这个信息了吧。”</span>这个时候当然就是两个选择，一个是把<code>成绩搞好</code>，一个是<code>不学信息</code>。但是，我硬是撑着，成绩也没上去，信息也在学，就坚持了下来。当时我们班有五个人在信息班，初一期中考试之后就走了两个，只剩下三个人。</p>
+</blockquote>
+<blockquote>
+<p>说实话，我对待信息课认真起来也就是这次比赛之后。可能也是因为换了个老师吧…以前上课除了讲新课我一般都不听或者不认真听，实在因为是太无聊了而不是我懒之类的。比完赛之后，信息A班和B班合并，对于B班的同学们来说换了个新老师，我就觉得这个老师讲课让人没那么困了，也决心好好听课。反正我待在这个学校还不是三年，过了一年了，拿了个二等奖。<strong>等下一次比赛，一定要拿一个提高组一等奖，不在中雅留下遗憾！</strong></p>
+</blockquote>
+<p>接下来才是正题：</p>
+<h3 id="初赛篇"><a href="#初赛篇" class="headerlink" title="初赛篇"></a>初赛篇</h3><p>嗯嗯，坐上校车到了湖南大学，惊奇的发现原来湖南大学没有校门。由于夏季风较强，到了十月份长沙还是三十六七度。虽然是早上，但是太阳晒着刚剪完头发的我，我还是感到阵阵火辣。漫长的排队过后，终于进考场了。一个考场三十个人左右吧，我认识的人在这个考场里面只有两个人。监考还是挺严的，每一次进出考场，都要重新检查一次有没有带别的东西。</p>
+<p>等了半个多小时候，发了试卷。一看题目，大多数都是复习过的，但是仍然还是大部分不会。认认真真做了一个多小时的卷子，认认真真检查了半个小时(却已无力回天)，终究还是按耐不住了，提前了十五分钟交卷，离开考场。老师不让提前交卷怎么办呢？在楼梯间玩♂耍！在下楼梯时，遇到了一个班的同学，看他在刷B站，于是一起颓废了十分钟之后再出了楼。</p>
+<p>之后等了好久好久好久好久好久好久好久好久好久好久…人终于齐了，坐了校车回家。</p>
+<p>初赛也没什么好说的，算是给我这个第一次参加比赛的蒟蒻开了开世面。</p>
+<table>
+<thead>
+<tr>
+<th align="center">最终成绩：48.5</th>
+<th>最终评定：二等奖</th>
+</tr>
+</thead>
+</table>
+<h3 id="复赛篇"><a href="#复赛篇" class="headerlink" title="复赛篇"></a>复赛篇</h3><p>在考试之前上了很多很多节课，每节课都是模拟考-讲题，模拟考-讲题。因为对我而言，模拟考的难度很高，我最高的一次也才170分，所以直接让我怀疑人生了——可能我真的不适合学信息，好好学文化，把你的数学拉上来，也不至于次次考试连年级前一百都没有。</p>
+<p>在考试的前一天，突然老实说湖南地区由于疫情取消比赛了，给我当时开心得…于是那天中午就没有再复习，颓废了一中午。结果第二天，老师又说要考试，真是给我们来了个回马枪。考就靠呗，反正我也不是没有准备，我也得证明一下我学了这一年的信息不是白学的。</p>
+<p>于是第二天，我又刷了很多题。但是用处不大，因为我没学懂的东西实在是太多了，我也只就刷了刷背包…所以在考试之前我一直都是很迷茫的状态——上课不怎么认真，平时不怎么做作业，遇到不会做的题网上一搜了之。</p>
+<blockquote>
+<p>班级群信息：</p>
+<p>坐校车的中雅集合，上午7点10发车，下午1点10发车。不坐校车的上午7点半，下午1点半前赶到湖南大学工商管理学院前坪。<br>请务必带好：准考证、身份证、准考证、身份证、承诺书、两码的彩印版，做了核酸检测的打印检测结果带上。<br>不然是不能进去考试的！！！不能补交的！！请一定提前准备好并带好！！！</p>
+<p>群公告<br>考试流程（注意事项文字版）：</p>
+<ol>
+<li><p>湖南大学工商管理学院前坪集合</p>
+</li>
+<li><p>跟着老师指导进入考场</p>
+</li>
+<li><p>全身确认未带违规物品</p>
+</li>
+<li><p>打开电脑，进入Windows系统</p>
+</li>
+<li><p>打开电脑D盘，新建文件夹为准考证号</p>
+</li>
+<li><p>确保文件夹名准确，大、-、半角、数字位数</p>
+</li>
+<li><p>打开Dev-C++，提前写好缺省源、freopen</p>
+</li>
+<li><p>看老师黑板上的试卷下载地址，下载试卷</p>
+</li>
+<li><p>根据老师指示，通过密码打开试卷</p>
+</li>
+<li><p>打开试卷第1页，看到“目录”是不是子文件夹，是就建子文件夹，名字不要写错，所有文件对应题目命名</p>
+</li>
+<li><p>开始做题，1题送分，2题枚举或模拟或贪心，3题可能DP或搜索，4题可能涉及数据结构但是一定都是基本语句能解决的，一般难度为1&lt;2&lt;4&lt;3</p>
+</li>
+<li><p>下考前5-10分钟，停止做题，检查所有的文件名、freopen、注释。确认在D盘保存好，等待下考。</p>
+</li>
+<li><p>下考，起身离开，不关电脑。</p>
+</li>
+<li><p>带着自信和微笑走到考点门口，拥抱熊老师</p>
+</li>
+</ol>
+<p>PS：有任何问题都找老师（除了题目）。<br>   （下面发口水版视频，请大家务必周五晚在家模拟一遍！！！！！！！！！）<br>   昨天发给大家给孩子看的，再发一次</p>
+</blockquote>
+<p>终于到了考试那一天了！早上早早的起床，草草吃个饭就去学校集合了。坐上校车最后一排，看着窗外的风景，有点兴奋也有点紧张——毕竟是第一次参加信息比赛。考试地点还是湖南大学，但是是不同的一栋楼。到了湖南大学门口之后，集合拍了一张照，就进了大门(家长或老师不允许进入)。进了大门之后，沿着马路一直走，走到了要比赛的楼楼下。将自己的健康码和行程码给门卫看了之后，就进入了考场。我在四楼，同一个信息班的有三个人在这个考场：</p>
+<table>
+<thead>
+<tr>
+<th>row1</th>
+<th>row2</th>
+<th>row3</th>
+<th>\</th>
+<th>\</th>
+<th>row4</th>
+<th>row5</th>
+<th>row6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>我</code></td>
+<td>XXX</td>
+<td><code>草泽</code></td>
+<td>过道</td>
+<td>过道</td>
+<td>XXX</td>
+<td>XXX</td>
+<td>XXX</td>
+</tr>
+<tr>
+<td>XXX</td>
+<td>XXX</td>
+<td>XXX</td>
+<td>过道</td>
+<td>过道</td>
+<td><code>上次那个刷B站的同学</code></td>
+<td>XXX</td>
+<td>XXX</td>
+</tr>
+</tbody></table>
+<p>进入考场之后，把准考证交给了管理员，书包放在前面，我坐到了座位上，选择Windows系统，打开电脑。首先看看有哪些IDE：dev-cpp, vim, code::block, visual studio(超级古老的版本，连代码高亮都没有)…(不认识的)。看来还是只能乖乖的用dev-cpp了，反正其他的IDE我也不会配置…可惜了，没有我大爱vs code。让我惊奇的是，电脑上竟然还有eclipse, 还是近几年的版本——算了，也没什么能帮助我的。</p>
+<p>离考试开始还有半个多小时，我就坐在桌上回忆学过的知识。屏幕上显示的是相关信息：</p>
+<blockquote>
+<p> <b> <em>在D盘</em>根目录<em>新建文件夹，命名为你的</em>准考证号**<br>每一个文件夹下面创立一个<em>小文件夹</em>，名称为<em>题目名字</em> </b><br/><br>题目下载网址：(还没有) <br/><br>下载网址还没有到，请同学们耐心等待</p>
+</blockquote>
+<p>我似乎掏空了心里装的所有知识，细细放在脑中回忆了一遍之后，也差不多开始考试了。</p>
+<p>打开Edge浏览器，在网址栏输入网址：xxx. xxx. xx. xx&#x2F; xxxxxxxxxx，下载好了试卷，打开，先整体阅览一遍：感觉题目的难度没有前几天模拟的题目难，似乎算法题也不多，感觉上有两道题都是模拟题。看完题目之后，就从第一题开始做：</p>
+<iframe width="90%" src="https://www.luogu.com.cn/problem/P7909" height="600px"></iframe>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> a[<span class="number">600006</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">long</span> <span class="type">long</span> <span class="title">f</span><span class="params">(<span class="type">int</span> n, <span class="type">int</span> mxL)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(n &lt;= mxL) &#123;</span><br><span class="line">		mxL -= n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> mxL;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;candy.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;candy.out&quot;</span>, <span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> n, mxR, mxL;</span><br><span class="line">	<span class="type">long</span> <span class="type">long</span> maxans = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%lld%lld%lld&quot;</span>, &amp;n, &amp;mxL, &amp;mxR);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = mxR; i &gt;= mxL; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>(i % n) &#123;</span><br><span class="line">			<span class="keyword">if</span>(a[i % n] == <span class="number">0</span>) &#123;</span><br><span class="line">				a[i % n] = <span class="built_in">f</span>(n, i);</span><br><span class="line">				<span class="keyword">if</span>(a[i % n] &gt; maxans)	maxans = a[i % n];</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">if</span>(a[i % n] &gt; maxans)	maxans = a[i % n];</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%lld&quot;</span>, maxans);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<iframe width="90%" src="https://www.luogu.com.cn/problem/P7910" height="600px"></iframe>
+
+<p>最简单的一道题，我竟然拿不了满分。。这个垃圾代码，所有的样例都能过，但是比赛成绩出来只有80分。Luogu评测结果：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/62149578">8AC 2RE</a></p>
+<p>拿下第一题(没有完全拿下)，就开始做第二题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> nums[<span class="number">8010</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"><span class="type">int</span> nums2[<span class="number">8010</span>] = &#123;<span class="number">0</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// copy num1 + 1 ~ num1 + 1 + n to num2 + 1 ~ num2 + 1 + n</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">copynum</span><span class="params">(<span class="type">int</span>* num1, <span class="type">int</span>* num2, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		num2[i] = num1[i];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> i = <span class="number">0</span>;</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;sort.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;sort.out&quot;</span>, <span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line">	<span class="type">int</span> n, q;</span><br><span class="line">	<span class="type">int</span> a, x, v;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;n, &amp;q);</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;nums[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;a);</span><br><span class="line">		<span class="keyword">if</span>(a == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;v);</span><br><span class="line">			nums[x] = v;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(a == <span class="number">2</span>) &#123;</span><br><span class="line">			<span class="built_in">copynum</span>(nums, nums2, n);</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;x);</span><br><span class="line">			<span class="type">int</span> temp = nums[x];</span><br><span class="line">			<span class="type">int</span> index = <span class="number">0</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(nums[i] == temp) &#123;</span><br><span class="line">					index++;</span><br><span class="line">					<span class="keyword">if</span>(x == i) &#123;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="built_in">sort</span>(nums2 + <span class="number">1</span>, nums2 + <span class="number">1</span> + n);</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(nums2[i] == temp) &#123;</span><br><span class="line">					<span class="keyword">if</span>(!(--index)) &#123;</span><br><span class="line">						<span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, i);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>结果：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/62150100">16AC 8TLE</a>，分数是65分。</p>
+<p>第三题，模拟题。本来能多拿个二三十分的，就是时间不太够了(虽然说有4个小时，但是我这道题做了差不多两个小时)</p>
+<iframe width="90%" src="https://www.luogu.com.cn/problem/P7911" height="600px"></iframe>
+
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * ���ip�Ϸ���</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">iphf</span><span class="params">(string s)</span> </span>&#123;</span><br><span class="line">	<span class="type">bool</span> isH = <span class="literal">true</span>;</span><br><span class="line">	<span class="type">int</span> tempnum = <span class="number">0</span>; <span class="comment">// sum</span></span><br><span class="line">	<span class="type">int</span> _10c = <span class="number">1</span>; <span class="comment">// 10 ^ _2c</span></span><br><span class="line">	<span class="type">int</span> index = <span class="number">1</span>;</span><br><span class="line">	<span class="comment">//123.456.789.123:45678</span></span><br><span class="line">	<span class="keyword">if</span>(s.<span class="built_in">length</span>() &lt; <span class="number">9</span> || s.<span class="built_in">length</span>() &gt; <span class="number">21</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">if</span>(s[s.<span class="built_in">length</span>() - <span class="number">1</span>] &lt; <span class="string">&#x27;0&#x27;</span> || s[s.<span class="built_in">length</span>() - <span class="number">1</span>] &gt; <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = s.<span class="built_in">length</span>() - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">		<span class="keyword">if</span>((s[i] != <span class="string">&#x27;:&#x27;</span> || s[i] != <span class="string">&#x27;.&#x27;</span>) &amp;&amp; s[i] &gt;= <span class="string">&#x27;0&#x27;</span> &amp;&amp; s[i] &lt;= <span class="string">&#x27;9&#x27;</span>) &#123;</span><br><span class="line">			tempnum += (s[i] - <span class="number">48</span>) * _10c;</span><br><span class="line">			_10c *= <span class="number">10</span>;</span><br><span class="line">			<span class="keyword">if</span>(!isH) &#123;</span><br><span class="line">				<span class="keyword">if</span>(tempnum &gt; <span class="number">255</span>) &#123;</span><br><span class="line">					<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(s[i] == <span class="string">&#x27;:&#x27;</span>) &#123;</span><br><span class="line">			index++;</span><br><span class="line">			<span class="keyword">if</span>(index &gt; <span class="number">5</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">if</span>(i == <span class="number">0</span> || i == s.<span class="built_in">length</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(!isH) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">if</span>(tempnum &gt; <span class="number">65535</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			_10c = <span class="number">1</span>;</span><br><span class="line">			isH = <span class="literal">false</span>;</span><br><span class="line">			tempnum = <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(s[i] == <span class="string">&#x27;.&#x27;</span>) &#123;</span><br><span class="line">			index++;</span><br><span class="line">			<span class="keyword">if</span>(index &gt; <span class="number">5</span>) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">if</span>(i == <span class="number">0</span> || i == s.<span class="built_in">length</span>() - <span class="number">1</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(isH) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			<span class="keyword">if</span>(tempnum &gt; <span class="number">255</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			_10c = <span class="number">1</span>;</span><br><span class="line">			tempnum = <span class="number">0</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(i == <span class="number">0</span>) &#123;</span><br><span class="line">			<span class="keyword">if</span>(tempnum &gt; <span class="number">255</span>) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			_10c = <span class="number">1</span>;</span><br><span class="line">			tempnum = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span>(index != <span class="number">5</span>) &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">strIsame</span><span class="params">(string str1, string str2)</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> len = str2.<span class="built_in">length</span>();</span><br><span class="line">	<span class="keyword">if</span>(len != str1.<span class="built_in">length</span>()) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; len - <span class="number">1</span>; i++) &#123;</span><br><span class="line">		<span class="keyword">if</span>(str1[i] != str2[i]) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Com</span> &#123;</span><br><span class="line">	string type; <span class="comment">//Server or Client</span></span><br><span class="line">	string ip;</span><br><span class="line">	<span class="type">int</span> number;</span><br><span class="line">&#125; coms[<span class="number">1001</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;network.in&quot;</span>, <span class="string">&quot;r&quot;</span>, stdin);</span><br><span class="line">	<span class="built_in">freopen</span>(<span class="string">&quot;network.out&quot;</span>, <span class="string">&quot;w&quot;</span>, stdout);</span><br><span class="line">	<span class="type">int</span> n;</span><br><span class="line">	cin &gt;&gt; n;</span><br><span class="line">	<span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		cin &gt;&gt; coms[i].type &gt;&gt; coms[i].ip;</span><br><span class="line">		coms[i].number = i + <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">if</span>(!(<span class="built_in">iphf</span>(coms[i].ip))) &#123;</span><br><span class="line">			cout &lt;&lt; <span class="string">&quot;ERR&quot;</span> &lt;&lt; endl;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strIsame</span>(coms[i].type, <span class="string">&quot;Server&quot;</span>)) &#123;</span><br><span class="line">			<span class="type">int</span> isok = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = i - <span class="number">1</span>; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">strIsame</span>(coms[j].type, <span class="string">&quot;Server&quot;</span>) &amp;&amp; <span class="built_in">strIsame</span>(coms[i].ip, coms[j].ip)) &#123;</span><br><span class="line">					cout &lt;&lt; <span class="string">&quot;FAIL\n&quot;</span>;</span><br><span class="line">					isok = <span class="literal">false</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(isok) &#123;</span><br><span class="line">				cout &lt;&lt; <span class="string">&quot;OK\n&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">strIsame</span>(coms[i].type, <span class="string">&quot;Client&quot;</span>)) &#123;</span><br><span class="line">			<span class="type">int</span> isfati = <span class="literal">true</span>;</span><br><span class="line">			<span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">				<span class="keyword">if</span>(<span class="built_in">strIsame</span>(coms[j].ip, coms[i].ip) &amp;&amp; <span class="built_in">strIsame</span>(coms[j].type, <span class="string">&quot;Server&quot;</span>)) &#123;</span><br><span class="line">					cout &lt;&lt; coms[j].number &lt;&lt; endl;</span><br><span class="line">					isfati = <span class="literal">false</span>;</span><br><span class="line">					<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(isfati) &#123;</span><br><span class="line">				cout &lt;&lt; <span class="string">&quot;FAIL\n&quot;</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">5</span></span><br><span class="line"><span class="comment">Server 192.168.1.1:8080</span></span><br><span class="line"><span class="comment">Server 192.168.1.1:8080</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:8080</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:80</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:99999</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">10</span></span><br><span class="line"><span class="comment">Server 192.168.1.1:80</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:80</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:8080</span></span><br><span class="line"><span class="comment">Server 192.168.1.1:80</span></span><br><span class="line"><span class="comment">Server 192.168.1.1:8080</span></span><br><span class="line"><span class="comment">Server 192.168.1.999:0</span></span><br><span class="line"><span class="comment">Client 192.168.1.1.8080</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:8080</span></span><br><span class="line"><span class="comment">Client 192.168.1.1:80</span></span><br><span class="line"><span class="comment">Client 192.168.1.999:0</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<p>最后没有拿满分的原因就是判断ip是否正确的函数<code>iphf()</code>。虽然说我知道<code>iphf()</code>写的肯定有问题，但是离预想的还是低了很多：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/record/62150717">6AC 14WA</a> 30分左右</p>
+<p>最后一题没什么多说的了，0分。</p>
+<blockquote>
+<p><strong>还没有写完，等待完善~</strong></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/" rel="tag"># 信息竞赛</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/10/23/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/" rel="prev" title="Luogu P5707 题解">
+                Luogu P5707 题解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://www.gx8899.com/uploads/allimg/2016072420/mx2ajr15fsg.gif"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E8%B5%9B%E7%AF%87"><span class="nav-number">1.</span> <span class="nav-text">初赛篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E8%B5%9B%E7%AF%87"><span class="nav-number">2.</span> <span class="nav-text">复赛篇</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mxHanks</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'ywLqntjyMR4p6fIPJhOrNnmI-gzGzoHsz',
+        appKey: 'JcH8HthT0oLlyt1SvyYTODtn',
+        placeholder: '支持Markdown语法噢~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

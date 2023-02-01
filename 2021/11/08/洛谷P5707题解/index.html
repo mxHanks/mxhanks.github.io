@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Luogu,算法,Java," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="原文链接：https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;blog&#x2F;HanksX&#x2F;TJP5707  (第一次在洛谷成功提交题解)  没有人发Java题解，那么我首当其冲来给大家发一个Java的题解。 原题：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Luogu P5707 题解">
+<meta property="og:url" content="https://mxhanks.github.io/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/index.html">
+<meta property="og:site_name" content="mxHanks的Blog">
+<meta property="og:description" content="原文链接：https:&#x2F;&#x2F;www.luogu.com.cn&#x2F;blog&#x2F;HanksX&#x2F;TJP5707  (第一次在洛谷成功提交题解)  没有人发Java题解，那么我首当其冲来给大家发一个Java的题解。 原题：">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-07T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-02-01T09:42:43.415Z">
+<meta property="article:author" content="mxHanks">
+<meta property="article:tag" content="Luogu">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mxhanks.github.io/2021/11/08/洛谷P5707题解/"/>
+
+
+
+
+
+  <title>Luogu P5707 题解 | mxHanks的Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?cc0faeea10b9766683abd0ba6b57498d";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">mxHanks的Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            Sitemap
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://mxhanks.github.io/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="https://www.gx8899.com/uploads/allimg/2016072420/mx2ajr15fsg.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mxHanks的Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Luogu P5707 题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-11-08T00:00:00+08:00">
+                2021-11-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E9%A2%98%E8%A7%A3/" itemprop="url" rel="index">
+                    <span itemprop="name">算法题解</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>原文链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/HanksX/TJP5707">https://www.luogu.com.cn/blog/HanksX/TJP5707</a>  (第一次在洛谷成功提交题解)</p>
+</blockquote>
+<p>没有人发Java题解，那么我<del>首当其冲</del>来给大家发一个Java的题解。</p>
+<p>原题：</p>
+<span id="more"></span>
+<iframe width="90%" src="https://www.luogu.com.cn/problem/P5707" height="600px"></iframe>
+
+<hr/>
+
+<p>首先我们要知道，用于操控时间的除了最常用的 <strong>Date</strong> 类，还有 </p>
+<ul>
+<li><strong>方便日期运算的 Calendar 类</strong>，</li>
+<li>**拥有许多国家标准时间的 GregorianCalendar 类( Calendar 子类)**。</li>
+</ul>
+<p>这么一看，这道题使用起来比较方便的就是 <strong>Calendar 类</strong>。</p>
+<p>Calendar 类中用一下这些常量表示不同的意义，jdk 内的很多类其实都是采用的这种思想。</p>
+<ul>
+<li>Calendar.YEAR			 <em>——年份</em> 。</li>
+<li>Calendar.MONTH		 <em>——月份</em> 。</li>
+<li>Calendar.DATE			 <em>——日期</em> 。</li>
+<li>Calendar.DAY_OF_MONTH	 <em>——日期，和上面的字段意义相同</em> 。</li>
+<li>Calendar.HOUR			 <em>——12小时制的小时</em> 。</li>
+<li>Calendar.HOUR_OF_DAY	 <em>——24小时制的小时</em> 。</li>
+<li>Calendar.MINUTE		 <em>——分钟</em> 。</li>
+<li>Calendar.SECOND		 <em>——秒</em> 。</li>
+<li>Calendar.DAY_OF_WEEK	 _——星期几_。</li>
+</ul>
+<p><strong>用于操作时间：</strong><br>  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Calendar</span> <span class="variable">c1</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">  c1.add(Calendar.DATE, <span class="number">10</span>); </span><br><span class="line"> c1.add(Calendar.DATE, -<span class="number">10</span>); <span class="comment">//把c1对象的日期加上-10，也就是c1所表的日期的10天前的日期，其它所有的数值会被重新计算。</span></span><br></pre></td></tr></table></figure></p>
+<p> 其他字段属性的add的意义以此类推。</p>
+<hr>
+<p>这样一来，其他题解中说的那些坑也就减少了很多。比如说就不用考虑天数的问题了，Java自己帮你处理了。</p>
+<hr>
+<p>还是以往的套路，相对于其他语言来说稍微麻烦一点点的，使用 Scanner 的对象进行输入。使用 Scanner 类时需要</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"><span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> scanner.nextInt(); <span class="comment">//路程。</span></span><br><span class="line"><span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> scanner.nextInt(); <span class="comment">//速度。</span></span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+<p>之后再用 <strong>Calendar类</strong> 实例进行实践操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Calendar</span> <span class="variable">date</span> <span class="operator">=</span> Calendar.getInstance(); <span class="comment">//创造 Calendar 类实例。</span></span><br><span class="line">date.set(<span class="number">2021</span>, Calendar.MAY, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>); <span class="comment">//设置时间(不设置默认为计算机当前时间。)</span></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="上面那一句对应-Calendar-类中函数-。"><a href="#上面那一句对应-Calendar-类中函数-。" class="headerlink" title="上面那一句对应 Calendar 类中函数 。"></a>上面那一句对应 Calendar 类中函数 。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">set</span><span class="params">(<span class="type">int</span> year, <span class="type">int</span> month, <span class="type">int</span> date, <span class="type">int</span> hourOfDay, <span class="type">int</span> minute,<span class="type">int</span> second)</span></span><br></pre></td></tr></table></figure></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date.add(Calendar.MINUTE, s % y == <span class="number">0</span> ? -(s / y) : -(s / y) - <span class="number">1</span>); <span class="comment">// 使用三目运算符。因为如果路程不能整除速度的话需要再使用一分钟填满。</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>之后再使用 <strong>SimpleDateFormat 进行时间格式化</strong>再输出。</p>
+<ul>
+<li>yyyy：年。</li>
+<li>MM：月。</li>
+<li>dd：日 。</li>
+<li>hh：1~12 小时制 (1-12)。</li>
+<li>HH：24 小时制 (0-23)。</li>
+<li>mm：分。</li>
+<li>ss：秒。</li>
+<li>S：毫秒。</li>
+<li>E：星期几。</li>
+<li>D：一年中的第几天。</li>
+<li>F：一月中的第几个星期(会把这个月总共过的天数除以 7)。</li>
+<li>w：一年中的第几个星期。</li>
+<li>W：一月中的第几星期(会根据实际情况来算)。</li>
+<li>a：上下午标识。</li>
+<li>k：和HH差不多，表示一天 24 小时制 (1-24)。</li>
+<li>K：和hh差不多，表示一天 12 小时制 (0-11)。</li>
+<li>z：表示时区。</li>
+</ul>
+<p>这里只需要输出 小时:分钟，所以格式化的格式为：HH:mm</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">SimpleDateFormat</span> <span class="variable">format</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;HH:mm&quot;</span>); <span class="comment">//创造格式化 HH:mm 的 SimpleDateFormat 对象。</span></span><br></pre></td></tr></table></figure>
+
+<p>最后在输出的时候要将 <strong>Calendar 类</strong>转换为<strong>长整型</strong>输出，否则会报错。</p>
+<p>而日期类都可以转换成长整型( long )格式，所以：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(format.format(date.getTime())); <span class="comment">// getTime()获得长整形时间</span></span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"><span class="keyword">import</span> java.util.Calendar;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">        <span class="type">int</span> <span class="variable">s</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">int</span> <span class="variable">y</span> <span class="operator">=</span> scanner.nextInt();</span><br><span class="line">        <span class="type">Calendar</span> <span class="variable">date</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">        date.set(<span class="number">2021</span>, Calendar.MAY, <span class="number">5</span>, <span class="number">8</span>, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        date.add(Calendar.MINUTE, -<span class="number">10</span>);</span><br><span class="line">        date.add(Calendar.MINUTE, s % y == <span class="number">0</span> ? -(s / y) : -(s / y) - <span class="number">1</span>);</span><br><span class="line">        <span class="type">SimpleDateFormat</span> <span class="variable">format</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleDateFormat</span>(<span class="string">&quot;HH:mm&quot;</span>);</span><br><span class="line">        System.out.println(format.format(date.getTime()));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><strong>希望大家有所收获</strong> <em>~φ(≧ω≦*)♪</em>  。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Luogu/" rel="tag"># Luogu</a>
+          
+            <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          
+            <a href="/tags/Java/" rel="tag"># Java</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/" rel="next" title="CSP-J游记">
+                <i class="fa fa-chevron-left"></i> CSP-J游记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/11/12/c++%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="C++ 中的 正则表达式">
+                C++ 中的 正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="https://www.gx8899.com/uploads/allimg/2016072420/mx2ajr15fsg.gif"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%8A%E9%9D%A2%E9%82%A3%E4%B8%80%E5%8F%A5%E5%AF%B9%E5%BA%94-Calendar-%E7%B1%BB%E4%B8%AD%E5%87%BD%E6%95%B0-%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">上面那一句对应 Calendar 类中函数 。1public final void set(int year, int month, int date, int hourOfDay, int minute,int second)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">1.1.</span> <span class="nav-text">完整代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mxHanks</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: true,
+        appId: 'ywLqntjyMR4p6fIPJhOrNnmI-gzGzoHsz',
+        appKey: 'JcH8HthT0oLlyt1SvyYTODtn',
+        placeholder: '支持Markdown语法噢~',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
