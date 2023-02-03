@@ -4,15 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Luogu P5707 题解, mxHanks的Blog">
-    <meta name="description" content="
-原文链接：https://www.luogu.com.cn/blog/HanksX/TJP5707  (第一次在洛谷成功提交题解)
+    <meta name="keywords" content="Log₂预处理, mxHanks的Blog">
+    <meta name="description" content="方法一int Log2[100001];
 
-没有人发Java题解，那么我首当其冲来给大家发一个Java的题解。
-原题：
-
-
-首先我们要知道，用于操控">
+inline void log_2() {
+    for (int i = 2; i &amp;lt;= n; ++i) {
+        Log2[i] = Log2[i / 2] + 1;
+   ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -24,7 +22,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Luogu P5707 题解 | mxHanks的Blog</title>
+    <title>Log₂预处理 | mxHanks的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -339,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Luogu P5707 题解</h1>
+                    <h1 class="description center-align post-title">Log₂预处理</h1>
                 </div>
             </div>
         </div>
@@ -372,12 +370,8 @@
                                 <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/Java/">
-                                <span class="chip bg-color">Java</span>
-                            </a>
-                        
-                            <a href="/tags/Luogu/">
-                                <span class="chip bg-color">Luogu</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
@@ -401,28 +395,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-08
+                    2022-04-15
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-02
+                    2023-02-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    849
+                    61
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    1 分
                 </div>
                 
 
@@ -442,102 +436,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>原文链接：<code>https://www.luogu.com.cn/blog/HanksX/TJP5707</code>  (第一次在洛谷成功提交题解)</p>
-</blockquote>
-<p>没有人发Java题解，那么我<del>首当其冲</del>来给大家发一个Java的题解。</p>
-<p>原题：</p>
-<hr/>
+                <h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> Log2<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<p>首先我们要知道，用于操控时间的除了最常用的 <strong>Date</strong> 类，还有 </p>
-<ul>
-<li><strong>方便日期运算的 Calendar 类</strong>，</li>
-<li>**拥有许多国家标准时间的 GregorianCalendar 类( Calendar 子类)**。</li>
-</ul>
-<p>这么一看，这道题使用起来比较方便的就是 <strong>Calendar 类</strong>。</p>
-<p>Calendar 类中用一下这些常量表示不同的意义，jdk 内的很多类其实都是采用的这种思想。</p>
-<ul>
-<li>Calendar.YEAR			 <em>——年份</em> 。</li>
-<li>Calendar.MONTH		 <em>——月份</em> 。</li>
-<li>Calendar.DATE			 <em>——日期</em> 。</li>
-<li>Calendar.DAY_OF_MONTH	 <em>——日期，和上面的字段意义相同</em> 。</li>
-<li>Calendar.HOUR			 <em>——12小时制的小时</em> 。</li>
-<li>Calendar.HOUR_OF_DAY	 <em>——24小时制的小时</em> 。</li>
-<li>Calendar.MINUTE		 <em>——分钟</em> 。</li>
-<li>Calendar.SECOND		 <em>——秒</em> 。</li>
-<li>Calendar.DAY_OF_WEEK	 _——星期几_。</li>
-</ul>
-<p><strong>用于操作时间：</strong></p>
-<pre class=" language-java"><code class="language-java">Calendar c1 <span class="token operator">=</span> Calendar<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-c1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Calendar<span class="token punctuation">.</span>DATE<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
- c1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Calendar<span class="token punctuation">.</span>DATE<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//把c1对象的日期加上-10，也就是c1所表的日期的10天前的日期，其它所有的数值会被重新计算。</span>
-</code></pre>
-<p> 其他字段属性的add的意义以此类推。</p>
-<hr>
-<p>这样一来，其他题解中说的那些坑也就减少了很多。比如说就不用考虑天数的问题了，Java自己帮你处理了。</p>
-<hr>
-<p>还是以往的套路，相对于其他语言来说稍微麻烦一点点的，使用 Scanner 的对象进行输入。使用 Scanner 类时需要</p>
-<pre class=" language-java"><code class="language-java">
-Scanner scanner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> s <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//路程。</span>
-<span class="token keyword">int</span> y <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//速度。</span>
-    
-</code></pre>
-<p>之后再用 <strong>Calendar类</strong> 实例进行实践操作。</p>
-<pre class=" language-java"><code class="language-java">Calendar date <span class="token operator">=</span> Calendar<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//创造 Calendar 类实例。</span>
-date<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">2021</span><span class="token punctuation">,</span> Calendar<span class="token punctuation">.</span>MAY<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//设置时间(不设置默认为计算机当前时间。)</span>
-</code></pre>
-<hr>
-<h2 id="上面那一句对应-Calendar-类中函数-。java-public-final-void-set-int-year-int-month-int-date-int-hourOfDay-int-minute-int-second"><a href="#上面那一句对应-Calendar-类中函数-。java-public-final-void-set-int-year-int-month-int-date-int-hourOfDay-int-minute-int-second" class="headerlink" title="上面那一句对应 Calendar 类中函数 。java public final void set(int year, int month, int date, int hourOfDay, int minute,int second) "></a>上面那一句对应 Calendar 类中函数 。<br><code>java public final void set(int year, int month, int date, int hourOfDay, int minute,int second) </code></h2><pre class=" language-java"><code class="language-java">date<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Calendar<span class="token punctuation">.</span>MINUTE<span class="token punctuation">,</span> s <span class="token operator">%</span> y <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token punctuation">(</span>s <span class="token operator">/</span> y<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token punctuation">(</span>s <span class="token operator">/</span> y<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 使用三目运算符。因为如果路程不能整除速度的话需要再使用一分钟填满。</span>
-</code></pre>
-<hr>
-<p>之后再使用 <strong>SimpleDateFormat 进行时间格式化</strong>再输出。</p>
-<ul>
-<li>yyyy：年。</li>
-<li>MM：月。</li>
-<li>dd：日 。</li>
-<li>hh：1~12 小时制 (1-12)。</li>
-<li>HH：24 小时制 (0-23)。</li>
-<li>mm：分。</li>
-<li>ss：秒。</li>
-<li>S：毫秒。</li>
-<li>E：星期几。</li>
-<li>D：一年中的第几天。</li>
-<li>F：一月中的第几个星期(会把这个月总共过的天数除以 7)。</li>
-<li>w：一年中的第几个星期。</li>
-<li>W：一月中的第几星期(会根据实际情况来算)。</li>
-<li>a：上下午标识。</li>
-<li>k：和HH差不多，表示一天 24 小时制 (1-24)。</li>
-<li>K：和hh差不多，表示一天 12 小时制 (0-11)。</li>
-<li>z：表示时区。</li>
-</ul>
-<p>这里只需要输出 小时:分钟，所以格式化的格式为：HH:mm</p>
-<pre class=" language-java"><code class="language-java">SimpleDateFormat format <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"HH:mm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//创造格式化 HH:mm 的 SimpleDateFormat 对象。</span>
-</code></pre>
-<p>最后在输出的时候要将 <strong>Calendar 类</strong>转换为<strong>长整型</strong>输出，否则会报错。</p>
-<p>而日期类都可以转换成长整型( long )格式，所以：</p>
-<pre class=" language-java"><code class="language-java">System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>format<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// getTime()获得长整形时间</span>
-</code></pre>
-<hr>
-<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>text<span class="token punctuation">.</span>SimpleDateFormat<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Calendar<span class="token punctuation">;</span>
-<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Scanner scanner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> s <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> y <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        Calendar date <span class="token operator">=</span> Calendar<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        date<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token number">2021</span><span class="token punctuation">,</span> Calendar<span class="token punctuation">.</span>MAY<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        date<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Calendar<span class="token punctuation">.</span>MINUTE<span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        date<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>Calendar<span class="token punctuation">.</span>MINUTE<span class="token punctuation">,</span> s <span class="token operator">%</span> y <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">?</span> <span class="token operator">-</span><span class="token punctuation">(</span>s <span class="token operator">/</span> y<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token operator">-</span><span class="token punctuation">(</span>s <span class="token operator">/</span> y<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        SimpleDateFormat format <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleDateFormat</span><span class="token punctuation">(</span><span class="token string">"HH:mm"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>format<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>date<span class="token punctuation">.</span><span class="token function">getTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">log_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Log2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Log2<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 </code></pre>
-<p><strong>希望大家有所收获</strong> <em>~φ(≧ω≦*)♪</em>  。</p>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> Log2<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">log_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Log2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Log2<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>嘿嘿, 原理啥的自己研究一下就懂了</p>
 
                 
             </div>
@@ -564,7 +478,7 @@ date<span class="token punctuation">.</span><span class="token function">set</sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://mxhanks.github.io/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/">https://mxhanks.github.io/2021/11/08/%E6%B4%9B%E8%B0%B7P5707%E9%A2%98%E8%A7%A3/</a>
+                    <a href="https://mxhanks.github.io/2022/041526664.html">https://mxhanks.github.io/2022/041526664.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -606,12 +520,8 @@ date<span class="token punctuation">.</span><span class="token function">set</sp
                                     <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/Java/">
-                                    <span class="chip bg-color">Java</span>
-                                </a>
-                            
-                                <a href="/tags/Luogu/">
-                                    <span class="chip bg-color">Luogu</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -928,77 +838,25 @@ date<span class="token punctuation">.</span><span class="token function">set</sp
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/12/c++%20%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+                <a href="/2023/0202undefined.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++ 中的 正则表达式">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="博客复活">
                         
-                        <span class="card-title">C++ 中的 正则表达式</span>
+                        <span class="card-title">博客复活</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-写在前面：我为什么要学习这个？这一次的csp-j比赛，第三题我应为不知道c++里面能用我会用的正则表达式来匹配字符串，导致写出了一个很烂的判断函数，只拿了25分因此与一等奖失之交臂(详情见这里)
-
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-12
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-02
                         </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/c/" class="post-category">
-                                    c++
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="CSP-J游记">
-                        
-                        <span class="card-title">CSP-J游记</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
-                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1012,14 +870,65 @@ date<span class="token punctuation">.</span><span class="token function">set</sp
                     </div>
                 </div>
                 
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/120524649.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Tomcat10 解实例化Servlet类错误(500)">
+                        
+                        <span class="card-title">Tomcat10 解实例化Servlet类错误(500)</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            症状：
+
+由于Tomcat10对servlet依赖包级目录改变，maven导入依赖时应该导入：
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Java/" class="post-category">
+                                    Java
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/c/">
-                        <span class="chip bg-color">c++</span>
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
                     </a>
                     
-                    <a href="/tags/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/">
-                        <span class="chip bg-color">信息竞赛</span>
+                    <a href="/tags/Tomcat/">
+                        <span class="chip bg-color">Tomcat</span>
+                    </a>
+                    
+                    <a href="/tags/web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">web前端</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
+                        <span class="chip bg-color">踩坑记录</span>
                     </a>
                     
                 </div>
@@ -1176,6 +1085,13 @@ date<span class="token punctuation">.</span><span class="token function">set</sp
 </main>
 
 
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
+    });
+</script>
+
 
 
     <footer class="page-footer bg-color">
@@ -1195,7 +1111,7 @@ date<span class="token punctuation">.</span><span class="token function">set</sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.2k</span>
+                        class="white-color">12.4k</span>
             
             
             

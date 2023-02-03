@@ -4,12 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="让NexT主题支持数学公式, mxHanks的Blog">
-    <meta name="description" content="功能开启修改配置由于静态网站的某些功能有限，所以我们需要第三方服务来扩展我们的网站。在任何时候，你都可以使用 NexT 支持的第三方服务来扩展所需的功能。
-Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
+    <meta name="keywords" content="C++ 中的 正则表达式, mxHanks的Blog">
+    <meta name="description" content="
+写在前面：我为什么要学习这个？这一次的csp-j比赛，第三题我应为不知道c++里面能用我会用的正则表达式来匹配字符串，导致写出了一个很烂的判断函数，只拿了25分因此与一等奖失之交臂(详情见这里)
 
 
-">
+
+对于不使用万能头的我或你，要使用#i">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -21,7 +22,7 @@ Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>让NexT主题支持数学公式 | mxHanks的Blog</title>
+    <title>C++ 中的 正则表达式 | mxHanks的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -336,12 +337,12 @@ Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">让NexT主题支持数学公式</h1>
+                    <h1 class="description center-align post-title">C++ 中的 正则表达式</h1>
                 </div>
             </div>
         </div>
@@ -365,12 +366,8 @@ Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web%E5%89%8D%E7%AB%AF/">
-                                <span class="chip bg-color">web前端</span>
-                            </a>
-                        
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/tags/c/">
+                                <span class="chip bg-color">c++</span>
                             </a>
                         
                     </div>
@@ -381,8 +378,8 @@ Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
-                                web前端
+                            <a href="/categories/c/" class="post-category">
+                                c++
                             </a>
                         
                     </div>
@@ -394,28 +391,28 @@ Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-11-20
+                    2021-11-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-02
+                    2023-02-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    731
+                    3.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    14 分
                 </div>
                 
 
@@ -435,85 +432,358 @@ Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="功能开启"><a href="#功能开启" class="headerlink" title="功能开启"></a>功能开启</h2><h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>由于静态网站的某些功能有限，所以我们需要第三方服务来扩展我们的网站。在任何时候，你都可以使用 NexT 支持的第三方服务来扩展所需的功能。</p>
-<p>Next 提供了两个渲染引擎来显示数学方程: <code>MathJax</code> 和 <code>KaTeX</code>。</p>
+                <blockquote>
+<p>写在前面：我为什么要学习这个？<br>这一次的csp-j比赛，第三题我应为不知道c++里面能用我会用的正则表达式来匹配字符串，导致写出了一个很烂的判断函数，只拿了25分<br>因此与一等奖失之交臂<br>(详情见<a href="https://mxhanks.github.io/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/">这里</a>)</p>
+</blockquote>
 <span id="more"></span>
 
-<p>要使用这个特性，您只需要选择一个渲染引擎并打开它的 enable(位于主题的 _config.yml 。 然后你需要安装相应的 Hexo 渲染器来完全支持数学方程式的显示-只开启启用可能不会让你正确地看到显示的方程式。 相应的 Hexo 渲染引擎将提供如下：</p>
-<pre><code># Math Formulas Render Support
-math:
-  # Default (true) will load mathjax / katex script on demand.
-  # That is it only render those page which has `mathjax: true` in Front-matter.
-  # If you set it to false, it will load mathjax / katex srcipt EVERY PAGE.
-  per_page: true
+<p><strong>对于不使用万能头的我或你，要使用<code>#include &lt;regex&gt;</code></strong></p>
+<h2 id="定义方式"><a href="#定义方式" class="headerlink" title="定义方式"></a>定义方式</h2><pre class=" language-cpp"><code class="language-cpp">regex <span class="token punctuation">[</span>name<span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token string">"text"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  # hexo-renderer-pandoc (or hexo-renderer-kramed) required for full MathJax support.
-  mathjax:
-    enable: true                            # 使用 mathjax 渲染修改此处
-    # See: https://mhchem.github.io/MathJax-mhchem/
-    mhchem: false
+例如：
+regex <span class="token function">r</span><span class="token punctuation">(</span><span class="token string">"\\d[1-9]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  # hexo-renderer-markdown-it-plus (or hexo-renderer-markdown-it with markdown-it-katex plugin) required for full Katex support.
-  katex:
-    enable: false                           # 使用 katex 渲染修改此处
-    # See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex
-    copy_tex: false
+下文假设已定义：
+string str <span class="token operator">=</span> <span class="token string">"2019年12月看的电视hhhhh大亨堡是不是小七的最好吃，你信不信啊?"</span><span class="token punctuation">;</span>
+string <span class="token function">pattern</span><span class="token punctuation">(</span><span class="token string">"(会不会|是不是|能不能|信不信)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+regex <span class="token function">r</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">//regex 表示一个正则表达式类</span>
 </code></pre>
-<p>开启之后使用<code>per_page</code>控制是否每页呈现数学方程式。</p>
-<pre><code>&lt;!-- 这种注释会开启数学公式渲染 --&gt;
----
-title: Will Render Math
-mathjax: true
----
-....
-</code></pre>
-<pre><code>&lt;!-- 这种注释不会开启数学公式渲染 --&gt;
----
-title: Not Render Math
-mathjax: false
----
-....
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><h3 id="regex-match"><a href="#regex-match" class="headerlink" title="regex_match()"></a>regex_match()</h3><h4 id="返回一个字符串和一个正则表达式的匹配结果"><a href="#返回一个字符串和一个正则表达式的匹配结果" class="headerlink" title="返回一个字符串和一个正则表达式的匹配结果"></a>返回一个字符串和一个正则表达式的匹配结果</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token function">regex_match</span><span class="token punctuation">(</span>objString<span class="token punctuation">,</span> objRegex<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-&lt;!-- 这种注释也不会开启数学公式渲染 --&gt;
----
-title: Not Render Math Either
----
-....
+如：
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">regex_match</span><span class="token punctuation">(</span><span class="token string">"3"</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"True!"</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">:</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<h3 id="Render-Engines-渲染引擎"><a href="#Render-Engines-渲染引擎" class="headerlink" title="Render Engines 渲染引擎"></a>Render Engines 渲染引擎</h3><p>目前，NexT 提供了两个渲染引擎: MathJax 和 KaTeX。</p>
-<h3 id="MathJax-引擎-推荐"><a href="#MathJax-引擎-推荐" class="headerlink" title="MathJax 引擎(推荐)"></a>MathJax 引擎(推荐)</h3><p>首先要确定你安装过了<code>pandoc</code> (版本 &gt;&#x3D; 2.0)</p>
-<pre><code>$ npm un hexo-renderer-marked
-$ npm i hexo-renderer-pandoc
+<h4 id="regex-icase-表示匹配时忽略大小写"><a href="#regex-icase-表示匹配时忽略大小写" class="headerlink" title="regex::icase 表示匹配时忽略大小写"></a><code>regex::icase</code> 表示匹配时忽略大小写</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token function">regex_match</span><span class="token punctuation">(</span>objString<span class="token punctuation">,</span> <span class="token function">regex</span><span class="token punctuation">(</span>objStringRegex<span class="token punctuation">,</span> regex<span class="token operator">::</span>icase<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+如：
+std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">regex_match</span><span class="token punctuation">(</span><span class="token string">"aaaAAA"</span><span class="token punctuation">,</span> <span class="token function">regex</span><span class="token punctuation">(</span><span class="token string">"a*"</span><span class="token punctuation">,</span> regex<span class="token operator">::</span>icase<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 结果为1</span>
+std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">regex_match</span><span class="token punctuation">(</span><span class="token string">"aaaAAA"</span><span class="token punctuation">,</span> <span class="token function">regex</span><span class="token punctuation">(</span><span class="token string">"a*"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 结果为0</span>
 </code></pre>
-<p>在<strong>主题设置文件</strong>中开启 mathjax:</p>
-<pre><code>  ...
-  mathjax:
-    enable: true
+<h3 id="regex-replace-使用"><a href="#regex-replace-使用" class="headerlink" title="regex_replace()使用"></a><code>regex_replace()</code>使用</h3><h4 id="字符串替换匹配"><a href="#字符串替换匹配" class="headerlink" title="字符串替换匹配"></a>字符串替换匹配</h4><pre class=" language-cpp"><code class="language-cpp">std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">regex_replace</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> r<span class="token punctuation">,</span> <span class="token string">"hello"</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 将符合r的替换成"hello"</span>
 </code></pre>
-<h3 id="KaTeX-引擎-暂不推荐"><a href="#KaTeX-引擎-暂不推荐" class="headerlink" title="KaTeX 引擎(暂不推荐)"></a>KaTeX 引擎(暂不推荐)</h3><p>目前在 NexT 主题中 KaTeX 还不完善, 暂时不建议使用.</p>
-<p>与 MathJax 相比，KaTeX 引擎是一个更快的数学渲染引擎，而且没有 JavaScript 它也能生存。</p>
-<p>需要卸载原始渲染器 <code>hexo-renderer</code></p>
-<pre><code>$ npm un hexo-renderer-marked
+<p>输出结果为：2019年12月看的电视hhhhh大亨堡hello小七的最好吃，你hello啊?</p>
+<h4 id="使用regex-replace-函数调整字符串的内容和顺序"><a href="#使用regex-replace-函数调整字符串的内容和顺序" class="headerlink" title="使用regex_replace()函数调整字符串的内容和顺序"></a>使用<code>regex_replace()</code>函数调整字符串的内容和顺序</h4><pre class=" language-cpp"><code class="language-cpp">string str2 <span class="token operator">=</span> <span class="token string">"Hello_2019!"</span><span class="token punctuation">;</span>
+regex <span class="token function">r2</span><span class="token punctuation">(</span><span class="token string">"(.{3})(.{2})_(\\d{4})!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//匹配3个任意字符+2个任意字符+下划线+4个数字+!</span>
+std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">regex_replace</span><span class="token punctuation">(</span>str2<span class="token punctuation">,</span> r2<span class="token punctuation">,</span> <span class="token string">"$1$3"</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>  std<span class="token operator">::</span>endl<span class="token punctuation">;</span>	<span class="token comment" spellcheck="true">//输出：Hel2019，将字符串替换为第一个和第三个表达式匹配的内容</span>
+std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token function">regex_replace</span><span class="token punctuation">(</span>str2<span class="token punctuation">,</span> r2<span class="token punctuation">,</span> <span class="token string">"$1$3$2"</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>  std<span class="token operator">::</span>endl<span class="token punctuation">;</span>	<span class="token comment" spellcheck="true">//输出：Hel2019lo，交换位置顺序</span>
 </code></pre>
-<p>如果你使用 KaTeX 渲染数学公式，你需要安装渲染器选中的一个:</p>
-<pre><code>$ npm i hexo-renderer-markdown-it-plus # 或 hexo-renderer-markdown-it
+<h3 id="sregex-iterator使用"><a href="#sregex-iterator使用" class="headerlink" title="sregex_iterator使用"></a><code>sregex_iterator</code>使用</h3><pre class=" language-cpp"><code class="language-cpp"><span class="token comment" spellcheck="true">//利用sregex_iterator迭代器.它将反复调用regex_search()来寻找文件中的所有匹配</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span>sregex_iterator <span class="token function">it</span><span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> str<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">,</span> end_it<span class="token punctuation">;</span> it <span class="token operator">!=</span> end_it<span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> it<span class="token operator">-</span><span class="token operator">></span><span class="token function">str</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span>  std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<p>在主题配置文件中，选择 katex 作为渲染引擎。</p>
-<pre><code>math:
-  ...
-  katex:
-    enable: true
+<p>输出结果为：是不是，信不信</p>
+<hr/>
+
+<h2 id="语法-部分转自菜鸟教程"><a href="#语法-部分转自菜鸟教程" class="headerlink" title="语法 (部分转自菜鸟教程)"></a>语法 (部分转自菜鸟教程)</h2><h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>普通字符包括没有显式指定为元字符的所有可打印和不可打印字符。这包括所有大写和小写字母、所有数字、所有标点符号和一些其他符号。</p>
+<table class="reference">
+    <tbody>
+    <tr>
+        <th width="20%">字符</th>
+        <th width="80%">描述</th> 
+    </tr>
+    <tr>
+        <td>[ABC]</td>
+        <td><p>匹配 <span class="marked">[...]</span> 中的所有字符，例如 <span class="marked">[aeiou]</span> 匹配字符串 "google runoob taobao" 中所有的 e o u a 字母。</p>
+            <img src="https://www.runoob.com/wp-content/uploads/2014/03/E691DDE1-E5CB-4EA8-8D16-759BD0D2B09D.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td>[^ABC]</td>
+        <td><p>匹配除了 <span class="marked">[...]</span> 中字符的所有字符，例如 <span class="marked">[^aeiou]</span> 匹配字符串 "google runoob taobao" 中除了 e o u a 字母的所有字母。</p>
+            <img src="https://www.runoob.com/wp-content/uploads/2014/03/ED971D92-30F4-4768-A2C7-02A84A3A9DEB.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td>[A-Z]</td>
+        <td><p>[A-Z] 表示一个区间，匹配所有大写字母，[a-z] 表示所有小写字母。</p>
+            <img src="https://www.runoob.com/wp-content/uploads/2014/03/C5E357BD-65E3-4EB3-9D80-10D096F19287.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td>.</td>
+        <td><p>匹配除换行符（\n、\r）之外的任何单个字符，相等于 [^\n\r]。</p>
+            <img src="https://www.runoob.com/wp-content/uploads/2014/03/0FD7E77D-38A7-43BC-B51A-7DBA23A77756.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td>[\s\S]</td>
+        <td><p>匹配所有。\s 是匹配所有空白符，包括换行，\S 非空白符，不包括换行。</p>
+            <img src="https://www.runoob.com/wp-content/uploads/2014/03/47CA6C59-64CF-433A-909E-1E342349A4E0.jpg">
+        </td>
+    </tr>
+    <tr>
+        <td>\w</td>
+        <td><p>匹配字母、数字、下划线。等价于 [A-Za-z0-9_] </p>
+            <img src="https://www.runoob.com/wp-content/uploads/2014/03/F35A5971-3519-4CAE-8BEC-9DE8F4A55257.jpg">
+        </td>
+    </tr>
+</tbody></table>
+
+<h3 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h3><p>非打印字符也可以是正则表达式的组成部分。下表列出了表示非打印字符的转义序列：</p>
+<table class="reference">
+<tbody><tr>
+    <th width="20%">字符</th>
+    <th width="80%">描述</th>
+</tr>
+<tr>
+    <td>\cx</td>
+    <td>匹配由x指明的控制字符。例如， \cM 匹配一个 Control-M 或回车符。x 的值必须为 A-Z 或 a-z 之一。否则，将 c 视为一个原义的 'c' 字符。</td>
+</tr>
+<tr>
+    <td>\f</td>
+    <td>匹配一个换页符。等价于 \x0c 和 \cL。</td>
+</tr>
+<tr>
+    <td>\n</td>
+    <td>匹配一个换行符。等价于 \x0a 和 \cJ。</td>
+</tr>
+<tr>
+    <td>\r</td>
+    <td>匹配一个回车符。等价于 \x0d 和 \cM。</td>
+</tr>
+<tr>
+    <td>\s</td>
+    <td>匹配任何空白字符，包括空格、制表符、换页符等等。等价于 [ \f\n\r\t\v]。注意 Unicode 正则表达式会匹配全角空格符。</td>
+</tr>
+<tr>
+    <td>\S</td>
+    <td>匹配任何非空白字符。等价于 [^ \f\n\r\t\v]。</td>
+</tr>
+<tr>
+    <td>\t</td>
+    <td>匹配一个制表符。等价于 \x09 和 \cI。</td>
+</tr>
+<tr>
+    <td>\v</td>
+    <td>匹配一个垂直制表符。等价于 \x0b 和 \cK。</td>
+</tr>
+</tbody></table>
+
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><p>所谓特殊字符，就是一些有特殊含义的字符，如上面说的 runoo*b 中的 *，简单的说就是表示任何字符串的意思。如果要查找字符串中的 * 符号，则需要对 * 进行转义，即在其前加一个 \，runo\*ob 匹配字符串 runo*ob。</p>
+<p>许多元字符要求在试图匹配它们时特别对待。若要匹配这些特殊字符，必须首先使字符”转义”，即，将反斜杠字符\ 放在它们前面。下表列出了正则表达式中的特殊字符：</p>
+<table class="reference">
+<tbody><tr>
+    <th width="20%">特别字符</th>
+    <th width="80%">描述</th>
+</tr>
+<tr>
+    <td>$</td>
+    <td>匹配输入字符串的结尾位置。如果设置了 RegExp 对象的 Multiline 属性，则 $ 也匹配 '\n' 或 '\r'。要匹配 $ 字符本身，请使用 \$。</td>
+</tr>
+<tr>
+    <td>( )</td>
+    <td>标记一个子表达式的开始和结束位置。子表达式可以获取供以后使用。要匹配这些字符，请使用 \( 和 \)。</td>
+</tr>
+<tr>
+    <td>*</td>
+    <td>匹配前面的子表达式零次或多次。要匹配 * 字符，请使用 \*。</td>
+</tr>
+<tr>
+    <td>+</td>
+    <td>匹配前面的子表达式一次或多次。要匹配 + 字符，请使用 \+。</td>
+</tr>
+<tr>
+    <td>.</td>
+    <td>匹配除换行符 \n 之外的任何单字符。要匹配 . ，请使用 \. 。</td>
+</tr>
+<tr>
+    <td>[</td>
+    <td>标记一个中括号表达式的开始。要匹配 [，请使用 \[。</td>
+</tr>
+<tr>
+    <td>?</td>
+    <td>匹配前面的子表达式零次或一次，或指明一个非贪婪限定符。要匹配 ? 字符，请使用 \?。</td>
+</tr>
+<tr>
+    <td>\</td>
+    <td>将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， 'n' 匹配字符 'n'。'\n' 匹配换行符。序列 '\\' 匹配 "\"，而 '\(' 则匹配 "("。</td>
+</tr>
+<tr>
+    <td>^</td>
+    <td>匹配输入字符串的开始位置，除非在方括号表达式中使用，当该符号在方括号表达式中使用时，表示不接受该方括号表达式中的字符集合。要匹配 ^ 字符本身，请使用 \^。</td>
+</tr>
+<tr>
+    <td>{</td>
+    <td>标记限定符表达式的开始。要匹配 {，请使用 \{。</td>
+</tr>
+<tr>
+    <td>|</td>
+    <td>指明两项之间的一个选择。要匹配 |，请使用 \|。</td>
+</tr>
+</tbody></table>
+
+<h3 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h3><p>限定符用来指定正则表达式的一个给定组件必须要出现多少次才能满足匹配。有 <code>*</code> 或 <code>+</code> 或 <code>?</code> 或 <code>&#123;n&#125;</code> 或 <code>&#123;n,&#125;</code> 或 <code>&#123;n,m&#125;</code> 共6种。</p>
+<p>正则表达式的限定符有：</p>
+<table class="reference">
+<tbody><tr>
+    <th width="20%">字符</th>
+    <th width="80%">描述</th>
+</tr>
+<tr>
+    <td>*</td>
+    <td>匹配前面的子表达式零次或多次。例如，zo* 能匹配 "z" 以及 "zoo"。* 等价于{0,}。</td>
+</tr>
+<tr>
+    <td>+</td>
+    <td>匹配前面的子表达式一次或多次。例如，'zo+' 能匹配 "zo" 以及 "zoo"，但不能匹配 "z"。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+    <td>?</td>
+    <td>匹配前面的子表达式零次或一次。例如，"do(es)?" 可以匹配 "do" 、 "does" 中的 "does" 、 "doxy" 中的 "do" 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+    <td>{n}</td>
+    <td>n 是一个非负整数。匹配确定的 n 次。例如，'o{2}' 不能匹配 "Bob" 中的 'o'，但是能匹配 "food" 中的两个 o。</td>
+</tr>
+<tr>
+    <td>{n,}</td>
+    <td>n 是一个非负整数。至少匹配n 次。例如，'o{2,}' 不能匹配 "Bob" 中的 'o'，但能匹配 "foooood" 中的所有 o。'o{1,}' 等价于 'o+'。'o{0,}' 则等价于 'o*'。</td>
+</tr>
+<tr>
+    <td>{n,m}</td>
+    <td>m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，"o{1,3}" 将匹配 "fooooood" 中的前三个 o。'o{0,1}' 等价于 'o?'。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody></table>
+
+<p>以下正则表达式匹配一个正整数，[1-9]设置第一个数字不是 0，[0-9]* 表示任意多个数字：</p>
+<p><code>/[1-9][0-9]*/</code></p>
+<img src="https://www.runoob.com/wp-content/uploads/2014/03/F249891D-F3D9-48D5-A3CB-6FD8FD029117.jpg" />
+
+
+<p>请注意，限定符出现在范围表达式之后。因此，它应用于整个范围表达式，在本例中，只指定从 0 到 9 的数字（包括 0 和 9）。</p>
+<p>这里不使用 <code>+</code> 限定符，因为在第二个位置或后面的位置不一定需要有一个数字。也不使用 <code>?</code> 字符，因为使用 <code>?</code> 会将整数限制到只有两位数。</p>
+<p>如果你想设置 <code>0~99</code> 的两位数，可以使用下面的表达式来至少指定一位但至多两位数字。</p>
+<p><code>/[0-9]&#123;1,2&#125;/</code></p>
+<p>上面的表达式的缺点是，只能匹配两位数字，而且可以匹配 0、00、01、10 99 的章节编号仍只匹配开头两位数字。</p>
+<p>改进下，匹配 1~99 的正整数表达式如下：</p>
+<p><code>/[1-9][0-9]?/</code></p>
+<p>或</p>
+<p><code>/[1-9][0-9]&#123;0,1&#125;/</code></p>
+<p><code>*</code> 和 <code>+</code> 限定符都是贪婪的，因为它们会尽可能多的匹配文字，只有在它们的后面加上一个 <code>?</code> 就可以实现非贪婪或最小匹配。</p>
+<p>例如，您可能搜索 HTML 文档，以查找在 h1 标签内的内容。HTML 代码如下：</p>
+<p><code>&lt;h1&gt;mxHanks的Blog&lt;/h1&gt;</code></p>
+<p>贪婪：下面的表达式匹配从开始小于符号 (&lt;) 到关闭 h1 标记的大于符号 (&gt;) 之间的所有内容。</p>
+<p><code>/&lt;.*&gt;/</code></p>
+<p>非贪婪：如果您只需要匹配开始和结束 h1 标签，下面的非贪婪表达式只匹配 <code>&lt;h1&gt;</code>。</p>
+<p><code>/&lt;.*?&gt;/</code></p>
+<p>也可以使用以下正则表达式来匹配 h1 标签，表达式则是：</p>
+<p><code>/&lt;\w+?&gt;/</code></p>
+<p>通过在 <code>*</code>、<code>+</code> 或 <code>?</code> 限定符之后放置 <code>?</code>，该表达式从”贪婪”表达式转换为”非贪婪”表达式或者最小匹配。</p>
+<h3 id="定位符"><a href="#定位符" class="headerlink" title="定位符"></a>定位符</h3><p>定位符使您能够将正则表达式固定到行首或行尾。它们还使您能够创建这样的正则表达式，这些正则表达式出现在一个单词内、在一个单词的开头或者一个单词的结尾。</p>
+<p>定位符用来描述字符串或单词的边界，<code>^</code> 和 <code>$</code> 分别指字符串的开始与结束，<code>\b</code> 描述单词的前或后边界，<code>\B</code> 表示非单词边界。</p>
+<p>正则表达式的定位符有：</p>
+<table class="reference">
+<tbody><tr>
+    <th width="20%">字符</th>
+    <th width="80%">描述</th>
+</tr>
+<tr>
+    <td>^</td>
+    <td>匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
+</tr>
+<tr>
+    <td>$</td>
+    <td>匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
+</tr>
+<tr>
+    <td>\b</td>
+    <td>匹配一个单词边界，即字与空格间的位置。</td>
+</tr>
+<tr>
+    <td>\B</td>
+    <td>非单词边界匹配。</td>
+</tr>
+</tbody></table>
+
+<p>注意：不能将限定符与定位符一起使用。由于在紧靠换行或者单词边界的前面或后面不能有一个以上位置，因此不允许诸如 <code>^*</code> 之类的表达式。</p>
+<p>若要匹配一行文本开始处的文本，请在正则表达式的开始使用 <code>^</code> 字符。不要将 <code>^</code> 的这种用法与中括号表达式内的用法混淆。</p>
+<p>若要匹配一行文本的结束处的文本，请在正则表达式的结束处使用 <code>$</code> 字符。</p>
+<p>若要在搜索章节标题时使用定位点，下面的正则表达式匹配一个章节标题，该标题只包含两个尾随数字，并且出现在行首：</p>
+<p><code>/^Chapter [1-9][0-9]&#123;0,1&#125;/</code></p>
+<p>真正的章节标题不仅出现行的开始处，而且它还是该行中仅有的文本。它既出现在行首又出现在同一行的结尾。下面的表达式能确保指定的匹配只匹配章节而不匹配交叉引用。通过创建只匹配一行文本的开始和结尾的正则表达式，就可做到这一点。</p>
+<p><code>/^Chapter [1-9][0-9]&#123;0,1&#125;$/</code></p>
+<p>匹配单词边界稍有不同，但向正则表达式添加了很重要的能力。单词边界是单词和空格之间的位置。非单词边界是任何其他位置。下面的表达式匹配单词 Chapter 的开头三个字符，因为这三个字符出现在单词边界后面：</p>
+<p><code>/\bCha/</code></p>
+<p><code>\b</code> 字符的位置是非常重要的。如果它位于要匹配的字符串的开始，它在单词的开始处查找匹配项。如果它位于字符串的结尾，它在单词的结尾处查找匹配项。例如，下面的表达式匹配单词 Chapter 中的字符串 ter，因为它出现在单词边界的前面：</p>
+<p><code>/ter\b/</code></p>
+<p>下面的表达式匹配 Chapter 中的字符串 apt，但不匹配 aptitude 中的字符串 apt：</p>
+<p><code>/\Bapt/</code></p>
+<p>字符串 apt 出现在单词 Chapter 中的非单词边界处，但出现在单词 aptitude 中的单词边界处。对于 <code>\B</code> 非单词边界运算符，位置并不重要，因为匹配不关心究竟是单词的开头还是结尾。</p>
+<!-- ### 6. 选择
+
+用圆括号 `()` 将所有选择项括起来，相邻的选择项之间用 `|` 分隔。
+
+`()` 表示捕获分组，`()` 会把每个分组里的匹配的值保存起来， 多个匹配值可以通过数字 n 来查看(n 是一个数字，表示第 n 个捕获组的内容)。
+
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/366574CC-3706-4B4C-8782-1BFF4CF57582.jpg"></p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2014/03/82A7298A-2A94-49E3-AA27-A7778EE89711.jpg"></p>
+
+但用圆括号会有一个副作用，使相关的匹配会被缓存，此时可用 ?: 放在第一个选项前来消除这种副作用。
+
+其中 `?:` 是非捕获元之一，还有两个非捕获元是 `?=` 和 `?!`，这两个还有更多的含义，前者为正向预查，在任何开始匹配圆括号内的正则表达式模式的位置来匹配搜索字符串，后者为负向预查，在任何开始不匹配该正则表达式模式的位置来匹配搜索字符串。 -->
+
+
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>CSP-J 2021 第三题(network)</p>
+<!-- <iframe width="90%" src="https://www.luogu.com.cn/problem/P7911" height="600px"></iframe> -->
+
+<p>前文中说到了我就是因为一个简简单单的判断函数，丢了这道题的分。(不然加上这八十分我都能拿个一等奖了)</p>
+<p>现在看到这里，就可以想到，判断IP的函数可以替换成一个正则表达式！</p>
+<p><code>(\d|[1-9]\d|1\d&#123;2&#125;|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d&#123;2&#125;|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d&#123;2&#125;|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d&#123;2&#125;|2[0\d|25[0-5]):(\d|[1-9]\d&#123;1,3&#125;|[1-5]\d&#123;4&#125;|6[0-4]\d&#123;3&#125;|65[0-4]\d&#123;2&#125;|655[0-2]\d|6553[0-5])</code></p>
+<p>把这段话翻译成人类能听懂的语言：</p>
+<p>((<code>数</code>) 或 (<code>1~9的数字</code> + <code>数</code>) 或 (<code>1</code> + <code>两个数字</code>) 或 (<code>2</code> + <code>0~4的数字</code> + <code>数</code>) 或 (<code>25</code> + <code>0~5的数字</code>)) + <code>.</code> + </p>
+<p>((<code>数</code>) 或 (<code>1~9的数字</code> + <code>数</code>) 或 (<code>1</code> + <code>两个数字</code>) 或 (<code>2</code> + <code>0~4的数字</code> + <code>数</code>) 或 (<code>25</code> + <code>0~5的数字</code>)) + <code>.</code> + </p>
+<p>((<code>数</code>) 或 (<code>1~9的数字</code> + <code>数</code>) 或 (<code>1</code> + <code>两个数字</code>) 或 (<code>2</code> + <code>0~4的数字</code> + <code>数</code>) 或 (<code>25</code> + <code>0~5的数字</code>)) + <code>.</code> + </p>
+<p>((<code>数</code>) 或 (<code>1~9的数字</code> + <code>数</code>) 或 (<code>1</code> + <code>两个数字</code>) 或 (<code>2</code> + <code>0~4的数字</code> + <code>数</code>) 或 (<code>25</code> + <code>0~5的数字</code>)) + <code>:</code> +</p>
+<p>((<code>数</code>) 或 (<code>1~9的数字</code> + (<code>&gt;=1, &lt;=3</code>个<code>数</code>)) 或 (<code>1~5的数字</code> + (<code>4</code>个<code>数</code>) 或 (<code>6</code> + <code>0~4的数字</code> + (<code>3</code>个<code>数</code>)) 或 (<code>65</code> + <code>0~4</code>的数字 + (<code>2</code>个<code>数</code>)) 或 (<code>655</code> + <code>0~2的数字</code> + <code>数</code>) 或 (<code>6553</code> + <code>0~5的数字</code>))</p>
+<p>… 好像还是看不懂</p>
+<p>然后代码就出来了！</p>
+<pre class=" language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;map></span></span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;regex></span></span>
+
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> n<span class="token punctuation">;</span>
+
+regex <span class="token function">r</span><span class="token punctuation">(</span><span class="token string">"(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d{2}|2[0-"</span>
+        <span class="token string">"4]\\d|25[0-5])\\.(\\d|[1-9]\\d|1\\d{2}|2[0-4]\\d|25[0-5])\\.(\\d|[1-9]"</span>
+        <span class="token string">"\\d|1\\d{2}|2[0-4]\\d|25[0-5]):(\\d|[1-9]\\d{1,3}|[1-5]\\d{4}|6[0-4]"</span>
+        <span class="token string">"\\d{3}|65[0-4]\\d{2}|655[0-2]\\d|6553[0-5])"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+map<span class="token operator">&lt;</span>string<span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> m<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">// o 为类型(客户端or服务端), a为ip</span>
+string o<span class="token punctuation">,</span> a<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        cin <span class="token operator">>></span> o <span class="token operator">>></span> a<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// 判断ip是否合法</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">regex_match</span><span class="token punctuation">(</span>a<span class="token punctuation">,</span> r<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ERR\n"</span><span class="token punctuation">;</span>
+            <span class="token keyword">continue</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>o<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'S'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Server: 寻找之前有没有相同IP</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>m<span class="token punctuation">[</span>a<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 如果m[ip]不为空</span>
+                cout <span class="token operator">&lt;&lt;</span> <span class="token string">"FAIL\n"</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token comment" spellcheck="true">// 否则将ip添加进map中，输出OK</span>
+                m<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">=</span> i<span class="token punctuation">,</span> cout <span class="token operator">&lt;&lt;</span> <span class="token string">"OK\n"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">// Client: 寻找服务器是否存在</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>m<span class="token punctuation">.</span><span class="token function">count</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment" spellcheck="true">// 不存在</span>
+                cout <span class="token operator">&lt;&lt;</span> <span class="token string">"FAIL\n"</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                <span class="token comment" spellcheck="true">// 否则输出服务器ip编号</span>
+                cout <span class="token operator">&lt;&lt;</span> m<span class="token punctuation">[</span>a<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">'\n'</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
-<hr>
-<h3 id="本地安装-pandoc"><a href="#本地安装-pandoc" class="headerlink" title="本地安装 pandoc"></a>本地安装 pandoc</h3><p>进入 <a target="_blank" rel="noopener" href="https://www.pandoc.org/installing.html">pandoc安装页面</a>，点击下载按钮并安装。</p>
-<p><strong>安装一定要选择 Install for all users! 否则在除了C:\Users\…\ 以外的目录都无法使用 pandoc 指令！(如果这样还不能解决就自己配置一下环境变量吧。。)</strong></p>
-<p>在 cmd 中输入 <code>pandoc --version</code>，如果成功显示版本即是安装成功。</p>
-<p>**安装成功之后要重启电脑再 Hexo g ，否则将报错<code>pandoc exited with code null</code>。</p>
-<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p>… 还没有写完</p>
-<h2 id="测试："><a href="#测试：" class="headerlink" title="测试："></a>测试：</h2><p>$e&#x3D;mc^2$</p>
-<p>$LaTeX$</p>
-<p>$\sqrt{1+\sqrt[^p!]{1+a^2}}$</p>
-<p>$\int_a^b f(x)\mathrm{d}x$</p>
 
                 
             </div>
@@ -540,7 +810,7 @@ $ npm i hexo-renderer-pandoc
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://mxhanks.github.io/2021/11/20/%E8%AE%A9Hexo%E4%B8%ADNexT%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/">https://mxhanks.github.io/2021/11/20/%E8%AE%A9Hexo%E4%B8%ADNexT%E6%94%AF%E6%8C%81%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/</a>
+                    <a href="https://mxhanks.github.io/2021/111272.html">https://mxhanks.github.io/2021/111272.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -578,12 +848,8 @@ $ npm i hexo-renderer-pandoc
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web%E5%89%8D%E7%AB%AF/">
-                                    <span class="chip bg-color">web前端</span>
-                                </a>
-                            
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
+                                <a href="/tags/c/">
+                                    <span class="chip bg-color">c++</span>
                                 </a>
                             
                         </div>
@@ -900,70 +1166,7 @@ $ npm i hexo-renderer-pandoc
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/12/05/Tomcat10%20%E8%A7%A3%E5%86%B3%E5%AE%9E%E4%BE%8B%E5%8C%96Servlet%E7%B1%BB500%E9%94%99%E8%AF%AF/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Tomcat10 解实例化Servlet类错误(500)">
-                        
-                        <span class="card-title">Tomcat10 解实例化Servlet类错误(500)</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            症状：
-
-由于Tomcat10对servlet依赖包级目录改变，maven导入依赖时应该导入：
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Tomcat/">
-                        <span class="chip bg-color">Tomcat</span>
-                    </a>
-                    
-                    <a href="/tags/web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">web前端</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
-                        <span class="chip bg-color">踩坑记录</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/11/17/%E4%BD%BF%E7%94%A8Hexo+GithubPages%E5%BB%BA%E9%80%A0%E4%B8%AA%E4%BA%BABlog/">
+                <a href="/2021/11179774.html">
                     <div class="card-image">
                         
                         
@@ -982,15 +1185,15 @@ $ npm i hexo-renderer-pandoc
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-17
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%89%8D%E7%AB%AF/" class="post-category">
-                                    web前端
+                            <a href="/categories/Hexo/" class="post-category">
+                                    Hexo
                                 </a>
                             
                             
@@ -1006,6 +1209,63 @@ $ npm i hexo-renderer-pandoc
                     
                     <a href="/tags/Hexo/">
                         <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/11082931.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Luogu P5707 题解">
+                        
+                        <span class="card-title">Luogu P5707 题解</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
+                                    算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/Java/">
+                        <span class="chip bg-color">Java</span>
+                    </a>
+                    
+                    <a href="/tags/Luogu/">
+                        <span class="chip bg-color">Luogu</span>
                     </a>
                     
                 </div>
@@ -1162,13 +1422,6 @@ $ npm i hexo-renderer-pandoc
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
-
 
 
     <footer class="page-footer bg-color">
@@ -1188,7 +1441,7 @@ $ npm i hexo-renderer-pandoc
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.2k</span>
+                        class="white-color">12.4k</span>
             
             
             

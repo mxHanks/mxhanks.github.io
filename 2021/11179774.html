@@ -4,10 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, mxHanks的Blog">
-    <meta name="description" content="HELLO WORLD!从上周一开始，陆陆续续的搭建这个自己的网站，由于我不会使用github，也不了解hexo, Node.js这一类的东西，所以花的时间应该比大部分人长。
-建站路上遇到的最坑的点就是：我下载的这个next主题有问题
-需要">
+    <meta name="keywords" content="使用 Hexo + Github Pages 建造个人Blog, mxHanks的Blog">
+    <meta name="description" content="预备工作在开始之前你要知道的东西动态网站？静态网站？
+动态网站是指不仅有前台页面，可以展示给用户看的web页面，也有后台处理各种数据的服务端。通常用于编写服务端的语言有Java, php等。
+
+静态网站是指仅仅有给用户查看的web页面，不能">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | mxHanks的Blog</title>
+    <title>使用 Hexo + Github Pages 建造个人Blog | mxHanks的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -334,12 +335,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">使用 Hexo + Github Pages 建造个人Blog</h1>
                 </div>
             </div>
         </div>
@@ -367,14 +368,23 @@
                                 <span class="chip bg-color">web前端</span>
                             </a>
                         
-                            <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
-                                <span class="chip bg-color">踩坑记录</span>
+                            <a href="/tags/Hexo/">
+                                <span class="chip bg-color">Hexo</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Hexo/" class="post-category">
+                                Hexo
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -383,28 +393,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-10-23
+                    2021-11-17
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-02
+                    2023-02-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    167
+                    3.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    13 分
                 </div>
                 
 
@@ -424,11 +434,326 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="HELLO-WORLD"><a href="#HELLO-WORLD" class="headerlink" title="HELLO WORLD!"></a>HELLO WORLD!</h3><p>从上周一开始，陆陆续续的搭建这个自己的网站，由于我不会使用github，也不了解hexo, Node.js这一类的东西，所以花的时间应该比大部分人长。</p>
-<p>建站路上遇到的最坑的点就是：我下载的这个next主题有问题</p>
-<p>需要修改<code>next</code>目录下<code>_config.yml</code> 文件，否则会多一个<code>%20</code>。删去<code>“||”</code>之间的<code>空格</code>即可。</p>
-<p>后来才发现，原来我使用的这个next已经停止维修了。所以就换成了最新的NexT。</p>
-<p>反反复复换了很多次主题，但都不尽如人意，所以最后还是用了NexT。</p>
+                <h1 id="预备工作"><a href="#预备工作" class="headerlink" title="预备工作"></a>预备工作</h1><h2 id="在开始之前你要知道的东西"><a href="#在开始之前你要知道的东西" class="headerlink" title="在开始之前你要知道的东西"></a>在开始之前你要知道的东西</h2><h3 id="动态网站？静态网站？"><a href="#动态网站？静态网站？" class="headerlink" title="动态网站？静态网站？"></a>动态网站？静态网站？</h3><ul>
+<li><p>动态网站是指不仅有前台页面，可以展示给用户看的web页面，也有后台处理各种数据的服务端。通常用于编写服务端的语言有Java, php等。</p>
+</li>
+<li><p>静态网站是指仅仅有给用户查看的web页面，不能根据不同用户做出的不同操作进行不同的反应的就是静态网站。</p>
+</li>
+</ul>
+<h3 id="Git-是什么"><a href="#Git-是什么" class="headerlink" title="Git 是什么"></a>Git 是什么</h3><ul>
+<li><p>Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</p>
+</li>
+<li><p>Git 是 Linus Torvalds 为了帮助管理 Linux 内核开发而开发的一个开放源码的版本控制软件。</p>
+</li>
+<li><p>Git 与常用的版本控制工具 CVS, Subversion 等不同，它采用了分布式版本库的方式，不必服务器端软件支持。</p>
+</li>
+</ul>
+<h3 id="Github-Pages是什么"><a href="#Github-Pages是什么" class="headerlink" title="Github Pages是什么"></a>Github Pages是什么</h3><ul>
+<li>Github Pages 是 Github 为用户提供的一个免费的域名，在这个域名里面，你可以放置一个<strong>静态</strong>的网站。通常 Github Pages 被大多数人用来做个人Blog，当然你也可以用来存储一些东西，方便你来查阅。本篇文章会按照常规的方法教你建一个 个人Blog，如果你想做的是别的东西而不是个人Blog，相信你看完这篇文章也会知道怎么做了。</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Hexo-是什么"><a href="#Hexo-是什么" class="headerlink" title="Hexo 是什么"></a>Hexo 是什么</h3><ul>
+<li><p>如果你有丰富的前端功底，你也可以选择手撸代码，自己写html, css, js来展示你的前端页面。但是，即使是那些经验丰富的老前端，要做一个个人Blog，也不可能会手磨前端，肯定会用一个便于<strong>管理</strong>和<strong>控制</strong>自己写的几百个文章的工具——我们要介绍的Hexo。</p>
+</li>
+<li><p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</li>
+</ul>
+<h2 id="在Github建立Github-Pages仓库"><a href="#在Github建立Github-Pages仓库" class="headerlink" title="在Github建立Github Pages仓库"></a>在Github建立Github Pages仓库</h2><h3 id="注册-Github-账号"><a href="#注册-Github-账号" class="headerlink" title="注册 Github 账号"></a>注册 Github 账号</h3><p>进入 <a target="_blank" rel="noopener" href="https://www.github.com/">Github 官网</a> 注册账号。对于有些人来说可能根本连不上Github，这个时候你就只能用别的方法了，这里不过多阐述。</p>
+<p>注册之后会有电子邮箱验证，注意要记得验证</p>
+<img src="https://img-blog.csdnimg.cn/20200331210619762.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NTM3Nzc3MA==,size_16,color_FFFFFF,t_70" />
+
+<h3 id="创造-Github-Pages-的存储库"><a href="#创造-Github-Pages-的存储库" class="headerlink" title="创造 Github Pages 的存储库"></a>创造 Github Pages 的存储库</h3><p>点击左上角的按钮</p>
+<!-- <a herf="github.com/new">
+<button style="color: white;
+    background-color: green;
+    border-color: black 1px auto;padding: 3px 12px;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 10%"
+    >
+    <svg aria-hidden="true" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo">
+    <path fill-rule="evenodd" d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"></path>
+</svg>New</button></a>  -->
+<p>然后就进入了创建仓库的界面。接下来的操作如图所示：</p>
+<img src="https://img-blog.csdnimg.cn/20191128143932259.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25pbmV5YV9jb20=,size_16,color_FFFFFF,t_70" />
+
+<p>其中 <em>Repository name</em>那一项要填 <code>[你的用户名].github.io</code>，选 <em>public</em>，勾选 <em>添加 README</em>。做完上述步骤之后就点击<br><button style="color: white;background-color:green;border: black 1px auto; padding: 5px; border-radius: 5px"> Create repository</button></p>
+<h3 id="启用-Github-Pages"><a href="#启用-Github-Pages" class="headerlink" title="启用 Github Pages"></a>启用 Github Pages</h3><p>进入仓库，点击设置 (<em>Settings</em>), 往下滑找到如下图表示的界面表示 <em>GitHub Pages</em> 已经开启了。</p>
+<img src="https://img-blog.csdnimg.cn/20191128144415745.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L25pbmV5YV9jb20=,size_16,color_FFFFFF,t_70" />
+
+<h2 id="安装-Git"><a href="#安装-Git" class="headerlink" title="安装 Git"></a>安装 Git</h2><h3 id="Linux-平台上安装"><a href="#Linux-平台上安装" class="headerlink" title="Linux 平台上安装"></a>Linux 平台上安装</h3><p><em>Git</em> 的工作需要调用 <em>curl</em>，<em>zlib</em>，<em>openssl</em>，<em>expat</em>，<em>libiconv</em> 等库的代码，所以需要先安装这些依赖工具。</p>
+<h4 id="在有-yum-或-apt-get-的系统上安装"><a href="#在有-yum-或-apt-get-的系统上安装" class="headerlink" title="在有 yum 或 apt-get 的系统上安装"></a>在有 <em>yum</em> 或 <em>apt-get</em> 的系统上安装</h4><h5 id="Debian-x2F-Ubuntu"><a href="#Debian-x2F-Ubuntu" class="headerlink" title="Debian&#x2F;Ubuntu"></a>Debian&#x2F;Ubuntu</h5><p>Debian&#x2F;Ubuntu Git 安装命令为：</p>
+<pre><code>$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
+  libz-dev libssl-dev
+
+$ apt-get install git
+
+$ git --version
+git version 1.8.1.2
+</code></pre>
+<h5 id="Centos-x2F-RedHat"><a href="#Centos-x2F-RedHat" class="headerlink" title="Centos&#x2F;RedHat"></a>Centos&#x2F;RedHat</h5><p>如果你使用的系统是 Centos&#x2F;RedHat 安装命令为：</p>
+<pre><code>$ yum install curl-devel expat-devel gettext-devel \
+  openssl-devel zlib-devel
+
+$ yum -y install git-core
+
+$ git --version
+git version 1.7.1
+</code></pre>
+<h4 id="源码安装"><a href="#源码安装" class="headerlink" title="源码安装"></a>源码安装</h4><p>我们也可以在官网下载源码包来安装，最新源码包下载地址：<code>https://git-scm.com/download</code></p>
+<p>安装指定系统的依赖包：</p>
+<h5 id="Centos-x2F-RedHat-1"><a href="#Centos-x2F-RedHat-1" class="headerlink" title="Centos&#x2F;RedHat"></a>Centos&#x2F;RedHat</h5><pre><code>$ yum install curl-devel expat-devel gettext-devel \
+  openssl-devel zlib-devel
+</code></pre>
+<h5 id="Debian-x2F-Ubuntu-1"><a href="#Debian-x2F-Ubuntu-1" class="headerlink" title="Debian&#x2F;Ubuntu"></a>Debian&#x2F;Ubuntu</h5><pre><code>$ apt-get install libcurl4-gnutls-dev libexpat1-dev gettext \
+  libz-dev libssl-dev
+</code></pre>
+<p>解压安装下载的源码包：</p>
+<pre><code>$ tar -zxf git-1.7.2.2.tar.gz
+$ cd git-1.7.2.2
+$ make prefix=/usr/local all
+$ sudo make prefix=/usr/local install
+</code></pre>
+<h3 id="在-Windows-平台上安装"><a href="#在-Windows-平台上安装" class="headerlink" title="在 Windows 平台上安装"></a>在 Windows 平台上安装</h3><p>在 Windows 平台上安装 Git 同样轻松，有个叫做 <em>msysGit</em> 的项目提供了安装包，可以到 GitHub 的页面上下载 exe 安装文件并运行：</p>
+<p>安装包下载地址：<code>https://gitforwindows.org/</code></p>
+<p>官网慢，可以用国内的镜像：<code>https://npm.taobao.org/mirrors/git-for-windows/。</code></p>
+<img src="https://www.runoob.com/wp-content/uploads/2015/02/20140127131250906" />
+
+<p>完成安装之后，就可以使用命令行的 <em>git</em> 工具（已经自带了 <em>ssh</em> 客户端）了，另外还有一个图形界面的 Git 项目管理工具。</p>
+<p>在开始菜单里找到”Git”-&gt;”Git Bash”，会弹出 Git 命令窗口，你可以在该窗口进行 Git 操作。</p>
+<blockquote>
+<p>关于 <em>Git</em> 的更多信息，大家可以自行查阅。也是比较深的东西。</p>
+</blockquote>
+<h2 id="安装-Node-js"><a href="#安装-Node-js" class="headerlink" title="安装 Node.js"></a>安装 Node.js</h2><p>Node.js 为大多数平台提供了官方的 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">安装程序</a>。对于中国大陆地区用户，可以前往 <a target="_blank" rel="noopener" href="https://npm.taobao.org/mirrors/node">淘宝 Node.js 镜像</a> 下载。</p>
+<p>其它的安装方法：</p>
+<ul>
+<li><p>Windows：通过 <a target="_blank" rel="noopener" href="https://github.com/jasongin/nvs/">nvs</a>（推荐）或者 <a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">nvm</a> 安装。</p>
+</li>
+<li><p>Mac：使用 <a target="_blank" rel="noopener" href="https://brew.sh/">Homebrew</a> 或 <a target="_blank" rel="noopener" href="http://www.macports.org/">MacPorts</a> 安装。</p>
+</li>
+<li><p>Linux（DEB&#x2F;RPM-based）：从 <a target="_blank" rel="noopener" href="https://github.com/nodesource/distributions">NodeSource</a> 安装。</p>
+</li>
+<li><p>其它：使用相应的软件包管理器进行安装，可以参考由 Node.js 提供的 <a target="_blank" rel="noopener" href="https://nodejs.org/en/download/package-manager/">指导</a>。</p>
+</li>
+</ul>
+<p>对于 Mac 和 Linux 同样建议使用 nvs 或者 nvm，以避免可能会出现的权限问题。</p>
+<blockquote>
+<h3 id="Windows-用户"><a href="#Windows-用户" class="headerlink" title="Windows 用户"></a>Windows 用户</h3><p>使用 Node.js 官方安装程序时，请确保勾选 Add to PATH 选项（默认已勾选）</p>
+</blockquote>
+<blockquote>
+<h3 id="For-Mac-x2F-Linux-用户"><a href="#For-Mac-x2F-Linux-用户" class="headerlink" title="For Mac &#x2F; Linux 用户"></a>For Mac &#x2F; Linux 用户</h3><p>如果在尝试安装 Hexo 的过程中出现 EACCES 权限错误，请遵循 由 npmjs 发布的指导 修复该问题。强烈建议 不要 使用 root、sudo 等方法覆盖权限</p>
+</blockquote>
+<blockquote>
+<h3 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h3><p>如果您使用 Snap 来安装 Node.js，在 初始化 博客时您可能需要手动在目标文件夹中执行 npm install。</p>
+</blockquote>
+<p>我强烈的建议永远安装最新版的Node.js。</p>
+<table>
+<thead>
+<tr>
+<th>Hexo 版本</th>
+<th>最低兼容的 Node.js 版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5.0+</td>
+<td>10.13.0</td>
+</tr>
+<tr>
+<td>4.1 - 4.2</td>
+<td>8.10</td>
+</tr>
+<tr>
+<td>4.0</td>
+<td>8.6</td>
+</tr>
+<tr>
+<td>3.3 - 3.9</td>
+<td>6.9</td>
+</tr>
+<tr>
+<td>3.2 - 3.3</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>3.0 - 3.1</td>
+<td>0.10 or iojs</td>
+</tr>
+<tr>
+<td>0.0.1 - 2.8</td>
+<td>0.10</td>
+</tr>
+</tbody></table>
+<h2 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h2><h3 id="安装-Hexo-1"><a href="#安装-Hexo-1" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h3><p>在所有的预备环境都安装完成之后，终于可以安装我们的主角—— Hexo 了。</p>
+<p>强烈建议各位新手使用</p>
+<pre><code>$ npm install -g hexo-cli
+</code></pre>
+<p>安装Hexo。如果你对 npm 十分的熟悉，当然也可以用 <code>npm install hexo</code>。</p>
+<h3 id="联系-Github-与-Hexo"><a href="#联系-Github-与-Hexo" class="headerlink" title="联系 Github 与 Hexo"></a>联系 Github 与 Hexo</h3><p>将 Hexo 与你的 Github page 联系起来，设置 name 和 email，输入如下命令：</p>
+<pre><code>$ git config --global user.name &quot;Github用户名&quot;
+$ git config --global user.email &quot;Github注册的邮箱&quot;
+</code></pre>
+<h1 id="建站"><a href="#建站" class="headerlink" title="建站"></a>建站</h1><h2 id="建立站点文件夹"><a href="#建立站点文件夹" class="headerlink" title="建立站点文件夹"></a>建立站点文件夹</h2><p>进入到你想存放你的Blog的文件夹(也可新建)，执行以下命令(其中&lt;folder&gt;为你想用的任意文件夹名字)：</p>
+<pre><code>$ hexo init &lt;folder&gt;
+$ cd &lt;folder&gt;
+$ npm install
+</code></pre>
+<p>新建完成后，指定文件夹的目录如下：</p>
+<pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes
+</code></pre>
+<p><strong>_config.yml</strong></p>
+<p>网站的 配置 信息，您可以在此配置大部分的参数。</p>
+<p><strong>package.json</strong></p>
+<p>应用程序的信息。<em>EJS</em>, <em>Stylus</em> 和 <em>Markdown renderer</em> 已默认安装，您可以自由移除。</p>
+<pre><code>package.json
+&#123;
+  &quot;name&quot;: &quot;hexo-site&quot;,
+  &quot;version&quot;: &quot;0.0.0&quot;,
+  &quot;private&quot;: true,
+  &quot;hexo&quot;: &#123;
+    &quot;version&quot;: &quot;&quot;
+  &#125;,
+  &quot;dependencies&quot;: &#123;
+    &quot;hexo&quot;: &quot;^3.8.0&quot;,
+    &quot;hexo-generator-archive&quot;: &quot;^0.1.5&quot;,
+    &quot;hexo-generator-category&quot;: &quot;^0.1.3&quot;,
+    &quot;hexo-generator-index&quot;: &quot;^0.2.1&quot;,
+    &quot;hexo-generator-tag&quot;: &quot;^0.2.0&quot;,
+    &quot;hexo-renderer-ejs&quot;: &quot;^0.3.1&quot;,
+    &quot;hexo-renderer-stylus&quot;: &quot;^0.3.3&quot;,
+    &quot;hexo-renderer-marked&quot;: &quot;^0.3.2&quot;,
+    &quot;hexo-server&quot;: &quot;^0.3.3&quot;
+  &#125;
+&#125;
+</code></pre>
+<p><strong>scaffolds</strong><br>模版 文件夹。当您新建文章时，Hexo 会根据 scaffold 来建立文件。</p>
+<p>Hexo的模板是指在新建的文章文件中默认填充的内容。例如，如果您修改scaffold&#x2F;post.md中的Front-matter内容，那么每次新建一篇文章时都会包含这个修改。</p>
+<p><strong>source</strong><br>资源文件夹是存放用户资源的地方。除 _posts 文件夹之外，开头命名为 _ (下划线)的文件 &#x2F; 文件夹和隐藏的文件将会被忽略。Markdown 和 HTML 文件会被解析并放到 public 文件夹，而其他文件会被拷贝过去。</p>
+<p><strong>themes</strong><br>主题 文件夹。Hexo 会根据主题来生成静态页面。</p>
+<h2 id="配置站点"><a href="#配置站点" class="headerlink" title="配置站点"></a>配置站点</h2><h3 id="认识-config-yml"><a href="#认识-config-yml" class="headerlink" title="认识 _config.yml"></a>认识 <em>_config.yml</em></h3><p><em>_config.yml</em> 是一个很重要的文件，之后我们会需要常常提起或修改它。现在我们通过它来更改我们的站点设置。</p>
+<blockquote>
+<p>请注意，并不是所有的东西都要修改。下示 <em>_comfig.yml</em> 我全部打了注释的原因是让你们更好的理解hexo的原理。一般只需要更改 <em># Site</em> 下的 <em>title</em>, <em>description</em>, <em>author</em>, <em>language</em>, <em>timezone</em> 以及 <em># Deployment</em> 下面的东西就够了。</p>
+</blockquote>
+<pre><code># Hexo Configuration
+## Docs: http://hexo.io/docs/configuration.html
+## Source: https://github.com/hexojs/hexo/
+# Site                                  #站点配置
+title: Hexo-demo                            #网站标题
+subtitle: hexo is simple and easy to study  #网站副标题
+description: this is hexo-demo              #网栈描述
+author: pomy                                #你的名字
+language: zh-CN                             #网站使用的语言
+timezone: Asia/Shanghai                     #网站时区
+# URL                                   #可以不用配置
+## If your site is put in a subdirectory, set url as &#39;http://yoursite.com/child&#39; and root as &#39;/child/&#39;
+url: http://yoursite.com                    #网址，搜索时会在搜索引擎中显示
+root: /                                     #网站根目录
+permalink: :year/:month/:day/:title/        #永久链接格式
+permalink_defaults:                         #永久链接中各部分的默认值
+# Directory                             #目录配置
+source_dir: source                          #资源文件夹，这个文件夹用来存放内容
+public_dir: public                          #公共文件夹，这个文件夹用于存放生成的站点文件
+tag_dir: tags                               #标签文件夹
+archive_dir: archives                       #归档文件夹
+category_dir: categories                    #分类文件夹
+code_dir: downloads/code                    #Include code 文件夹
+i18n_dir: :lang                             #国际化文件夹
+skip_render:                                #跳过指定文件的渲染，您可使用 glob 来配置路径
+# Writing                               #写作配置
+new_post_name: :title.md                    # 新文章的文件名称
+default_layout: post                        #默认布局
+titlecase: false                            # Transform title into titlecase
+external_link: true                         # Open external links in new tab
+filename_case: 0                            #把文件名称转换为 (1) 小写或 (2) 大写
+render_drafts: false                        #显示草稿
+post_asset_folder: false                    #是否启动资源文件夹
+relative_link: false                        #把链接改为与根目录的相对位址
+future: true
+highlight:                                  #代码块的设置
+enable: true
+line_number: true
+auto_detect: true
+tab_replace:
+# Category &amp; Tag                        #分类 &amp; 标签
+default_category: uncategorized             #默认分类
+category_map:                               #分类别名
+tag_map:                                    #标签别名
+# Date / Time format                #时间和日期
+## Hexo uses Moment.js to parse and display date
+## You can customize the date format as defined in
+## http://momentjs.com/docs/#/displaying/format/
+date_format: YYYY-MM-DD
+time_format: HH:mm:ss
+# Pagination 分页
+## Set per_page to 0 to disable pagination
+per_page: 10                                #每页显示的文章量 (0 = 关闭分页功能)
+pagination_dir: page                        #分页目录
+# Extensions 扩展
+## Plugins: http://hexo.io/plugins/ 插件
+## Themes: http://hexo.io/themes/ 主题
+theme: landscape                            #当前主题名称
+# Deployment                            #部署到github
+## Docs: http://hexo.io/docs/deployment.html
+deploy:
+type:
+</code></pre>
+<p>修改完 _config.yml 之后，在 hexo 的 <code>根目录</code> 通过 git bash 或 cmd 输入 <code>hexo g</code>。在做这一步之前<strong>确保你已经在前文中进行过了hexo init</strong></p>
+<p>常用的hexo命令：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hexo g</td>
+<td>生成文件</td>
+</tr>
+<tr>
+<td>hexo d</td>
+<td>部署生成的文件</td>
+</tr>
+<tr>
+<td>hexo clean</td>
+<td>清楚生成的文件</td>
+</tr>
+<tr>
+<td>hexo s</td>
+<td>在本地启动服务器 (多用于预览效果)</td>
+</tr>
+</tbody></table>
+<h3 id="修改-comfig-yml-使可以提交至-Github-Pages"><a href="#修改-comfig-yml-使可以提交至-Github-Pages" class="headerlink" title="修改 _comfig.yml 使可以提交至 Github Pages"></a>修改 <em>_comfig.yml</em> 使可以提交至 Github Pages</h3><h4 id="获得-personal-access-token"><a href="#获得-personal-access-token" class="headerlink" title="获得 personal access token"></a>获得 <em>personal access token</em></h4><p>做这件事之前要做另一件事。</p>
+<p>从 2021年8月13日 开始，Github 不在支持通过输入账号密码的形式push代码，需要使用 <em>personal access token</em> 个人访问令牌。其实 github 很早之前就提示过的，不过当时没留意。那么自己去 github 上自己生成个 <em>personal access token</em> 就可以了，所以以后就是通过账号和 <em>personal access token</em> 来验证用户了，而不需要输入密码了（感觉更安全了）。</p>
+<p>那么这个 <em>personal access token</em> 怎么弄到呢？</p>
+<p>进入 <a href="www.github.com">Github</a> ，点击头像，再点击 Settings。进入 Settings 之后再点击 Developer settings。再点击 <em>Personal access token</em></p>
+<p><img src="https://img-blog.csdnimg.cn/img_convert/c385b3c652b1877c49010a5ac9b6d838.png" alt="Personal access tokens"></p>
+<p>点击生成令牌<br><img src="https://img-blog.csdnimg.cn/img_convert/2e251b0afa93d45ae1929fde52538bb8.png" alt="生成令牌"></p>
+<p>为你的令牌添加一个描述性名称<br><img src="https://img-blog.csdnimg.cn/img_convert/2acd4ab4a5f19983ead44d9ae331add1.png" alt="name"></p>
+<p>为你的令牌添加一个到期期限(建议拉到最大)<br><img src="https://img-blog.csdnimg.cn/img_convert/3bf4706926909f525a1d17f5165a540f.png" alt="date"></p>
+<p>给自己用的东西当然是全选啦~ 如果你觉得不安全也可以只选 repo<br><img src="https://img-blog.csdnimg.cn/img_convert/a4c03d020b712fd8b09471a96bb7b5ed.png" alt="权限"></p>
+<p>最后再单击生成令牌<br><img src="https://img-blog.csdnimg.cn/img_convert/6f2787a7fec029cc6f7a3333cf5c6bb2.png" alt="creat"></p>
+<p><span style="font-size: 20px; color: red">请注意，令牌生成之后无法再次在Github中查看，一定要在重新打开或关闭该页面之前将令牌保存下来。如果因为种种原因遗失令牌，请删除令牌之后再按照上述步骤重新生成。</span></p>
+<h4 id="修改-deploy-与-type-以提交到-github"><a href="#修改-deploy-与-type-以提交到-github" class="headerlink" title="修改 deploy 与 type 以提交到 github"></a>修改 <em>deploy</em> 与 <em>type</em> 以提交到 github</h4><p>首先将 <em>_config.yml</em> 拖到最下面，发现了 <em>deploy</em> 和 <em>type</em> 吗？</p>
+<p>修改成如下形式( <strong>注意type前面是有 <code>-</code> 的</strong> )：</p>
+<pre><code>deploy:
+    - type: git
+      repo: https://[你的令牌]@github.com/[你的github用户名]/[你的github用户名].github.io.git
+      branch: master
+</code></pre>
+<p>之后再尝试在你的 hexo 根目录右键，打开 git bash 或是打开 cmd，cd 到 hexo 根目录中，输入 <code>hexo d</code>。 (<strong>确保进行这一步之前在前文中进行了<code>hexo g</code></strong>)</p>
+<p>如果成功的话，在浏览器中打开 <code>[你的用户名].github.io</code> 就可以看到你刚刚部署的网站了！</p>
+<p><img src="https://pic4.zhimg.com/80/v2-1c3baeecf1ef3bec5c8ef3f14639f68b_720w.jpg" alt="hexo默认网站"></p>
+<p>如果不成功的话，有可能是因为插件不完整导致的。在命令行中输入</p>
+<pre><code>$ npm install hexo-deployer-git --save
+</code></pre>
 
                 
             </div>
@@ -455,7 +780,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://mxhanks.github.io/2021/10/23/hello-world/">https://mxhanks.github.io/2021/10/23/hello-world/</a>
+                    <a href="https://mxhanks.github.io/2021/11179774.html">https://mxhanks.github.io/2021/11179774.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -497,8 +822,8 @@
                                     <span class="chip bg-color">web前端</span>
                                 </a>
                             
-                                <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
-                                    <span class="chip bg-color">踩坑记录</span>
+                                <a href="/tags/Hexo/">
+                                    <span class="chip bg-color">Hexo</span>
                                 </a>
                             
                         </div>
@@ -815,32 +1140,87 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/11/07/CSP-J%E6%B8%B8%E8%AE%B0/">
+                <a href="/2021/112012279.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="CSP-J游记">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="让NexT主题支持数学公式">
                         
-                        <span class="card-title">CSP-J游记</span>
+                        <span class="card-title">让NexT主题支持数学公式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            功能开启修改配置由于静态网站的某些功能有限，所以我们需要第三方服务来扩展我们的网站。在任何时候，你都可以使用 NexT 支持的第三方服务来扩展所需的功能。
+Next 提供了两个渲染引擎来显示数学方程: MathJax 和 KaTeX。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-20
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Hexo/" class="post-category">
+                                    Hexo
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web%E5%89%8D%E7%AB%AF/">
+                        <span class="chip bg-color">web前端</span>
+                    </a>
+                    
+                    <a href="/tags/Hexo/">
+                        <span class="chip bg-color">Hexo</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/111272.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++ 中的 正则表达式">
+                        
+                        <span class="card-title">C++ 中的 正则表达式</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说
+写在前面：我为什么要学习这个？这一次的csp-j比赛，第三题我应为不知道c++里面能用我会用的正则表达式来匹配字符串，导致写出了一个很烂的判断函数，只拿了25分因此与一等奖失之交臂(详情见这里)
+
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-12
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
+                            <a href="/categories/c/" class="post-category">
+                                    c++
                                 </a>
                             
                             
@@ -852,60 +1232,6 @@
                     
                     <a href="/tags/c/">
                         <span class="chip bg-color">c++</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BF%A1%E6%81%AF%E7%AB%9E%E8%B5%9B/">
-                        <span class="chip bg-color">信息竞赛</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2021/10/23/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-23
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            mxHanks
-                            
-                        </span>
-                    </div>
-                </div>
-
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">web前端</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
-                        <span class="chip bg-color">踩坑记录</span>
                     </a>
                     
                 </div>
@@ -1081,7 +1407,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.2k</span>
+                        class="white-color">12.4k</span>
             
             
             

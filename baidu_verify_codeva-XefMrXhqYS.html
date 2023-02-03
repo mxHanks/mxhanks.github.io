@@ -4,13 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Log₂预处理, mxHanks的Blog">
-    <meta name="description" content="方法一int Log2[100001];
-
-inline void log_2() {
-    for (int i = 2; i &amp;lt;= n; ++i) {
-        Log2[i] = Log2[i / 2] + 1;
-   ">
+    <meta name="keywords" content="mxHanks的Blog">
+    <meta name="description" content="越努力，越幸运">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@ inline void log_2() {
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Log₂预处理 | mxHanks的Blog</title>
+    <title>mxHanks的Blog</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -337,12 +332,12 @@ inline void log_2() {
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Log₂预处理</h1>
+                    <h1 class="description center-align post-title"></h1>
                 </div>
             </div>
         </div>
@@ -364,29 +359,12 @@ inline void log_2() {
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/c/">
-                                <span class="chip bg-color">c++</span>
-                            </a>
-                        
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%AE%97%E6%B3%95/" class="post-category">
-                                算法
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -395,21 +373,21 @@ inline void log_2() {
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-04-15
+                    2023-02-02
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-01
+                    2023-02-02
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    61
+                    1
                 </div>
                 
 
@@ -436,23 +414,7 @@ inline void log_2() {
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> Log2<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">log_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Log2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Log2<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><pre class=" language-cpp"><code class="language-cpp"><span class="token keyword">int</span> Log2<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">log_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        Log2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Log2<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>嘿嘿, 原理啥的自己研究一下就懂了</p>
-
+                05f1c7ad72d82405193b1834232fb8e4
                 
             </div>
             <hr/>
@@ -478,7 +440,7 @@ inline void log_2() {
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://mxhanks.github.io/2022/04/15/Log2%E9%A2%84%E5%A4%84%E7%90%86/">https://mxhanks.github.io/2022/04/15/Log2%E9%A2%84%E5%A4%84%E7%90%86/</a>
+                    <a href="https://mxhanks.github.io/baidu_verify_codeva-XefMrXhqYS.html">https://mxhanks.github.io/baidu_verify_codeva-XefMrXhqYS.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -515,15 +477,7 @@ inline void log_2() {
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/c/">
-                                    <span class="chip bg-color">c++</span>
-                                </a>
-                            
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -834,17 +788,18 @@ inline void log_2() {
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/02/02/%E5%8D%9A%E5%AE%A2%E5%A4%8D%E6%B4%BB/">
+                <a href="/baidu_verify_codeva-XefMrXhqYS.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="博客复活">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">博客复活</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -854,21 +809,18 @@ inline void log_2() {
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-02
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-02
+                            </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E7%94%9F%E6%B4%BB/" class="post-category">
-                                    生活
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            mxHanks
                             
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
@@ -876,62 +828,37 @@ inline void log_2() {
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2021/12/05/Tomcat10%20%E8%A7%A3%E5%86%B3%E5%AE%9E%E4%BE%8B%E5%8C%96Servlet%E7%B1%BB500%E9%94%99%E8%AF%AF/">
+                <a href="/baidu_verify_codeva-XefMrXhqYS.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Tomcat10 解实例化Servlet类错误(500)">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
                         
-                        <span class="card-title">Tomcat10 解实例化Servlet类错误(500)</span>
+                        <span class="card-title"></span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            症状：
-
-由于Tomcat10对servlet依赖包级目录改变，maven导入依赖时应该导入：
+                            
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-02
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Java/" class="post-category">
-                                    Java
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            mxHanks
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
-                    </a>
-                    
-                    <a href="/tags/Tomcat/">
-                        <span class="chip bg-color">Tomcat</span>
-                    </a>
-                    
-                    <a href="/tags/web%E5%89%8D%E7%AB%AF/">
-                        <span class="chip bg-color">web前端</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/">
-                        <span class="chip bg-color">踩坑记录</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -1085,13 +1012,6 @@ inline void log_2() {
 </main>
 
 
-<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-<script>
-    MathJax.Hub.Config({
-        tex2jax: {inlineMath: [['$', '$'], ['\\(', '\\)']]}
-    });
-</script>
-
 
 
     <footer class="page-footer bg-color">
@@ -1111,7 +1031,7 @@ inline void log_2() {
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">12.2k</span>
+                        class="white-color">12.4k</span>
             
             
             
