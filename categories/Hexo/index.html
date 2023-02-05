@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>分类: Hexo | mxHanks的Blog</title>
+    <title>分类: Hexo | mxHanks的Blog | 测试测试测试测试测试</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -47,6 +47,7 @@
     
 
 
+    <link rel="stylesheet" type="text/css" href="/css/loading.css">
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
@@ -54,6 +55,28 @@
 
 
 <body>
+    
+    <div id="loading-box">
+        <div class="loading-left-bg"></div>
+        <div class="loading-right-bg"></div>
+        <div class="spinner-box">
+            <div class="configure-border-1">
+                <div class="configure-core"></div>
+            </div>
+            <div class="configure-border-2">
+                <div class="configure-core"></div>
+            </div>
+            <div class="loading-word">加载中...</div>
+        </div>
+    </div>
+    <!-- 页面加载动画 -->
+    <script>
+        $(document).ready(function () {
+            document.body.style.overflow = 'auto';
+            document.getElementById('loading-box').classList.add("loaded")
+        })
+    </script>
+
     <header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
@@ -335,30 +358,49 @@
         <div class="brand">
             <div class="title center-align">
                 
-                    
+                写写代码，玩玩游戏，读读书
                 
             </div>
 
             <div class="description center-align">
                 
-                <span id="subtitle"></span>
-                <script src="/libs/typed/typed.js"></script>
-                <script>
-                    var typed = new Typed("#subtitle", {
-                        strings: [ 
-                            
-                                "从来没有真正的绝境, 只有心灵的迷途",
-                            
-                                "Never really desperate, only the lost of the soul",
-                            
-                        ],
-                        startDelay: 300,
-                        typeSpeed: 100,
-                        loop: true,
-                        backSpeed: 50,
-                        showCursor: true
-                    });
-                </script>
+                
+                <!-- 一言 -->
+                
+                    <span id="hitokoto" style="font-size: 20px;"></span>
+                    <!-- 打字机 -->
+                    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/bluebird@3/js/browser/bluebird.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@2.0.3/fetch.min.js"></script>
+                    <script>
+                        var hitokotoContent = ''
+                        function typed(hitokotoContent) {
+                            var typed = new Typed("#hitokoto", {
+                                strings: [
+                                    hitokotoContent
+                                ],
+                                startDelay: 300,
+                                typeSpeed: 100,
+                                loop: true,
+                                backSpeed: 50,
+                                showCursor: true
+                            });
+                        }
+                        async function hitokoto() {
+                            hitokotoContent = await fetch('https://v1.hitokoto.cn')
+                                .then(function (res) {
+                                    return res.json();
+                                })
+                                .then(function (data) {
+                                    return ('『' + data.hitokoto + '』' + '<br /> <strong>'+ '——' + '「' + data.from + '」' + '</strong>');
+                                })
+                                .catch(function (err) {
+                                    console.error(err);
+                                })
+                            await typed(hitokotoContent)
+                        }
+                        hitokoto()
+                    </script>
                 
             </div>
         </div>
@@ -840,6 +882,17 @@ $(function () {
     
 
     <!-- 鼠标星星特效 -->
+    
+
+    <!-- 冒泡 -->
+    
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            document.write(
+                '<script type="text/javascript" src="/libs/others/buble.js"><\/script>'
+            );
+        </script>
     
 
      
