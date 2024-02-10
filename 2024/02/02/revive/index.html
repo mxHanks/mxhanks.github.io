@@ -27,12 +27,14 @@
 <meta property="og:site_name" content="MxHanks&#39; Blog">
 <meta property="og:description" content="2024.2.2 随手一记 转眼间，2023年飞快地逝去了。 很久没有打理博客了，在此前又清空了一次电脑，这就使得原来写的所有文章都不见了。一切又重新开始了。 我惊喜的发现，上一次复活博客，也正正好好就就是一年前的 2.2 ! 就是这一篇文章 这种失去其实并并不使我很郁闷，毕竟新年也快到了，就当作是一个新的开始吧。其实还有更肤浅一点的原因，就是并没有人看我写的这些废话，写出这些东西的成就感也只有">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://mxhanks.gitee.io/2024/02/02/revive/key.png">
 <meta property="article:published_time" content="2024-02-02T15:12:30.000Z">
-<meta property="article:modified_time" content="2024-02-08T08:44:42.000Z">
+<meta property="article:modified_time" content="2024-02-10T10:44:56.000Z">
 <meta property="article:author" content="mxhanks">
 <meta property="article:tag" content="生活记录">
 <meta property="article:tag" content="人生感悟">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://mxhanks.gitee.io/2024/02/02/revive/key.png">
 
 <link rel="canonical" href="http://mxhanks.gitee.io/2024/02/02/revive/">
 
@@ -197,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-08 16:44:42" itemprop="dateModified" datetime="2024-02-08T16:44:42+08:00">2024-02-08</time>
+                <time title="修改时间：2024-02-10 18:44:56" itemprop="dateModified" datetime="2024-02-10T18:44:56+08:00">2024-02-10</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -234,32 +236,47 @@
 <p>目前要着力解决的就是 LaTeX 的显示问题，算是在这打个 TODO 吧，时间不早了，该睡觉了。</p>
 <h2 id="文章链接转静态短地址"><a class="markdownIt-Anchor" href="#文章链接转静态短地址"></a> 文章链接转静态短地址</h2>
 <p>据了解，Hexo自动生成的网页的链接是有中文地址的，这样不利于 SEO 优化和评论插件的开发，可以通过 <a target="_blank" rel="noopener" href="https://github.com/viko16/hexo-permalink-pinyin">hexo-permalink-pinyin 插件</a> 来将中文转换为拼音。也有一款 hexo-abbrlink 插件能将文章链接地址改为按日期排列与随机数文件名。这里我选择的是拼音插件。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-permalink-pinyin --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-permalink-pinyin --save</span><br></pre></td></tr></table></figure>
 <p>在 <code>_config.yml</code> 中增添设置:</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://github.com/viko16/hexo-permalink-pinyin</span></span><br><span class="line"><span class="attr">permalink_pinyin:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">separator:</span> <span class="string">&#x27;-&#x27;</span> <span class="comment"># default: &#x27;-&#x27;</span></span><br></pre></td></tr></table></figure>
 <p>实际上，我在写文章时 markdown 文件名都不会写中文，例如这一篇文章的文件名为 “Revive” 。个人认为这算是一个好习惯，毕竟中文路径谁知道啥时候会出点问题，让你头疼半天。</p>
 <h2 id="latex-支持"><a class="markdownIt-Anchor" href="#latex-支持"></a> LaTeX 支持</h2>
 <p>博客编写过程中，尤其是上传一些需要数学符号的笔记，例如机器学习的笔记中，会有很多的数学公式出现，因此让博客支持 LaTeX 是尤为必要的。</p>
 <h3 id="安装与配置-hexo-math-插件"><a class="markdownIt-Anchor" href="#安装与配置-hexo-math-插件"></a> 安装与配置 hexo-math 插件</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-math --save</span><br></pre></td></tr></table></figure>
 <p>然后在 <code>.\_config.yml</code> 中配置:</p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># MathJax config</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="attr">engine:</span> <span class="string">&#x27;mathjax&#x27;</span></span><br><span class="line">  <span class="attr">mathjax:</span></span><br><span class="line">    <span class="attr">src:</span> <span class="string">custom_mathjax_source</span></span><br><span class="line">    <span class="attr">config:</span></span><br></pre></td></tr></table></figure>
 <p>再去 <code>.\themes\next</code> 中配置 <code>_config.yml</code>。搜索 “math” ，在180行发现 mathjax 的配置，调整为 <code>enable: true</code> 。</p>
 <h3 id="更换-hexo-渲染引擎-适用于-matery"><a class="markdownIt-Anchor" href="#更换-hexo-渲染引擎-适用于-matery"></a> 更换 Hexo 渲染引擎 (适用于 matery)</h3>
 <p>Hexo 的默认渲染引擎是 hexo-renderer-marked ，替换为 hexo-renderer-kramed 。之所以这么做，是因为Hexo默认渲染引擎会将 LaTeX 代码块之间的下划线 _ 解析成HTML中的 <code>&lt;i&gt;</code>。然而，在LaTex公式中，经常用下划线 _ 表示下标，这就导致冲突。而 hexo-renderer-kramed 在 hexo-renderer-marked 基础上修改了这个Bug。在安装 hexo-renderer-kramed 之前，需要卸载 hexo-renderer-marked ，顺序执行以下两行命令完成卸载与安装：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
 <h4 id="解决语义冲突"><a class="markdownIt-Anchor" href="#解决语义冲突"></a> 解决语义冲突</h4>
 <p>在 markdown 中，斜体用下划线 _ 或星号 * 表示，而在 LaTex 中，下划线 _ 表示下标。为了解决这个冲突，需要修改两处。在博客根目录下，进入 <code>node_modules\kramed\lib\rules\inline.js</code> ，修改第 11 行 escape 变量的值 (这一步是在原基础上对,{,}的转义(escape)) :</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">escape</span>: <span class="regexp">/^\\([\\`*&#123;&#125;\[\]()#$+\-.!_&gt;])/</span>, <span class="comment">// 修改前</span></span><br><span class="line"><span class="attr">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,     <span class="comment">// 修改后</span></span><br></pre></td></tr></table></figure>
 <p>同时，把第 20 行的 em 变量也做相应的修改:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">em</span>: <span class="regexp">/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,  <span class="comment">// 修改前</span></span><br><span class="line"><span class="attr">em</span>: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,                           <span class="comment">// 修改后</span></span><br></pre></td></tr></table></figure>
 <h3 id="更换-hexo-渲染引擎-适用于-hexo"><a class="markdownIt-Anchor" href="#更换-hexo-渲染引擎-适用于-hexo"></a> 更换 Hexo 渲染引擎 (适用于 hexo)</h3>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus</span><br></pre></td></tr></table></figure>
 <p>此处也可以使用 pandoc ，据说会更加稳定，但是我难的去折腾了，就用这个也能正常显示。</p>
 <p>修改 <code>.\themes\next\_config.yml</code></p>
 <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">per_page:</span> <span class="literal">true</span> <span class="comment"># 关闭这个会渲染每一个网页，即使你不需要用到 LaTeX ，占性能</span></span><br><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="comment"># See: https://github.com/KaTeX/KaTeX/tree/master/contrib/copy-tex</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>还是这个方式轻松。。。折腾到了 22:30 , 堆着的作业还没写，该去赶作业了。</p>
 <a href="/2024/02/02/regression/" title="机器学习数学基础-会归">效果展示：机器学习数学基础-回归</a>
+<h2 id="启用-github-deploy-key"><a class="markdownIt-Anchor" href="#启用-github-deploy-key"></a> 启用 Github Deploy-Key</h2>
+<p>因为 Github 在国内连接本来就不是很稳定，终端使用 git 命令更是常常失败，所以推送就经常遇到麻烦，所以就想着把 SSH 密钥打开。</p>
+<h3 id="生成-ssh-key"><a class="markdownIt-Anchor" href="#生成-ssh-key"></a> 生成 SSH-Key</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -N <span class="string">&#x27;&#x27;</span> -f /home/<span class="variable">$&#123;USER&#125;</span>/.ssh/id_rsa_github_blog -q</span><br></pre></td></tr></table></figure>
+<img src="/2024/02/02/revive/key.png" class="" title="生成的公密钥文件">
+<p>其中后缀为 <code>.pub</code> 的为公钥。</p>
+<h3 id="添加-ssh-key"><a class="markdownIt-Anchor" href="#添加-ssh-key"></a> 添加 SSH-Key</h3>
+<p>进入 <a target="_blank" rel="noopener" href="https://github.com/mxHanks/mxhanks.github.io/settings/keys/new">新建 Deploy-Key 的网站</a></p>
+<ol>
+<li>随意填写好标题，可以是这台电脑的名称</li>
+<li>然后把公钥中的文件复制进内容栏中</li>
+<li>勾选 Allow write access<br />
+然后点击 Add key, 就能添加 Key</li>
+</ol>
+
     </div>
 
     
@@ -343,7 +360,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#202422-%E9%9A%8F%E6%89%8B%E4%B8%80%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text"> 2024.2.2 随手一记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5%E8%BD%AC%E9%9D%99%E6%80%81%E7%9F%AD%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text"> 文章链接转静态短地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-hexo-math-%E6%8F%92%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text"> 安装与配置 hexo-math 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-matery"><span class="nav-number">3.2.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 matery)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%AF%AD%E4%B9%89%E5%86%B2%E7%AA%81"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 解决语义冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-hexo"><span class="nav-number">3.3.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 hexo)</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#202422-%E9%9A%8F%E6%89%8B%E4%B8%80%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text"> 2024.2.2 随手一记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5%E8%BD%AC%E9%9D%99%E6%80%81%E7%9F%AD%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text"> 文章链接转静态短地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-hexo-math-%E6%8F%92%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text"> 安装与配置 hexo-math 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-matery"><span class="nav-number">3.2.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 matery)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%AF%AD%E4%B9%89%E5%86%B2%E7%AA%81"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 解决语义冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-hexo"><span class="nav-number">3.3.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 hexo)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8-github-deploy-key"><span class="nav-number">4.</span> <span class="nav-text"> 启用 Github Deploy-Key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90-ssh-key"><span class="nav-number">4.1.</span> <span class="nav-text"> 生成 SSH-Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-number">4.2.</span> <span class="nav-text"> 添加 SSH-Key</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
