@@ -161,6 +161,217 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/2024/02/16/pytorchlearning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/02/16/pytorchlearning/" class="post-title-link" itemprop="url">Pytorch 学习之路</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-02-16 22:36:31 / 修改时间：22:57:19" itemprop="dateCreated datePublished" datetime="2024-02-16T22:36:31+08:00">2024-02-16</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index"><span itemprop="name">机器学习</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2024/02/16/pytorchlearning/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch 学习之路" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/02/16/pytorchlearning/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/02/16/pytorchlearning/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="pytorch-学习之路"><a class="markdownIt-Anchor" href="#pytorch-学习之路"></a> Pytorch 学习之路</h1>
+<h2 id="一-环境安装"><a class="markdownIt-Anchor" href="#一-环境安装"></a> 一、环境安装</h2>
+<h3 id="anaconda"><a class="markdownIt-Anchor" href="#anaconda"></a> Anaconda</h3>
+<p>Anaconda 已经在之前机器学习数学基础部分搭建完了，这里没有记录，自己去搜别的吧。</p>
+<h3 id="新建-conda-环境"><a class="markdownIt-Anchor" href="#新建-conda-环境"></a> 新建 conda 环境</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">conda create -n pytorch python=3.6</span><br><span class="line">conda activate pytorch</span><br></pre></td></tr></table></figure>
+<h3 id="pytorch-安装"><a class="markdownIt-Anchor" href="#pytorch-安装"></a> Pytorch 安装</h3>
+<p>进入 Pytorch 官网往下拉，然后就能看到配置的界面。因为我目前的显卡是 AMD 的，所以用不了 CUDA ，就选择 Windows-CPU-Conda , 复制命令行运行 , 并进行测试。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">conda install pytorch torchvision torchaudio cpuonly</span><br><span class="line">python</span><br><span class="line">import torch</span><br></pre></td></tr></table></figure>
+<p>如果导入周没有报错的话，那就安装成功了。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/02/16/pytorchlearning/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/2024/02/14/dataanl-usa-gov/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/02/14/dataanl-usa-gov/" class="post-title-link" itemprop="url">数据分析实战-美国政府网络数据</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-02-14 17:40:12 / 修改时间：09:40:38" itemprop="dateCreated datePublished" datetime="2024-02-14T17:40:12+08:00">2024-02-14</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" itemprop="url" rel="index"><span itemprop="name">数据分析</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/2024/02/14/dataanl-usa-gov/" class="post-meta-item leancloud_visitors" data-flag-title="数据分析实战-美国政府网络数据" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2024/02/14/dataanl-usa-gov/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2024/02/14/dataanl-usa-gov/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="来自-bitly-的-usagov-数据"><a class="markdownIt-Anchor" href="#来自-bitly-的-usagov-数据"></a> 来自 Bitly 的 <a target="_blank" rel="noopener" href="http://USA.gov">USA.gov</a> 数据</h1>
+<p>数据背景：2011年, URL缩短服务Bitly跟美国政府⽹站USA.gov合作，提供了⼀份从⽣成.gov或.mil短链接的⽤户那⾥收集来的匿名数据。在2011年, 除实时数据之外, 还可以下载⽂本⽂件形式的每⼩时快照。2017年这项服务已经关闭。</p>
+<p>以每⼩时快照为例, ⽂件中各⾏的格式为JSON（即JavaScriptObject Notation, 这是⼀种常⽤的Web数据格式）。</p>
+<p>我们取一行数据进行格式化之后分析:</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;a&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.78 Safari/535.11&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;c&quot;</span><span class="punctuation">:</span> <span class="string">&quot;US&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;nk&quot;</span><span class="punctuation">:</span> <span class="number">1</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;tz&quot;</span><span class="punctuation">:</span> <span class="string">&quot;America/New_York&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;gr&quot;</span><span class="punctuation">:</span> <span class="string">&quot;MA&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;g&quot;</span><span class="punctuation">:</span> <span class="string">&quot;A6qOVH&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;h&quot;</span><span class="punctuation">:</span> <span class="string">&quot;wfLQtf&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;l&quot;</span><span class="punctuation">:</span> <span class="string">&quot;orofrog&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;al&quot;</span><span class="punctuation">:</span> <span class="string">&quot;en-US,en;q=0.8&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hh&quot;</span><span class="punctuation">:</span> <span class="string">&quot;1.usa.gov&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;r&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://www.facebook.com/l/7AQEFzjSi/1.usa.gov/wfLQtf&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;u&quot;</span><span class="punctuation">:</span> <span class="string">&quot;http://www.ncbi.nlm.nih.gov/pubmed/22415991&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;t&quot;</span><span class="punctuation">:</span> <span class="number">1331923247</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;hc&quot;</span><span class="punctuation">:</span> <span class="number">1331822918</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;cy&quot;</span><span class="punctuation">:</span> <span class="string">&quot;Danvers&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;ll&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span><span class="number">42.576698</span><span class="punctuation">,</span> <span class="number">-70.954903</span><span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>这是其中的一行数据, 我们可以通过 Python 的 JSON 模块来处理</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"></span><br><span class="line">PATH = <span class="string">&#x27;datasets/bitly_usagov/example.txt&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 将 records 对象成为 Python 字典</span></span><br><span class="line">records = [json.loads(line) <span class="keyword">for</span> line <span class="keyword">in</span> <span class="built_in">open</span>(PATH)]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(records[<span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+<pre><code>&#123;'a': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.78 Safari/535.11', 'c': 'US', 'nk': 1, 'tz': 'America/New_York', 'gr': 'MA', 'g': 'A6qOVH', 'h': 'wfLQtf', 'l': 'orofrog', 'al': 'en-US,en;q=0.8', 'hh': '1.usa.gov', 'r': 'http://www.facebook.com/l/7AQEFzjSi/1.usa.gov/wfLQtf', 'u': 'http://www.ncbi.nlm.nih.gov/pubmed/22415991', 't': 1331923247, 'hc': 1331822918, 'cy': 'Danvers', 'll': [42.576698, -70.954903]&#125;
+</code></pre>
+<h2 id="时区统计"><a class="markdownIt-Anchor" href="#时区统计"></a> 时区统计</h2>
+<h3 id="纯-python"><a class="markdownIt-Anchor" href="#纯-python"></a> 纯 python</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/02/14/dataanl-usa-gov/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/2024/02/12/regularzation/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -631,7 +842,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-13 11:51:45" itemprop="dateModified" datetime="2024-02-13T11:51:45+08:00">2024-02-13</time>
+                <time title="修改时间：2024-02-17 18:33:08" itemprop="dateModified" datetime="2024-02-17T18:33:08+08:00">2024-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1049,227 +1260,11 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/2021/11/07/csp-exprience/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="mxhanks">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MxHanks' Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/07/csp-exprience/" class="post-title-link" itemprop="url">CSP-J 游记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-07 23:12:30" itemprop="dateCreated datePublished" datetime="2021-11-07T23:12:30+08:00">2021-11-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-08 16:45:22" itemprop="dateModified" datetime="2024-02-08T16:45:22+08:00">2024-02-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/11/07/csp-exprience/" class="post-meta-item leancloud_visitors" data-flag-title="CSP-J 游记" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/11/07/csp-exprience/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/07/csp-exprience/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
-<p>如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说来，我和信息竞赛也挺有缘分的…</p>
-<p>五年级开始钻研各种电脑上的东西，在上初中之前学Java也学到了SpringMMC。对于Java这么早学到这种程度的估计除了我也没多少人。但是学程序设计和web也对主要为算法竞赛的信息竞赛来说，也没什么帮助，所以我在班上也一直和别的同学差不多，并没有显得特别突出。</p>
-<p>在初一上学期的时候我的成绩也不是很好，所以当时班主任也和我说过，“你说你成绩也不是很好，就别学这个信息了吧。”这个时候当然就是两个选择，一个是把成绩搞好，一个是不学信息。但是，我硬是撑着，成绩也没上去，信息也在学，就坚持了下来。当时我们班有五个人在信息班，初一期中考试之后就走了两个，只剩下三个人。</p>
-<p>说实话，我对待信息课认真起来也就是这次比赛之后。可能也是因为换了个老师吧…以前上课除了讲新课我一般都不听或者不认真听，实在因为是太无聊了而不是我懒之类的。比完赛之后，信息A班和B班合并，对于B班的同学们来说换了个新老师，我就觉得这个老师讲课让人没那么困了，也决心好好听课。反正我待在这个学校还不是三年，过了一年了，拿了个二等奖。<strong>等下一次比赛，一定要拿一个提高组一等奖，不在中雅留下遗憾！</strong></p>
-<h2 id="初赛篇"><a class="markdownIt-Anchor" href="#初赛篇"></a> 初赛篇</h2>
-<p>嗯嗯，坐上校车到了湖南大学，惊奇的发现原来湖南大学没有校门。由于夏季风较强，到了十月份长沙还是三十六七度。虽然是早上，但是太阳晒着刚剪完头发的我，我还是感到阵阵火辣。漫长的排队过后，终于进考场了。一个考场三十个人左右吧，我认识的人在这个考场里面只有两个人。监考还是挺严的，每一次进出考场，都要重新检查一次有没有带别的东西。</p>
-<p>等了半个多小时候，发了试卷。一看题目，大多数都是复习过的，但是仍然还是大部分不会。认认真真做了一个多小时的卷子，认认真真检查了半个小时(却已无力回天)，终究还是按耐不住了，提前了十五分钟交卷，离开考场。老师不让提前交卷怎么办呢？在楼梯间玩♂耍！在下楼梯时，遇到了一个班的同学，看他在刷B站，于是一起颓废了十分钟之后再出了楼。</p>
-<p>之后等了好久好久好久好久好久好久好久好久好久好久…人终于齐了，坐了校车回家。</p>
-<p>初赛也没什么好说的，算是给我这个第一次参加比赛的蒟蒻开了开世面。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/07/csp-exprience/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/2021/10/23/helloworld/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="mxhanks">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MxHanks' Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/23/helloworld/" class="post-title-link" itemprop="url">Hello World!</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-10-23 23:12:30" itemprop="dateCreated datePublished" datetime="2021-10-23T23:12:30+08:00">2021-10-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-08 16:45:06" itemprop="dateModified" datetime="2024-02-08T16:45:06+08:00">2024-02-08</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/2021/10/23/helloworld/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World!" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/10/23/helloworld/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/10/23/helloworld/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><strong>HELLO WORLD!</strong></p>
-<p>从上周一开始，陆陆续续的搭建这个自己的网站，由于我不会使用 github，也不了解 hexo, Node.js 这一类的东西，所以花的时间应该比大部分人长。</p>
-<p>建站路上遇到的最坑的点就是：我下载的这个 next 主题有问题</p>
-<p>需要修改 next 目录下 _config.yml 文件，否则会多一个 %20。删去 “||” 之间的空格即可。</p>
-<p>后来才发现，原来我使用的这个 next 已经停止维修了。所以就换成了最新的 NexT。</p>
-<p>反反复复换了很多次主题，但都不尽如人意，所以最后还是用了 NexT。</p>
-
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/10/23/helloworld/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1334,20 +1329,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

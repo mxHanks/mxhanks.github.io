@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://mxhanks.github.io/2024/02/02/revive/key.png">
 <meta property="article:published_time" content="2024-02-02T15:12:30.000Z">
-<meta property="article:modified_time" content="2024-02-13T03:51:45.314Z">
+<meta property="article:modified_time" content="2024-02-17T10:33:08.090Z">
 <meta property="article:author" content="mxhanks">
 <meta property="article:tag" content="生活记录">
 <meta property="article:tag" content="人生感悟">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-13 11:51:45" itemprop="dateModified" datetime="2024-02-13T11:51:45+08:00">2024-02-13</time>
+                <time title="修改时间：2024-02-17 18:33:08" itemprop="dateModified" datetime="2024-02-17T18:33:08+08:00">2024-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -343,6 +343,15 @@ config</p>
 </li>
 </ul>
 <p>点击「Generate token」生成私人令牌；复制私人令牌并妥善保管。</p>
+<h2 id="seo-优化"><a class="markdownIt-Anchor" href="#seo-优化"></a> SEO 优化</h2>
+<p>搭建的hexo博客如果不经过优化，在搜索引擎被收录的可能很小，SEO可以提高被搜到的几率。</p>
+<h3 id="生成-sitemap-文件"><a class="markdownIt-Anchor" href="#生成-sitemap-文件"></a> 生成 sitemap 文件</h3>
+<p>首先安装两个插件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save		</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>修改 <code>./config.yml</code> :</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line"><span class="attr">baidusitemap:</span></span><br><span class="line">	<span class="attr">path:</span> <span class="string">baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
+<h3 id="推送到必应"><a class="markdownIt-Anchor" href="#推送到必应"></a> 推送到必应</h3>
+<p>进入<a target="_blank" rel="noopener" href="https://www.bing.com/webmasters/about">网站</a> , 进行相关配置</p>
 
     </div>
 
@@ -428,7 +437,7 @@ config</p>
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#202422-%E9%9A%8F%E6%89%8B%E4%B8%80%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text"> 2024.2.2 随手一记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5%E8%BD%AC%E9%9D%99%E6%80%81%E7%9F%AD%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text"> 文章链接转静态短地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-hexo-math-%E6%8F%92%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text"> 安装与配置 hexo-math 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-matery"><span class="nav-number">3.2.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 matery)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%AF%AD%E4%B9%89%E5%86%B2%E7%AA%81"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 解决语义冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-hexo"><span class="nav-number">3.3.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 hexo)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8-github-deploy-key"><span class="nav-number">4.</span> <span class="nav-text"> 启用 Github Deploy-Key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90-ssh-key"><span class="nav-number">4.1.</span> <span class="nav-text"> 生成 SSH-Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-number">4.2.</span> <span class="nav-text"> 添加 SSH-Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%B0%E5%BB%BA-config-%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text"> 修改(新建 Config 文件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%8A%A5%E9%94%99"><span class="nav-number">4.4.</span> <span class="nav-text"> 出现端口占用报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lean-cloud-%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text"> lean-cloud 评论功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lean-cloud-%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text"> lean-cloud 阅读量功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitee-%E8%AE%BE%E7%BD%AE%E4%B8%BA%E4%BB%8E-github-%E5%AF%BC%E5%85%A5"><span class="nav-number">7.</span> <span class="nav-text"> GitEE 设置为从 GitHub 导入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%94%B3%E8%AF%B7-github-%E7%A7%81%E4%BA%BA%E4%BB%A4%E7%89%8C"><span class="nav-number">7.1.</span> <span class="nav-text"> 如何申请 GitHub 私人令牌？</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#202422-%E9%9A%8F%E6%89%8B%E4%B8%80%E8%AE%B0"><span class="nav-number">1.</span> <span class="nav-text"> 2024.2.2 随手一记</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5%E8%BD%AC%E9%9D%99%E6%80%81%E7%9F%AD%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text"> 文章链接转静态短地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE-hexo-math-%E6%8F%92%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text"> 安装与配置 hexo-math 插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-matery"><span class="nav-number">3.2.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 matery)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%AF%AD%E4%B9%89%E5%86%B2%E7%AA%81"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 解决语义冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2-hexo-%E6%B8%B2%E6%9F%93%E5%BC%95%E6%93%8E-%E9%80%82%E7%94%A8%E4%BA%8E-hexo"><span class="nav-number">3.3.</span> <span class="nav-text"> 更换 Hexo 渲染引擎 (适用于 hexo)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8-github-deploy-key"><span class="nav-number">4.</span> <span class="nav-text"> 启用 Github Deploy-Key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90-ssh-key"><span class="nav-number">4.1.</span> <span class="nav-text"> 生成 SSH-Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-ssh-key"><span class="nav-number">4.2.</span> <span class="nav-text"> 添加 SSH-Key</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E6%96%B0%E5%BB%BA-config-%E6%96%87%E4%BB%B6"><span class="nav-number">4.3.</span> <span class="nav-text"> 修改(新建 Config 文件)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E7%8E%B0%E7%AB%AF%E5%8F%A3%E5%8D%A0%E7%94%A8%E6%8A%A5%E9%94%99"><span class="nav-number">4.4.</span> <span class="nav-text"> 出现端口占用报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lean-cloud-%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD"><span class="nav-number">5.</span> <span class="nav-text"> lean-cloud 评论功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#lean-cloud-%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">6.</span> <span class="nav-text"> lean-cloud 阅读量功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gitee-%E8%AE%BE%E7%BD%AE%E4%B8%BA%E4%BB%8E-github-%E5%AF%BC%E5%85%A5"><span class="nav-number">7.</span> <span class="nav-text"> GitEE 设置为从 GitHub 导入</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%94%B3%E8%AF%B7-github-%E7%A7%81%E4%BA%BA%E4%BB%A4%E7%89%8C"><span class="nav-number">7.1.</span> <span class="nav-text"> 如何申请 GitHub 私人令牌？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#seo-%E4%BC%98%E5%8C%96"><span class="nav-number">8.</span> <span class="nav-text"> SEO 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%9F%E6%88%90-sitemap-%E6%96%87%E4%BB%B6"><span class="nav-number">8.1.</span> <span class="nav-text"> 生成 sitemap 文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E5%BF%85%E5%BA%94"><span class="nav-number">8.2.</span> <span class="nav-text"> 推送到必应</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -442,20 +451,20 @@ config</p>
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
