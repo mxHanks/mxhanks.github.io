@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="以前学 Java 确实学得不是很明白，想通过大约 100h 的时间重新学习一编，顺便再学一些之前没有触及过的相对高级一些的知识。  Java 基础——查漏补缺  编码类型  ASCII  介绍 ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是用于电子通信的标准字符编码系统，它包括了128或256个字符，用7位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaBase">
+<meta property="og:url" content="http://mxhanks.github.io/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javabase/javabase/index.html">
+<meta property="og:site_name" content="MxHanks&#39; Blog">
+<meta property="og:description" content="以前学 Java 确实学得不是很明白，想通过大约 100h 的时间重新学习一编，顺便再学一些之前没有触及过的相对高级一些的知识。  Java 基础——查漏补缺  编码类型  ASCII  介绍 ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是用于电子通信的标准字符编码系统，它包括了128或256个字符，用7位">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-22T02:35:00.000Z">
+<meta property="article:modified_time" content="2024-02-23T14:44:16.114Z">
+<meta property="article:author" content="mxhanks">
+<meta property="article:tag" content="Java">
+<meta property="article:tag" content="学习笔记">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://mxhanks.github.io/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javabase/javabase/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>JavaBase | MxHanks' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MxHanks' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">奔赴山海，保持热爱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javabase/javabase/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          JavaBase
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-22 10:35:00" itemprop="dateCreated datePublished" datetime="2024-02-22T10:35:00+08:00">2024-02-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-02-23 22:44:16" itemprop="dateModified" datetime="2024-02-23T22:44:16+08:00">2024-02-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javabase/javabase/" class="post-meta-item leancloud_visitors" data-flag-title="JavaBase" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javabase/javabase/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javabase/javabase/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>4.7k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>17 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>以前学 Java 确实学得不是很明白，想通过大约 100h 的时间重新学习一编，顺便再学一些之前没有触及过的相对高级一些的知识。</p>
+<h1 id="java-基础查漏补缺"><a class="markdownIt-Anchor" href="#java-基础查漏补缺"></a> Java 基础——查漏补缺</h1>
+<h2 id="编码类型"><a class="markdownIt-Anchor" href="#编码类型"></a> 编码类型</h2>
+<h3 id="ascii"><a class="markdownIt-Anchor" href="#ascii"></a> ASCII</h3>
+<h4 id="介绍"><a class="markdownIt-Anchor" href="#介绍"></a> 介绍</h4>
+<p>ASCII（American Standard Code for Information Interchange，美国信息交换标准代码）是用于电子通信的标准字符编码系统，它包括了128或256个字符，用7位或8位二进制数表示。ASCII编码是计算机中最常用的字符编码方式之一，它被广泛应用于计算机编程和通信中。</p>
+<p>特别提示：一个字节可以存储 256 个字符，ASCII 只用了 128 个字符。</p>
+<h4 id="缺点"><a class="markdownIt-Anchor" href="#缺点"></a> 缺点</h4>
+<p>不能表示所有的符号。</p>
+<h4 id="应用"><a class="markdownIt-Anchor" href="#应用"></a> 应用</h4>
+<p>如下列举了一些常用的 ASCII 符号:</p>
+<table>
+<thead>
+<tr>
+<th>ASCII编码值</th>
+<th>字符</th>
+<th>ASCII编码值</th>
+<th>字符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>NUL (空字符)</td>
+<td>32</td>
+<td>(空格)</td>
+</tr>
+<tr>
+<td>9</td>
+<td>HT (水平制表符)</td>
+<td>33</td>
+<td>! (感叹号)</td>
+</tr>
+<tr>
+<td>10</td>
+<td>LF (换行符)</td>
+<td>34</td>
+<td>&quot; (双引号)</td>
+</tr>
+<tr>
+<td>13</td>
+<td>CR (回车符)</td>
+<td>35</td>
+<td># (井号)</td>
+</tr>
+<tr>
+<td>31</td>
+<td></td>
+<td>36</td>
+<td>$ (美元符号)</td>
+</tr>
+<tr>
+<td>32</td>
+<td>(空格)</td>
+<td>37</td>
+<td>% (百分号)</td>
+</tr>
+<tr>
+<td>48</td>
+<td>0 (数字0)</td>
+<td>57</td>
+<td>9 (数字9)</td>
+</tr>
+<tr>
+<td>49</td>
+<td>1 (数字1)</td>
+<td>58</td>
+<td>: (冒号)</td>
+</tr>
+<tr>
+<td>50</td>
+<td>2 (数字2)</td>
+<td>59</td>
+<td>; (分号)</td>
+</tr>
+<tr>
+<td>51</td>
+<td>3 (数字3)</td>
+<td>60</td>
+<td>&lt; (小于号)</td>
+</tr>
+<tr>
+<td>52</td>
+<td>4 (数字4)</td>
+<td>61</td>
+<td>= (等号)</td>
+</tr>
+<tr>
+<td>53</td>
+<td>5 (数字5)</td>
+<td>62</td>
+<td>&gt; (大于号)</td>
+</tr>
+<tr>
+<td>54</td>
+<td>6 (数字6)</td>
+<td>63</td>
+<td>? (问号)</td>
+</tr>
+<tr>
+<td>55</td>
+<td>7 (数字7)</td>
+<td>64</td>
+<td>@ (艾特符号)</td>
+</tr>
+<tr>
+<td>56</td>
+<td>8 (数字8)</td>
+<td>65</td>
+<td>A (大写字母A)</td>
+</tr>
+<tr>
+<td>57</td>
+<td>9 (数字9)</td>
+<td>66</td>
+<td>B (大写字母B)</td>
+</tr>
+<tr>
+<td>58</td>
+<td>: (冒号)</td>
+<td>67</td>
+<td>C (大写字母C)</td>
+</tr>
+<tr>
+<td>59</td>
+<td>; (分号)</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>60</td>
+<td>&lt; (小于号)</td>
+<td>97</td>
+<td>a (小写字母a)</td>
+</tr>
+<tr>
+<td>61</td>
+<td>= (等号)</td>
+<td>98</td>
+<td>b (小写字母b)</td>
+</tr>
+<tr>
+<td>62</td>
+<td>&gt; (大于号)</td>
+<td>99</td>
+<td>c (小写字母c)</td>
+</tr>
+<tr>
+<td>63</td>
+<td>? (问号)</td>
+<td>…</td>
+<td>…</td>
+</tr>
+<tr>
+<td>64</td>
+<td>@ (艾特符号)</td>
+<td>123</td>
+<td>{ (左大括号)</td>
+</tr>
+<tr>
+<td>65</td>
+<td>A (大写字母A)</td>
+<td>124</td>
+<td></td>
+</tr>
+<tr>
+<td>66</td>
+<td>B (大写字母B)</td>
+<td>125</td>
+<td>} (右大括号)</td>
+</tr>
+<tr>
+<td>67</td>
+<td>C (大写字母C)</td>
+<td>126</td>
+<td>~ (波浪号)</td>
+</tr>
+<tr>
+<td>…</td>
+<td>…</td>
+<td>127</td>
+<td>DEL (删除符)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="unicode"><a class="markdownIt-Anchor" href="#unicode"></a> Unicode</h3>
+<h4 id="介绍-2"><a class="markdownIt-Anchor" href="#介绍-2"></a> 介绍</h4>
+<p>Unicode（统一码、万国码、单一码）是一种在计算机中使用的字符编码标准，由国际标准化组织（ISO）制定。Unicode 的目标是统一全球范围内的字符编码，使不同的文字系统，如汉字、假名（平假名和片假名）、西里尔字母、阿拉伯字母等，都能在同一套编码系统中表示。</p>
+<p>Unicode 的编码范围覆盖了全球绝大多数的字符，它最初使用 16 位（即 2 字节）来编码，这意味着 Unicode 理论上可以表示 65,536 个不同的字符。然而，随着 Unicode 的发展，为了支持更多的字符，它引入了“辅助平面”（surrogate planes），使得 Unicode 的编码空间扩展到了 32 位。</p>
+<p>Unicode 的编码值称为码点（code point），通常写作 <code>U+XXXX</code> 的形式，其中 <code>XXXX</code> 是四位十六进制数。例如，英文字母 “A” 的 Unicode 码点是 <code>U+0041</code>，由此看出<strong>Unicode 码兼容 ASCII 码</strong>而汉字 “中” 的 Unicode 码点是 <code>U+4E2D</code>。</p>
+<h4 id="缺点-2"><a class="markdownIt-Anchor" href="#缺点-2"></a> 缺点</h4>
+<p>中英文都用 2 字节保存，浪费空间，因此出现了 UTF-8 等编码。</p>
+<h3 id="utf-8"><a class="markdownIt-Anchor" href="#utf-8"></a> UTF-8</h3>
+<p>UTF-8（8位元，Universal Character Set/Unicode Transformation Format）是一种针对Unicode的可变长度字符编码，也称为万国码。UTF-8 用 1 到 6 个字节编码 Unicode 字符，兼容 ASCII 编码，这使得原来处理 ASCII 字符的软件无须或只进行少部分修改后，便可继续使用。</p>
+<p>在UTF-8编码中，英文字符使用1个字节存储，重音文字、希腊字母或西里尔字母等使用2个字节存储，常用的汉字使用3个字节存储，而辅助平面字符则使用4个字节存储。这种<strong>可变长度的编码方式</strong>使得UTF-8在存储和传输文本时更加高效。</p>
+<h2 id="基本类型"><a class="markdownIt-Anchor" href="#基本类型"></a> 基本类型</h2>
+<h3 id="基本类型所占字节"><a class="markdownIt-Anchor" href="#基本类型所占字节"></a> 基本类型所占字节</h3>
+<table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>占用字节</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>byte</code></td>
+<td>1</td>
+<td>8 位有符号二进制整数</td>
+</tr>
+<tr>
+<td><code>short</code></td>
+<td>2</td>
+<td>16 位有符号二进制整数</td>
+</tr>
+<tr>
+<td><code>int</code></td>
+<td>4</td>
+<td>32 位有符号二进制整数</td>
+</tr>
+<tr>
+<td><code>long</code></td>
+<td>8</td>
+<td>64 位有符号二进制整数</td>
+</tr>
+<tr>
+<td><code>float</code></td>
+<td>4</td>
+<td>32 位 IEEE 754 单精度浮点数</td>
+</tr>
+<tr>
+<td><code>double</code></td>
+<td>8</td>
+<td>64 位 IEEE 754 双精度浮点数</td>
+</tr>
+<tr>
+<td><code>char</code></td>
+<td>2</td>
+<td>16 位 Unicode 字符</td>
+</tr>
+<tr>
+<td><code>boolean</code></td>
+<td>不确定</td>
+<td>通常由 JVM 实现决定，通常占用 1 到多个字节，但在数组中通常占用 4 字节</td>
+</tr>
+</tbody>
+</table>
+<h3 id="自动类型转换细节"><a class="markdownIt-Anchor" href="#自动类型转换细节"></a> 自动类型转换细节</h3>
+<p>自动转换链：</p>
+<p>char -&gt; int -&gt; long -&gt; float -&gt; double</p>
+<p>byte -&gt; short -&gt; int -&gt; long -&gt; float -&gt;double</p>
+<ol>
+<li>有多种类型的数据混合机算时，优先将数据转换为容量最大的类别再计算</li>
+<li>精度大的类型赋值给精度小的类型会报错，反之会进行自动类型转换</li>
+<li>byte, short 和 char 之间不会相互自动转换</li>
+<li>byte, short, char 三者可以计算，计算时会转为 int 类型</li>
+<li>boolean 不参与转换</li>
+<li>自动提升原则：表达式结果类型提升为操作中最大的类型</li>
+</ol>
+<h3 id="强制类型转换细节"><a class="markdownIt-Anchor" href="#强制类型转换细节"></a> 强制类型转换细节</h3>
+<ol>
+<li>进行的数据大小 由大-&gt;小时，需要使用到强制类型转换</li>
+<li>强转符号只能对最近的操作有效，要用小括号提升优先级</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> (<span class="type">int</span>)<span class="number">10</span> * <span class="number">3.5</span> + <span class="number">6</span> * <span class="number">1.5</span>; <span class="comment">// 编译器报错</span></span><br><span class="line"><span class="type">int</span> <span class="variable">x</span> <span class="operator">=</span> (<span class="type">int</span>)(<span class="number">10</span> * <span class="number">3.5</span> + <span class="number">6</span> * <span class="number">1.5</span>); <span class="comment">// 正确写法</span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>char 类型可以保存 int 的常量值，但不能保存 int 的变量值，此时需要强转</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">char</span> <span class="variable">c1</span> <span class="operator">=</span> <span class="number">100</span>; <span class="comment">// OK</span></span><br><span class="line"><span class="type">int</span> <span class="variable">m</span> <span class="operator">=</span> <span class="number">100</span>;</span><br><span class="line"><span class="type">char</span> <span class="variable">c2</span> <span class="operator">=</span> m; <span class="comment">// 报错</span></span><br><span class="line"><span class="type">char</span> <span class="variable">c2</span> <span class="operator">=</span> (<span class="type">char</span>)m; <span class="comment">// OK</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>byte 和 short 类型再运算时，当作 int 类型处理</li>
+</ol>
+<h2 id="二进制相关知识"><a class="markdownIt-Anchor" href="#二进制相关知识"></a> 二进制相关知识</h2>
+<h3 id="原码-反码-补码"><a class="markdownIt-Anchor" href="#原码-反码-补码"></a> 原码 反码 补码</h3>
+<h4 id="概念"><a class="markdownIt-Anchor" href="#概念"></a> 概念</h4>
+<p>原码、反码和补码是计算机中表示有符号整数（通常是二进制数）的三种不同方式。这些编码方式主要用于算术运算，尤其是加法运算，以处理溢出和符号。以下是对这三种编码方式的解释：</p>
+<ol>
+<li><strong>原码（Sign-Magnitude Representation）</strong>：
+<ul>
+<li>原码是最直观的表示法，它直接将符号位（最高位，通常是0表示正数，1表示负数）和数值位（其余位）结合起来。</li>
+<li>例如，对于8位二进制数，原码表示下的 +5 是 <code>00000101</code>，而 -5 是 <code>10000101</code>。</li>
+<li>原码的一个主要问题是加法运算复杂，特别是当两个正数相加结果溢出时，或者一个正数和一个负数相加时。</li>
+</ul>
+</li>
+<li><strong>反码（Ones’ Complement）</strong>：
+<ul>
+<li>反码是为了简化加法运算而引入的。对于正数，其反码与原码相同；但对于负数，反码是将原码的数值位按位取反（0变为1，1变为0）。</li>
+<li>例如，对于8位二进制数，+5 的反码是 <code>00000101</code>，而 -5 的反码是 <code>11111010</code>。</li>
+<li>反码解决了正负数相加的问题，但仍然不能很好地处理溢出。</li>
+</ul>
+</li>
+<li><strong>补码（Two’s Complement）</strong>：
+<ul>
+<li>补码是目前计算机中最常用的表示法。对于正数，补码与原码和反码相同；但对于负数，补码是<strong>反码</strong>加1。</li>
+<li>例如，对于8位二进制数，+5 的补码是 <code>00000101</code>，而 -5 的补码是 <code>11111011</code>（反码 <code>11111010</code> 加 1）。</li>
+<li>补码的一个主要优点是它使得加法运算变得简单，因为两个数（无论正负）相加时，只需将它们的补码相加，然后忽略溢出（即忽略最高位的进位）。</li>
+<li>补码还使得比较运算变得简单，因为所有负数在补码表示下都比任何正数小。</li>
+</ul>
+</li>
+</ol>
+<h4 id="转换"><a class="markdownIt-Anchor" href="#转换"></a> 转换</h4>
+<ol>
+<li>二进制的最高位是符号位，0 表示正数，1 表示负数</li>
+<li>正数的原码，反码，补码都一样</li>
+<li>负数的反码 = 它的反码符号位不变，其它位取反</li>
+<li>负数的补码 = 它的反码 + 1 ；负数的反码 = 负数的补码 - 1</li>
+<li>0 的反码、补码都是 0</li>
+<li>Java 没有无符号数，所有的数都是有符号的</li>
+</ol>
+<blockquote>
+<p>无符号数（Unsigned number）是相对于有符号数而言的，指的是整个机器字长的全部二进制位均表示数值位，相当于数的绝对值。无符号数只用于表示正数，在计算机内部以原码存放，没有符号位。无符号数的表数范围是非负数，其数值范围是从0到最大正整数。例如，对于一个8位无符号整数，其数值范围是0到255。</p>
+</blockquote>
+<ol start="7">
+<li>计算机运行时都是<strong>以补码运算</strong>的</li>
+<li>计算机结果<strong>以原码展示</strong></li>
+</ol>
+<h3 id="位运算符"><a class="markdownIt-Anchor" href="#位运算符"></a> 位运算符</h3>
+<h4 id="操作符"><a class="markdownIt-Anchor" href="#操作符"></a> 操作符</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">位运算符</th>
+<th style="text-align:center">描述</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><code>&amp;</code> (按位与)</td>
+<td style="text-align:center">两个相应的二进制位都为1时，结果位才为1。</td>
+<td style="text-align:center"><code>5 &amp; 3</code> 结果为 <code>1</code>（二进制 <code>0001</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center">| (按位或)</td>
+<td style="text-align:center">两个相应的二进制位中只要有一个为1时，结果位就为1。</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center"><code>^</code> (按位异或)</td>
+<td style="text-align:center">两个相应的二进制位相异时，结果位才为1。</td>
+<td style="text-align:center"><code>5 ^ 3</code> 结果为 <code>6</code>（二进制 <code>0110</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>~</code> (按位取反)</td>
+<td style="text-align:center">反转操作数的所有位，即0变成1，1变成0。</td>
+<td style="text-align:center"><code>~5</code> 结果为 <code>-6</code>（二进制 <code>...11110101</code>，Java中负数使用补码表示）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&lt;&lt;</code> (左移)</td>
+<td style="text-align:center">把左操作数的所有位向左移动指定的位数，右侧空出的位用0填充。</td>
+<td style="text-align:center"><code>5 &lt;&lt; 2</code> 结果为 <code>20</code>（二进制 <code>10100</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&gt;&gt;</code> (带符号右移)</td>
+<td style="text-align:center">把左操作数的所有位向右移动指定的位数，左侧空出的位用符号位填充。</td>
+<td style="text-align:center"><code>5 &gt;&gt; 1</code> 结果为 <code>2</code>（二进制 <code>00010</code>）</td>
+</tr>
+<tr>
+<td style="text-align:center"><code>&gt;&gt;&gt;</code> (无符号右移)</td>
+<td style="text-align:center">把左操作数的所有位向右移动指定的位数，左侧空出的位总是用0填充，不考虑符号位。</td>
+<td style="text-align:center"><code>5 &gt;&gt;&gt; 1</code> 结果为 <code>2</code>（二进制 <code>00010</code>）</td>
+</tr>
+</tbody>
+</table>
+<h4 id="运算过程"><a class="markdownIt-Anchor" href="#运算过程"></a> 运算过程</h4>
+<h5 id="运算过程举例-23"><a class="markdownIt-Anchor" href="#运算过程举例-23"></a> 运算过程举例 2&amp;3</h5>
+<ol>
+<li>首先要得到 2 和 3 的原码：2 为 0000 0010 ；3 为 0000 0011</li>
+<li>然后我们计算 2 和 3 的补码：都是正数，与原码相同</li>
+<li>&amp;: 0000 0010 此时获得的是补码，但是符号位为 0 所以为正数，则原码也是 0000 0010</li>
+<li>转为十进制 -&gt; 2</li>
+</ol>
+<h5 id="运算过程举例-~-2"><a class="markdownIt-Anchor" href="#运算过程举例-~-2"></a> 运算过程举例 ~-2</h5>
+<ol>
+<li>-2 的补码 1000 0010 (原码) -&gt; 1111 1101 (反码) -&gt; 1111 1110 (补码)</li>
+<li>~-2: 0000 0001 (补码 = 原码)</li>
+<li>转为十进制 -&gt; 1</li>
+</ol>
+<h5 id="运算过程举例-~2"><a class="markdownIt-Anchor" href="#运算过程举例-~2"></a> 运算过程举例 ~2</h5>
+<ol>
+<li>2 的补码 0000 0010</li>
+<li>~2: 1111 1101 (补码) -&gt; 1111 1100 (-1 得到反码) -&gt; 1000 0011 (非符号位取反 得到原码)</li>
+<li>转为十进制 -&gt; -3</li>
+</ol>
+<h5 id="的运算本质"><a class="markdownIt-Anchor" href="#的运算本质"></a> <code>&gt;&gt;</code> <code>&lt;&lt;</code> <code>&gt;&gt;&gt;</code> 的运算本质</h5>
+<p><code>&gt;&gt;</code> 相当于除以2，<code>&lt;&lt;</code> 相当于乘以2</p>
+<p>举例: -7&gt;&gt;2</p>
+<ol>
+<li>-2 原码 10000000 00000111 -&gt; 反码 11111111 11111000 -&gt; 补码 11111111 11111001</li>
+<li>带符号右移 <code>&gt;&gt;</code>: 补码 11111111 11111110 -&gt; 反码 11111111 11111101 -&gt; 原码 10000000 00000010</li>
+<li>转换为十进制: -2</li>
+</ol>
+<p>我们发现如果是正数的话 7 / 2 / 2 = 1，而这里却是 -2 ，所以对于负数来说结果取整的方式不同 (7/4 = 1.725 正数向下取整为 1，-7/4=-1.725 负数向下取整为 -2)</p>
+<h2 id="数组"><a class="markdownIt-Anchor" href="#数组"></a> 数组</h2>
+<h3 id="数组的定义方式"><a class="markdownIt-Anchor" href="#数组的定义方式"></a> 数组的定义方式</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">double</span>[] hens = &#123;<span class="number">3</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">3.4</span>, <span class="number">2</span>, <span class="number">50</span>&#125;;</span><br><span class="line"><span class="type">double</span>[] lateDefineArr = <span class="keyword">new</span> <span class="title class_">double</span>[<span class="number">10</span>];</span><br></pre></td></tr></table></figure>
+<h3 id="数组注意事项"><a class="markdownIt-Anchor" href="#数组注意事项"></a> 数组注意事项</h3>
+<ol>
+<li>数组是多个相同类型数据的组合，实现对数据的统一管理</li>
+<li>数组中的元素可以是任何数据类型，包括基本类型和引用类型，但是不能混用</li>
+<li>数组创建后如果没有赋值，有默认值：int,short,byte,float,double-&gt;0; char-&gt;<code>\u000</code>; boolean false; String null</li>
+<li>数组属于引用类型，数组型数据是对象 object</li>
+</ol>
+<h3 id="数组操作"><a class="markdownIt-Anchor" href="#数组操作"></a> 数组操作</h3>
+<h4 id="数组赋值机制"><a class="markdownIt-Anchor" href="#数组赋值机制"></a> 数组赋值机制</h4>
+<ol>
+<li>基本数据类型赋值，值为具体数据，互不影响</li>
+<li>数组再默认情况下是引用传递，赋的是地址，这种赋值方式为引用传达</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line"><span class="type">int</span>[] arr2 = arr1;</span><br><span class="line">arr[<span class="number">0</span>] = <span class="number">10</span></span><br></pre></td></tr></table></figure>
+<p>![[arrAssign.png]]</p>
+<h4 id="数组拷贝"><a class="markdownIt-Anchor" href="#数组拷贝"></a> 数组拷贝</h4>
+<p>要使 <code>int[] arr1 = &#123;10, 20, 30&#125;</code> 拷贝到 <code>arr2</code> 数组，要求数据空间是独立的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr2 = <span class="keyword">new</span> <span class="title class_">int</span>[arr1.length]</span><br></pre></td></tr></table></figure>
+<p>这时就会在堆里面开辟一个<strong>新的区域</strong>，arr2 指向的也是另一个内存地址。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr1.length; i++) &#123;</span><br><span class="line">	arr1[i] = arr1[i]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样就能完成拷贝操作。</p>
+<h3 id="二维数组"><a class="markdownIt-Anchor" href="#二维数组"></a> 二维数组</h3>
+<h4 id="内存布局"><a class="markdownIt-Anchor" href="#内存布局"></a> 内存布局</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] arr[][] = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">2</span>][<span class="number">3</span>];</span><br><span class="line">arr[<span class="number">1</span>][<span class="number">1</span>] = <span class="number">8</span>;</span><br></pre></td></tr></table></figure>
+<p>![[arr2Layout.png]]</p>
+<h4 id="使用细节"><a class="markdownIt-Anchor" href="#使用细节"></a> 使用细节</h4>
+<ol>
+<li>一维数组声明方式有 <code>int[] x</code> 或 <code>int x[]</code></li>
+<li>二维数组声明方式有 <code>int[][] y</code> 或 <code>int[] y[]</code> 或 <code>int y[][]</code></li>
+<li>二维数组实际上是由多个一维数组组成的，它的各个一维数组长度可以不相同。<code>int map[][] = &#123;&#123;1,2&#125;, &#123;3,4,5&#125;&#125;;</code> 称为列数不等的二维数组。</li>
+</ol>
+<h2 id="算法"><a class="markdownIt-Anchor" href="#算法"></a> 算法</h2>
+<h3 id="冒泡排序"><a class="markdownIt-Anchor" href="#冒泡排序"></a> 冒泡排序</h3>
+<h4 id="冒泡排序特点"><a class="markdownIt-Anchor" href="#冒泡排序特点"></a> 冒泡排序特点</h4>
+<p>有 n 个元素，进行 n - 1 轮排序，每一轮确定一个最值。进行交换时，如果前面的数大于后面的数就交换。每轮比较的次数都在减少。</p>
+<h4 id="实现"><a class="markdownIt-Anchor" href="#实现"></a> 实现</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">BubbleSort</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] agrs)</span> &#123;</span><br><span class="line">        </span><br><span class="line">        <span class="type">int</span>[] arr = &#123;<span class="number">24</span>, <span class="number">69</span>, <span class="number">80</span>, <span class="number">57</span>, <span class="number">13</span>, <span class="number">12</span>, <span class="number">438</span>, <span class="number">1</span>, -<span class="number">1</span>, <span class="number">283</span>&#125;;</span><br><span class="line">        <span class="type">int</span> temp;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 外层循环为 n-1 轮</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">            <span class="comment">// 4次 3次 2次 1次</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; arr.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                <span class="keyword">if</span>(arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                    temp = arr[j];</span><br><span class="line">                    arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">                    arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println(<span class="string">&quot;===第&quot;</span> + (i+<span class="number">1</span>) + <span class="string">&quot;轮===&quot;</span>);</span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">                System.out.print(arr[j] + <span class="string">&quot;, &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="递归"><a class="markdownIt-Anchor" href="#递归"></a> 递归</h3>
+<h4 id="斐波那契数列"><a class="markdownIt-Anchor" href="#斐波那契数列"></a> 斐波那契数列</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 实行斐波那契数列，给出一个数 n 判断数列第 n 个的值</span></span><br><span class="line"><span class="comment"> * 规定第一个，第二个为 1 ， 其余为前两个之和</span></span><br><span class="line"><span class="comment"> * 1 1 2 3 5 8 13 21...</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Fibonacci</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">T</span> <span class="variable">t</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">T</span>();</span><br><span class="line">        System.out.println(t.fibonacci(<span class="number">7</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">T</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">fibonacci</span><span class="params">(<span class="type">int</span> index)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(index == <span class="number">1</span> || index == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> fibonacci(index - <span class="number">1</span>) + fibonacci(index - <span class="number">2</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="迷宫问题-dfs-深度优先搜索"><a class="markdownIt-Anchor" href="#迷宫问题-dfs-深度优先搜索"></a> 迷宫问题 (DFS 深度优先搜索)</h4>
+<p>思路分析：解决 DFS 问题一定要从细节考虑，从整体考虑容易绕晕。带入具体的位置，然后向可以走的方向走，先假设自己的位置是可以走的（先标记为走过），要是往四方走可以走的话就走，如果四方都不能走就标记为死路，注意走过的路不能再走。如果是死路的话就返回 false, 程序就会回溯到上一个 true 的位置。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 要从指定位置</span></span><br><span class="line"><span class="comment"> * 走到 右下角的 0</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">PuzzelWay</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="type">int</span>[][] map = &#123;</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;, </span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>&#125;,</span><br><span class="line">            &#123;<span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>&#125;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="type">PuzzelWay</span> <span class="variable">pzw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">PuzzelWay</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; map.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; map[i].length; j++) &#123;</span><br><span class="line">                System.out.print(map[i][j] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">             System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println();</span><br><span class="line">        pzw.findWay(map, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; map.length; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>; j &lt; map[i].length; j++) &#123;</span><br><span class="line">                System.out.print(map[i][j] + <span class="string">&quot; &quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">             System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * map 表示迷宫</span></span><br><span class="line"><span class="comment">     * i, j 表示位于 map[i][j]</span></span><br><span class="line"><span class="comment">     * 0 表示可以走</span></span><br><span class="line"><span class="comment">     * 1 表示障碍</span></span><br><span class="line"><span class="comment">     * 2 表示可以走</span></span><br><span class="line"><span class="comment">     * 3 表示走过是死路</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">boolean</span> <span class="title function_">findWay</span><span class="params">(<span class="type">int</span>[][] map, <span class="type">int</span> i, <span class="type">int</span> j)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span>(map[<span class="number">6</span>][<span class="number">5</span>] == <span class="number">2</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 表示这里可以走</span></span><br><span class="line">            <span class="keyword">if</span>(map[i][j] == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="comment">// 假设可以走通</span></span><br><span class="line">                map[i][j] = <span class="number">2</span>;</span><br><span class="line">                <span class="keyword">if</span> (findWay(map, i+<span class="number">1</span>, j)) &#123; <span class="comment">// 向下走</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (findWay(map, i, j+<span class="number">1</span>)) &#123; <span class="comment">// 向右</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (findWay(map, i-<span class="number">1</span>, j)) &#123; <span class="comment">// 向上</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (findWay(map, i, j-<span class="number">1</span>)) &#123; <span class="comment">// 向下</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    map[i][j] = <span class="number">3</span>;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="八皇后问题"><a class="markdownIt-Anchor" href="#八皇后问题"></a> 八皇后问题</h4>
+<p>在 8*8 的象棋棋盘上放八个皇后（可以八方攻击）互不攻击，有几种摆法？</p>
+<p>思路：第一个皇后放 (1, 1) 然后第二个皇后放 (2, 1) 开始尝试能否被攻击，直到第八个皇后被放下，然后再更换第一个皇后的位置。</p>
+<p>// TODO</p>
+<h2 id="面向对象程序设计-object-oriented-programming"><a class="markdownIt-Anchor" href="#面向对象程序设计-object-oriented-programming"></a> 面向对象程序设计 Object Oriented Programming</h2>
+<h3 id="对象内存布局"><a class="markdownIt-Anchor" href="#对象内存布局"></a> 对象内存布局</h3>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cat</span> &#123;</span><br><span class="line">    <span class="comment">// 属性 = 成员变量 = field(字段)</span></span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">    String color;</span><br><span class="line">    <span class="comment">// 对象的属性默认值遵守数组规则</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="type">Cat</span> <span class="variable">cat</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Cat</span>();</span><br><span class="line">cat.name = <span class="string">&quot;小白&quot;</span>;</span><br><span class="line">cat.color = <span class="string">&quot;白色&quot;</span></span><br><span class="line">cat.age = <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">Cat</span> <span class="variable">cat2</span> <span class="operator">=</span> cat1;</span><br><span class="line">cat1.age = <span class="number">10</span>;</span><br><span class="line">print(cat2.age);</span><br></pre></td></tr></table></figure>
+<p>![[objectLayout.png]]</p>
+<p>如果此时我们在用 cat 赋值一个 Cat 类实例 <code>Cat cat2 = cat;</code> 此时 cat2 在栈中会指向堆 <code>0x0011</code>. 如果此时把 <code>cat.age</code> 改为 10 , 则 <code>cat2.age</code> 也会变为 10.</p>
+<h4 id="创建对象的流程"><a class="markdownIt-Anchor" href="#创建对象的流程"></a> 创建对象的流程：</h4>
+<ol>
+<li>先在<strong>方法区</strong>加载类信息 (属性与方法信息) ，只会加载一次</li>
+<li>在<strong>堆</strong>中分配空间，进行默认初始化</li>
+<li>把地址赋给实例，实例指向对象</li>
+<li>进行指定初始化</li>
+</ol>
+<h4 id="对象的比较"><a class="markdownIt-Anchor" href="#对象的比较"></a> 对象的比较</h4>
+<p>如果有一个所有的属性都和 p 完全一致的 p2 , 那 <code>p == p2</code> 的值是什么？<strong>答案为 false。</strong> 我们可以通过输出 p 和 p2 的 <code>hashCode()</code> 来比较。</p>
+<p>这是因为在比较对象的时候，比较的实际上是内存地址。我们应该使用方法 <code>p.equals()</code> 来比较属性一致的对象。</p>
+<h3 id="方法机制"><a class="markdownIt-Anchor" href="#方法机制"></a> 方法机制</h3>
+<h4 id="方法调用机制"><a class="markdownIt-Anchor" href="#方法调用机制"></a> 方法调用机制</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">speak</span><span class="params">()</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;我是一个好人);</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">    public void cal01()&#123;...&#125;</span></span><br><span class="line"><span class="string">    public void cal02(int n)&#123;...&#125;</span></span><br><span class="line"><span class="string">    public int getSum(int num1, int num2)&#123;sum = num1 + num2; return sum;&#125;</span></span><br><span class="line"><span class="string">    ...</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">...</span></span><br><span class="line"><span class="string">Person p1 = new Person();</span></span><br><span class="line"><span class="string">int res = p1.getSum(1, 2);</span></span><br><span class="line"><span class="string">p1.speak();</span></span><br><span class="line"><span class="string">p1.cal1();</span></span><br><span class="line"><span class="string">p1.cal2(5);</span></span><br></pre></td></tr></table></figure>
+<p>![[funcFramework.png]]</p>
+<ol>
+<li>当程序执行到方法时，就会开辟一个独立的栈空间</li>
+<li>方法执行完毕或 return 时，就会返回</li>
+<li>返回到调用方法的地方</li>
+<li>继续执行后面的代码</li>
+</ol>
+<h4 id="方法传参机制"><a class="markdownIt-Anchor" href="#方法传参机制"></a> 方法传参机制</h4>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] agrs)</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">a</span> <span class="operator">=</span> <span class="number">10</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">b</span> <span class="operator">=</span> <span class="number">20</span>;</span><br><span class="line">        <span class="type">A</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line">        obj.swap(a, b);</span><br><span class="line">        System.out.println(<span class="string">&quot;main中: a:&quot;</span> + a + <span class="string">&quot; b:&quot;</span> + b); <span class="comment">// a:10 b:20</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">swap</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> &#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;交换前: a:&quot;</span> + a + <span class="string">&quot; b:&quot;</span> + b); <span class="comment">// a:10 b:20</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">temp</span> <span class="operator">=</span> a;</span><br><span class="line">        a = b;</span><br><span class="line">        b = temp;</span><br><span class="line">        System.out.println(<span class="string">&quot;交换后: a:&quot;</span> + a + <span class="string">&quot; b:&quot;</span> + b); <span class="comment">// a:20 b:10</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在这段代码中为什么 main() 中 a 和 b 没有被交换呢？<strong>不同的栈是独立的空间。</strong></p>
+<p>在 main栈 中，定义了 a 和 b , 运行到 obj.swap(); 时前往 swap栈，此时 swap 中参数 a=10, b=20; swap栈 中的 a 和 b 交换了，但是 main栈中的 a 和 b 没有被交换。</p>
+<p><strong>那如果是数组呢？</strong> 假设主方法中有一个数组 <code>int arr[] = &#123;1, 2, 3&#125;;</code> , 在类 B 中定义一个公共的修改数组第一个元素为200的函数 <code>public void test(int[] arr)&#123;arr[0] = 200;&#125;</code>，在主函数中创建 B 的实例 b: <code>B b = new B();</code> , 在主方法中运行 <code>b.test(arr)</code> , 此时发现主方法中的 <code>arr[0]</code> 变为了 200.</p>
+<p>这是因为，将 main栈 中 arr 传入 test 栈时，传递的是内存地址，而 arr 中修改时也是通过内存地址来在堆中修改数据，所以修改了堆中地址对应的值，在重新引用主方法中的 <code>arr[0]</code> 时就被修改成了 200.</p>
+<p>所以在处理参数的时候，我们要注意<strong>传递的是地址还是值</strong>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Main</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] agrs)</span> &#123;</span><br><span class="line">        <span class="type">Person</span> <span class="variable">p</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Person</span>();</span><br><span class="line">        p.age = <span class="number">12</span>;</span><br><span class="line">        p.name = <span class="string">&quot;Jack&quot;</span>;</span><br><span class="line">        <span class="type">B</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">B</span>();</span><br><span class="line">        b.test200(p);</span><br><span class="line">        <span class="comment">// 此时 p 是什么？</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    String name;</span><br><span class="line">    <span class="type">int</span> age;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">B</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test200</span><span class="params">(Person p)</span> &#123;</span><br><span class="line">        p = <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上面的例子中，执行 <code>b.test200(p)</code> 时，是在 test200栈 中把 p 变为 null, 就失去了和堆的链接，所以对主方法的 p 不影响，main栈 中的 p 还是指向没有修改过的堆。</p>
+<h4 id="方法重载"><a class="markdownIt-Anchor" href="#方法重载"></a> 方法重载</h4>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Java/" rel="tag"># Java</a>
+              <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag"># 学习笔记</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/gong-ju-tui-jian/gong-ju-tui-jian/syncthing/syncthing/" rel="prev" title="Syncthing">
+      <i class="fa fa-chevron-left"></i> Syncthing
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-22/" rel="next" title="2024-02-22  日记">
+      2024-02-22  日记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#java-%E5%9F%BA%E7%A1%80%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA"><span class="nav-number">1.</span> <span class="nav-text"> Java 基础——查漏补缺</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%96%E7%A0%81%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.1.</span> <span class="nav-text"> 编码类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ascii"><span class="nav-number">1.1.1.</span> <span class="nav-text"> ASCII</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D"><span class="nav-number">1.1.1.1.</span> <span class="nav-text"> 介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.1.1.2.</span> <span class="nav-text"> 缺点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">1.1.1.3.</span> <span class="nav-text"> 应用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unicode"><span class="nav-number">1.1.2.</span> <span class="nav-text"> Unicode</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D-2"><span class="nav-number">1.1.2.1.</span> <span class="nav-text"> 介绍</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9-2"><span class="nav-number">1.1.2.2.</span> <span class="nav-text"> 缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#utf-8"><span class="nav-number">1.1.3.</span> <span class="nav-text"> UTF-8</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text"> 基本类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82"><span class="nav-number">1.2.1.</span> <span class="nav-text"> 基本类型所占字节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%BB%86%E8%8A%82"><span class="nav-number">1.2.2.</span> <span class="nav-text"> 自动类型转换细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E7%BB%86%E8%8A%82"><span class="nav-number">1.2.3.</span> <span class="nav-text"> 强制类型转换细节</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86"><span class="nav-number">1.3.</span> <span class="nav-text"> 二进制相关知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E7%A0%81-%E5%8F%8D%E7%A0%81-%E8%A1%A5%E7%A0%81"><span class="nav-number">1.3.1.</span> <span class="nav-text"> 原码 反码 补码</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.3.1.1.</span> <span class="nav-text"> 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AC%E6%8D%A2"><span class="nav-number">1.3.1.2.</span> <span class="nav-text"> 转换</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.3.2.</span> <span class="nav-text"> 位运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="nav-number">1.3.2.1.</span> <span class="nav-text"> 操作符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="nav-number">1.3.2.2.</span> <span class="nav-text"> 运算过程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E8%BF%87%E7%A8%8B%E4%B8%BE%E4%BE%8B-23"><span class="nav-number">1.3.2.2.1.</span> <span class="nav-text"> 运算过程举例 2&amp;3</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E8%BF%87%E7%A8%8B%E4%B8%BE%E4%BE%8B-~-2"><span class="nav-number">1.3.2.2.2.</span> <span class="nav-text"> 运算过程举例 ~-2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E8%BF%87%E7%A8%8B%E4%B8%BE%E4%BE%8B-~2"><span class="nav-number">1.3.2.2.3.</span> <span class="nav-text"> 运算过程举例 ~2</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9A%84%E8%BF%90%E7%AE%97%E6%9C%AC%E8%B4%A8"><span class="nav-number">1.3.2.2.4.</span> <span class="nav-text"> &gt;&gt; &lt;&lt; &gt;&gt;&gt; 的运算本质</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84"><span class="nav-number">1.4.</span> <span class="nav-text"> 数组</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%AE%9A%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="nav-number">1.4.1.</span> <span class="nav-text"> 数组的定义方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">1.4.2.</span> <span class="nav-text"> 数组注意事项</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C"><span class="nav-number">1.4.3.</span> <span class="nav-text"> 数组操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E8%B5%8B%E5%80%BC%E6%9C%BA%E5%88%B6"><span class="nav-number">1.4.3.1.</span> <span class="nav-text"> 数组赋值机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%8B%B7%E8%B4%9D"><span class="nav-number">1.4.3.2.</span> <span class="nav-text"> 数组拷贝</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84"><span class="nav-number">1.4.4.</span> <span class="nav-text"> 二维数组</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">1.4.4.1.</span> <span class="nav-text"> 内存布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E7%BB%86%E8%8A%82"><span class="nav-number">1.4.4.2.</span> <span class="nav-text"> 使用细节</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95"><span class="nav-number">1.5.</span> <span class="nav-text"> 算法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F"><span class="nav-number">1.5.1.</span> <span class="nav-text"> 冒泡排序</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F%E7%89%B9%E7%82%B9"><span class="nav-number">1.5.1.1.</span> <span class="nav-text"> 冒泡排序特点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0"><span class="nav-number">1.5.1.2.</span> <span class="nav-text"> 实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%92%E5%BD%92"><span class="nav-number">1.5.2.</span> <span class="nav-text"> 递归</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%E6%95%B0%E5%88%97"><span class="nav-number">1.5.2.1.</span> <span class="nav-text"> 斐波那契数列</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%B7%E5%AE%AB%E9%97%AE%E9%A2%98-dfs-%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2"><span class="nav-number">1.5.2.2.</span> <span class="nav-text"> 迷宫问题 (DFS 深度优先搜索)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%AB%E7%9A%87%E5%90%8E%E9%97%AE%E9%A2%98"><span class="nav-number">1.5.2.3.</span> <span class="nav-text"> 八皇后问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1-object-oriented-programming"><span class="nav-number">1.6.</span> <span class="nav-text"> 面向对象程序设计 Object Oriented Programming</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-number">1.6.1.</span> <span class="nav-text"> 对象内存布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">1.6.1.1.</span> <span class="nav-text"> 创建对象的流程：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%AF%94%E8%BE%83"><span class="nav-number">1.6.1.2.</span> <span class="nav-text"> 对象的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E6%9C%BA%E5%88%B6"><span class="nav-number">1.6.2.</span> <span class="nav-text"> 方法机制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8%E6%9C%BA%E5%88%B6"><span class="nav-number">1.6.2.1.</span> <span class="nav-text"> 方法调用机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E4%BC%A0%E5%8F%82%E6%9C%BA%E5%88%B6"><span class="nav-number">1.6.2.2.</span> <span class="nav-text"> 方法传参机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%B3%95%E9%87%8D%E8%BD%BD"><span class="nav-number">1.6.2.3.</span> <span class="nav-text"> 方法重载</span></a></li></ol></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mxhanks</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mxhanks</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">24k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">1:27</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+<script>
+  (function() {
+    function leancloudSelector(url) {
+      url = encodeURI(url);
+      return document.getElementById(url).querySelector('.leancloud-visitors-count');
+    }
+
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = decodeURI(visitors.id);
+      var title = visitors.dataset.flagTitle;
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            leancloudSelector(url).innerText = counter.time + 1;
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .catch(error => {
+                console.error('Failed to save visitor count', error);
+              });
+          } else {
+              Counter('post', '/classes/Counter', { title, url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.error('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return decodeURI(element.id);
+      });
+
+      Counter('get', '/classes/Counter?where=' + encodeURIComponent(JSON.stringify({ url: { '$in': entries } })))
+        .then(response => response.json())
+        .then(({ results }) => {
+          for (let url of entries) {
+            let target = results.find(item => item.url === url);
+            leancloudSelector(url).innerText = target ? target.time : 0;
+          }
+        })
+        .catch(error => {
+          console.error('LeanCloud Counter Error', error);
+        });
+    }
+
+    let { app_id, app_key, server_url } = {"enable":true,"app_id":"9JzpjpD5qb7ZOOx7NRogqcCA-gzGzoHsz","app_key":"NgIDiFMywqMNBIklllG2S8Zw","server_url":null,"security":false};
+    function fetchData(api_server) {
+      var Counter = (method, url, data) => {
+        return fetch(`${api_server}/1.1${url}`, {
+          method,
+          headers: {
+            'X-LC-Id'     : app_id,
+            'X-LC-Key'    : app_key,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        if (CONFIG.hostname !== location.hostname) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    }
+
+    let api_server = app_id.slice(-9) !== '-MdYXbMMI' ? server_url : `https://${app_id.slice(0, 8).toLowerCase()}.api.lncldglobal.com`;
+
+    if (api_server) {
+      fetchData(api_server);
+    } else {
+      fetch('https://app-router.leancloud.cn/2/route?appId=' + app_id)
+        .then(response => response.json())
+        .then(({ api_server }) => {
+          fetchData('https://' + api_server);
+        });
+    }
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : 'ywLqntjyMR4p6fIPJhOrNnmI-gzGzoHsz',
+      appKey     : 'JcH8HthT0oLlyt1SvyYTODtn',
+      placeholder: "Just go go",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : false,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : true,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+</body>
+</html>
