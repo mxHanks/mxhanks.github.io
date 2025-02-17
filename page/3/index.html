@@ -161,6 +161,246 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/" class="post-title-link" itemprop="url">机器学习数学基础-分类</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-08 21:58:07" itemprop="dateCreated datePublished" datetime="2024-02-08T21:58:07+08:00">2024-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-17 00:13:37" itemprop="dateModified" datetime="2025-02-17T00:13:37+08:00">2025-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/" itemprop="url" rel="index"><span itemprop="name">人工智能</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/" class="post-meta-item leancloud_visitors" data-flag-title="机器学习数学基础-分类" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.6k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>6 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h1><h2 id="二分类-单层感知机-iris数据集"><a href="#二分类-单层感知机-iris数据集" class="headerlink" title="二分类-单层感知机-iris数据集"></a>二分类-单层感知机-iris数据集</h2><h3 id="数据分析"><a href="#数据分析" class="headerlink" title="数据分析"></a>数据分析</h3><p>(数学原理推断都写在笔记本上了，纸质的，应该没有人需要，我也就不放上来了。)</p>
+<p>书上的数据都过于简单了，虽然才刚刚开始学基础，但我还是想是一些比较实用的数据，能带给我一些成就感。这次我使用的是 <a target="_blank" rel="noopener" href="https://archive.ics.uci.edu/dataset/53/iris">iris 数据集</a>。这也是我第一次尝试通过数学概念直接写代码，不看书，希望自己能成功。</p>
+<p>数据中一共有五列，前四列代表着花萼长度、花萼宽度、花瓣长度、花瓣宽度，我们取前两列作分析。为了方便处理数据，我们将 “Iris-setosa” 定义为1, 将 “Iris-versicolor” 定义为 -1 , 暂时不研究第三类 “Iris-virginica” , 取到第 100 行, 先展示一下数据吧。</p>
+<p>因为 numpy 的 loadtxt 功能面对复杂的数据集实在不是很好用，我决定要慢慢地接受使用 pandas 了。目前会慢慢过度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">train = np.array(pd.read_csv(<span class="string">&#x27;cf-iris.csv&#x27;</span>).iloc[:<span class="number">100</span>])   <span class="comment"># 前 100 行作为训练集</span></span><br><span class="line">train_x = train[:,<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">train_y = np.where(train[:, <span class="number">4</span>] == <span class="string">&#x27;Iris-setosa&#x27;</span>, <span class="number">1</span>, -<span class="number">1</span>)  </span><br><span class="line"></span><br><span class="line">plt.plot(train_x[train_y == <span class="number">1</span>, <span class="number">0</span>], train_x[train_y == <span class="number">1</span>, <span class="number">1</span>], <span class="string">&#x27;o&#x27;</span>)</span><br><span class="line">plt.plot(train_x[train_y == -<span class="number">1</span>, <span class="number">0</span>], train_x[train_y == -<span class="number">1</span>, <span class="number">1</span>], <span class="string">&#x27;x&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>![[output_3_1.png]]</p>
+<h3 id="判别函数"><a href="#判别函数" class="headerlink" title="判别函数"></a>判别函数</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/ubuntu-exprience/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jing-yan-zong-jie/jing-yan-zong-jie/ubuntu-exprience/" class="post-title-link" itemprop="url">Ubuntu 使用历程</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-08 15:18:30" itemprop="dateCreated datePublished" datetime="2024-02-08T15:18:30+08:00">2024-02-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/jing-yan-zong-jie/jing-yan-zong-jie/ubuntu-exprience/" class="post-meta-item leancloud_visitors" data-flag-title="Ubuntu 使用历程" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/jing-yan-zong-jie/jing-yan-zong-jie/ubuntu-exprience/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/jing-yan-zong-jie/jing-yan-zong-jie/ubuntu-exprience/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>894</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>3 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="前因"><a href="#前因" class="headerlink" title="前因"></a>前因</h2><p>家里那台 12 年前的老联想实在是卡到受不了了，就想着装一个 Linux 系统。虽然我没有任何的 Linux 使用基础，但是为觉得 Linux 这种东西是早晚总要学会如何使用的，就趁着这个机会学习以下如何使用。</p>
+<h2 id="Linux-Ubuntu-系统安装"><a href="#Linux-Ubuntu-系统安装" class="headerlink" title="Linux-Ubuntu 系统安装"></a>Linux-Ubuntu 系统安装</h2><h3 id="ISO-刻录"><a href="#ISO-刻录" class="headerlink" title="ISO 刻录"></a>ISO 刻录</h3><p>在清华镜像网站下载好了系统的镜像之后，就要把镜像刻录到U盘中。这一步说起来应该简单吧，但也让我折腾了许久的。一开始看的教程让我使用的是一个叫做 <code>rufus</code> 的工具，但是这个工具我使用的时候总是说写入失败，于是就换成了另一个叫做 <code>UltralSO</code> 的工具。</p>
+<p>刻录过程也没什么好说的，就是要记得备份一下U盘中的重要文件，刻录好了之后重启电脑，进入 BIOS 。我没有遇到网上说的调整启动顺序的问题，而是直接进入了 Ubuntu 的安装程序。</p>
+<p>在安装的过程中一直都比较顺利，让我纠结了一会的是分区的问题。在安装的时候，选择“其他”选项，设置分区。</p>
+<p>我的电脑硬盘有 1TB 大小，这里忘记当时的设置了，反正就是要记得调整一下。</p>
+<h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><h3 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jing-yan-zong-jie/jing-yan-zong-jie/ubuntu-exprience/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/xmindinstall/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -192,7 +432,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-23 22:45:17" itemprop="dateModified" datetime="2024-02-23T22:45:17+08:00">2024-02-23</time>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -309,7 +549,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-21 13:43:23" itemprop="dateModified" datetime="2024-02-21T13:43:23+08:00">2024-02-21</time>
+                <time title="修改时间：2025-02-17 00:13:37" itemprop="dateModified" datetime="2025-02-17T00:13:37+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -365,17 +605,19 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="回归"><a class="markdownIt-Anchor" href="#回归"></a> 回归</h1>
-<h2 id="作为一次函数实现"><a class="markdownIt-Anchor" href="#作为一次函数实现"></a> 作为一次函数实现</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
-<h3 id="读入训练数据"><a class="markdownIt-Anchor" href="#读入训练数据"></a> 读入训练数据</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">train = np.loadtxt(<span class="string">&#x27;click.csv&#x27;</span>, delimiter=<span class="string">&#x27;,&#x27;</span>, skiprows=<span class="number">1</span>)</span><br><span class="line">train_x = train[:,<span class="number">0</span>]</span><br><span class="line">train_y = train[:,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="画图展示"><a class="markdownIt-Anchor" href="#画图展示"></a> 画图展示</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(train_x, train_y, <span class="string">&#x27;o&#x27;</span>)</span><br></pre></td></tr></table></figure>
+          <h1 id="回归"><a href="#回归" class="headerlink" title="回归"></a>回归</h1><h2 id="作为一次函数实现"><a href="#作为一次函数实现" class="headerlink" title="作为一次函数实现"></a>作为一次函数实现</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+
+<h3 id="读入训练数据"><a href="#读入训练数据" class="headerlink" title="读入训练数据"></a>读入训练数据</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">train = np.loadtxt(<span class="string">&#x27;click.csv&#x27;</span>, delimiter=<span class="string">&#x27;,&#x27;</span>, skiprows=<span class="number">1</span>)</span><br><span class="line">train_x = train[:,<span class="number">0</span>]</span><br><span class="line">train_y = train[:,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<h3 id="画图展示"><a href="#画图展示" class="headerlink" title="画图展示"></a>画图展示</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(train_x, train_y, <span class="string">&#x27;o&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
 <pre><code>[&lt;matplotlib.lines.Line2D at 0x7fc95f6b1410&gt;]
 </code></pre>
-<p><img src="output_6_1.png" alt="png"></p>
-<h3 id="初始化函数"><a class="markdownIt-Anchor" href="#初始化函数"></a> 初始化函数</h3>
+<p><img src="/output_6_1.png" alt="png"></p>
+<h3 id="初始化函数"><a href="#初始化函数" class="headerlink" title="初始化函数"></a>初始化函数</h3>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/ren-gong-zhi-neng/ren-gong-zhi-neng/regression/regression/#more" rel="contents">
@@ -433,7 +675,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-27 13:00:02" itemprop="dateModified" datetime="2024-02-27T13:00:02+08:00">2024-02-27</time>
+                <time title="修改时间：2025-02-17 00:13:37" itemprop="dateModified" datetime="2025-02-17T00:13:37+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -489,8 +731,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="202422-随手一记"><a class="markdownIt-Anchor" href="#202422-随手一记"></a> 2024.2.2 随手一记</h2>
-<p>转眼间，2023 年飞快地逝去了。</p>
+          <h2 id="2024-2-2-随手一记"><a href="#2024-2-2-随手一记" class="headerlink" title="2024.2.2 随手一记"></a>2024.2.2 随手一记</h2><p>转眼间，2023 年飞快地逝去了。</p>
 <p>很久没有打理博客了，在此前又清空了一次电脑，这就使得原来写的所有文章都不见了。一切又重新开始了。</p>
 <p>我惊喜的发现，上一次复活博客，也正正好好就就是一年前的 2.2 ! 详阅博客内文章：《博客复活》</p>
 <p>这种失去其实并并不使我很郁闷，毕竟新年也快到了，就当作是一个新的开始吧。其实还有更肤浅一点的原因，就是并没有人看我写的这些废话，写出这些东西的成就感也只有我一个人默默地享受。也许我一直期待着那一天，期待着众人关注我的那一天，那时的博客也不只只会是部署在静态网站上了吧。</p>
@@ -499,7 +740,7 @@
 <p>无边落木萧萧下，不尽长江滚滚来</p>
 </blockquote>
 <p>曾经的那些文章也许会被挖掘出来的，或许也会被重新的加入到网站中来，谁知道呢？</p>
-<p><s>本次依旧沿用与第二代博客相同的 matery 主题，也许会使博客功能更加强大。慢慢改进吧</s>。2.3: matery 的代码块实在是太垃圾了，还是换回了一代的 NexT 主题，看着都舒服，也唤回了一些初中时的回忆。</p>
+<p><del>本次依旧沿用与第二代博客相同的 matery 主题，也许会使博客功能更加强大。慢慢改进吧</del>。2.3: matery 的代码块实在是太垃圾了，还是换回了一代的 NexT 主题，看着都舒服，也唤回了一些初中时的回忆。</p>
 <p>目前要着力解决的就是 LaTeX 的显示问题，算是在这打个 TODO 吧，时间不早了，该睡觉了。</p>
           <!--noindex-->
             <div class="post-button">
@@ -558,7 +799,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-22 12:07:09" itemprop="dateModified" datetime="2024-02-22T12:07:09+08:00">2024-02-22</time>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -680,7 +921,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-08 08:44:54" itemprop="dateModified" datetime="2024-02-08T08:44:54+08:00">2024-02-08</time>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -736,10 +977,10 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Log2[<span class="number">100001</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">log_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Log2[i] = Log2[i / <span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Log2[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">log_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Log2[i] = Log2[i / <span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Log2[<span class="number">100001</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">log_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Log2[i] = Log2[i / <span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Log2[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">log_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Log2[i] = Log2[i / <span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>嘿嘿, 原理啥的自己研究一下就懂了。</p>
 
           <!--noindex-->
@@ -799,7 +1040,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-04 20:12:24" itemprop="dateModified" datetime="2024-02-04T20:12:24+08:00">2024-02-04</time>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -856,12 +1097,9 @@
 
       
           <p>原文链接：<a target="_blank" rel="noopener" href="https://www.luogu.com.cn/blog/HanksX/TJP5707">https://www.luogu.com.cn/blog/HanksX/TJP5707</a> (第一次在洛谷成功提交题解)</p>
-<p>没有人发Java题解，那么我<s>首当其冲</s>来给大家发一个Java的题解。</p>
-<h3 id="预备知识"><a class="markdownIt-Anchor" href="#预备知识"></a> 预备知识</h3>
-<p>首先我们要知道，用于操控时间的除了最常用的 Date 类，还有</p>
-<p>方便日期运算的 Calendar 类，<br>
-<strong>拥有许多国家标准时间的 GregorianCalendar 类( <code>Calendar</code> 子类)</strong>。<br>
-这么一看，这道题使用起来比较方便的就是 <code>Calendar</code> 类。</p>
+<p>没有人发Java题解，那么我<del>首当其冲</del>来给大家发一个Java的题解。</p>
+<h3 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h3><p>首先我们要知道，用于操控时间的除了最常用的 Date 类，还有</p>
+<p>方便日期运算的 Calendar 类，<br><strong>拥有许多国家标准时间的 GregorianCalendar 类( <code>Calendar</code> 子类)</strong>。<br>这么一看，这道题使用起来比较方便的就是 <code>Calendar</code> 类。</p>
 <p>Calendar 类中用一下这些常量表示不同的意义，Java 中的很多类其实都是采用的这种思想。</p>
 <ul>
 <li>Calendar.YEAR           ——年份 。</li>
@@ -874,8 +1112,8 @@
 <li>Calendar.SECOND         ——秒 。</li>
 <li>Calendar.DAY_OF_WEEK    ——星期几。</li>
 </ul>
-<h3 id="操作时间"><a class="markdownIt-Anchor" href="#操作时间"></a> 操作时间：</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Calendar</span> <span class="variable">c1</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">c1.add(Calendar.DATE, <span class="number">10</span>); </span><br><span class="line">c1.add(Calendar.DATE, -<span class="number">10</span>); <span class="comment">//把c1对象的日期加上-10，也就是c1所表的日期的10天前的日期，其它所有的数值会被重新计算。</span></span><br></pre></td></tr></table></figure>
+<h3 id="操作时间："><a href="#操作时间：" class="headerlink" title="操作时间："></a>操作时间：</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Calendar</span> <span class="variable">c1</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">c1.add(Calendar.DATE, <span class="number">10</span>); </span><br><span class="line">c1.add(Calendar.DATE, -<span class="number">10</span>); <span class="comment">//把c1对象的日期加上-10，也就是c1所表的日期的10天前的日期，其它所有的数值会被重新计算。</span></span><br></pre></td></tr></table></figure>
+
 <p>其他字段属性的add的意义以此类推。</p>
           <!--noindex-->
             <div class="post-button">
@@ -934,7 +1172,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-23 13:40:55" itemprop="dateModified" datetime="2024-02-23T13:40:55+08:00">2024-02-23</time>
+                <time title="修改时间：2025-02-17 00:13:37" itemprop="dateModified" datetime="2025-02-17T00:13:37+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -990,13 +1228,11 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="前言"><a class="markdownIt-Anchor" href="#前言"></a> 前言</h2>
-<p>如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说来，我和信息竞赛也挺有缘分的…</p>
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>如今我已是初二，回眸望去在中雅校区度过的一年，百感交集。2020年差不多10月的时候(初一上学期)，便参加了一次考试，是进入信息竞赛班和数学竞赛班的。奈何我数学不好，我也便没考上。一个星期后草泽却跟信息老师推荐，把我推荐进了信息班。这么说来，我和信息竞赛也挺有缘分的…</p>
 <p>五年级开始钻研各种电脑上的东西，在上初中之前学Java也学到了SpringMMC。对于Java这么早学到这种程度的估计除了我也没多少人。但是学程序设计和web也对主要为算法竞赛的信息竞赛来说，也没什么帮助，所以我在班上也一直和别的同学差不多，并没有显得特别突出。</p>
 <p>在初一上学期的时候我的成绩也不是很好，所以当时班主任也和我说过，“你说你成绩也不是很好，就别学这个信息了吧。”这个时候当然就是两个选择，一个是把成绩搞好，一个是不学信息。但是，我硬是撑着，成绩也没上去，信息也在学，就坚持了下来。当时我们班有五个人在信息班，初一期中考试之后就走了两个，只剩下三个人。</p>
 <p>说实话，我对待信息课认真起来也就是这次比赛之后。可能也是因为换了个老师吧…以前上课除了讲新课我一般都不听或者不认真听，实在因为是太无聊了而不是我懒之类的。比完赛之后，信息A班和B班合并，对于B班的同学们来说换了个新老师，我就觉得这个老师讲课让人没那么困了，也决心好好听课。反正我待在这个学校还不是三年，过了一年了，拿了个二等奖。<strong>等下一次比赛，一定要拿一个提高组一等奖，不在中雅留下遗憾！</strong></p>
-<h2 id="初赛篇"><a class="markdownIt-Anchor" href="#初赛篇"></a> 初赛篇</h2>
-<p>嗯嗯，坐上校车到了湖南大学，惊奇的发现原来湖南大学没有校门。由于夏季风较强，到了十月份长沙还是三十六七度。虽然是早上，但是太阳晒着刚剪完头发的我，我还是感到阵阵火辣。漫长的排队过后，终于进考场了。一个考场三十个人左右吧，我认识的人在这个考场里面只有两个人。监考还是挺严的，每一次进出考场，都要重新检查一次有没有带别的东西。</p>
+<h2 id="初赛篇"><a href="#初赛篇" class="headerlink" title="初赛篇"></a>初赛篇</h2><p>嗯嗯，坐上校车到了湖南大学，惊奇的发现原来湖南大学没有校门。由于夏季风较强，到了十月份长沙还是三十六七度。虽然是早上，但是太阳晒着刚剪完头发的我，我还是感到阵阵火辣。漫长的排队过后，终于进考场了。一个考场三十个人左右吧，我认识的人在这个考场里面只有两个人。监考还是挺严的，每一次进出考场，都要重新检查一次有没有带别的东西。</p>
 <p>等了半个多小时候，发了试卷。一看题目，大多数都是复习过的，但是仍然还是大部分不会。认认真真做了一个多小时的卷子，认认真真检查了半个小时(却已无力回天)，终究还是按耐不住了，提前了十五分钟交卷，离开考场。老师不让提前交卷怎么办呢？在楼梯间玩♂耍！在下楼梯时，遇到了一个班的同学，看他在刷B站，于是一起颓废了十分钟之后再出了楼。</p>
 <p>之后等了好久好久好久好久好久好久好久好久好久好久…人终于齐了，坐了校车回家。</p>
 <p>初赛也没什么好说的，算是给我这个第一次参加比赛的蒟蒻开了开世面。</p>
@@ -1057,7 +1293,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-22 12:03:33" itemprop="dateModified" datetime="2024-02-22T12:03:33+08:00">2024-02-22</time>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1211,7 +1447,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

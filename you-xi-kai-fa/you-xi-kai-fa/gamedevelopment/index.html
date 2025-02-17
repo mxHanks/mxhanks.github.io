@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="动画方面  新建思路  创造攻击流程  创造动画 每段攻击设置一个子对象，添加 Attack 脚本 添加碰撞体 (多边形) 设置 Contact Capture Layer, 勾选 trigger   创造敌人流程  设置动画 添加 Character，Attack 脚本，设置受伤无敌时间与 添加两个碰撞体，一个用于地形碰撞，一个用于攻击检测 (设置 Trigger 并设置 Layer Over">
+  <meta name="description" content="动画方面新建思路创造攻击流程 创造动画 每段攻击设置一个子对象，添加 Attack 脚本 添加碰撞体 (多边形) 设置 Contact Capture Layer, 勾选 trigger  创造敌人流程 设置动画 添加 Character，Attack 脚本，设置受伤无敌时间与 添加两个碰撞体，一个用于地形碰撞，一个用于攻击检测 (设置 Trigger 并设置 Layer Override Pri">
 <meta property="og:type" content="article">
 <meta property="og:title" content="游戏开发">
 <meta property="og:url" content="http://mxhanks.github.io/you-xi-kai-fa/you-xi-kai-fa/gamedevelopment/index.html">
 <meta property="og:site_name" content="MxHanks&#39; Blog">
-<meta property="og:description" content="动画方面  新建思路  创造攻击流程  创造动画 每段攻击设置一个子对象，添加 Attack 脚本 添加碰撞体 (多边形) 设置 Contact Capture Layer, 勾选 trigger   创造敌人流程  设置动画 添加 Character，Attack 脚本，设置受伤无敌时间与 添加两个碰撞体，一个用于地形碰撞，一个用于攻击检测 (设置 Trigger 并设置 Layer Over">
+<meta property="og:description" content="动画方面新建思路创造攻击流程 创造动画 每段攻击设置一个子对象，添加 Attack 脚本 添加碰撞体 (多边形) 设置 Contact Capture Layer, 勾选 trigger  创造敌人流程 设置动画 添加 Character，Attack 脚本，设置受伤无敌时间与 添加两个碰撞体，一个用于地形碰撞，一个用于攻击检测 (设置 Trigger 并设置 Layer Override Pri">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2025-02-16T15:24:30.000Z">
-<meta property="article:modified_time" content="2025-02-16T15:25:44.843Z">
+<meta property="article:modified_time" content="2025-02-16T16:13:36.991Z">
 <meta property="article:author" content="mxhanks">
 <meta property="article:tag" content="工具使用">
 <meta property="article:tag" content="C#">
@@ -189,10 +189,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2025-02-16 23:24:30 / 修改时间：23:25:44" itemprop="dateCreated datePublished" datetime="2025-02-16T23:24:30+08:00">2025-02-16</time>
+              <time title="创建时间：2025-02-16 23:24:30" itemprop="dateCreated datePublished" datetime="2025-02-16T23:24:30+08:00">2025-02-16</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2025-02-17 00:13:36" itemprop="dateModified" datetime="2025-02-17T00:13:36+08:00">2025-02-17</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -247,16 +253,12 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id="动画方面"><a class="markdownIt-Anchor" href="#动画方面"></a> 动画方面</h3>
-<h3 id="新建思路"><a class="markdownIt-Anchor" href="#新建思路"></a> 新建思路</h3>
-<h4 id="创造攻击流程"><a class="markdownIt-Anchor" href="#创造攻击流程"></a> 创造攻击流程</h4>
-<ol>
+        <h3 id="动画方面"><a href="#动画方面" class="headerlink" title="动画方面"></a>动画方面</h3><h3 id="新建思路"><a href="#新建思路" class="headerlink" title="新建思路"></a>新建思路</h3><h4 id="创造攻击流程"><a href="#创造攻击流程" class="headerlink" title="创造攻击流程"></a>创造攻击流程</h4><ol>
 <li>创造动画</li>
 <li>每段攻击设置一个子对象，添加 Attack 脚本</li>
 <li>添加碰撞体 (多边形) 设置 Contact Capture Layer, 勾选 trigger</li>
 </ol>
-<h4 id="创造敌人流程"><a class="markdownIt-Anchor" href="#创造敌人流程"></a> 创造敌人流程</h4>
-<ol>
+<h4 id="创造敌人流程"><a href="#创造敌人流程" class="headerlink" title="创造敌人流程"></a>创造敌人流程</h4><ol>
 <li>设置动画</li>
 <li>添加 Character，Attack 脚本，设置受伤无敌时间与</li>
 <li>添加两个碰撞体，一个用于地形碰撞，一个用于攻击检测 (设置 Trigger 并设置 Layer Override Priority)</li>
@@ -264,35 +266,27 @@
 <li>根据需要继承 Physicis Check 脚本进行墙壁检测</li>
 <li>创造不同状态的 state 继承 BaseState，并且在 Boar 中设置状态机</li>
 </ol>
-<h4 id="创造可存档对象流程"><a class="markdownIt-Anchor" href="#创造可存档对象流程"></a> 创造可存档对象流程</h4>
-<ol>
+<h4 id="创造可存档对象流程"><a href="#创造可存档对象流程" class="headerlink" title="创造可存档对象流程"></a>创造可存档对象流程</h4><ol>
 <li>接入接口 ISaveable 实现方法</li>
 <li>在 OnEnable 和 OnDisable 中 <code>ISaveable saveable = this; this.(Un)RegisterSaveData();</code></li>
 <li>在接口方法中实现逻辑</li>
 <li>在 Unity 中添加 DataDefination 组件，生成 ID</li>
 </ol>
-<h3 id="踩坑"><a class="markdownIt-Anchor" href="#踩坑"></a> 踩坑</h3>
-<h4 id="地图设计方面"><a class="markdownIt-Anchor" href="#地图设计方面"></a> 地图设计方面</h4>
-<ol>
+<h3 id="踩坑"><a href="#踩坑" class="headerlink" title="踩坑"></a>踩坑</h3><h4 id="地图设计方面"><a href="#地图设计方面" class="headerlink" title="地图设计方面"></a>地图设计方面</h4><ol>
 <li>地图碰撞问题 Composite Collider 2D 设置 Geometry Type 为 Polygons 来生成完整的碰撞体，避免出现碰撞检测问题</li>
 </ol>
-<h4 id="角色动画方面"><a class="markdownIt-Anchor" href="#角色动画方面"></a> 角色动画方面</h4>
-<ol>
+<h4 id="角色动画方面"><a href="#角色动画方面" class="headerlink" title="角色动画方面"></a>角色动画方面</h4><ol>
 <li>野猪的死亡动画只播放了 1 帧 -&gt; animator 里面动画取消勾选 can transition to self，设置一个 exit time</li>
 </ol>
-<h4 id="场景布置方面"><a class="markdownIt-Anchor" href="#场景布置方面"></a> 场景布置方面</h4>
-<ol>
+<h4 id="场景布置方面"><a href="#场景布置方面" class="headerlink" title="场景布置方面"></a>场景布置方面</h4><ol>
 <li>在绘制 UI 或某些 image 组件时，如果不希望把按钮等东西遮挡，要取消勾选 image 组件中的 raycast target 选项</li>
 </ol>
-<h3 id="todo"><a class="markdownIt-Anchor" href="#todo"></a> TODO</h3>
-<h4 id="c-语法问题"><a class="markdownIt-Anchor" href="#c-语法问题"></a> ‘C#’ 语法问题</h4>
-<ol>
+<h3 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h3><h4 id="‘C-’-语法问题"><a href="#‘C-’-语法问题" class="headerlink" title="‘C#’ 语法问题"></a>‘C#’ 语法问题</h4><ol>
 <li>yield</li>
 <li>virtual</li>
 <li>枚举 enum</li>
 </ol>
-<h4 id="代码更改"><a class="markdownIt-Anchor" href="#代码更改"></a> 代码更改</h4>
-<ol>
+<h4 id="代码更改"><a href="#代码更改" class="headerlink" title="代码更改"></a>代码更改</h4><ol>
 <li>将人物的所有事件按 ScriptableObject 来管理</li>
 </ol>
 
@@ -318,7 +312,7 @@
       <i class="fa fa-chevron-left"></i> windows 系统 mklink 的使用
     </a></div>
       <div class="post-nav-item">
-    <a href="/you-xi-kai-fa/you-xi-kai-fa/gamejournal/gamejournal/" rel="next" title="游戏开发日记">
+    <a href="/you-xi-kai-fa/you-xi-kai-fa/gamejournal/" rel="next" title="游戏开发日记">
       游戏开发日记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -380,7 +374,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%96%B9%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text"> 动画方面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text"> 新建思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E9%80%A0%E6%94%BB%E5%87%BB%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text"> 创造攻击流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E9%80%A0%E6%95%8C%E4%BA%BA%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text"> 创造敌人流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E9%80%A0%E5%8F%AF%E5%AD%98%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%B5%81%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text"> 创造可存档对象流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91"><span class="nav-number">3.</span> <span class="nav-text"> 踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E5%9B%BE%E8%AE%BE%E8%AE%A1%E6%96%B9%E9%9D%A2"><span class="nav-number">3.1.</span> <span class="nav-text"> 地图设计方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB%E6%96%B9%E9%9D%A2"><span class="nav-number">3.2.</span> <span class="nav-text"> 角色动画方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E5%B8%83%E7%BD%AE%E6%96%B9%E9%9D%A2"><span class="nav-number">3.3.</span> <span class="nav-text"> 场景布置方面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#todo"><span class="nav-number">4.</span> <span class="nav-text"> TODO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#c-%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text"> ‘C#’ 语法问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%94%B9"><span class="nav-number">4.2.</span> <span class="nav-text"> 代码更改</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A8%E7%94%BB%E6%96%B9%E9%9D%A2"><span class="nav-number">1.</span> <span class="nav-text">动画方面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">新建思路</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E9%80%A0%E6%94%BB%E5%87%BB%E6%B5%81%E7%A8%8B"><span class="nav-number">2.1.</span> <span class="nav-text">创造攻击流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E9%80%A0%E6%95%8C%E4%BA%BA%E6%B5%81%E7%A8%8B"><span class="nav-number">2.2.</span> <span class="nav-text">创造敌人流程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E9%80%A0%E5%8F%AF%E5%AD%98%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%B5%81%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">创造可存档对象流程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91"><span class="nav-number">3.</span> <span class="nav-text">踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E5%9B%BE%E8%AE%BE%E8%AE%A1%E6%96%B9%E9%9D%A2"><span class="nav-number">3.1.</span> <span class="nav-text">地图设计方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB%E6%96%B9%E9%9D%A2"><span class="nav-number">3.2.</span> <span class="nav-text">角色动画方面</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%BA%E6%99%AF%E5%B8%83%E7%BD%AE%E6%96%B9%E9%9D%A2"><span class="nav-number">3.3.</span> <span class="nav-text">场景布置方面</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TODO"><span class="nav-number">4.</span> <span class="nav-text">TODO</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E2%80%98C-%E2%80%99-%E8%AF%AD%E6%B3%95%E9%97%AE%E9%A2%98"><span class="nav-number">4.1.</span> <span class="nav-text">‘C#’ 语法问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%9B%B4%E6%94%B9"><span class="nav-number">4.2.</span> <span class="nav-text">代码更改</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -394,7 +388,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
