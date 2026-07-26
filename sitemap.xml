@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/</loc>
+    <loc>http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/revive/revive/</loc>
     
     <lastmod>2026-07-26</lastmod>
     
@@ -29,7 +29,16 @@
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/revive/revive/</loc>
+    <loc>http://mxhanks.github.io/qu-shi-ri-ji/zhi-mo-ban/diarymodel/</loc>
+    
+    <lastmod>2026-07-26</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/</loc>
     
     <lastmod>2026-07-26</lastmod>
     
@@ -119,15 +128,6 @@
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/zhi-mo-ban/diarymodel/</loc>
-    
-    <lastmod>2025-02-17</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://mxhanks.github.io/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/</loc>
     
     <lastmod>2025-02-16</lastmod>
@@ -137,70 +137,7 @@
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-03-01/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/csp-exprience/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-28/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-27/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-26/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-22/</loc>
-    
-    <lastmod>2025-02-16</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-21/</loc>
     
     <lastmod>2025-02-16</lastmod>
     
