@@ -405,7 +405,9 @@
         });
       };
       if (CONFIG.page.isPost) {
-        if (CONFIG.hostname !== location.hostname) return;
+        // When server_url is set (self-hosted), skip hostname check
+        // to support counting on self-hosted mirrors
+        if (!server_url && CONFIG.hostname !== location.hostname) return;
         addCount(Counter);
       } else if (document.querySelectorAll('.post-title-link').length >= 1) {
         showTime(Counter);
