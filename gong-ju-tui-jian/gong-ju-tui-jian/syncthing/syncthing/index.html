@@ -258,16 +258,15 @@
 <p>如果对不同电脑端的同步，请移步 <a target="_blank" rel="noopener" href="https://freefilesync.org/download.php">FreeFileSync</a></p>
 <p>如果需要手机端之间的同步，自行搜索 FolderSync</p>
 <p>根据自己的</p>
-<h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p><a target="_blank" rel="noopener" href="https://3a//syncthing.net/">Syncthing</a> 是一款开源免费跨平台的文件同步工具，是基于<strong>P2P技术</strong>实现设备间的文件同步，所以它的同步是<strong>去中心化</strong>的，即你并不需要一个服务器，故不需要担心这个中心的服务器给你带来的种种限制，而且类似于torrent协议，参与同步的设备越多，同步的速度越快。针对<strong>隐私</strong>问题，Syncthing软件只会将数据存储于个人信任的设备上，不会存储到服务器上。设备之间的通信均通过TLS进行，Syncthing还使用了完全正向保密技术来进一步保障你的数据安全。对于处于<strong>不同局域网之中</strong>的设备之间的文件同步，Syncthing也提供了支持。</p>
-<h2 id="下载界面"><a href="#下载界面" class="headerlink" title="下载界面"></a>下载界面</h2><p><a target="_blank" rel="noopener" href="https://syncthing.net/downloads/">Syncthing | Downloads</a>, Windows 上我们选择安装 Base Syncthing , 这是基本的 Syncthing 发行版，提供命令行&#x2F;守护程序，如 可执行文件和基于 Web 的用户界面。Android 上我们在 Github 上安装。</p>
+<h2 id="工具介绍"><a href="#工具介绍" class="headerlink" title="工具介绍"></a>工具介绍</h2><p><a target="_blank" rel="noopener" href="https:3A//syncthing.net/">Syncthing</a> 是一款开源免费跨平台的文件同步工具，是基于<strong>P2P技术</strong>实现设备间的文件同步，所以它的同步是<strong>去中心化</strong>的，即你并不需要一个服务器，故不需要担心这个中心的服务器给你带来的种种限制，而且类似于torrent协议，参与同步的设备越多，同步的速度越快。针对<strong>隐私</strong>问题，Syncthing软件只会将数据存储于个人信任的设备上，不会存储到服务器上。设备之间的通信均通过TLS进行，Syncthing还使用了完全正向保密技术来进一步保障你的数据安全。对于处于<strong>不同局域网之中</strong>的设备之间的文件同步，Syncthing也提供了支持。</p>
+<h2 id="下载界面"><a href="#下载界面" class="headerlink" title="下载界面"></a>下载界面</h2><p><a target="_blank" rel="noopener" href="https://syncthing.net/downloads/">Syncthing | Downloads</a>, Windows 上我们选择安装 Base Syncthing , 这是基本的 Syncthing 发行版，提供命令行/守护程序，如 可执行文件和基于 Web 的用户界面。Android 上我们在 Github 上安装。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>以 Android 手机和 Windows 电脑为例：</p>
 <h3 id="Windows-操作"><a href="#Windows-操作" class="headerlink" title="Windows 操作"></a>Windows 操作</h3><p>运行 syncthing.exe , 经过一段初始化之后打开了 localhost:8384 的网页，在这个网页中我们可以进行操作。</p>
-<p><img src="/gong-ju-tui-jian/gong-ju-tui-jian/syncthing/syncthing/Windows.png" alt="Windows.png"></p>
+<p><img src="Windows.png" alt="Windows.png"></p>
 <p>我们将文件夹下的 Default Folder 移除 (当然如果你不需要指定目录的话也可以将文件放在这个文件夹中)</p>
 <p>然后点击添加文件夹，根据提示填写好所有栏目，在<code>版本控制</code>中设置为<code>回收站式版本控制</code>, 也可以自己选择其它适合的模式， 其它的暂时不用管，有需要更加高级的功能的可以自己摸索一下。</p>
 <p>需要注意的是，如果在目录中有一些文件不想同步 (通常为配置文件，配置目录等，可以在忽略模式中进行配置):</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 表示忽略文件夹 .obsidian</span><br><span class="line">.obsidian/ </span><br></pre></td></tr></table></figure>
-
 <p>点击<code>远程设备</code>-<code>添加设备</code>, 然后把 android 应用中的 id 复制到<code>设备id</code> 中，或者有可能你的电脑已经识别出了手机应用的存在，直接选择从附近的设备中选择，然后设置好你的设备名，在<code>共享</code>一栏中选择要共享的文件夹。</p>
 <p>设置好之后，重新点开新建的要共享的文件夹，进入<code>共享</code>栏目选择你的安卓设备。选择好之后，再到安卓端查看。</p>
 <h3 id="Android-操作"><a href="#Android-操作" class="headerlink" title="Android 操作"></a>Android 操作</h3><p>Android 默认传输摄像机的内容，像我一样不需要的话就可以删了。</p>
@@ -371,7 +370,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

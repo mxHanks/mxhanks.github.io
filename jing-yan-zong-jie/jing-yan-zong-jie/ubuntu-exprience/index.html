@@ -261,23 +261,16 @@
 <h2 id="功能配置"><a href="#功能配置" class="headerlink" title="功能配置"></a>功能配置</h2><h3 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h3><p>在 <code>软件与更新</code> 中调整一下国内源，更改为阿里云的比较好，因为我之前在这里因为改成了清华源而被坑了。</p>
 <h3 id="Anaconda"><a href="#Anaconda" class="headerlink" title="Anaconda"></a>Anaconda</h3><p>在 Anaconda 官网 (或清华的镜像网站中) 下载最新的安装包，然后通过命令安装:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;filename&gt;</span><br></pre></td></tr></table></figure>
-
 <p>测试：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda -info</span><br></pre></td></tr></table></figure>
-
 <p>如果测试成功，就安装成功了。</p>
 <p>要是像我这样失败的花，就需要手动配置一下环境变量</p>
 <h4 id="环境变量配置"><a href="#环境变量配置" class="headerlink" title="环境变量配置"></a>环境变量配置</h4><p>在 anaconda 文件夹根目录打开终端</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export PATH=&quot;/home/mxhanks/anaconda3/bin:$PATH&quot;</span><br><span class="line">$ source /.bashrc</span><br><span class="line">$ conda -version</span><br></pre></td></tr></table></figure>
-
 <h3 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h3><p>在 <code>Ubuntu Software</code> 中搜索 <code>Code</code> 即可安装。</p>
 <h3 id="QQ-与-Wechat"><a href="#QQ-与-Wechat" class="headerlink" title="QQ 与 Wechat"></a>QQ 与 Wechat</h3><h4 id="QQ"><a href="#QQ" class="headerlink" title="QQ"></a>QQ</h4><h5 id="卸载腾讯官方-LinuxQQ"><a href="#卸载腾讯官方-LinuxQQ" class="headerlink" title="卸载腾讯官方 LinuxQQ"></a>卸载腾讯官方 LinuxQQ</h5><p>我这样的老电脑是带不动腾讯那个臃肿的 LinuxQQ 的，还是安装第三方的 QQ 吧。</p>
-<p>找到安装的 Linux-QQ:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l| grep q</span><br></pre></td></tr></table></figure>
-
-<p>卸载:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove libqqwing2v5:amd64</span><br><span class="line">sudo apt-get --purge remove linuxqq</span><br></pre></td></tr></table></figure>
-
+<p>找到安装的 Linux-QQ:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l| grep q</span><br></pre></td></tr></table></figure></p>
+<p>卸载:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove libqqwing2v5:amd64</span><br><span class="line">sudo apt-get --purge remove linuxqq</span><br></pre></td></tr></table></figure></p>
 <p>整整 500MB ，我不是嫌他大，主要是真没必要搞这么多东西，这又让我想起了手机版 QQ 赛了个虚幻4的事情…</p>
 <h5 id="安装-icalingua"><a href="#安装-icalingua" class="headerlink" title="安装 icalingua"></a>安装 icalingua</h5><p>基于Electron打造的前端通讯框架，可以通过实现的后端在 Linux 平台下使用 QQ。</p>
 <p>直接去 Ubuntu Software 中安装。</p>
@@ -285,47 +278,50 @@
 <h4 id="微信"><a href="#微信" class="headerlink" title="微信"></a>微信</h4><p>下载的是优麒麟里面的微信，就叫 Wechat 不带后缀，应该是网页版的，不影响使用。</p>
 <h3 id="Watt-Toolkit-Steam-证书设置"><a href="#Watt-Toolkit-Steam-证书设置" class="headerlink" title="Watt Toolkit (Steam++) 证书设置"></a>Watt Toolkit (Steam++) 证书设置</h3><p>火狐浏览器，Git 以及其他软件的设置都差不多，这里以 Git 为例 (不设置的话挂加速提交可能会无法通过):</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslCAInfo /home/mxhanks/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer</span><br></pre></td></tr></table></figure>
-
-<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="dpkg"><a href="#dpkg" class="headerlink" title="dpkg"></a>dpkg</h3><table>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><h3 id="dpkg"><a href="#dpkg" class="headerlink" title="dpkg"></a>dpkg</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">命令</th>
-<th align="center">操作</th>
+<th style="text-align:center">命令</th>
+<th style="text-align:center">操作</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">dpkg -i package_name.deb</td>
-<td align="center">安装软件包</td>
+<tbody>
+<tr>
+<td style="text-align:center">dpkg -i package_name.deb</td>
+<td style="text-align:center">安装软件包</td>
 </tr>
 <tr>
-<td align="center">dpkg -r package_name.deb</td>
-<td align="center">删除软件包</td>
+<td style="text-align:center">dpkg -r package_name.deb</td>
+<td style="text-align:center">删除软件包</td>
 </tr>
 <tr>
-<td align="center">dpkg -P package_name.deb</td>
-<td align="center">删除软件包的同时删除其配置文件</td>
+<td style="text-align:center">dpkg -P package_name.deb</td>
+<td style="text-align:center">删除软件包的同时删除其配置文件</td>
 </tr>
 <tr>
-<td align="center">dpkg -L package_name.deb</td>
-<td align="center">显示于软件包关联的文件</td>
+<td style="text-align:center">dpkg -L package_name.deb</td>
+<td style="text-align:center">显示于软件包关联的文件</td>
 </tr>
 <tr>
-<td align="center">dpkg -l package_name.deb</td>
-<td align="center">显示已安装软件包列表</td>
+<td style="text-align:center">dpkg -l package_name.deb</td>
+<td style="text-align:center">显示已安装软件包列表</td>
 </tr>
 <tr>
-<td align="center">dpkg –unpack package_name.deb</td>
-<td align="center">解开软件包</td>
+<td style="text-align:center">dpkg —unpack package_name.deb</td>
+<td style="text-align:center">解开软件包</td>
 </tr>
 <tr>
-<td align="center">dpkg -c package_name.deb</td>
-<td align="center">显示软件包内文件列表</td>
+<td style="text-align:center">dpkg -c package_name.deb</td>
+<td style="text-align:center">显示软件包内文件列表</td>
 </tr>
 <tr>
-<td align="center">dpkg –configure package_name.deb</td>
-<td align="center">配置软件包</td>
+<td style="text-align:center">dpkg —configure package_name.deb</td>
+<td style="text-align:center">配置软件包</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 
     </div>
 
@@ -425,7 +421,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

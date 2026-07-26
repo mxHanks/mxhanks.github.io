@@ -262,10 +262,8 @@
 </ol>
 <p>单例模式就时采取一定方法保证整个软件系统中，某个类只能存在一个对象实例，并且只提供一个取得对象实例的方法。</p>
 <h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleTon1</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SingleTon1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 构造器私有化</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">SingleTon1</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SingleTon1</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingleTon <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>缺点：创建了没有用，造成资源浪费</p>
 <h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleTon2</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SingleTon2</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 构造器私有化</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> SingleTon2 singleTon2;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingleTon2 <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (SingleTon2 == <span class="literal">null</span>) &#123;</span><br><span class="line">            singleTon2 = <span class="keyword">new</span> <span class="title class_">SingleTon2</span>();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">return</span> singleTon2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <h4 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h4><ol>
 <li>二者最主要的区别在于创建对象的时机不同:饿汉式是在类加载就创建了对象实例，而懒汉式是在使用时才创建。</li>
 <li>饿汉式不存在线程安全问题，懒汉式存在线程安全问题。</li>
@@ -297,8 +295,8 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/uncategorized/zhi-mo-ban/defualtmodel/" rel="prev" title="{{title}}">
-      <i class="fa fa-chevron-left"></i> {{title}}
+    <a href="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/filereflect/" rel="prev" title="Python os.symlink() - 实现文件夹映射">
+      <i class="fa fa-chevron-left"></i> Python os.symlink() - 实现文件夹映射
     </a></div>
       <div class="post-nav-item">
     <a href="/jing-yan-zong-jie/jing-yan-zong-jie/mklinkuse/" rel="next" title="windows 系统 mklink 的使用">
@@ -377,7 +375,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

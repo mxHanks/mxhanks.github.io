@@ -32,8 +32,8 @@
 <meta property="article:author" content="mxhanks">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="博客">
-<meta property="article:tag" content="Linux">
 <meta property="article:tag" content="踩坑记录">
+<meta property="article:tag" content="Linux">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/hexoserverdeploy/">
@@ -258,7 +258,6 @@
         <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我的 Hexo 博客一直部署在 GitHub Pages 上，访问速度快但国内偶有不稳定。手头有一台云服务器（47.115.49.75，CentOS + 宝塔面板），想把博客也同步部署上去，实现国内外双线访问。</p>
 <p>本文记录配置过程和一些意料之外的坑。</p>
 <span id="more"></span>
-
 <h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><ul>
 <li>保留 GitHub Pages 部署不变</li>
 <li>增加自建服务器同步</li>
@@ -266,50 +265,48 @@
 <li>不需要手动上传文件</li>
 </ul>
 <h2 id="方案选择"><a href="#方案选择" class="headerlink" title="方案选择"></a>方案选择</h2><p>Hexo 官方支持多种 deployer：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
 <th>方案</th>
 <th>原理</th>
-<th align="center">Windows 兼容性</th>
+<th style="text-align:center">Windows 兼容性</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><code>hexo-deployer-rsync</code></td>
 <td>本地 rsync → 远程 rsync over SSH</td>
-<td align="center">❌ Windows 无 rsync</td>
+<td style="text-align:center">❌ Windows 无 rsync</td>
 </tr>
 <tr>
 <td><code>hexo-deployer-sftp</code></td>
 <td>Node.js ssh2 库直连 SFTP</td>
-<td align="center">⚠️ 密钥格式问题</td>
+<td style="text-align:center">⚠️ 密钥格式问题</td>
 </tr>
 <tr>
 <td>自定义 tar+ssh</td>
 <td>tar 打包 → SSH pipe → 远端解压</td>
-<td align="center">✅</td>
+<td style="text-align:center">✅</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>前两个方案在 Windows 上都遇到了问题，最终选择了第三种方案。</p>
 <h2 id="实施过程"><a href="#实施过程" class="headerlink" title="实施过程"></a>实施过程</h2><h3 id="1-SSH-密钥配置"><a href="#1-SSH-密钥配置" class="headerlink" title="1. SSH 密钥配置"></a>1. SSH 密钥配置</h3><p>生成专用密钥对：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_blog_server -N <span class="string">&quot;&quot;</span> -C <span class="string">&quot;blog-server&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>复制到服务器：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/id_rsa_blog_server root@47.115.49.75</span><br></pre></td></tr></table></figure>
-
 <p>配置 <code>~/.ssh/config</code> 免输参数：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host 47.115.49.75</span><br><span class="line">    Hostname 47.115.49.75</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_blog_server</span><br><span class="line">    User root</span><br></pre></td></tr></table></figure>
-
 <h3 id="2-Nginx-配置"><a href="#2-Nginx-配置" class="headerlink" title="2. Nginx 配置"></a>2. Nginx 配置</h3><p>服务器用的是宝塔面板，Nginx 已安装但没配置站点。新建一个简单的静态站点配置：</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">root</span> /www/wwwroot/default;</span><br><span class="line">    <span class="attribute">index</span> index.html;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> / &#123;</span><br><span class="line">        <span class="attribute">try_files</span> <span class="variable">$uri</span> <span class="variable">$uri</span>/ =<span class="number">404</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ .*\.(gif|jpg|jpeg|png|bmp|swf)$</span> &#123;</span><br><span class="line">        <span class="attribute">expires</span> <span class="number">30d</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="section">location</span> <span class="regexp">~ .*\.(js|css)?$</span> &#123;</span><br><span class="line">        <span class="attribute">expires</span> <span class="number">12h</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>保存到 <code>/www/server/panel/vhost/nginx/blog.conf</code>，然后 <code>nginx -s reload</code>。</p>
 <h3 id="3-踩坑：rsync-在-Windows-上不可用"><a href="#3-踩坑：rsync-在-Windows-上不可用" class="headerlink" title="3. 踩坑：rsync 在 Windows 上不可用"></a>3. 踩坑：rsync 在 Windows 上不可用</h3><p><code>hexo-deployer-rsync</code> 会在本地 spawn <code>rsync</code> 进程，但 Git Bash for Windows 默认不包含 rsync：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Error: spawn rsync ENOENT</span><br></pre></td></tr></table></figure>
-
 <p><code>hexo-deployer-sftp</code> 不需要外部命令，但它依赖 <code>ssh2</code> 这个 Node.js 库。我的密钥是用 <code>ssh-keygen</code> 生成的 OpenSSH 格式（新格式，开头是 <code>-----BEGIN OPENSSH PRIVATE KEY-----</code>），而 <code>ssh2</code> 库只支持老式 PEM 格式。转换后虽然能识别密钥了，但又报 <code>All configured authentication methods failed</code>——ssh2 库的密钥交换算法和服务端不匹配，折腾几次无果后放弃。</p>
 <h3 id="4-最终方案：tar-SSH-管道"><a href="#4-最终方案：tar-SSH-管道" class="headerlink" title="4. 最终方案：tar + SSH 管道"></a>4. 最终方案：tar + SSH 管道</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> public &amp;&amp; tar cf - . | ssh root@47.115.49.75 <span class="string">&quot;tar xf - -C /www/wwwroot/default&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>原理很简单：</p>
 <ul>
 <li><code>tar cf - .</code> 把当前目录打包输出到 stdout</li>
@@ -325,27 +322,26 @@
 <h3 id="5-踩坑：Hexo-7-的事件-vs-过滤器"><a href="#5-踩坑：Hexo-7-的事件-vs-过滤器" class="headerlink" title="5. 踩坑：Hexo 7 的事件 vs 过滤器"></a>5. 踩坑：Hexo 7 的事件 vs 过滤器</h3><p>第一次尝试用 <code>hexo.extend.filter.register(&#39;after_deploy&#39;, ...)</code> 来挂载服务器部署，但脚本加载了却从不执行。查了 Hexo 7 的源码才发现问题——</p>
 <p>在 <code>node_modules/hexo/dist/plugins/console/deploy.js</code> 中，部署完成时触发的是<strong>事件</strong>，不是<strong>过滤器</strong>：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Hexo deploy console 源码（简化）</span></span><br><span class="line"><span class="keyword">return</span> promise.<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// ... 执行每个 deployer ...</span></span><br><span class="line">&#125;).<span class="title function_">then</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="title function_">emit</span>(<span class="string">&#x27;deployAfter&#x27;</span>);  <span class="comment">// ← 触发的是事件！</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>所以应该用 <code>hexo.on(&#39;deployAfter&#39;, callback)</code>，而不是 <code>hexo.extend.filter.register(&#39;after_deploy&#39;, callback)</code>。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 没用——Hexo 没有 &#x27;after_deploy&#x27; 过滤器</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_deploy&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 正确——监听 deployAfter 事件</span></span><br><span class="line">hexo.<span class="title function_">on</span>(<span class="string">&#x27;deployAfter&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123; ... &#125;);</span><br></pre></td></tr></table></figure>
-
 <h3 id="6-最终方案：Hexo-Script-钩子"><a href="#6-最终方案：Hexo-Script-钩子" class="headerlink" title="6. 最终方案：Hexo Script 钩子"></a>6. 最终方案：Hexo Script 钩子</h3><p>不依赖外部脚本，在 <code>scripts/deploy-to-server.js</code> 中注册 <code>deployAfter</code> 事件监听：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * deployAfter 事件监听: hexo deploy 完成后自动同步到私有服务器</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> &#123; spawn &#125; = <span class="built_in">require</span>(<span class="string">&#x27;child_process&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">&#x27;path&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">REMOTE_DIR</span> = <span class="string">&#x27;/www/wwwroot/default&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">SSH_HOST</span> = <span class="string">&#x27;root@47.115.49.75&#x27;</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">SSH_KEY</span> = path.<span class="title function_">resolve</span>(</span><br><span class="line">  process.<span class="property">env</span>.<span class="property">HOME</span> || process.<span class="property">env</span>.<span class="property">USERPROFILE</span>,</span><br><span class="line">  <span class="string">&#x27;.ssh/id_rsa_blog_server&#x27;</span></span><br><span class="line">);</span><br><span class="line"><span class="keyword">const</span> <span class="variable constant_">PUBLIC_DIR</span> = path.<span class="title function_">resolve</span>(__dirname, <span class="string">&#x27;..&#x27;</span>, <span class="string">&#x27;public&#x27;</span>);</span><br><span class="line"></span><br><span class="line">hexo.<span class="title function_">on</span>(<span class="string">&#x27;deployAfter&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> &#123; log &#125; = <span class="variable language_">this</span>;</span><br><span class="line"></span><br><span class="line">  log.<span class="title function_">info</span>(<span class="string">&#x27;🚀 开始部署到私有服务器 %s ...&#x27;</span>, <span class="variable constant_">SSH_HOST</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// Step 1: 清理远程目录</span></span><br><span class="line">    log.<span class="title function_">info</span>(<span class="string">&#x27;🧹 清理远程目录...&#x27;</span>);</span><br><span class="line">    <span class="keyword">const</span> clean = <span class="title function_">spawn</span>(<span class="string">&#x27;ssh&#x27;</span>, [</span><br><span class="line">      <span class="string">&#x27;-i&#x27;</span>, <span class="variable constant_">SSH_KEY</span>,</span><br><span class="line">      <span class="variable constant_">SSH_HOST</span>,</span><br><span class="line">      <span class="string">`rm -rf <span class="subst">$&#123;REMOTE_DIR&#125;</span>/*`</span></span><br><span class="line">    ], &#123; <span class="attr">stdio</span>: [<span class="string">&#x27;ignore&#x27;</span>, <span class="string">&#x27;pipe&#x27;</span>, <span class="string">&#x27;pipe&#x27;</span>] &#125;);</span><br><span class="line"></span><br><span class="line">    clean.<span class="property">stdout</span>.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">d</span> =&gt;</span> log.<span class="title function_">info</span>(d.<span class="title function_">toString</span>().<span class="title function_">trim</span>()));</span><br><span class="line">    clean.<span class="property">stderr</span>.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">d</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> msg = d.<span class="title function_">toString</span>().<span class="title function_">trim</span>();</span><br><span class="line">      <span class="keyword">if</span> (msg) log.<span class="title function_">warn</span>(msg);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    clean.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="function"><span class="params">code</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (code !== <span class="number">0</span>) &#123;</span><br><span class="line">        log.<span class="title function_">warn</span>(<span class="string">&#x27;⚠️  清理远程目录返回非零退出码 %d，继续尝试上传...&#x27;</span>, code);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// Step 2: tar + ssh 上传</span></span><br><span class="line">      log.<span class="title function_">info</span>(<span class="string">&#x27;📦 上传文件中...&#x27;</span>);</span><br><span class="line">      <span class="keyword">const</span> tar = <span class="title function_">spawn</span>(<span class="string">&#x27;tar&#x27;</span>, [<span class="string">&#x27;cf&#x27;</span>, <span class="string">&#x27;-&#x27;</span>, <span class="string">&#x27;.&#x27;</span>], &#123;</span><br><span class="line">        <span class="attr">cwd</span>: <span class="variable constant_">PUBLIC_DIR</span>,</span><br><span class="line">        <span class="attr">stdio</span>: [<span class="string">&#x27;ignore&#x27;</span>, <span class="string">&#x27;pipe&#x27;</span>, <span class="string">&#x27;pipe&#x27;</span>]</span><br><span class="line">      &#125;);</span><br><span class="line">      <span class="keyword">const</span> ssh = <span class="title function_">spawn</span>(<span class="string">&#x27;ssh&#x27;</span>, [</span><br><span class="line">        <span class="string">&#x27;-i&#x27;</span>, <span class="variable constant_">SSH_KEY</span>,</span><br><span class="line">        <span class="variable constant_">SSH_HOST</span>,</span><br><span class="line">        <span class="string">`tar xf - -C <span class="subst">$&#123;REMOTE_DIR&#125;</span>`</span></span><br><span class="line">      ], &#123; <span class="attr">stdio</span>: [<span class="string">&#x27;pipe&#x27;</span>, <span class="string">&#x27;pipe&#x27;</span>, <span class="string">&#x27;pipe&#x27;</span>] &#125;);</span><br><span class="line"></span><br><span class="line">      tar.<span class="property">stdout</span>.<span class="title function_">pipe</span>(ssh.<span class="property">stdin</span>);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> uploadErr = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">      ssh.<span class="property">stderr</span>.<span class="title function_">on</span>(<span class="string">&#x27;data&#x27;</span>, <span class="function"><span class="params">d</span> =&gt;</span> &#123; uploadErr += d.<span class="title function_">toString</span>(); &#125;);</span><br><span class="line"></span><br><span class="line">      ssh.<span class="title function_">on</span>(<span class="string">&#x27;close&#x27;</span>, <span class="function"><span class="params">sshCode</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (sshCode === <span class="number">0</span>) &#123;</span><br><span class="line">          log.<span class="title function_">info</span>(<span class="string">&#x27;✅ 部署到私有服务器成功！http://47.115.49.75&#x27;</span>);</span><br><span class="line">          <span class="title function_">resolve</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          log.<span class="title function_">error</span>(<span class="string">&#x27;❌ 部署到私有服务器失败 (exit %d)&#x27;</span>, sshCode);</span><br><span class="line">          <span class="keyword">if</span> (uploadErr) log.<span class="title function_">error</span>(uploadErr.<span class="title function_">trim</span>());</span><br><span class="line">          <span class="title function_">reject</span>(<span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">`SSH deploy failed with exit code <span class="subst">$&#123;sshCode&#125;</span>`</span>));</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      tar.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">        log.<span class="title function_">error</span>(<span class="string">&#x27;❌ tar 失败: %s&#x27;</span>, err.<span class="property">message</span>);</span><br><span class="line">        <span class="title function_">reject</span>(err);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    clean.<span class="title function_">on</span>(<span class="string">&#x27;error&#x27;</span>, <span class="function"><span class="params">err</span> =&gt;</span> &#123;</span><br><span class="line">      log.<span class="title function_">error</span>(<span class="string">&#x27;❌ SSH 连接失败: %s&#x27;</span>, err.<span class="property">message</span>);</span><br><span class="line">      <span class="title function_">reject</span>(err);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-
 <p>Hexo 会自动加载 <code>scripts/</code> 目录下的所有 <code>.js</code> 文件，无需额外配置。部署时执行顺序：</p>
 <ol>
 <li><code>hexo-deployer-git</code> 推送到 GitHub Pages</li>
 <li>Hexo 触发 <code>deployAfter</code> 事件</li>
 <li>上述脚本执行，tar+ssh 同步到私有服务器</li>
 </ol>
-<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><table>
+<h2 id="最终效果"><a href="#最终效果" class="headerlink" title="最终效果"></a>最终效果</h2><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>项目</th>
 <th>说明</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>GitHub Pages</td>
 <td><code>https://mxhanks.github.io</code> ✅</td>
 </tr>
@@ -361,7 +357,9 @@
 <td>图片访问</td>
 <td>STM32 等文章的图片均可正常加载</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h2 id="一些思考"><a href="#一些思考" class="headerlink" title="一些思考"></a>一些思考</h2><h3 id="为什么不用宝塔面板的同步功能？"><a href="#为什么不用宝塔面板的同步功能？" class="headerlink" title="为什么不用宝塔面板的同步功能？"></a>为什么不用宝塔面板的同步功能？</h3><p>宝塔有 rsync 同步插件，但它面向的是面板内文件管理，和 Hexo 构建流程割裂。我更希望一次 <code>hexo d</code> 解决所有事情，而不是在面板里额外配置定时同步。</p>
 <h3 id="tar-ssh-和-rsync-比怎么样？"><a href="#tar-ssh-和-rsync-比怎么样？" class="headerlink" title="tar+ssh 和 rsync 比怎么样？"></a>tar+ssh 和 rsync 比怎么样？</h3><ul>
 <li>rsync 的优势在于<strong>增量同步</strong>（只传变化的部分），大站点差距明显</li>
@@ -370,7 +368,6 @@
 </ul>
 <h3 id="密钥格式的教训"><a href="#密钥格式的教训" class="headerlink" title="密钥格式的教训"></a>密钥格式的教训</h3><p>Windows 上用 <code>ssh-keygen</code> 默认生成的是 OpenSSH 格式，但很多 Node.js 的 SSH 库（ssh2、node-ssh 等）只支持 PEM 格式。如果需要在新旧格式间转换：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -p -m PEM -f ~/.ssh/id_rsa_xxx -P <span class="string">&quot;&quot;</span> -N <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>另外，如果 <code>authorized_keys</code> 是之前用旧公钥配的，转格式后<strong>公钥不变</strong>，不需要重新添加。</p>
 
     </div>
@@ -383,8 +380,8 @@
           <div class="post-tags">
               <a href="/tags/Hexo/" rel="tag"># Hexo</a>
               <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
-              <a href="/tags/Linux/" rel="tag"># Linux</a>
               <a href="/tags/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/" rel="tag"># 踩坑记录</a>
+              <a href="/tags/Linux/" rel="tag"># Linux</a>
           </div>
 
         
@@ -396,10 +393,7 @@
     <a href="/xue-xi-bi-ji/qian-ru-shi-kai-fa/notes/stm32/stm32/" rel="prev" title="STM32 学习笔记">
       <i class="fa fa-chevron-left"></i> STM32 学习笔记
     </a></div>
-      <div class="post-nav-item">
-    <a href="/qu-shi-ri-ji/zhi-mo-ban/diarymodel/" rel="next" title="{{title}} 日记">
-      {{title}} 日记 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -473,7 +467,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

@@ -256,35 +256,39 @@
 <h1 id="Windows-mklink-命令使用教程"><a href="#Windows-mklink-命令使用教程" class="headerlink" title="Windows mklink 命令使用教程"></a>Windows <code>mklink</code> 命令使用教程</h1><h2 id="什么是-mklink？"><a href="#什么是-mklink？" class="headerlink" title="什么是 mklink？"></a>什么是 <code>mklink</code>？</h2><p><code>mklink</code> 是 Windows 系统中用于创建 <strong>符号链接（Symbolic Link）</strong>、<strong>硬链接（Hard Link）</strong> 和 <strong>目录联结（Junction Point）</strong> 的命令行工具。它可以让文件或目录在多个位置“虚拟存在”，而无需实际复制数据。</p>
 <hr>
 <h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink [[/D] | [/H] | [/J]] &lt;Link&gt; &lt;Target&gt;</span><br></pre></td></tr></table></figure>
-
-<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><table>
+<h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">参数</th>
-<th align="center">说明</th>
+<th style="text-align:center">参数</th>
+<th style="text-align:center">说明</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center"><code>/D</code></td>
-<td align="center">创建目录符号链接（Symbolic Link for Directory）</td>
+<tbody>
+<tr>
+<td style="text-align:center"><code>/D</code></td>
+<td style="text-align:center">创建目录符号链接（Symbolic Link for Directory）</td>
 </tr>
 <tr>
-<td align="center"><code>/H</code></td>
-<td align="center">创建硬链接（Hard Link，仅限文件）</td>
+<td style="text-align:center"><code>/H</code></td>
+<td style="text-align:center">创建硬链接（Hard Link，仅限文件）</td>
+<td>、</td>
 </tr>
 <tr>
-<td align="center"><code>/J</code></td>
-<td align="center">创建目录联结（Junction Point，仅限目录）</td>
+<td style="text-align:center"><code>/J</code></td>
+<td style="text-align:center">创建目录联结（Junction Point，仅限目录）</td>
 </tr>
 <tr>
-<td align="center"><code>&lt;Link&gt;</code></td>
-<td align="center">要创建的链接路径（新生成的快捷方式路径）</td>
+<td style="text-align:center"><code>&lt;Link&gt;</code></td>
+<td style="text-align:center">要创建的链接路径（新生成的快捷方式路径）</td>
 </tr>
 <tr>
-<td align="center"><code>&lt;Target&gt;</code></td>
-<td align="center">原始文件或目录路径（被链接的目标路径）</td>
+<td style="text-align:center"><code>&lt;Target&gt;</code></td>
+<td style="text-align:center">原始文件或目录路径（被链接的目标路径）</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <h3 id="常见用法示例"><a href="#常见用法示例" class="headerlink" title="常见用法示例"></a>常见用法示例</h3><h4 id="1-创建文件符号链接"><a href="#1-创建文件符号链接" class="headerlink" title="1. 创建文件符号链接"></a>1. 创建文件符号链接</h4><p>cmd<br>复制<br>mklink “C:\Link\File.txt” “D:\Original\File.txt”<br>作用：在 C:\Link\ 下创建指向 D:\Original\File.txt 的符号链接。</p>
 <p>特点：跨驱动器可用，删除链接不影响源文件。</p>
 <h4 id="2-创建目录符号链接"><a href="#2-创建目录符号链接" class="headerlink" title="2. 创建目录符号链接"></a>2. 创建目录符号链接</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /D &quot;C:\Link\Folder&quot; &quot;D:\Original\Folder&quot;</span><br></pre></td></tr></table></figure>
@@ -296,45 +300,49 @@
 <h4 id="4-创建目录联结"><a href="#4-创建目录联结" class="headerlink" title="4. 创建目录联结"></a>4. 创建目录联结</h4><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /J &quot;C:\Link\Junction&quot; &quot;D:\Original\Folder&quot;</span><br></pre></td></tr></table></figure>
 <p>作用：创建目录的快捷方式（类似符号链接，但兼容性更好）。</p>
 <p>特点：仅限本地目录，不支持跨驱动器。</p>
-<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>管理员权限：创建符号链接（&#x2F;D）需要以 管理员身份运行 CMD。</p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>管理员权限：创建符号链接（/D）需要以 管理员身份运行 CMD。</p>
 <p>删除链接：直接删除链接（如 del Link 或 rmdir Link）不会影响源文件。</p>
 <p>路径格式：目标路径可以是相对路径或绝对路径，建议使用绝对路径避免歧义。</p>
 <p>跨平台兼容性：符号链接在非 NTFS 文件系统或旧版 Windows（如 XP）中可能不可用。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><table>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><div class="table-container">
+<table>
 <thead>
 <tr>
-<th align="center">链接类型</th>
-<th align="center">适用场景</th>
-<th align="center">跨驱动器</th>
-<th align="center">需要管理员权限</th>
+<th style="text-align:center">链接类型</th>
+<th style="text-align:center">适用场景</th>
+<th style="text-align:center">跨驱动器</th>
+<th style="text-align:center">需要管理员权限</th>
 </tr>
 </thead>
-<tbody><tr>
-<td align="center">符号链接（文件）</td>
-<td align="center">跨驱动器的文件映射</td>
-<td align="center">✔️</td>
-<td align="center">✔️</td>
+<tbody>
+<tr>
+<td style="text-align:center">符号链接（文件）</td>
+<td style="text-align:center">跨驱动器的文件映射</td>
+<td style="text-align:center">✔️</td>
+<td style="text-align:center">✔️</td>
 </tr>
 <tr>
-<td align="center">符号链接（目录）</td>
-<td align="center">跨驱动器的目录映射</td>
-<td align="center">✔️</td>
-<td align="center">✔️</td>
+<td style="text-align:center">符号链接（目录）</td>
+<td style="text-align:center">跨驱动器的目录映射</td>
+<td style="text-align:center">✔️</td>
+<td style="text-align:center">✔️</td>
 </tr>
 <tr>
-<td align="center">硬链接</td>
-<td align="center">同一驱动器内多位置访问同一文件</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
+<td style="text-align:center">硬链接</td>
+<td style="text-align:center">同一驱动器内多位置访问同一文件</td>
+<td style="text-align:center">❌</td>
+<td style="text-align:center">❌</td>
 </tr>
 <tr>
-<td align="center">目录联结</td>
-<td align="center">兼容性更好的本地目录快捷方式</td>
-<td align="center">❌</td>
-<td align="center">❌</td>
+<td style="text-align:center">目录联结</td>
+<td style="text-align:center">兼容性更好的本地目录快捷方式</td>
+<td style="text-align:center">❌</td>
+<td style="text-align:center">❌</td>
 </tr>
-</tbody></table>
-<p>通过灵活使用 mklink，可以实现文件&#x2F;目录的虚拟映射，优化存储管理和开发环境配置。</p>
+</tbody>
+</table>
+</div>
+<p>通过灵活使用 mklink，可以实现文件/目录的虚拟映射，优化存储管理和开发环境配置。</p>
 
     </div>
 
@@ -433,7 +441,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">24</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
