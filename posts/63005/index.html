@@ -20,12 +20,12 @@
     var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="错题1. git clone unity 项目之后资源出现问题 cannot read根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。 解决方案：  设置 Git 代理 运行 git l">
+  <meta name="description" content="错题  1. git clone unity 项目之后资源出现问题 cannot read 根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。 解决方案：  设置 Git 代理 运行 g">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Unity 使用过程错题本">
 <meta property="og:url" content="http://mxhanks.github.io/posts/63005/index.html">
 <meta property="og:site_name" content="MxHanks&#39; Blog">
-<meta property="og:description" content="错题1. git clone unity 项目之后资源出现问题 cannot read根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。 解决方案：  设置 Git 代理 运行 git l">
+<meta property="og:description" content="错题  1. git clone unity 项目之后资源出现问题 cannot read 根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。 解决方案：  设置 Git 代理 运行 g">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-06-10T07:53:25.000Z">
 <meta property="article:modified_time" content="2026-07-26T16:38:34.311Z">
@@ -253,14 +253,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="错题"><a href="#错题" class="headerlink" title="错题"></a>错题</h1><h2 id="1-git-clone-unity-项目之后资源出现问题-cannot-read"><a href="#1-git-clone-unity-项目之后资源出现问题-cannot-read" class="headerlink" title="1. git clone unity 项目之后资源出现问题 cannot read"></a>1. git clone unity 项目之后资源出现问题 cannot read</h2><p>根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。</p>
+        <h1 id="错题"><a class="markdownIt-Anchor" href="#错题"></a> 错题</h1>
+<h2 id="1-git-clone-unity-项目之后资源出现问题-cannot-read"><a class="markdownIt-Anchor" href="#1-git-clone-unity-项目之后资源出现问题-cannot-read"></a> 1. git clone unity 项目之后资源出现问题 cannot read</h2>
+<p>根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。</p>
 <p>解决方案：</p>
 <ol>
 <li>设置 Git 代理</li>
 <li>运行 git lfs pull 下载所有 LFS 对象</li>
 </ol>
 <p>的那电脑</p>
-<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="1-实现反重力怪物"><a href="#1-实现反重力怪物" class="headerlink" title="1. 实现反重力怪物"></a>1. 实现反重力怪物</h2><p>通过更改重力来实现在天花板行走，当没有天花板时进入悬浮，通过玩家的检测 sphere 来判断附近是否有可用的天花板，通过算法计算移动方式，若场景较为复杂使用 tag 标记加网格寻路</p>
+<h1 id="实现思路"><a class="markdownIt-Anchor" href="#实现思路"></a> 实现思路</h1>
+<h2 id="1-实现反重力怪物"><a class="markdownIt-Anchor" href="#1-实现反重力怪物"></a> 1. 实现反重力怪物</h2>
+<p>通过更改重力来实现在天花板行走，当没有天花板时进入悬浮，通过玩家的检测 sphere 来判断附近是否有可用的天花板，通过算法计算移动方式，若场景较为复杂使用 tag 标记加网格寻路</p>
 
     </div>
 
@@ -284,7 +288,7 @@
       <i class="fa fa-chevron-left"></i> windows 系统 mklink 的使用
     </a></div>
       <div class="post-nav-item">
-    <a href="/posts/1/" rel="next" title="STM32 学习笔记">
+    <a href="/posts/5475ea7f/" rel="next" title="STM32 学习笔记">
       STM32 学习笔记 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
@@ -346,7 +350,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text">错题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-git-clone-unity-%E9%A1%B9%E7%9B%AE%E4%B9%8B%E5%90%8E%E8%B5%84%E6%BA%90%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98-cannot-read"><span class="nav-number">1.1.</span> <span class="nav-text">1. git clone unity 项目之后资源出现问题 cannot read</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text">实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8F%8D%E9%87%8D%E5%8A%9B%E6%80%AA%E7%89%A9"><span class="nav-number">2.1.</span> <span class="nav-text">1. 实现反重力怪物</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%94%99%E9%A2%98"><span class="nav-number">1.</span> <span class="nav-text"> 错题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-git-clone-unity-%E9%A1%B9%E7%9B%AE%E4%B9%8B%E5%90%8E%E8%B5%84%E6%BA%90%E5%87%BA%E7%8E%B0%E9%97%AE%E9%A2%98-cannot-read"><span class="nav-number">1.1.</span> <span class="nav-text"> 1. git clone unity 项目之后资源出现问题 cannot read</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E6%80%9D%E8%B7%AF"><span class="nav-number">2.</span> <span class="nav-text"> 实现思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%9E%E7%8E%B0%E5%8F%8D%E9%87%8D%E5%8A%9B%E6%80%AA%E7%89%A9"><span class="nav-number">2.1.</span> <span class="nav-text"> 1. 实现反重力怪物</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -418,7 +422,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:55</span>
+    <span title="站点阅读时长">1:56</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
