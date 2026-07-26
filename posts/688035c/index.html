@@ -236,7 +236,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>4.4k</span>
+              <span>4.5k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -621,6 +621,12 @@
 <h3 id="踩坑记录-2"><a class="markdownIt-Anchor" href="#踩坑记录-2"></a> 踩坑记录</h3>
 <p><strong>迁移脚本的 Bug</strong>：第一次跑迁移时，匹配到的旧记录虽然插入了新 URL，但旧记录本身没有删除。结果数据库里同时存在新旧两条记录，计数翻倍。排查后发现是 <code>toDelete</code> 数组漏加了匹配记录的 <code>rowid</code>，补上后重新跑就正常了。</p>
 <p><strong>SSH 连接偶发退出码 255</strong>：连续执行多条 SSH 命令时，偶尔会出现 <code>Exit code 255</code>。原因可能是服务器资源紧张或 SSH 会话被复用。解决方法：加 <code>sleep</code> 间隔或将多个命令合并到一次 SSH 连接中执行。</p>
+<p><strong>NexT 主题的 hostname 校验导致计数不显示</strong>：部署完成后发现页面阅读数始终显示为 0，API 返回数据却是正常的。排查发现 NexT 的 <code>lean-analytics.swig</code> 模板中有这么一行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable constant_">CONFIG</span>.<span class="property">hostname</span> !== location.<span class="property">hostname</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>网站 <code>_config.yml</code> 中配置的 <code>url: http://mxhanks.github.io/</code> 决定了 <code>CONFIG.hostname</code> 的值。但自建服务器部署在 <code>47.115.49.75</code> 上，<code>location.hostname</code> 是 IP 地址，两者不相等，计数脚本直接 <code>return</code> 了。</p>
+<p>修复方法很简单——当使用自定义 <code>server_url</code>（自建 API）时，跳过这个 hostname 校验：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!server_url &amp;&amp; <span class="variable constant_">CONFIG</span>.<span class="property">hostname</span> !== location.<span class="property">hostname</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>这样既保留了原版在 LeanCloud 下的保护行为（防止开发环境污染计数），又让自建 API 场景下能够正常工作。</p>
 <h3 id="https-问题"><a class="markdownIt-Anchor" href="#https-问题"></a> HTTPS 问题</h3>
 <p>计数器 API 目前通过 HTTP 提供服务。博客在 GitHub Pages（HTTPS）上访问时，浏览器会因<strong>混合内容</strong>策略阻止 HTTP 请求，所以计数只在自建服务器版本上生效。</p>
 <p>解决方案是申请一个域名配 Let’s Encrypt 证书，备案完成后将 <code>stats.你的域名.com</code> 解析到服务器，即可同时服务两个站点。</p>
@@ -786,7 +792,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:59</span>
+    <span title="站点阅读时长">2:01</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
