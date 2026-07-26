@@ -1,8 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://mxhanks.github.io/uncategorized/notes/stm32/stm32/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/revive/revive/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/gong-ju-tui-jian/gong-ju-tui-jian/syncthing/syncthing/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/regularzation/regularzation/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/regression/regression/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/pytorchlearning/pytorchlearning/</loc>
+    <lastmod>2026-07-26</lastmod>
+  </url>
+  <url>
+    <loc>http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/</loc>
+    <lastmod>2026-07-25</lastmod>
+  </url>
+  <url>
     <loc>http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/unitysolutions/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-06-14</lastmod>
   </url>
   <url>
     <loc>http://mxhanks.github.io/you-xi-kai-fa/you-xi-kai-fa/gamejournal/</loc>
@@ -26,30 +58,6 @@
   </url>
   <url>
     <loc>http://mxhanks.github.io/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/</loc>
-    <lastmod>2025-02-16</lastmod>
-  </url>
-  <url>
-    <loc>http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/revive/revive/</loc>
-    <lastmod>2025-02-16</lastmod>
-  </url>
-  <url>
-    <loc>http://mxhanks.github.io/gong-ju-tui-jian/gong-ju-tui-jian/syncthing/syncthing/</loc>
-    <lastmod>2025-02-16</lastmod>
-  </url>
-  <url>
-    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/regularzation/regularzation/</loc>
-    <lastmod>2025-02-16</lastmod>
-  </url>
-  <url>
-    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/regression/regression/</loc>
-    <lastmod>2025-02-16</lastmod>
-  </url>
-  <url>
-    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/pytorchlearning/pytorchlearning/</loc>
-    <lastmod>2025-02-16</lastmod>
-  </url>
-  <url>
-    <loc>http://mxhanks.github.io/ren-gong-zhi-neng/ren-gong-zhi-neng/classification/classification/</loc>
     <lastmod>2025-02-16</lastmod>
   </url>
   <url>

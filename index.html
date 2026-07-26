@@ -161,6 +161,258 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/uncategorized/notes/stm32/stm32/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/uncategorized/notes/stm32/stm32/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2026-07-26 22:30:39 / 修改时间：23:08:49" itemprop="dateCreated datePublished" datetime="2026-07-26T22:30:39+08:00">2026-07-26</time>
+            </span>
+
+          
+            <span id="/uncategorized/notes/stm32/stm32/" class="post-meta-item leancloud_visitors" data-flag-title="" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/uncategorized/notes/stm32/stm32/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/uncategorized/notes/stm32/stm32/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>584</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="STM32-学习笔记"><a href="#STM32-学习笔记" class="headerlink" title="STM32 学习笔记"></a>STM32 学习笔记</h1><h2 id="准备阶段"><a href="#准备阶段" class="headerlink" title="准备阶段"></a>准备阶段</h2><h3 id="完成了-keil5-工具的安装"><a href="#完成了-keil5-工具的安装" class="headerlink" title="完成了 keil5 工具的安装"></a>完成了 keil5 工具的安装</h3><h3 id="stm32-的基本信息"><a href="#stm32-的基本信息" class="headerlink" title="stm32 的基本信息"></a>stm32 的基本信息</h3><p>由意法半导体公司开发的 32 位单片机，作为中控</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>ST</td>
+<td>M32</td>
+<td>F103</td>
+<td>C8T6</td>
+</tr>
+<tr>
+<td>品牌</td>
+<td>产品信息</td>
+<td>产品系列</td>
+<td>规格型号</td>
+</tr>
+<tr>
+<td>意法半导体</td>
+<td>32位单片机</td>
+<td>主流型 M3内核 72MHz</td>
+<td>48 引脚 64kFlash LQFP封装 -40~85℃</td>
+</tr>
+</tbody></table>
+<p>G系列 通用； F系列 主流； H系列 高性能； L系列 低功耗； W系列 无线</p>
+<p>C8T6: </p>
+<ul>
+<li>引脚数量 48 (c)，</li>
+<li>Flash 容量 8Kbit ， </li>
+<li>封装类型 T &#x3D; LQFP ， </li>
+<li>温度范围 6 &#x3D; -40~85℃</li>
+<li>T &#x3D; 36; C &#x3D; 48; R &#x3D; 64; V &#x3D; 100; Z &#x3D; 144; </li>
+<li>H &#x3D; BGA; I &#x3D; UFBGA; T &#x3D; LQFP; U &#x3D; VFQFPN (封装类型表示焊盘形状)</li>
+<li>6 &#x3D; -40~85 ℃</li>
+<li>7 &#x3D; -40~105 ℃</li>
+</ul>
+<h3 id="stm32-引脚分布"><a href="#stm32-引脚分布" class="headerlink" title="stm32 引脚分布"></a>stm32 引脚分布</h3>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/uncategorized/notes/stm32/stm32/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/" class="post-title-link" itemprop="url">Hexo post_asset_folder 图片显示问题修复</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2026-07-26 00:00:00" itemprop="dateCreated datePublished" datetime="2026-07-26T00:00:00+08:00">2026-07-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="url" rel="index"><span itemprop="name">经验总结</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo post_asset_folder 图片显示问题修复" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>1.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>5 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>我的博客文章组织和大多数 Hexo 用户不太一样——我习惯用 Obsidian 写文章，并且让图片和 markdown 文件保持在同一级目录。</p>
+<p>原有的目录结构大致是：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">source/_posts/</span><br><span class="line">├── 人工智能/</span><br><span class="line">│   ├── Regression/</span><br><span class="line">│   │   ├── Regression.md      ← 文章</span><br><span class="line">│   │   ├── output_6_1.png     ← 图片（与 md 同级）</span><br><span class="line">│   │   └── output_15_0.png</span><br><span class="line">│   └── Classification/</span><br><span class="line">│       ├── Classification.md</span><br><span class="line">│       ├── output_3_1.png</span><br><span class="line">│       └── ...</span><br><span class="line">├── 经验总结/</span><br><span class="line">│   ├── HexoPostAssetFix.md</span><br><span class="line">│   └── ...</span><br><span class="line">└── ...</span><br></pre></td></tr></table></figure>
+
+<p>在 Hexo 默认开启 <code>post_asset_folder: true</code> 的情况下，图片却一直无法正常显示——<code>&lt;img&gt;</code> 的 <code>src</code> 指向了根目录 <code>/output_6_1.png</code>，自然 404。</p>
+<p>本文记录排查和修复的全过程。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/jing-yan-zong-jie/jing-yan-zong-jie/hexopostassetfix/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/jing-yan-zong-jie/jing-yan-zong-jie/unitysolutions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -192,7 +444,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-06-11 19:10:11" itemprop="dateModified" datetime="2026-06-11T19:10:11+08:00">2026-06-11</time>
+                <time title="修改时间：2026-06-14 09:37:24" itemprop="dateModified" datetime="2026-06-14T09:37:24+08:00">2026-06-14</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -230,7 +482,7 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>125</span>
+              <span>197</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -248,14 +500,14 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>本 post 用于记录使用 unity 中遇到的一些错题：</p>
-<h2 id="1-git-clone-unity-项目之后资源出现问题-cannot-read"><a href="#1-git-clone-unity-项目之后资源出现问题-cannot-read" class="headerlink" title="1.git clone unity 项目之后资源出现问题 cannot read"></a>1.git clone unity 项目之后资源出现问题 cannot read</h2><p>根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。</p>
+          <h1 id="错题"><a href="#错题" class="headerlink" title="错题"></a>错题</h1><h2 id="1-git-clone-unity-项目之后资源出现问题-cannot-read"><a href="#1-git-clone-unity-项目之后资源出现问题-cannot-read" class="headerlink" title="1. git clone unity 项目之后资源出现问题 cannot read"></a>1. git clone unity 项目之后资源出现问题 cannot read</h2><p>根因：项目中的贴图（.jpg）、模型（.fbx）等大文件使用 Git LFS 管理。clone 时因为网络问题（国内访问 GitHub 不稳定），LFS文件没能下载下来，只留下了指针文件（~130 字节），导致 Unity 报 “cannot be read”。</p>
 <p>解决方案：</p>
 <ol>
 <li>设置 Git 代理</li>
 <li>运行 git lfs pull 下载所有 LFS 对象</li>
 </ol>
 <p>的那电脑</p>
+<h1 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h1><h2 id="1-实现反重力怪物"><a href="#1-实现反重力怪物" class="headerlink" title="1. 实现反重力怪物"></a>1. 实现反重力怪物</h2><p>通过更改重力来实现在天花板行走，当没有天花板时进入悬浮，通过玩家的检测 sphere 来判断附近是否有可用的天花板，通过算法计算移动方式，若场景较为复杂使用 tag 标记加网格寻路</p>
 
           <!--noindex-->
             <div class="post-button">
@@ -375,7 +627,7 @@
 <h1 id="日记"><a href="#日记" class="headerlink" title="日记"></a>日记</h1><h2 id="01-2025-2-16"><a href="#01-2025-2-16" class="headerlink" title="01 2025.2.16"></a>01 2025.2.16</h2><p>目前写了 1800 多行代码，将基本的 <code>人物移动</code> <code>摄像机控制</code> <code>场景切换</code> <code>存档逻辑</code> <code>受伤与攻击</code> <code>动画状态机</code> 都已经写好了，构建了一个很庞大的框架，之后主要需要进行美术开发。目前使用的素材都是 itch.io 上的免费素材，我们自己的美术资源还在制作中</p>
 <p>计划先做出浮岛上的 demo ，设计了一个通过 “意识” 从陆地到岛上的方式，下一个实现的目标就是在人物向上移动的过程中平台的随机生成。</p>
 <p>采用的是b站一个免费课程的存档逻辑架构</p>
-<p><img src="http://sru0ww8rs.hn-bkt.clouddn.com/images/gamejournal-img1-1.png" alt></p>
+<p><img src="http://sru0ww8rs.hn-bkt.clouddn.com/images/gamejournal-img1-1.png"></p>
 <p>一些设计手稿 （这些都是我想的，美术资源等完成绘制做好动画后会展示）：</p>
           <!--noindex-->
             <div class="post-button">
@@ -1134,249 +1386,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="mxhanks">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MxHanks' Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/" class="post-title-link" itemprop="url">Java初级-设计模式,异常,线程,数据库,反射</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-25 12:26:00" itemprop="dateCreated datePublished" datetime="2024-02-25T12:26:00+08:00">2024-02-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-17 00:13:37" itemprop="dateModified" datetime="2025-02-17T00:13:37+08:00">2025-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/" itemprop="url" rel="index"><span itemprop="name">软件工程</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/" class="post-meta-item leancloud_visitors" data-flag-title="Java初级-设计模式,异常,线程,数据库,反射" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-              <span>542</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span>2 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Java初级-再次学习"><a href="#Java初级-再次学习" class="headerlink" title="Java初级-再次学习"></a>Java初级-再次学习</h1><h2 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h2><h3 id="单例设计模式-Singleton-Pattern"><a href="#单例设计模式-Singleton-Pattern" class="headerlink" title="单例设计模式 (Singleton Pattern)"></a>单例设计模式 (Singleton Pattern)</h3><p>具体步骤：</p>
-<ol>
-<li>构造器私有化 -&gt; 防止直接 new</li>
-<li>类的内部创建对象</li>
-<li>向外暴露一个静态的公用方法 (getInstance)</li>
-<li>代码实现</li>
-</ol>
-<p>单例模式就时采取一定方法保证整个软件系统中，某个类只能存在一个对象实例，并且只提供一个取得对象实例的方法。</p>
-<h4 id="饿汉式"><a href="#饿汉式" class="headerlink" title="饿汉式"></a>饿汉式</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">SingleTon1</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="title function_">SingleTon1</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">// 构造器私有化</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">SingleTon1</span> <span class="variable">instance</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SingleTon1</span>();</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> SingleTon <span class="title function_">getInstance</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>缺点：创建了没有用，造成资源浪费</p>
-<h4 id="懒汉式"><a href="#懒汉式" class="headerlink" title="懒汉式"></a>懒汉式</h4>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/ruan-jian-gong-cheng/ruan-jian-gong-cheng/javaprimary/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="mxhanks">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="MxHanks' Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/" class="post-title-link" itemprop="url">2024-02-23 日记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-23 12:24:00" itemprop="dateCreated datePublished" datetime="2024-02-23T12:24:00+08:00">2024-02-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-17 00:13:37" itemprop="dateModified" datetime="2025-02-17T00:13:37+08:00">2025-02-17</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%B6%A3%E4%BA%8B%E6%97%A5%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">趣事日记</span></a>
-                </span>
-            </span>
-
-          
-            <span id="/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/" class="post-meta-item leancloud_visitors" data-flag-title="2024-02-23 日记" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-              <span>149</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/qu-shi-ri-ji/qu-shi-ri-ji/2024-02-23/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1442,7 +1455,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1455,7 +1468,7 @@
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -1495,12 +1508,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">35k</span>
+    <span title="站点总字数">37k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:08</span>
+    <span title="站点阅读时长">2:15</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
