@@ -1,11 +1,64 @@
-<!doctype html><html lang=zh-CN><meta charset=UTF-8><meta content="width=device-width,initial-scale=1,maximum-scale=2" name=viewport><meta content=#222 name=theme-color><meta content="Hexo 7.1.1" name=generator><link href=/images/apple-touch-icon-next.png rel=apple-touch-icon sizes=180x180><link href=/images/favicon-32x32-next.png rel=icon sizes=32x32 type=image/png><link href=/images/favicon-16x16-next.png rel=icon sizes=16x16 type=image/png><link color=#222 href=/images/logo.svg rel=mask-icon><link href=/css/main.css rel=stylesheet><link href=/lib/font-awesome/css/all.min.css rel=stylesheet><script id=hexo-configurations>var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};</script><meta content="回顾这些年折腾 Hexo 博客的经历，从初建到复活再到各种功能配置，踩了不少坑也积累了一些经验。这篇文章把整个过程串联起来，既是记录也是分享。" name=description><meta content=article property=og:type><meta content="Hexo 博客折腾全记录" property=og:title><meta content=http://mxhanks.github.io/posts/688035c/index.html property=og:url><meta content="MxHanks' Blog" property=og:site_name><meta content="回顾这些年折腾 Hexo 博客的经历，从初建到复活再到各种功能配置，踩了不少坑也积累了一些经验。这篇文章把整个过程串联起来，既是记录也是分享。" property=og:description><meta content=zh_CN property=og:locale><meta content=2021-10-23T15:12:30.000Z property=article:published_time><meta content=2026-07-27T04:00:00.000Z property=article:modified_time><meta content=mxhanks property=article:author><meta content=Hexo property=article:tag><meta content=博客 property=article:tag><meta content=NexT property=article:tag><meta content=summary name=twitter:card><link href=http://mxhanks.github.io/posts/688035c/ rel=canonical><script id=page-configurations>// https://hexo.io/docs/variables.html
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.1.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="回顾这些年折腾 Hexo 博客的经历，从初建到复活再到各种功能配置，踩了不少坑也积累了一些经验。这篇文章把整个过程串联起来，既是记录也是分享。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 博客折腾全记录">
+<meta property="og:url" content="http://mxhanks.github.io/posts/688035c/index.html">
+<meta property="og:site_name" content="MxHanks&#39; Blog">
+<meta property="og:description" content="回顾这些年折腾 Hexo 博客的经历，从初建到复活再到各种功能配置，踩了不少坑也积累了一些经验。这篇文章把整个过程串联起来，既是记录也是分享。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-23T15:12:30.000Z">
+<meta property="article:modified_time" content="2026-07-27T04:00:00.000Z">
+<meta property="article:author" content="mxhanks">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="博客">
+<meta property="article:tag" content="NexT">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://mxhanks.github.io/posts/688035c/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
     isHome : false,
     isPost : true,
     lang   : 'zh-CN'
-  };</script><title>Hexo 博客折腾全记录 | MxHanks' Blog</title><noscript><style>.use-motion .brand,
+  };
+</script>
+
+  <title>Hexo 博客折腾全记录 | MxHanks' Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
   .use-motion .menu-item,
   .sidebar-inner,
   .use-motion .post-block,
@@ -22,7 +75,677 @@
   }
 
   .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }</style></noscript><!-- hexo injector head_end start --><link href=https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css rel=stylesheet><link href=https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css rel=stylesheet><!-- hexo injector head_end end --><body itemscope itemtype=http://schema.org/WebPage><div class="container use-motion"><div class=headband></div><header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><div class=site-brand-container><div class=site-nav-toggle><div aria-label=切换导航栏 class=toggle><span class="toggle-line toggle-line-first"></span><span class="toggle-line toggle-line-middle"></span><span class="toggle-line toggle-line-last"></span></div></div><div class=site-meta><a class=brand href=/ rel=start> <span class=logo-line-before><i></i></span> <h1 class=site-title>MxHanks' Blog</h1> <span class=logo-line-after><i></i></span> </a><p class=site-subtitle itemprop=description>奔赴山海，保持热爱</div><div class=site-nav-right><div class="toggle popup-trigger"></div></div></div><nav class=site-nav><ul class="main-menu menu" id=menu><li class="menu-item menu-item-home"><a href=/ rel=section><i class="fa fa-home fa-fw"></i>首页</a><li class="menu-item menu-item-tags"><a href=/tags/ rel=section><i class="fa fa-tags fa-fw"></i>标签</a><li class="menu-item menu-item-categories"><a href=/categories/ rel=section><i class="fa fa-th fa-fw"></i>分类</a><li class="menu-item menu-item-archives"><a href=/archives/ rel=section><i class="fa fa-archive fa-fw"></i>归档</a></ul></nav></div></header><div class=back-to-top><i class="fa fa-arrow-up"></i><span>0%</span></div><main class=main><div class=main-inner><div class=content-wrap><div class="content post posts-expand"><article class=post-block itemscope itemtype=http://schema.org/Article lang=zh-CN><link href=http://mxhanks.github.io/posts/688035c/ itemprop=mainEntityOfPage><span hidden itemprop=author itemscope itemtype=http://schema.org/Person> <meta content=/images/avatar.gif itemprop=image> <meta content=mxhanks itemprop=name> <meta content="MxHanks 的博客" itemprop=description> </span><span hidden itemprop=publisher itemscope itemtype=http://schema.org/Organization> <meta content="MxHanks' Blog" itemprop=name> </span><header class=post-header><h1 itemprop="name headline" class=post-title>Hexo 博客折腾全记录</h1><div class=post-meta><span class=post-meta-item> <span class=post-meta-item-icon> <i class="far fa-calendar"></i> </span> <span class=post-meta-item-text>发表于</span> <time itemprop="dateCreated datePublished" title="创建时间：2021-10-23 23:12:30" datetime=2021-10-23T23:12:30+08:00>2021-10-23</time> </span><span class=post-meta-item> <span class=post-meta-item-icon> <i class="far fa-calendar-check"></i> </span> <span class=post-meta-item-text>更新于</span> <time title="修改时间：2026-07-27 12:00:00" datetime=2026-07-27T12:00:00+08:00 itemprop=dateModified>2026-07-27</time> </span><span class=post-meta-item> <span class=post-meta-item-icon> <i class="far fa-folder"></i> </span> <span class=post-meta-item-text>分类于</span> <span itemprop=about itemscope itemtype=http://schema.org/Thing> <a href=/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/ itemprop=url rel=index><span itemprop=name>经验分享</span></a> </span> </span><span class="post-meta-item leancloud_visitors" data-flag-title="Hexo 博客折腾全记录" id=/posts/688035c/ title=阅读次数> <span class=post-meta-item-icon> <i class="fa fa-eye"></i> </span> <span class=post-meta-item-text>阅读次数：</span> <span class=leancloud-visitors-count></span> </span><span class=post-meta-item> <span class=post-meta-item-icon> <i class="far fa-comment"></i> </span> <span class=post-meta-item-text>Valine：</span> <a href=/posts/688035c/#valine-comments itemprop=discussionUrl title=valine> <span class="post-comments-count valine-comment-count" data-xid=/posts/688035c/ itemprop=commentCount></span> </a> </span><span class=post-meta-item title=本文字数> <span class=post-meta-item-icon> <i class="far fa-file-word"></i> </span> <span>5.3k</span> </span><span class=post-meta-item title=阅读时长> <span class=post-meta-item-icon> <i class="far fa-clock"></i> </span> <span>19 分钟</span> </span></div></header><div class=post-body itemprop=articleBody><p>回顾这些年折腾 Hexo 博客的经历，从初建到复活再到各种功能配置，踩了不少坑也积累了一些经验。这篇文章把整个过程串联起来，既是记录也是分享。</p><span id=more></span><h2 id=建站之初><a class=markdownIt-Anchor href=#建站之初></a> 建站之初</h2><p>从 2021 年 10 月中旬开始，陆陆续续搭建这个自己的网站。由于不会用 GitHub，也不了解 Hexo、Node.js 这一类东西，所以花的时间比大部分人长。<p>建站路上遇到最坑的点就是下载的 NexT 主题有问题——需要修改主题目录下的 <code>_config.yml</code> 文件，否则会多一个 <code>%20</code>，删去 <code>||</code> 之间的空格即可。后来才发现原来我用的这个 NexT 已经停止维护了，于是换成了最新的 NexT。<p>反反复复换了很多次主题，但都不尽如人意，所以最后还是用了 NexT。<hr><h2 id=第一次复活><a class=markdownIt-Anchor href=#第一次复活></a> 第一次复活</h2><p>2023 年 2 月，寒假结束前，我复活了博客。<p>这个寒假过得有些混乱，但也有些收获。从家里急事回老家开始，在车上看完了《四月是你的谎言》——本来就弹钢琴的我被触动，买了一台雅马哈 PSR-e373 电子琴。发现电子琴可以作为 MIDI 输入器后，还想写一个 Minecraft mod 做实时 MIDI 转换，可惜老电脑带不动。<p>后来兴趣又回到了编程上，学习了 Python 的 OpenCV 和 PyQt 写了学校科技创新比赛的作品，又学了一点 Lua 语法准备做饥荒 mod。<p>一个寒假过去，学习没怎么搞，博客倒是又捡起来了。<hr><h2 id=第二次复活全面功能配置><a class=markdownIt-Anchor href=#第二次复活全面功能配置></a> 第二次复活：全面功能配置</h2><p>2024 年 2 月，再次清空电脑后，一切又重新开始。惊喜地发现上次复活博客也正好是 2 月 2 日——整整一年前的同一天。<p>这次趁着重新搭建，把博客的各种功能系统地配置了一遍。<h3 id=latex-支持><a class=markdownIt-Anchor href=#latex-支持></a> LaTeX 支持</h3><p>博客中经常需要数学公式（尤其是机器学习相关的笔记），LaTeX 支持是刚需。<h4 id=方案一hexo-renderer-kramed适用于-matery-主题><a class=markdownIt-Anchor href=#方案一hexo-renderer-kramed适用于-matery-主题></a> 方案一：hexo-renderer-kramed（适用于 matery 主题）</h4><p>Hexo 默认的 <code>hexo-renderer-marked</code> 渲染引擎会将 LaTeX 中的下划线 <code>_</code> 解析为 HTML 的 <code>&lt;i></code> 标签。<code>hexo-renderer-kramed</code> 修复了这个问题：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line>npm uninstall hexo-renderer-marked --save</span><br><span class=line>npm install hexo-renderer-kramed --save</span><br></pre></table></figure><p>还需要修改 <code>node_modules/kramed/lib/rules/inline.js</code> 解决语义冲突：<figure class="highlight js"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br></pre><td class=code><pre><span class=line><span class=comment>// 第 11 行 escape 变量</span></span><br><span class=line><span class=attr>escape</span>: <span class=regexp>/^\\([`*\[\]()#$+\-.!_>])/</span>,  <span class=comment>// 去掉对 {} 的转义</span></span><br><span class=line></span><br><span class=line><span class=comment>// 第 20 行 em 变量</span></span><br><span class=line><span class=attr>em</span>: <span class=regexp>/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,  <span class=comment>// 禁用 _ 作为斜体标记</span></span><br></pre></table></figure><h4 id=方案二hexo-renderer-markdown-it-plus推荐><a class=markdownIt-Anchor href=#方案二hexo-renderer-markdown-it-plus推荐></a> 方案二：hexo-renderer-markdown-it-plus（推荐）</h4><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line>npm uninstall hexo-renderer-marked --save</span><br><span class=line>npm install hexo-renderer-markdown-it-plus</span><br></pre></table></figure><p>然后在主题 <code>_config.yml</code> 中启用 KaTeX：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br></pre><td class=code><pre><span class=line><span class=attr>math:</span></span><br><span class=line>  <span class=string>...</span></span><br><span class=line>  <span class=attr>katex:</span></span><br><span class=line>    <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>    <span class=attr>copy_tex:</span> <span class=literal>false</span></span><br></pre></table></figure><h4 id=踩坑记录渲染器冲突><a class=markdownIt-Anchor href=#踩坑记录渲染器冲突></a> 踩坑记录：渲染器冲突</h4><p>配置完成后发现 LaTeX 还是不生效，排查发现是因为<strong>同时安装了三个 Markdown 渲染器</strong>，它们互相冲突：<table><thead><tr><th style=text-align:left>插件<th style=text-align:center>支持 <code>$...$</code><th style=text-align:center>最终状态<tbody><tr><td style=text-align:left><code>hexo-renderer-marked</code><td style=text-align:center>❌<td style=text-align:center>❌ 卸载<tr><td style=text-align:left><code>hexo-renderer-kramed</code><td style=text-align:center>✅，但修改<td style=text-align:center>❌ 卸载<tr><td style=text-align:left><code>hexo-renderer-markdown-it-plus</code><td style=text-align:center>✅ 内置 KaTeX<td style=text-align:center>✅ 保留</table><p>Hexo 7 中，多个渲染器注册同一扩展名（<code>.md</code>）时，最后注册的胜出。按加载顺序，<code>hexo-renderer-marked</code> 总是覆盖前面的，而它<strong>根本不处理 <code>$...$</code> 数学公式</strong>。<p>修复方法：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>npm uninstall hexo-renderer-marked hexo-renderer-kramed --save</span><br></pre></table></figure><p>同时在站点 <code>_config.yml</code> 中配置 <code>markdown_it_plus</code> 插件并显式启用 KaTeX：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br></pre><td class=code><pre><span class=line><span class=attr>markdown_it_plus:</span></span><br><span class=line>  <span class=attr>highlight:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>html:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>plugins:</span></span><br><span class=line>    <span class=bullet>-</span> <span class=attr>plugin:</span></span><br><span class=line>        <span class=attr>name:</span> <span class=string>'@iktakahiro/markdown-it-katex'</span></span><br><span class=line>        <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>        <span class=attr>options:</span></span><br><span class=line>          <span class=attr>throwOnError:</span> <span class=literal>false</span></span><br></pre></table></figure><p>另外，NexT 主题默认 <code>math.per_page: true</code>，只有 front-matter 中声明了 <code>katex: true</code> 的文章才会加载 KaTeX 的 CSS/JS。所以每篇用到数学公式的文章都需要加上：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br></pre><td class=code><pre><span class=line><span class=meta>---</span></span><br><span class=line><span class=attr>katex:</span> <span class=literal>true</span></span><br><span class=line><span class=meta>---</span></span><br></pre></table></figure><p>做完这三步，<code>$E=mc^2$</code> 和 <code>$$\frac{1}{x^2-1}$$</code> 就能正常渲染了。<p>需要注意的是，KaTeX 不支持 <code>\begin{equation}</code> 环境，如果文章中用到了需要改写成 <code>\begin{aligned}</code> 等 KaTeX 支持的写法，或者换用 MathJax 引擎。<h3 id=ssh-deploy-key-配置><a class=markdownIt-Anchor href=#ssh-deploy-key-配置></a> SSH Deploy Key 配置</h3><p>GitHub 在国内连接不稳定，终端用 git 命令常失败，所以配置 SSH 密钥来提升部署稳定性。<h4 id=生成-ssh-密钥对><a class=markdownIt-Anchor href=#生成-ssh-密钥对></a> 生成 SSH 密钥对</h4><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>ssh-keygen -t rsa -N <span class=string>''</span> -f /home/<span class=variable>${USER}</span>/.ssh/id_rsa_github_blog -q</span><br></pre></table></figure><p><code>.pub</code> 结尾的是公钥。<h4 id=添加-deploy-key><a class=markdownIt-Anchor href=#添加-deploy-key></a> 添加 Deploy Key</h4><p>进入 <a href=https://github.com/mxHanks/mxhanks.github.io/settings/keys/new rel=noopener target=_blank>GitHub 仓库设置页</a>，填写标题，粘贴公钥内容，勾选 “Allow write access”，点击 Add key。<h4 id=配置-ssh-config><a class=markdownIt-Anchor href=#配置-ssh-config></a> 配置 SSH Config</h4><p><strong>Linux</strong>（<code>~/.ssh/config</code>）：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br></pre><td class=code><pre><span class=line>Host github.com</span><br><span class=line>    Hostname ssh.github.com</span><br><span class=line>    IdentityFile ~/.ssh/id_rsa_github_blog</span><br></pre></table></figure><p><strong>Windows</strong>（<code>C:\Users\Administrator\.ssh\config</code>）：<p>配置方法大体相同，如果遇到端口 22 被屏蔽：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br></pre><td class=code><pre><span class=line>Host github.com</span><br><span class=line>    Hostname ssh.github.com</span><br><span class=line>    IdentityFile ~/.ssh/id_rsa_github_blog</span><br><span class=line>    Port 443</span><br></pre></table></figure><p>出现以下提示时键入 <code>yes</code> 即可：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br></pre><td class=code><pre><span class=line>The authenticity of host '[ssh.github.com]:443' can't be established.</span><br><span class=line>ED25519 key fingerprint is SHA256:...</span><br><span class=line>Are you sure you want to continue connecting (yes/no/[fingerprint])?</span><br></pre></table></figure><h3 id=leancloud-评论与阅读量><a class=markdownIt-Anchor href=#leancloud-评论与阅读量></a> LeanCloud 评论与阅读量</h3><h4 id=评论功能valine><a class=markdownIt-Anchor href=#评论功能valine></a> 评论功能（Valine）</h4><p>在 <a href=https://leancloud.cn rel=noopener target=_blank>LeanCloud</a> 仪表盘的应用凭证中找到 AppID 和 AppKey，配置 NexT 主题的 <code>_config.yml</code>：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br></pre><td class=code><pre><span class=line><span class=comment># Valine</span></span><br><span class=line><span class=attr>valine:</span></span><br><span class=line>  <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>appid:</span> [<span class=string>appid</span>]</span><br><span class=line>  <span class=attr>appkey:</span> [<span class=string>appkey</span>]</span><br><span class=line>  <span class=attr>notify:</span> <span class=literal>false</span></span><br><span class=line>  <span class=attr>verify:</span> <span class=literal>false</span></span><br><span class=line>  <span class=attr>placeholder:</span> <span class=string>Just</span> <span class=string>go</span> <span class=string>go</span></span><br><span class=line>  <span class=attr>avatar:</span> <span class=string>mm</span></span><br><span class=line>  <span class=attr>guest_info:</span> <span class=string>nick,mail,link</span></span><br><span class=line>  <span class=attr>pageSize:</span> <span class=number>10</span></span><br><span class=line>  <span class=attr>language:</span></span><br><span class=line>  <span class=attr>visitor:</span> <span class=literal>false</span></span><br><span class=line>  <span class=attr>comment_count:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>recordIP:</span> <span class=literal>true</span></span><br></pre></table></figure><h4 id=阅读量功能><a class=markdownIt-Anchor href=#阅读量功能></a> 阅读量功能</h4><p>在 LeanCloud 中新建应用，数据存储 → 结构化数据 → 新建 Class，命名为 <code>Counter</code>，选择无限制。然后在主题 <code>_config.yml</code> 中配置：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br></pre><td class=code><pre><span class=line><span class=attr>leancloud_visitors:</span></span><br><span class=line>  <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>app_id:</span> <span class=string>&lt;your</span> <span class=string>app</span> <span class=string>id></span></span><br><span class=line>  <span class=attr>app_key:</span> <span class=string>&lt;your</span> <span class=string>app</span> <span class=string>key></span></span><br><span class=line>  <span class=attr>server_url:</span></span><br><span class=line>  <span class=attr>security:</span> <span class=literal>false</span></span><br></pre></table></figure><h3 id=gitee-github-镜像同步><a class=markdownIt-Anchor href=#gitee-github-镜像同步></a> Gitee / GitHub 镜像同步</h3><p>虽然 Gitee 的实名认证没通过，但可以设置为从 GitHub 自动同步。<p>在 Gitee 仓库 → 管理 → 仓库镜像管理 → 添加镜像，设为 Pull 方向，选择镜像仓库和 GitHub 私人令牌。<p><strong>申请 GitHub Token</strong>：用户头像 → Settings → Developer setting → Personal access tokens → Generate new token，勾选 <code>repo</code> 和 <code>admin:repo_hook</code> 字段。<p>详细教程参考 <a href=https://help.gitee.com/repository/settings/sync-between-gitee-github rel=noopener target=_blank>Gitee 官方文档</a>。<h3 id=seo-优化><a class=markdownIt-Anchor href=#seo-优化></a> SEO 优化</h3><h4 id=生成-sitemap><a class=markdownIt-Anchor href=#生成-sitemap></a> 生成 Sitemap</h4><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line>npm install hexo-generator-sitemap --save</span><br><span class=line>npm install hexo-generator-baidu-sitemap --save</span><br></pre></table></figure><p>在 <code>_config.yml</code> 中配置：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br></pre><td class=code><pre><span class=line><span class=attr>sitemap:</span></span><br><span class=line>  <span class=attr>path:</span> <span class=string>sitemap.xml</span></span><br><span class=line><span class=attr>baidusitemap:</span></span><br><span class=line>  <span class=attr>path:</span> <span class=string>baidusitemap.xml</span></span><br></pre></table></figure><h4 id=推送到必应><a class=markdownIt-Anchor href=#推送到必应></a> 推送到必应</h4><p>进入 <a href=https://www.bing.com/webmasters/about rel=noopener target=_blank>Bing Webmasters</a> 进行配置。<h3 id=文件目录管理><a class=markdownIt-Anchor href=#文件目录管理></a> 文件目录管理</h3><p>随着文章增多以及 Obsidian 记录习惯的养成，决定在 <code>_posts</code> 目录下按类别建立文件夹，每篇文章单独建文件夹，图片和文章放在同一级。<p>移动后发现 <code>{% post_link %}</code> 标签会报错，改用替代方案后解决。之前配置的拼音地址在分类目录上起了作用——提前铺路总是好事。<h3 id=适配-obsidian-双链引用><a class=markdownIt-Anchor href=#适配-obsidian-双链引用></a> 适配 Obsidian 双链引用</h3><p>使用 <a href=https://github.com/Cyrusky/hexo-backlink rel=noopener target=_blank>hexo-backlink</a> 插件将 Obsidian 的 <code>[[WikiLink]]</code> 转换为 Hexo 站内文章链接：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>npm install hexo-backlink</span><br></pre></table></figure><p>在 <code>_config.yml</code> 中配置：<code>backlink: true</code><p>Obsidian 中的设置：设置 → 文件和链接 → 新链接格式选择"文件的相对路径"，并开启"使用 [[维基链接]]"。<h3 id=字数统计><a class=markdownIt-Anchor href=#字数统计></a> 字数统计</h3><p>使用 <a href=https://github.com/next-theme/hexo-word-counter rel=noopener target=_blank>hexo-word-counter</a> 统计文章字数及阅读时间：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line>npm install hexo-word-counter</span><br><span class=line>hexo clean</span><br></pre></table></figure><p>在站点 <code>_config.yml</code> 中添加：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br></pre><td class=code><pre><span class=line><span class=attr>symbols_count_time:</span></span><br><span class=line>  <span class=attr>symbols:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>time:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>total_symbols:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>total_time:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>exclude_codeblock:</span> <span class=literal>false</span></span><br><span class=line>  <span class=attr>awl:</span> <span class=number>4</span></span><br><span class=line>  <span class=attr>wpm:</span> <span class=number>275</span></span><br><span class=line>  <span class=attr>suffix:</span> <span class=string>"mins."</span></span><br></pre></table></figure><p>在 NexT 主题 <code>_config.yml</code> 中设置 <code>item_text_total: true</code>。<p>参数说明：中文为主的博客推荐设置 <code>awl: 2</code>、<code>wpm: 300</code>。<hr><h2 id=文章短链接abbrlink><a class=markdownIt-Anchor href=#文章短链接abbrlink></a> 文章短链接（abbrlink）</h2><p>Hexo 默认生成的文章地址是类似 <code>YEAR/MONTH/DAY/TITLE</code> 的长路径，既不利于 SEO 也不利于链接持久化。<h3 id=方案一hexo-permalink-pinyin拼音转写><a class=markdownIt-Anchor href=#方案一hexo-permalink-pinyin拼音转写></a> 方案一：hexo-permalink-pinyin（拼音转写）</h3><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>npm install hexo-permalink-pinyin --save</span><br></pre></table></figure><figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br></pre><td class=code><pre><span class=line><span class=attr>permalink_pinyin:</span></span><br><span class=line>  <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>separator:</span> <span class=string>"-"</span></span><br></pre></table></figure><p>但这个方法仍然依赖文章标题，改了标题链接也会变。<h3 id=方案二hexo-abbrlink短链接推荐><a class=markdownIt-Anchor href=#方案二hexo-abbrlink短链接推荐></a> 方案二：hexo-abbrlink（短链接，推荐）</h3><p><a href=https://github.com/Rozbo/hexo-abbrlink rel=noopener target=_blank>hexo-abbrlink</a> 基于文章标题生成固定短链接（CRC16 或 CRC32），<strong>文章内容不变链接就不变</strong>，不依赖分类和标题。<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>npm install hexo-abbrlink --save</span><br></pre></table></figure><p>在 <code>_config.yml</code> 中配置：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br></pre><td class=code><pre><span class=line><span class=comment># abbrlink config</span></span><br><span class=line><span class=attr>abbrlink:</span></span><br><span class=line>  <span class=attr>alg:</span> <span class=string>crc32</span>      <span class=comment># crc16(default) or crc32</span></span><br><span class=line>  <span class=attr>rep:</span> <span class=string>hex</span>        <span class=comment># dec(default) or hex</span></span><br><span class=line>  <span class=attr>force:</span> <span class=literal>false</span>    <span class=comment># false(default), 设为 true 会重新生成所有 abbrlink</span></span><br><span class=line></span><br><span class=line><span class=comment># 关键：需要在 permalink 中使用 :abbrlink</span></span><br><span class=line><span class=attr>permalink:</span> <span class=string>posts/:abbrlink/</span></span><br></pre></table></figure><h4 id=踩坑记录><a class=markdownIt-Anchor href=#踩坑记录></a> 踩坑记录</h4><p>之前安装了这个插件但一直没生效，排查后发现原因很简单：<strong><code>permalink</code> 没有使用 <code>:abbrlink</code></strong>。<p>插件在 <code>before_post_render</code> 阶段工作，它会读取（或生成）文章的 <code>abbrlink</code> 值并注入到数据中。但 Hexo 最终生成链接时，只用 <code>permalink</code> 模式中声明的变量。如果 <code>permalink</code> 里只有 <code>:category</code> 和 <code>:title</code>，那 <code>:abbrlink</code> 再好看也不会出现在 URL 里。<p>所以配置 <code>hexo-abbrlink</code> 的关键就两步：<ol><li>安装插件 + 写好 <code>abbrlink</code> 配置段<li><strong>修改 <code>permalink</code> 为 <code>posts/:abbrlink/</code></strong>（或其他含 <code>:abbrlink</code> 的模式）</ol><p>这样生成的链接就是稳定的短链接了：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line>https://mxhanks.github.io/posts/48721/    # 而不是 /技术踩坑/hexopostassetfix/</span><br><span class=line>https://mxhanks.github.io/posts/21936/    # 而不是 /软件工程/javabase/</span><br></pre></table></figure><h4 id=旧链接兼容><a class=markdownIt-Anchor href=#旧链接兼容></a> 旧链接兼容</h4><p>开启 abbrlink 后，之前以旧格式发布的所有页面链接都会变化。被搜索引擎收录或外部引用的旧链接会 404。建议：<ul><li>更新 sitemap 让搜索引擎重新抓取<li>如果使用 GitHub Pages 或 Nginx，可配置 301 重定向将旧路径永久指向新路径</ul><hr><h2 id=post_asset_folder-图片路径修复><a class=markdownIt-Anchor href=#post_asset_folder-图片路径修复></a> post_asset_folder 图片路径修复</h2><h3 id=问题背景><a class=markdownIt-Anchor href=#问题背景></a> 问题背景</h3><p>我的博客文章组织和大多数人不太一样——习惯用 Obsidian 写文章，并且让图片和 markdown 文件保持在同一级目录。<p>目录结构类似：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br></pre><td class=code><pre><span class=line>source/_posts/</span><br><span class=line>├── 人工智能/</span><br><span class=line>│   ├── Regression/</span><br><span class=line>│   │   ├── Regression.md      ← 文章</span><br><span class=line>│   │   ├── output_6_1.png     ← 图片（与 md 同级）</span><br><span class=line>│   │   └── output_15_0.png</span><br><span class=line>│   └── ...</span><br></pre></table></figure><p>在 Hexo 开启 <code>post_asset_folder: true</code> 的情况下，图片却一直无法正常显示——<code>&lt;img></code> 的 <code>src</code> 指向了根目录 <code>/output_6_1.png</code>，自然是 404。<h3 id=原因分析><a class=markdownIt-Anchor href=#原因分析></a> 原因分析</h3><p>当 <code>_config.yml</code> 启用以下配置时：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br></pre><td class=code><pre><span class=line><span class=attr>post_asset_folder:</span> <span class=literal>true</span></span><br><span class=line><span class=attr>marked:</span></span><br><span class=line>  <span class=attr>prependRoot:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>postAsset:</span> <span class=literal>true</span></span><br></pre></table></figure><p>Hexo 会为每篇文章创建一个<strong>同名子文件夹</strong>作为资源目录。例如文章 <code>my-post.md</code> 的预期资源目录是 <code>my-post/</code>。<p>但我的文章本身就在文件夹中，且文件夹名和文章名相同（<code>Regression/Regression.md</code>）。Hexo 计算的 <code>asset_dir</code> 变成了：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>source/_posts/人工智能/Regression/Regression/</span><br></pre></table></figure><p>注意出现了<strong>两层</strong> <code>Regression/</code>——第一层是文章所在的目录，第二层是 Hexo 自动追加的同名子文件夹。而我的图片放在<strong>第一层</strong>（与 <code>Regression.md</code> 同级），不在这个二层子文件夹里。<p>所以在构建流程中：<ol><li><strong>Processing 阶段</strong>：<code>scanAssetDir</code> 扫描 <code>.../Regression/Regression/</code> → 目录不存在 → 没注册任何 <code>PostAsset</code><li><strong><code>hexo-renderer-marked</code> 渲染</strong>：<code>postAsset: true</code> 查找 <code>PostAsset.findById("...output_6_1.png")</code> → 没找到 → 回退到 <code>url_for("output_6_1.png")</code> → 输出 <code>&lt;img src="/posts/688035c/output_6_1.png" ></code> → 404</ol><h3 id=解决方案><a class=markdownIt-Anchor href=#解决方案></a> 解决方案</h3><p>核心思路是在渲染之前纠正图片 URL，在生成阶段把图片复制到正确位置。用了一个 Hexo 脚本（<code>scripts/fix_asset_dir.js</code>）实现两个过滤器：<p><strong>Phase 1：注册 PostAsset（<code>before_generate</code>，优先级 1）</strong><p>在 <code>render_post</code> 之前运行，扫描符合"同名目录"模式的文章目录，为同目录下的图片手动注册 <code>PostAsset</code>，让资源生成器把图片复制到 <code>public</code> 目录中。<p><strong>Phase 2：修复 HTML 中的 <code>&lt;img></code> 路径（<code>after_post_render</code>）</strong><p>文章渲染完成后，将 <code>&lt;img src="/posts/688035c/output_6_1.png" ></code> 替换为正确的绝对路径。<h3 id=最终效果><a class=markdownIt-Anchor href=#最终效果></a> 最终效果</h3><table><thead><tr><th>项目<th>修复前<th>修复后<tbody><tr><td><code>&lt;img src></code><td><code>/output_6_1.png</code> ❌<td><code>/posts/28955/output_6_1.png</code> ✅<tr><td>图片文件在 <code>public/</code><td>不存在 ❌<td>存在 ✅</table><p>多篇受影响的文章（Regression、Classification、Regularization、STM32 等）均自动修复，无需修改 markdown 源文件。<h3 id=为什么不改源文件><a class=markdownIt-Anchor href=#为什么不改源文件></a> 为什么不改源文件？</h3><p>Obsidian 和 Hexo 共享同一套源文件。Obsidian 中图片就是和 md 同级的相对路径，改了 Hexo 的构建逻辑去适配它，比反过来改 Obsidian 配置更可持续。<hr><h2 id=自建服务器部署><a class=markdownIt-Anchor href=#自建服务器部署></a> 自建服务器部署</h2><p>博客一直部署在 GitHub Pages 上，国内偶有不稳定。手头有一台云服务器（CentOS + 宝塔面板），就把博客也同步部署上去，实现双线访问。<h3 id=需求><a class=markdownIt-Anchor href=#需求></a> 需求</h3><ul><li>保留 GitHub Pages 部署不变<li>增加自建服务器同步<li><code>hexo d</code> 一条命令搞定两边<li>不需要手动上传文件</ul><h3 id=方案对比><a class=markdownIt-Anchor href=#方案对比></a> 方案对比</h3><table><thead><tr><th>方案<th>原理<th style=text-align:center>Windows 兼容性<tbody><tr><td><code>hexo-deployer-rsync</code><td>本地 rsync → 远程 rsync over SSH<td style=text-align:center>❌ Windows 无 rsync<tr><td><code>hexo-deployer-sftp</code><td>Node.js ssh2 库直连 SFTP<td style=text-align:center>⚠️ 密钥格式问题<tr><td>自定义 tar+ssh<td>tar 打包 → SSH pipe → 远端解压<td style=text-align:center>✅</table><p>前两个方案在 Windows 上都遇到了问题，最终选择了第三种。<h3 id=ssh-密钥配置><a class=markdownIt-Anchor href=#ssh-密钥配置></a> SSH 密钥配置</h3><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line>ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_blog_server -N <span class=string>""</span> -C <span class=string>"blog-server"</span></span><br><span class=line>ssh-copy-id -i ~/.ssh/id_rsa_blog_server root@47.115.49.75</span><br></pre></table></figure><p>配置 <code>~/.ssh/config</code>：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br></pre><td class=code><pre><span class=line>Host 47.115.49.75</span><br><span class=line>    Hostname 47.115.49.75</span><br><span class=line>    IdentityFile ~/.ssh/id_rsa_blog_server</span><br><span class=line>    User root</span><br></pre></table></figure><h3 id=nginx-配置><a class=markdownIt-Anchor href=#nginx-配置></a> Nginx 配置</h3><figure class="highlight nginx"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br></pre><td class=code><pre><span class=line><span class=section>server</span> {</span><br><span class=line>    <span class=attribute>listen</span> <span class=number>80</span>;</span><br><span class=line>    <span class=attribute>server_name</span> _;</span><br><span class=line>    <span class=attribute>root</span> /www/wwwroot/default;</span><br><span class=line>    <span class=attribute>index</span> index.html;</span><br><span class=line>    ...</span><br><span class=line>}</span><br></pre></table></figure><h3 id=核心tar-ssh-管道><a class=markdownIt-Anchor href=#核心tar-ssh-管道></a> 核心：tar + SSH 管道</h3><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line><span class=built_in>cd</span> public && tar cf - . | ssh root@47.115.49.75 <span class=string>"tar xf - -C /www/wwwroot/default"</span></span><br></pre></table></figure><p>原理：<code>tar cf - .</code> 把当前目录打包输出到 stdout，通过 SSH 管道发送到远端解压。<p><strong>优点</strong>：不需要 rsync、tar 和 ssh 在 Git Bash 中都是原生可用、一条管道效率高。<h3 id=踩坑hexo-7-的事件-vs-过滤器><a class=markdownIt-Anchor href=#踩坑hexo-7-的事件-vs-过滤器></a> 踩坑：Hexo 7 的事件 vs 过滤器</h3><p>第一次尝试用 <code>hexo.extend.filter.register('after_deploy', ...)</code> 来挂载服务器部署，但脚本加载了却从不执行。查了 Hexo 7 源码才发现问题——部署完成时触发的是<strong>事件</strong>而不是<strong>过滤器</strong>：<figure class="highlight js"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br></pre><td class=code><pre><span class=line><span class=comment>// node_modules/hexo/dist/plugins/console/deploy.js</span></span><br><span class=line><span class="variable language_">this</span>.<span class="title function_">emit</span>(<span class=string>'deployAfter'</span>);  <span class=comment>// ← 触发的是事件</span></span><br></pre></table></figure><p>所以应该用：<figure class="highlight js"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br></pre><td class=code><pre><span class=line><span class=comment>// ❌ 没用——Hexo 没有 'after_deploy' 过滤器</span></span><br><span class=line>hexo.<span class=property>extend</span>.<span class=property>filter</span>.<span class="title function_">register</span>(<span class=string>'after_deploy'</span>, <span class=keyword>function</span>(<span class=params></span>) { ... });</span><br><span class=line></span><br><span class=line><span class=comment>// ✅ 正确——监听 deployAfter 事件</span></span><br><span class=line>hexo.<span class="title function_">on</span>(<span class=string>'deployAfter'</span>, <span class=keyword>function</span>(<span class=params></span>) { ... });</span><br></pre></table></figure><h3 id=最终脚本><a class=markdownIt-Anchor href=#最终脚本></a> 最终脚本</h3><p>完整脚本见 <code>scripts/deploy-to-server.js</code>，Hexo 会自动加载 <code>scripts/</code> 目录下的 <code>.js</code> 文件，无需额外配置。部署时执行顺序：<ol><li><code>hexo-deployer-git</code> 推送到 GitHub Pages<li>Hexo 触发 <code>deployAfter</code> 事件<li>脚本执行 tar+ssh 同步到私有服务器</ol><h3 id=密钥格式教训><a class=markdownIt-Anchor href=#密钥格式教训></a> 密钥格式教训</h3><p>Windows 上用 <code>ssh-keygen</code> 默认生成 OpenSSH 格式，但很多 Node.js 的 SSH 库（ssh2、node-ssh 等）只支持 PEM 格式。如果需要转换：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>ssh-keygen -p -m PEM -f ~/.ssh/id_rsa_xxx -P <span class=string>""</span> -N <span class=string>""</span></span><br></pre></table></figure><p>注意转换后<strong>公钥不变</strong>，不需要重新添加到服务器。<h3 id=最终效果-2><a class=markdownIt-Anchor href=#最终效果-2></a> 最终效果</h3><table><thead><tr><th>项目<th>说明<tbody><tr><td>GitHub Pages<td><code>https://mxhanks.github.io</code> ✅<tr><td>自建服务器<td><code>http://47.115.49.75</code> ✅<tr><td>部署命令<td><code>hexo g && hexo d</code> 两边同步</table><hr><h2 id=leancloud-替代自建阅读量计数-api><a class=markdownIt-Anchor href=#leancloud-替代自建阅读量计数-api></a> LeanCloud 替代：自建阅读量计数 API</h2><h3 id=背景><a class=markdownIt-Anchor href=#背景></a> 背景</h3><p>博客一直用 LeanCloud 做文章阅读量统计，NexT 主题内置了 <code>leancloud_visitors</code> 支持，配合前端的 <code>lean-analytics.swig</code> 模板工作得很好。<p>但 LeanCloud 宣布将在 <strong>2027 年 1 月</strong> 停止服务，需要找一个替代方案。刚好手头有自建服务器，决定写一个兼容 LeanCloud API 的计数服务。<h3 id=方案选型><a class=markdownIt-Anchor href=#方案选型></a> 方案选型</h3><p>NexT 主题其实内置了三个统计方案：<table><thead><tr><th>方案<th style=text-align:center>维护成本<th style=text-align:center>可控性<th>备注<tbody><tr><td>LeanCloud<td style=text-align:center>零<td style=text-align:center>❌<td>即将关停<tr><td>不蒜子 (Busuanzi)<td style=text-align:center>零<td style=text-align:center>❌<td>第三方服务，历史数据无法迁移<tr><td>Firebase Firestore<td style=text-align:center>低<td style=text-align:center>⚠️<td>Google 服务，国内访问慢<tr><td><strong>自建 API</strong>（最终选择）<td style=text-align:center><strong>低</strong><td style=text-align:center><strong>✅</strong><td><strong>已有服务器，数据完全可控</strong></table><h3 id=自建服务架构><a class=markdownIt-Anchor href=#自建服务架构></a> 自建服务架构</h3><figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>浏览器 (fetch) → Nginx (/counter-api/) → Node.js (Express) → SQLite (counter.db)</span><br></pre></table></figure><p>NexT 主题的前端 JS（<code>lean-analytics.swig</code>）会调用三个接口：<table><thead><tr><th>操作<th>HTTP 请求<tbody><tr><td>查询某篇文章的计数<td><code>GET /1.1/classes/Counter?where={"url":"..."}</code><tr><td>首次访问创建记录<td><code>POST /1.1/classes/Counter</code><tr><td>递增计数<td><code>PUT /1.1/classes/Counter/:id {"time":{"__op":"Increment","amount":1}}</code></table><p>用 Express + better-sqlite3 写了个约 100 行的服务，完整模拟了这三个接口。前端代码不需要改一行——只要在主题配置中把 <code>server_url</code> 指向自建服务即可。<h3 id=数据迁移><a class=markdownIt-Anchor href=#数据迁移></a> 数据迁移</h3><p>LeanCloud 导出的 JSON 中有 44 条计数记录，但因为改过文章链接（从日期路径 <code>/2024/02/12/title/</code> 和拼音分类路径 <code>/人工智能/classification/</code> 迁移到 <code>/posts/:abbrlink/</code>），大部分旧 URL 已经失效。<p>写了一个迁移脚本做三件事：<ol><li><strong>删除 time ≤ 1 的记录</strong>（只有自己点过一次的无效数据）<li><strong>通过 URL 中的拼音关键词匹配现有文章</strong>（如 <code>regularzation</code> → <code>/posts/9044/</code>）<li><strong>合并同篇文章的多个旧 URL 计数</strong>（同一篇文章可能有过日期路径和拼音路径两条记录）</ol><p>匹配结果示例：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br></pre><td class=code><pre><span class=line>302  /posts/57901/  ← Windows mklink 使用</span><br><span class=line> 49  /posts/2931/   ← Luogu P5707 题解</span><br><span class=line> 28  /posts/48643/  ← CSP-J 游记</span><br><span class=line> 41  /posts/30549/  ← Python 文件夹映射</span><br><span class=line>   ...</span><br><span class=line></span><br><span class=line>16 篇文章，共 609 次访问记录全部保留。</span><br></pre></table></figure><h3 id=部署><a class=markdownIt-Anchor href=#部署></a> 部署</h3><p>服务部署在 <code>CentOS Stream 10</code> 上，用 <code>systemd</code> 管理进程：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br></pre><td class=code><pre><span class=line><span class=comment># 安装 Node.js</span></span><br><span class=line>dnf install -y nodejs</span><br><span class=line></span><br><span class=line><span class=comment># 上传服务代码</span></span><br><span class=line>scp -r server/ root@server:/opt/blog-counter</span><br><span class=line><span class=built_in>cd</span> /opt/blog-counter && npm install --production</span><br><span class=line></span><br><span class=line><span class=comment># systemd 服务：开机自启 + 崩溃重启</span></span><br><span class=line>systemctl <span class=built_in>enable</span> blog-counter</span><br><span class=line>systemctl start blog-counter</span><br></pre></table></figure><p>Nginx 反代配置：<figure class="highlight nginx"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br></pre><td class=code><pre><span class=line><span class=section>location</span> /counter-api/ {</span><br><span class=line>    <span class=attribute>proxy_pass</span> http://127.0.0.1:3000/;</span><br><span class=line>    <span class=attribute>proxy_set_header</span> Host <span class=variable>$host</span>;</span><br><span class=line>    <span class=attribute>proxy_set_header</span> X-Real-IP <span class=variable>$remote_addr</span>;</span><br><span class=line>}</span><br></pre></table></figure><p>主题配置只需改 <code>server_url</code>（<code>themes/next/_config.yml</code>）：<figure class="highlight yaml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br></pre><td class=code><pre><span class=line><span class=attr>leancloud_visitors:</span></span><br><span class=line>  <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>server_url:</span> <span class=string>"http://47.115.49.75/counter-api"</span></span><br><span class=line>  <span class=attr>app_id:</span> <span class=string>""</span></span><br><span class=line>  <span class=attr>app_key:</span> <span class=string>""</span></span><br><span class=line>  <span class=attr>security:</span> <span class=literal>false</span></span><br></pre></table></figure><h3 id=踩坑记录-2><a class=markdownIt-Anchor href=#踩坑记录-2></a> 踩坑记录</h3><p><strong>迁移脚本的 Bug</strong>：第一次跑迁移时，匹配到的旧记录虽然插入了新 URL，但旧记录本身没有删除。结果数据库里同时存在新旧两条记录，计数翻倍。排查后发现是 <code>toDelete</code> 数组漏加了匹配记录的 <code>rowid</code>，补上后重新跑就正常了。<p><strong>SSH 连接偶发退出码 255</strong>：连续执行多条 SSH 命令时，偶尔会出现 <code>Exit code 255</code>。原因可能是服务器资源紧张或 SSH 会话被复用。解决方法：加 <code>sleep</code> 间隔或将多个命令合并到一次 SSH 连接中执行。<p><strong>NexT 主题的 hostname 校验导致计数不显示</strong>：部署完成后发现页面阅读数始终显示为 0，API 返回数据却是正常的。排查发现 NexT 的 <code>lean-analytics.swig</code> 模板中有这么一行：<figure class="highlight javascript"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line><span class=keyword>if</span> (<span class="variable constant_">CONFIG</span>.<span class=property>hostname</span> !== location.<span class=property>hostname</span>) <span class=keyword>return</span>;</span><br></pre></table></figure><p>网站 <code>_config.yml</code> 中配置的 <code>url: http://mxhanks.github.io/</code> 决定了 <code>CONFIG.hostname</code> 的值。但自建服务器部署在 <code>47.115.49.75</code> 上，<code>location.hostname</code> 是 IP 地址，两者不相等，计数脚本直接 <code>return</code> 了。<p>修复方法很简单——当使用自定义 <code>server_url</code>（自建 API）时，跳过这个 hostname 校验：<figure class="highlight javascript"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line><span class=keyword>if</span> (!server_url && <span class="variable constant_">CONFIG</span>.<span class=property>hostname</span> !== location.<span class=property>hostname</span>) <span class=keyword>return</span>;</span><br></pre></table></figure><p>这样既保留了原版在 LeanCloud 下的保护行为（防止开发环境污染计数），又让自建 API 场景下能够正常工作。<h3 id=https-问题><a class=markdownIt-Anchor href=#https-问题></a> HTTPS 问题</h3><p>计数器 API 目前通过 HTTP 提供服务。博客在 GitHub Pages（HTTPS）上访问时，浏览器会因<strong>混合内容</strong>策略阻止 HTTP 请求，所以计数只在自建服务器版本上生效。<p>解决方案是申请一个域名配 Let’s Encrypt 证书，备案完成后将 <code>stats.你的域名.com</code> 解析到服务器，即可同时服务两个站点。<h3 id=完整代码><a class=markdownIt-Anchor href=#完整代码></a> 完整代码</h3><p>服务端代码不到 100 行，放在博客项目的 <code>server/</code> 目录下：<figure class="highlight plaintext"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br></pre><td class=code><pre><span class=line>server/</span><br><span class=line>├── package.json</span><br><span class=line>├── index.js        # 主服务（Express + SQLite）</span><br><span class=line>├── import.js       # LeanCloud 数据导入</span><br><span class=line>├── migrate.js      # 旧 URL 迁移匹配</span><br><span class=line>├── counter.db      # SQLite 数据库</span><br><span class=line>└── blog-counter.service  # systemd 单元文件</span><br></pre></table></figure><hr><h2 id=pagespeed-优化hexo-optimize><a class=markdownIt-Anchor href=#pagespeed-优化hexo-optimize></a> PageSpeed 优化：hexo-optimize</h2><h3 id=背景-2><a class=markdownIt-Anchor href=#背景-2></a> 背景</h3><p>博客一直缺少 CSS/JS/HTML 的自动化压缩优化，导致页面加载速度和 Google PageSpeed Insights 得分不太理想。Google 的 Lighthouse 审计跑下来，移动端性能分明显偏低，主要扣分项集中在<strong>未压缩的 CSS/JS 资源</strong>和<strong>阻塞渲染的 CSS</strong>上。<p>常见的优化手段无非几样：压缩资源、内联关键 CSS、异步加载非关键样式、给静态资源加版本号。这些操作完全可以自动化，没必要每次构建手动处理。<p><a href=https://github.com/next-theme/hexo-optimize rel=noopener target=_blank>hexo-optimize</a> 是 NexT 官方团队维护的 Hexo 插件，使用 Rust 编写（<code>minify-html</code> 是 Rust 编译的原生模块），专门解决这些问题。<h3 id=安装><a class=markdownIt-Anchor href=#安装></a> 安装</h3><figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br></pre><td class=code><pre><span class=line>npm install hexo-optimize --save</span><br></pre></table></figure><p>当前版本 <code>v3.5.0</code>。<h3 id=配置><a class=markdownIt-Anchor href=#配置></a> 配置</h3><p>在站点 <code>_config.yml</code> 中添加 <code>filter_optimize</code> 配置块：<figure class="highlight yml"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br><span class=line>9</span><br><span class=line>10</span><br><span class=line>11</span><br><span class=line>12</span><br><span class=line>13</span><br><span class=line>14</span><br><span class=line>15</span><br><span class=line>16</span><br><span class=line>17</span><br><span class=line>18</span><br><span class=line>19</span><br><span class=line>20</span><br><span class=line>21</span><br><span class=line>22</span><br><span class=line>23</span><br><span class=line>24</span><br><span class=line>25</span><br><span class=line>26</span><br><span class=line>27</span><br><span class=line>28</span><br></pre><td class=code><pre><span class=line><span class=comment># hexo-optimize</span></span><br><span class=line><span class=attr>filter_optimize:</span></span><br><span class=line>  <span class=attr>enable:</span> <span class=literal>true</span></span><br><span class=line>  <span class=comment># 静态资源版本号（添加内容哈希，解决缓存问题）</span></span><br><span class=line>  <span class=attr>versioning:</span> <span class=literal>true</span></span><br><span class=line>  <span class=attr>css:</span></span><br><span class=line>    <span class=comment># 压缩所有 CSS</span></span><br><span class=line>    <span class=attr>minify:</span> <span class=literal>true</span></span><br><span class=line>    <span class=attr>excludes:</span></span><br><span class=line>    <span class=comment># 对 Font Awesome 和 Google Fonts 使用 preload 动态加载</span></span><br><span class=line>    <span class=attr>delivery:</span></span><br><span class=line>      <span class=bullet>-</span> <span class=string>'@fortawesome/fontawesome-free'</span></span><br><span class=line>      <span class=bullet>-</span> <span class=string>'fonts.googleapis.com'</span></span><br><span class=line>    <span class=comment># 将关键 CSS 内联到 HTML 中</span></span><br><span class=line>    <span class=attr>inlines:</span></span><br><span class=line>      <span class=bullet>-</span> <span class=string>css/main.css</span></span><br><span class=line>  <span class=attr>js:</span></span><br><span class=line>    <span class=comment># 压缩所有 JS</span></span><br><span class=line>    <span class=attr>minify:</span> <span class=literal>true</span></span><br><span class=line>    <span class=attr>excludes:</span></span><br><span class=line>    <span class=comment># 移除 JS 中的注释</span></span><br><span class=line>    <span class=attr>remove_comments:</span> <span class=literal>false</span></span><br><span class=line>  <span class=attr>html:</span></span><br><span class=line>    <span class=comment># 压缩所有 HTML</span></span><br><span class=line>    <span class=attr>minify:</span> <span class=literal>true</span></span><br><span class=line>    <span class=attr>excludes:</span></span><br><span class=line>  <span class=comment># 插件执行优先级（值越小越先执行，Hexo 默认 10）</span></span><br><span class=line>  <span class=attr>priority:</span> <span class=number>12</span></span><br></pre></table></figure><h3 id=参数说明><a class=markdownIt-Anchor href=#参数说明></a> 参数说明</h3><table><thead><tr><th>参数<th>作用<th>建议<tbody><tr><td><code>versioning</code><td>给静态资源文件名追加内容哈希，浏览器缓存过期后自动加载新版本<td>推荐开启<tr><td><code>css.minify</code><td>压缩 CSS，删除多余空格和注释<td>开启<tr><td><code>css.delivery</code><td>指定哪些 CSS 用 <code>preload</code> 动态加载，不阻塞页面渲染<td>Font Awesome、Google Fonts 等第三方字体库<tr><td><code>css.inlines</code><td>指定哪些 CSS 直接内联到 HTML <code>&lt;head></code> 中<td><code>css/main.css</code>（主题核心样式）<tr><td><code>js.minify</code><td>压缩 JS 文件<td>开启<tr><td><code>html.minify</code><td>压缩 HTML，去掉多余空白<td>开启<tr><td><code>priority</code><td>插件执行顺序<td>12（在 Hexo 默认过滤器之后执行）</table><h3 id=开发时禁用><a class=markdownIt-Anchor href=#开发时禁用></a> 开发时禁用</h3><p>构建时压缩会拖慢速度，开发阶段可以通过环境变量临时禁用：<figure class="highlight bash"><table><tr><td class=gutter><pre><span class=line>1</span><br><span class=line>2</span><br><span class=line>3</span><br><span class=line>4</span><br><span class=line>5</span><br><span class=line>6</span><br><span class=line>7</span><br><span class=line>8</span><br></pre><td class=code><pre><span class=line><span class=comment># Linux / macOS</span></span><br><span class=line><span class=built_in>export</span> NODE_ENV=development</span><br><span class=line></span><br><span class=line><span class=comment># Windows (cmd)</span></span><br><span class=line><span class=built_in>set</span> NODE_ENV=development</span><br><span class=line></span><br><span class=line><span class=comment># Windows (PowerShell)</span></span><br><span class=line><span class=variable>$env</span>:NODE_ENV=<span class=string>"development"</span></span><br></pre></table></figure><p>设置后 <code>hexo generate</code> 会跳过优化流程，预览时不会卡在构建上。<h3 id=注意事项><a class=markdownIt-Anchor href=#注意事项></a> 注意事项</h3><ol><li><strong>内联 CSS 路径</strong>：<code>css.inlines</code> 配置的是生成后的绝对路径。NexT 主题的 CSS 在 <code>css/main.css</code>，如果用了其他主题或自定义 CSS，需要对应调整。<li><strong>CSS delivery 与 inlines 不冲突</strong>：<code>delivery</code> 是将指定 CSS 改为动态加载（不阻塞渲染），<code>inlines</code> 是将指定 CSS 嵌入 HTML（减少请求）。一般来说主题核心样式内联，第三方字体库动态加载，配合使用效果最好。<li><strong>priority 的意义</strong>：Hexo 的过滤器系统按优先级顺序执行，默认值是 10。设成 12 表示在大部分 Hexo 内置过滤器之后执行优化，确保内容是最终状态再压缩。如果和其他优化插件搭配，需要注意执行顺序。</ol><hr><h2 id=写在最后><a class=markdownIt-Anchor href=#写在最后></a> 写在最后</h2><p>从 2021 年初建到现在，博客的形态变了很多次。从一开始连 GitHub 都不会用，到后来自己写 Hexo 脚本、配服务器，每一步踩坑都成了经验。这些折腾的价值或许不只是技术本身——它让我习惯了记录、整理和分享，而这一点大概是写博客最大的收获。<p>如果你也在折腾 Hexo 博客，希望这篇文章能帮你少走一些弯路。</div><footer class=post-footer><div class=post-tags><a href=/tags/Hexo/ rel=tag># Hexo</a><a href=/tags/%E5%8D%9A%E5%AE%A2/ rel=tag># 博客</a><a href=/tags/NexT/ rel=tag># NexT</a></div><div class=post-nav><div class=post-nav-item></div><div class=post-nav-item><a title="CSP-J 游记" href=/posts/48643/ rel=next> CSP-J 游记 <i class="fa fa-chevron-right"></i> </a></div></div></footer></article></div><div class=comments id=valine-comments></div><script>window.addEventListener('tabs:register', () => {
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MxHanks' Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">奔赴山海，保持热爱</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://mxhanks.github.io/posts/688035c/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="mxhanks">
+      <meta itemprop="description" content="MxHanks 的博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MxHanks' Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 博客折腾全记录
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-10-23 23:12:30" itemprop="dateCreated datePublished" datetime="2021-10-23T23:12:30+08:00">2021-10-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-07-27 12:00:00" itemprop="dateModified" datetime="2026-07-27T12:00:00+08:00">2026-07-27</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/" itemprop="url" rel="index"><span itemprop="name">经验分享</span></a>
+                </span>
+            </span>
+
+          
+            <span id="/posts/688035c/" class="post-meta-item leancloud_visitors" data-flag-title="Hexo 博客折腾全记录" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/posts/688035c/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/posts/688035c/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+              <span>5.3k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+              <span>19 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>回顾这些年折腾 Hexo 博客的经历，从初建到复活再到各种功能配置，踩了不少坑也积累了一些经验。这篇文章把整个过程串联起来，既是记录也是分享。</p>
+<span id="more"></span>
+<h2 id="建站之初"><a class="markdownIt-Anchor" href="#建站之初"></a> 建站之初</h2>
+<p>从 2021 年 10 月中旬开始，陆陆续续搭建这个自己的网站。由于不会用 GitHub，也不了解 Hexo、Node.js 这一类东西，所以花的时间比大部分人长。</p>
+<p>建站路上遇到最坑的点就是下载的 NexT 主题有问题——需要修改主题目录下的 <code>_config.yml</code> 文件，否则会多一个 <code>%20</code>，删去 <code>||</code> 之间的空格即可。后来才发现原来我用的这个 NexT 已经停止维护了，于是换成了最新的 NexT。</p>
+<p>反反复复换了很多次主题，但都不尽如人意，所以最后还是用了 NexT。</p>
+<hr />
+<h2 id="第一次复活"><a class="markdownIt-Anchor" href="#第一次复活"></a> 第一次复活</h2>
+<p>2023 年 2 月，寒假结束前，我复活了博客。</p>
+<p>这个寒假过得有些混乱，但也有些收获。从家里急事回老家开始，在车上看完了《四月是你的谎言》——本来就弹钢琴的我被触动，买了一台雅马哈 PSR-e373 电子琴。发现电子琴可以作为 MIDI 输入器后，还想写一个 Minecraft mod 做实时 MIDI 转换，可惜老电脑带不动。</p>
+<p>后来兴趣又回到了编程上，学习了 Python 的 OpenCV 和 PyQt 写了学校科技创新比赛的作品，又学了一点 Lua 语法准备做饥荒 mod。</p>
+<p>一个寒假过去，学习没怎么搞，博客倒是又捡起来了。</p>
+<hr />
+<h2 id="第二次复活全面功能配置"><a class="markdownIt-Anchor" href="#第二次复活全面功能配置"></a> 第二次复活：全面功能配置</h2>
+<p>2024 年 2 月，再次清空电脑后，一切又重新开始。惊喜地发现上次复活博客也正好是 2 月 2 日——整整一年前的同一天。</p>
+<p>这次趁着重新搭建，把博客的各种功能系统地配置了一遍。</p>
+<h3 id="latex-支持"><a class="markdownIt-Anchor" href="#latex-支持"></a> LaTeX 支持</h3>
+<p>博客中经常需要数学公式（尤其是机器学习相关的笔记），LaTeX 支持是刚需。</p>
+<h4 id="方案一hexo-renderer-kramed适用于-matery-主题"><a class="markdownIt-Anchor" href="#方案一hexo-renderer-kramed适用于-matery-主题"></a> 方案一：hexo-renderer-kramed（适用于 matery 主题）</h4>
+<p>Hexo 默认的 <code>hexo-renderer-marked</code> 渲染引擎会将 LaTeX 中的下划线 <code>_</code> 解析为 HTML 的 <code>&lt;i&gt;</code> 标签。<code>hexo-renderer-kramed</code> 修复了这个问题：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<p>还需要修改 <code>node_modules/kramed/lib/rules/inline.js</code> 解决语义冲突：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 第 11 行 escape 变量</span></span><br><span class="line"><span class="attr">escape</span>: <span class="regexp">/^\\([`*\[\]()#$+\-.!_&gt;])/</span>,  <span class="comment">// 去掉对 &#123;&#125; 的转义</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 第 20 行 em 变量</span></span><br><span class="line"><span class="attr">em</span>: <span class="regexp">/^\*((?:\*\*|[\s\S])+?)\*(?!\*)/</span>,  <span class="comment">// 禁用 _ 作为斜体标记</span></span><br></pre></td></tr></table></figure>
+<h4 id="方案二hexo-renderer-markdown-it-plus推荐"><a class="markdownIt-Anchor" href="#方案二hexo-renderer-markdown-it-plus推荐"></a> 方案二：hexo-renderer-markdown-it-plus（推荐）</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-markdown-it-plus</span><br></pre></td></tr></table></figure>
+<p>然后在主题 <code>_config.yml</code> 中启用 KaTeX：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">math:</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line">  <span class="attr">katex:</span></span><br><span class="line">    <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">copy_tex:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h4 id="踩坑记录渲染器冲突"><a class="markdownIt-Anchor" href="#踩坑记录渲染器冲突"></a> 踩坑记录：渲染器冲突</h4>
+<p>配置完成后发现 LaTeX 还是不生效，排查发现是因为<strong>同时安装了三个 Markdown 渲染器</strong>，它们互相冲突：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">插件</th>
+<th style="text-align:center">支持 <code>$...$</code></th>
+<th style="text-align:center">最终状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>hexo-renderer-marked</code></td>
+<td style="text-align:center">❌</td>
+<td style="text-align:center">❌ 卸载</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>hexo-renderer-kramed</code></td>
+<td style="text-align:center">✅，但修改</td>
+<td style="text-align:center">❌ 卸载</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>hexo-renderer-markdown-it-plus</code></td>
+<td style="text-align:center">✅ 内置 KaTeX</td>
+<td style="text-align:center">✅ 保留</td>
+</tr>
+</tbody>
+</table>
+<p>Hexo 7 中，多个渲染器注册同一扩展名（<code>.md</code>）时，最后注册的胜出。按加载顺序，<code>hexo-renderer-marked</code> 总是覆盖前面的，而它<strong>根本不处理 <code>$...$</code> 数学公式</strong>。</p>
+<p>修复方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
+<p>同时在站点 <code>_config.yml</code> 中配置 <code>markdown_it_plus</code> 插件并显式启用 KaTeX：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">markdown_it_plus:</span></span><br><span class="line">  <span class="attr">highlight:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">html:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">plugins:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">plugin:</span></span><br><span class="line">        <span class="attr">name:</span> <span class="string">&#x27;@iktakahiro/markdown-it-katex&#x27;</span></span><br><span class="line">        <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">        <span class="attr">options:</span></span><br><span class="line">          <span class="attr">throwOnError:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>另外，NexT 主题默认 <code>math.per_page: true</code>，只有 front-matter 中声明了 <code>katex: true</code> 的文章才会加载 KaTeX 的 CSS/JS。所以每篇用到数学公式的文章都需要加上：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">---</span></span><br><span class="line"><span class="attr">katex:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br></pre></td></tr></table></figure>
+<p>做完这三步，<code>$E=mc^2$</code> 和 <code>$$\frac&#123;1&#125;&#123;x^2-1&#125;$$</code> 就能正常渲染了。</p>
+<p>需要注意的是，KaTeX 不支持 <code>\begin&#123;equation&#125;</code> 环境，如果文章中用到了需要改写成 <code>\begin&#123;aligned&#125;</code> 等 KaTeX 支持的写法，或者换用 MathJax 引擎。</p>
+<h3 id="ssh-deploy-key-配置"><a class="markdownIt-Anchor" href="#ssh-deploy-key-配置"></a> SSH Deploy Key 配置</h3>
+<p>GitHub 在国内连接不稳定，终端用 git 命令常失败，所以配置 SSH 密钥来提升部署稳定性。</p>
+<h4 id="生成-ssh-密钥对"><a class="markdownIt-Anchor" href="#生成-ssh-密钥对"></a> 生成 SSH 密钥对</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -N <span class="string">&#x27;&#x27;</span> -f /home/<span class="variable">$&#123;USER&#125;</span>/.ssh/id_rsa_github_blog -q</span><br></pre></td></tr></table></figure>
+<p><code>.pub</code> 结尾的是公钥。</p>
+<h4 id="添加-deploy-key"><a class="markdownIt-Anchor" href="#添加-deploy-key"></a> 添加 Deploy Key</h4>
+<p>进入 <a target="_blank" rel="noopener" href="https://github.com/mxHanks/mxhanks.github.io/settings/keys/new">GitHub 仓库设置页</a>，填写标题，粘贴公钥内容，勾选 “Allow write access”，点击 Add key。</p>
+<h4 id="配置-ssh-config"><a class="markdownIt-Anchor" href="#配置-ssh-config"></a> 配置 SSH Config</h4>
+<p><strong>Linux</strong>（<code>~/.ssh/config</code>）：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    Hostname ssh.github.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_github_blog</span><br></pre></td></tr></table></figure>
+<p><strong>Windows</strong>（<code>C:\Users\Administrator\.ssh\config</code>）：</p>
+<p>配置方法大体相同，如果遇到端口 22 被屏蔽：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">    Hostname ssh.github.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_github_blog</span><br><span class="line">    Port 443</span><br></pre></td></tr></table></figure>
+<p>出现以下提示时键入 <code>yes</code> 即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host &#x27;[ssh.github.com]:443&#x27; can&#x27;t be established.</span><br><span class="line">ED25519 key fingerprint is SHA256:...</span><br><span class="line">Are you sure you want to continue connecting (yes/no/[fingerprint])?</span><br></pre></td></tr></table></figure>
+<h3 id="leancloud-评论与阅读量"><a class="markdownIt-Anchor" href="#leancloud-评论与阅读量"></a> LeanCloud 评论与阅读量</h3>
+<h4 id="评论功能valine"><a class="markdownIt-Anchor" href="#评论功能valine"></a> 评论功能（Valine）</h4>
+<p>在 <a target="_blank" rel="noopener" href="https://leancloud.cn">LeanCloud</a> 仪表盘的应用凭证中找到 AppID 和 AppKey，配置 NexT 主题的 <code>_config.yml</code>：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Valine</span></span><br><span class="line"><span class="attr">valine:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">appid:</span> [<span class="string">appid</span>]</span><br><span class="line">  <span class="attr">appkey:</span> [<span class="string">appkey</span>]</span><br><span class="line">  <span class="attr">notify:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">verify:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">placeholder:</span> <span class="string">Just</span> <span class="string">go</span> <span class="string">go</span></span><br><span class="line">  <span class="attr">avatar:</span> <span class="string">mm</span></span><br><span class="line">  <span class="attr">guest_info:</span> <span class="string">nick,mail,link</span></span><br><span class="line">  <span class="attr">pageSize:</span> <span class="number">10</span></span><br><span class="line">  <span class="attr">language:</span></span><br><span class="line">  <span class="attr">visitor:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">comment_count:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">recordIP:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<h4 id="阅读量功能"><a class="markdownIt-Anchor" href="#阅读量功能"></a> 阅读量功能</h4>
+<p>在 LeanCloud 中新建应用，数据存储 → 结构化数据 → 新建 Class，命名为 <code>Counter</code>，选择无限制。然后在主题 <code>_config.yml</code> 中配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">leancloud_visitors:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">app_id:</span> <span class="string">&lt;your</span> <span class="string">app</span> <span class="string">id&gt;</span></span><br><span class="line">  <span class="attr">app_key:</span> <span class="string">&lt;your</span> <span class="string">app</span> <span class="string">key&gt;</span></span><br><span class="line">  <span class="attr">server_url:</span></span><br><span class="line">  <span class="attr">security:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="gitee-github-镜像同步"><a class="markdownIt-Anchor" href="#gitee-github-镜像同步"></a> Gitee / GitHub 镜像同步</h3>
+<p>虽然 Gitee 的实名认证没通过，但可以设置为从 GitHub 自动同步。</p>
+<p>在 Gitee 仓库 → 管理 → 仓库镜像管理 → 添加镜像，设为 Pull 方向，选择镜像仓库和 GitHub 私人令牌。</p>
+<p><strong>申请 GitHub Token</strong>：用户头像 → Settings → Developer setting → Personal access tokens → Generate new token，勾选 <code>repo</code> 和 <code>admin:repo_hook</code> 字段。</p>
+<p>详细教程参考 <a target="_blank" rel="noopener" href="https://help.gitee.com/repository/settings/sync-between-gitee-github">Gitee 官方文档</a>。</p>
+<h3 id="seo-优化"><a class="markdownIt-Anchor" href="#seo-优化"></a> SEO 优化</h3>
+<h4 id="生成-sitemap"><a class="markdownIt-Anchor" href="#生成-sitemap"></a> 生成 Sitemap</h4>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-generator-sitemap --save</span><br><span class="line">npm install hexo-generator-baidu-sitemap --save</span><br></pre></td></tr></table></figure>
+<p>在 <code>_config.yml</code> 中配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">sitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">sitemap.xml</span></span><br><span class="line"><span class="attr">baidusitemap:</span></span><br><span class="line">  <span class="attr">path:</span> <span class="string">baidusitemap.xml</span></span><br></pre></td></tr></table></figure>
+<h4 id="推送到必应"><a class="markdownIt-Anchor" href="#推送到必应"></a> 推送到必应</h4>
+<p>进入 <a target="_blank" rel="noopener" href="https://www.bing.com/webmasters/about">Bing Webmasters</a> 进行配置。</p>
+<h3 id="文件目录管理"><a class="markdownIt-Anchor" href="#文件目录管理"></a> 文件目录管理</h3>
+<p>随着文章增多以及 Obsidian 记录习惯的养成，决定在 <code>_posts</code> 目录下按类别建立文件夹，每篇文章单独建文件夹，图片和文章放在同一级。</p>
+<p>移动后发现 <code>&#123;% post_link %&#125;</code> 标签会报错，改用替代方案后解决。之前配置的拼音地址在分类目录上起了作用——提前铺路总是好事。</p>
+<h3 id="适配-obsidian-双链引用"><a class="markdownIt-Anchor" href="#适配-obsidian-双链引用"></a> 适配 Obsidian 双链引用</h3>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/Cyrusky/hexo-backlink">hexo-backlink</a> 插件将 Obsidian 的 <code>[[WikiLink]]</code> 转换为 Hexo 站内文章链接：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-backlink</span><br></pre></td></tr></table></figure>
+<p>在 <code>_config.yml</code> 中配置：<code>backlink: true</code></p>
+<p>Obsidian 中的设置：设置 → 文件和链接 → 新链接格式选择&quot;文件的相对路径&quot;，并开启&quot;使用 [[维基链接]]&quot;。</p>
+<h3 id="字数统计"><a class="markdownIt-Anchor" href="#字数统计"></a> 字数统计</h3>
+<p>使用 <a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-word-counter">hexo-word-counter</a> 统计文章字数及阅读时间：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-word-counter</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<p>在站点 <code>_config.yml</code> 中添加：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">symbols_count_time:</span></span><br><span class="line">  <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">exclude_codeblock:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">  <span class="attr">wpm:</span> <span class="number">275</span></span><br><span class="line">  <span class="attr">suffix:</span> <span class="string">&quot;mins.&quot;</span></span><br></pre></td></tr></table></figure>
+<p>在 NexT 主题 <code>_config.yml</code> 中设置 <code>item_text_total: true</code>。</p>
+<p>参数说明：中文为主的博客推荐设置 <code>awl: 2</code>、<code>wpm: 300</code>。</p>
+<hr />
+<h2 id="文章短链接abbrlink"><a class="markdownIt-Anchor" href="#文章短链接abbrlink"></a> 文章短链接（abbrlink）</h2>
+<p>Hexo 默认生成的文章地址是类似 <code>YEAR/MONTH/DAY/TITLE</code> 的长路径，既不利于 SEO 也不利于链接持久化。</p>
+<h3 id="方案一hexo-permalink-pinyin拼音转写"><a class="markdownIt-Anchor" href="#方案一hexo-permalink-pinyin拼音转写"></a> 方案一：hexo-permalink-pinyin（拼音转写）</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-permalink-pinyin --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">permalink_pinyin:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">separator:</span> <span class="string">&quot;-&quot;</span></span><br></pre></td></tr></table></figure>
+<p>但这个方法仍然依赖文章标题，改了标题链接也会变。</p>
+<h3 id="方案二hexo-abbrlink短链接推荐"><a class="markdownIt-Anchor" href="#方案二hexo-abbrlink短链接推荐"></a> 方案二：hexo-abbrlink（短链接，推荐）</h3>
+<p><a target="_blank" rel="noopener" href="https://github.com/Rozbo/hexo-abbrlink">hexo-abbrlink</a> 基于文章标题生成固定短链接（CRC16 或 CRC32），<strong>文章内容不变链接就不变</strong>，不依赖分类和标题。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-abbrlink --save</span><br></pre></td></tr></table></figure>
+<p>在 <code>_config.yml</code> 中配置：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># abbrlink config</span></span><br><span class="line"><span class="attr">abbrlink:</span></span><br><span class="line">  <span class="attr">alg:</span> <span class="string">crc32</span>      <span class="comment"># crc16(default) or crc32</span></span><br><span class="line">  <span class="attr">rep:</span> <span class="string">hex</span>        <span class="comment"># dec(default) or hex</span></span><br><span class="line">  <span class="attr">force:</span> <span class="literal">false</span>    <span class="comment"># false(default), 设为 true 会重新生成所有 abbrlink</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 关键：需要在 permalink 中使用 :abbrlink</span></span><br><span class="line"><span class="attr">permalink:</span> <span class="string">posts/:abbrlink/</span></span><br></pre></td></tr></table></figure>
+<h4 id="踩坑记录"><a class="markdownIt-Anchor" href="#踩坑记录"></a> 踩坑记录</h4>
+<p>之前安装了这个插件但一直没生效，排查后发现原因很简单：<strong><code>permalink</code> 没有使用 <code>:abbrlink</code></strong>。</p>
+<p>插件在 <code>before_post_render</code> 阶段工作，它会读取（或生成）文章的 <code>abbrlink</code> 值并注入到数据中。但 Hexo 最终生成链接时，只用 <code>permalink</code> 模式中声明的变量。如果 <code>permalink</code> 里只有 <code>:category</code> 和 <code>:title</code>，那 <code>:abbrlink</code> 再好看也不会出现在 URL 里。</p>
+<p>所以配置 <code>hexo-abbrlink</code> 的关键就两步：</p>
+<ol>
+<li>安装插件 + 写好 <code>abbrlink</code> 配置段</li>
+<li><strong>修改 <code>permalink</code> 为 <code>posts/:abbrlink/</code></strong>（或其他含 <code>:abbrlink</code> 的模式）</li>
+</ol>
+<p>这样生成的链接就是稳定的短链接了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://mxhanks.github.io/posts/48721/    # 而不是 /技术踩坑/hexopostassetfix/</span><br><span class="line">https://mxhanks.github.io/posts/21936/    # 而不是 /软件工程/javabase/</span><br></pre></td></tr></table></figure>
+<h4 id="旧链接兼容"><a class="markdownIt-Anchor" href="#旧链接兼容"></a> 旧链接兼容</h4>
+<p>开启 abbrlink 后，之前以旧格式发布的所有页面链接都会变化。被搜索引擎收录或外部引用的旧链接会 404。建议：</p>
+<ul>
+<li>更新 sitemap 让搜索引擎重新抓取</li>
+<li>如果使用 GitHub Pages 或 Nginx，可配置 301 重定向将旧路径永久指向新路径</li>
+</ul>
+<hr />
+<h2 id="post_asset_folder-图片路径修复"><a class="markdownIt-Anchor" href="#post_asset_folder-图片路径修复"></a> post_asset_folder 图片路径修复</h2>
+<h3 id="问题背景"><a class="markdownIt-Anchor" href="#问题背景"></a> 问题背景</h3>
+<p>我的博客文章组织和大多数人不太一样——习惯用 Obsidian 写文章，并且让图片和 markdown 文件保持在同一级目录。</p>
+<p>目录结构类似：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">source/_posts/</span><br><span class="line">├── 人工智能/</span><br><span class="line">│   ├── Regression/</span><br><span class="line">│   │   ├── Regression.md      ← 文章</span><br><span class="line">│   │   ├── output_6_1.png     ← 图片（与 md 同级）</span><br><span class="line">│   │   └── output_15_0.png</span><br><span class="line">│   └── ...</span><br></pre></td></tr></table></figure>
+<p>在 Hexo 开启 <code>post_asset_folder: true</code> 的情况下，图片却一直无法正常显示——<code>&lt;img&gt;</code> 的 <code>src</code> 指向了根目录 <code>/output_6_1.png</code>，自然是 404。</p>
+<h3 id="原因分析"><a class="markdownIt-Anchor" href="#原因分析"></a> 原因分析</h3>
+<p>当 <code>_config.yml</code> 启用以下配置时：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">marked:</span></span><br><span class="line">  <span class="attr">prependRoot:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">postAsset:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>Hexo 会为每篇文章创建一个<strong>同名子文件夹</strong>作为资源目录。例如文章 <code>my-post.md</code> 的预期资源目录是 <code>my-post/</code>。</p>
+<p>但我的文章本身就在文件夹中，且文件夹名和文章名相同（<code>Regression/Regression.md</code>）。Hexo 计算的 <code>asset_dir</code> 变成了：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source/_posts/人工智能/Regression/Regression/</span><br></pre></td></tr></table></figure>
+<p>注意出现了<strong>两层</strong> <code>Regression/</code>——第一层是文章所在的目录，第二层是 Hexo 自动追加的同名子文件夹。而我的图片放在<strong>第一层</strong>（与 <code>Regression.md</code> 同级），不在这个二层子文件夹里。</p>
+<p>所以在构建流程中：</p>
+<ol>
+<li><strong>Processing 阶段</strong>：<code>scanAssetDir</code> 扫描 <code>.../Regression/Regression/</code> → 目录不存在 → 没注册任何 <code>PostAsset</code></li>
+<li><strong><code>hexo-renderer-marked</code> 渲染</strong>：<code>postAsset: true</code> 查找 <code>PostAsset.findById(&quot;...output_6_1.png&quot;)</code> → 没找到 → 回退到 <code>url_for(&quot;output_6_1.png&quot;)</code> → 输出 <code>&lt;img src=&quot;/posts/688035c/output_6_1.png&quot; &gt;</code> → 404</li>
+</ol>
+<h3 id="解决方案"><a class="markdownIt-Anchor" href="#解决方案"></a> 解决方案</h3>
+<p>核心思路是在渲染之前纠正图片 URL，在生成阶段把图片复制到正确位置。用了一个 Hexo 脚本（<code>scripts/fix_asset_dir.js</code>）实现两个过滤器：</p>
+<p><strong>Phase 1：注册 PostAsset（<code>before_generate</code>，优先级 1）</strong></p>
+<p>在 <code>render_post</code> 之前运行，扫描符合&quot;同名目录&quot;模式的文章目录，为同目录下的图片手动注册 <code>PostAsset</code>，让资源生成器把图片复制到 <code>public</code> 目录中。</p>
+<p><strong>Phase 2：修复 HTML 中的 <code>&lt;img&gt;</code> 路径（<code>after_post_render</code>）</strong></p>
+<p>文章渲染完成后，将 <code>&lt;img src=&quot;/posts/688035c/output_6_1.png&quot; &gt;</code> 替换为正确的绝对路径。</p>
+<h3 id="最终效果"><a class="markdownIt-Anchor" href="#最终效果"></a> 最终效果</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>修复前</th>
+<th>修复后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;img src&gt;</code></td>
+<td><code>/output_6_1.png</code> ❌</td>
+<td><code>/posts/28955/output_6_1.png</code> ✅</td>
+</tr>
+<tr>
+<td>图片文件在 <code>public/</code></td>
+<td>不存在 ❌</td>
+<td>存在 ✅</td>
+</tr>
+</tbody>
+</table>
+<p>多篇受影响的文章（Regression、Classification、Regularization、STM32 等）均自动修复，无需修改 markdown 源文件。</p>
+<h3 id="为什么不改源文件"><a class="markdownIt-Anchor" href="#为什么不改源文件"></a> 为什么不改源文件？</h3>
+<p>Obsidian 和 Hexo 共享同一套源文件。Obsidian 中图片就是和 md 同级的相对路径，改了 Hexo 的构建逻辑去适配它，比反过来改 Obsidian 配置更可持续。</p>
+<hr />
+<h2 id="自建服务器部署"><a class="markdownIt-Anchor" href="#自建服务器部署"></a> 自建服务器部署</h2>
+<p>博客一直部署在 GitHub Pages 上，国内偶有不稳定。手头有一台云服务器（CentOS + 宝塔面板），就把博客也同步部署上去，实现双线访问。</p>
+<h3 id="需求"><a class="markdownIt-Anchor" href="#需求"></a> 需求</h3>
+<ul>
+<li>保留 GitHub Pages 部署不变</li>
+<li>增加自建服务器同步</li>
+<li><code>hexo d</code> 一条命令搞定两边</li>
+<li>不需要手动上传文件</li>
+</ul>
+<h3 id="方案对比"><a class="markdownIt-Anchor" href="#方案对比"></a> 方案对比</h3>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>原理</th>
+<th style="text-align:center">Windows 兼容性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>hexo-deployer-rsync</code></td>
+<td>本地 rsync → 远程 rsync over SSH</td>
+<td style="text-align:center">❌ Windows 无 rsync</td>
+</tr>
+<tr>
+<td><code>hexo-deployer-sftp</code></td>
+<td>Node.js ssh2 库直连 SFTP</td>
+<td style="text-align:center">⚠️ 密钥格式问题</td>
+</tr>
+<tr>
+<td>自定义 tar+ssh</td>
+<td>tar 打包 → SSH pipe → 远端解压</td>
+<td style="text-align:center">✅</td>
+</tr>
+</tbody>
+</table>
+<p>前两个方案在 Windows 上都遇到了问题，最终选择了第三种。</p>
+<h3 id="ssh-密钥配置"><a class="markdownIt-Anchor" href="#ssh-密钥配置"></a> SSH 密钥配置</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_blog_server -N <span class="string">&quot;&quot;</span> -C <span class="string">&quot;blog-server&quot;</span></span><br><span class="line">ssh-copy-id -i ~/.ssh/id_rsa_blog_server root@47.115.49.75</span><br></pre></td></tr></table></figure>
+<p>配置 <code>~/.ssh/config</code>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host 47.115.49.75</span><br><span class="line">    Hostname 47.115.49.75</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_blog_server</span><br><span class="line">    User root</span><br></pre></td></tr></table></figure>
+<h3 id="nginx-配置"><a class="markdownIt-Anchor" href="#nginx-配置"></a> Nginx 配置</h3>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">    <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">    <span class="attribute">server_name</span> _;</span><br><span class="line">    <span class="attribute">root</span> /www/wwwroot/default;</span><br><span class="line">    <span class="attribute">index</span> index.html;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="核心tar-ssh-管道"><a class="markdownIt-Anchor" href="#核心tar-ssh-管道"></a> 核心：tar + SSH 管道</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> public &amp;&amp; tar cf - . | ssh root@47.115.49.75 <span class="string">&quot;tar xf - -C /www/wwwroot/default&quot;</span></span><br></pre></td></tr></table></figure>
+<p>原理：<code>tar cf - .</code> 把当前目录打包输出到 stdout，通过 SSH 管道发送到远端解压。</p>
+<p><strong>优点</strong>：不需要 rsync、tar 和 ssh 在 Git Bash 中都是原生可用、一条管道效率高。</p>
+<h3 id="踩坑hexo-7-的事件-vs-过滤器"><a class="markdownIt-Anchor" href="#踩坑hexo-7-的事件-vs-过滤器"></a> 踩坑：Hexo 7 的事件 vs 过滤器</h3>
+<p>第一次尝试用 <code>hexo.extend.filter.register('after_deploy', ...)</code> 来挂载服务器部署，但脚本加载了却从不执行。查了 Hexo 7 源码才发现问题——部署完成时触发的是<strong>事件</strong>而不是<strong>过滤器</strong>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// node_modules/hexo/dist/plugins/console/deploy.js</span></span><br><span class="line"><span class="variable language_">this</span>.<span class="title function_">emit</span>(<span class="string">&#x27;deployAfter&#x27;</span>);  <span class="comment">// ← 触发的是事件</span></span><br></pre></td></tr></table></figure>
+<p>所以应该用：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 没用——Hexo 没有 &#x27;after_deploy&#x27; 过滤器</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_deploy&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123; ... &#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 正确——监听 deployAfter 事件</span></span><br><span class="line">hexo.<span class="title function_">on</span>(<span class="string">&#x27;deployAfter&#x27;</span>, <span class="keyword">function</span>(<span class="params"></span>) &#123; ... &#125;);</span><br></pre></td></tr></table></figure>
+<h3 id="最终脚本"><a class="markdownIt-Anchor" href="#最终脚本"></a> 最终脚本</h3>
+<p>完整脚本见 <code>scripts/deploy-to-server.js</code>，Hexo 会自动加载 <code>scripts/</code> 目录下的 <code>.js</code> 文件，无需额外配置。部署时执行顺序：</p>
+<ol>
+<li><code>hexo-deployer-git</code> 推送到 GitHub Pages</li>
+<li>Hexo 触发 <code>deployAfter</code> 事件</li>
+<li>脚本执行 tar+ssh 同步到私有服务器</li>
+</ol>
+<h3 id="密钥格式教训"><a class="markdownIt-Anchor" href="#密钥格式教训"></a> 密钥格式教训</h3>
+<p>Windows 上用 <code>ssh-keygen</code> 默认生成 OpenSSH 格式，但很多 Node.js 的 SSH 库（ssh2、node-ssh 等）只支持 PEM 格式。如果需要转换：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -p -m PEM -f ~/.ssh/id_rsa_xxx -P <span class="string">&quot;&quot;</span> -N <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+<p>注意转换后<strong>公钥不变</strong>，不需要重新添加到服务器。</p>
+<h3 id="最终效果-2"><a class="markdownIt-Anchor" href="#最终效果-2"></a> 最终效果</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GitHub Pages</td>
+<td><code>https://mxhanks.github.io</code> ✅</td>
+</tr>
+<tr>
+<td>自建服务器</td>
+<td><code>http://47.115.49.75</code> ✅</td>
+</tr>
+<tr>
+<td>部署命令</td>
+<td><code>hexo g &amp;&amp; hexo d</code> 两边同步</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="leancloud-替代自建阅读量计数-api"><a class="markdownIt-Anchor" href="#leancloud-替代自建阅读量计数-api"></a> LeanCloud 替代：自建阅读量计数 API</h2>
+<h3 id="背景"><a class="markdownIt-Anchor" href="#背景"></a> 背景</h3>
+<p>博客一直用 LeanCloud 做文章阅读量统计，NexT 主题内置了 <code>leancloud_visitors</code> 支持，配合前端的 <code>lean-analytics.swig</code> 模板工作得很好。</p>
+<p>但 LeanCloud 宣布将在 <strong>2027 年 1 月</strong> 停止服务，需要找一个替代方案。刚好手头有自建服务器，决定写一个兼容 LeanCloud API 的计数服务。</p>
+<h3 id="方案选型"><a class="markdownIt-Anchor" href="#方案选型"></a> 方案选型</h3>
+<p>NexT 主题其实内置了三个统计方案：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th style="text-align:center">维护成本</th>
+<th style="text-align:center">可控性</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LeanCloud</td>
+<td style="text-align:center">零</td>
+<td style="text-align:center">❌</td>
+<td>即将关停</td>
+</tr>
+<tr>
+<td>不蒜子 (Busuanzi)</td>
+<td style="text-align:center">零</td>
+<td style="text-align:center">❌</td>
+<td>第三方服务，历史数据无法迁移</td>
+</tr>
+<tr>
+<td>Firebase Firestore</td>
+<td style="text-align:center">低</td>
+<td style="text-align:center">⚠️</td>
+<td>Google 服务，国内访问慢</td>
+</tr>
+<tr>
+<td><strong>自建 API</strong>（最终选择）</td>
+<td style="text-align:center"><strong>低</strong></td>
+<td style="text-align:center"><strong>✅</strong></td>
+<td><strong>已有服务器，数据完全可控</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="自建服务架构"><a class="markdownIt-Anchor" href="#自建服务架构"></a> 自建服务架构</h3>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">浏览器 (fetch) → Nginx (/counter-api/) → Node.js (Express) → SQLite (counter.db)</span><br></pre></td></tr></table></figure>
+<p>NexT 主题的前端 JS（<code>lean-analytics.swig</code>）会调用三个接口：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>HTTP 请求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>查询某篇文章的计数</td>
+<td><code>GET /1.1/classes/Counter?where=&#123;&quot;url&quot;:&quot;...&quot;&#125;</code></td>
+</tr>
+<tr>
+<td>首次访问创建记录</td>
+<td><code>POST /1.1/classes/Counter</code></td>
+</tr>
+<tr>
+<td>递增计数</td>
+<td><code>PUT /1.1/classes/Counter/:id &#123;&quot;time&quot;:&#123;&quot;__op&quot;:&quot;Increment&quot;,&quot;amount&quot;:1&#125;&#125;</code></td>
+</tr>
+</tbody>
+</table>
+<p>用 Express + better-sqlite3 写了个约 100 行的服务，完整模拟了这三个接口。前端代码不需要改一行——只要在主题配置中把 <code>server_url</code> 指向自建服务即可。</p>
+<h3 id="数据迁移"><a class="markdownIt-Anchor" href="#数据迁移"></a> 数据迁移</h3>
+<p>LeanCloud 导出的 JSON 中有 44 条计数记录，但因为改过文章链接（从日期路径 <code>/2024/02/12/title/</code> 和拼音分类路径 <code>/人工智能/classification/</code> 迁移到 <code>/posts/:abbrlink/</code>），大部分旧 URL 已经失效。</p>
+<p>写了一个迁移脚本做三件事：</p>
+<ol>
+<li><strong>删除 time ≤ 1 的记录</strong>（只有自己点过一次的无效数据）</li>
+<li><strong>通过 URL 中的拼音关键词匹配现有文章</strong>（如 <code>regularzation</code> → <code>/posts/9044/</code>）</li>
+<li><strong>合并同篇文章的多个旧 URL 计数</strong>（同一篇文章可能有过日期路径和拼音路径两条记录）</li>
+</ol>
+<p>匹配结果示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">302  /posts/57901/  ← Windows mklink 使用</span><br><span class="line"> 49  /posts/2931/   ← Luogu P5707 题解</span><br><span class="line"> 28  /posts/48643/  ← CSP-J 游记</span><br><span class="line"> 41  /posts/30549/  ← Python 文件夹映射</span><br><span class="line">   ...</span><br><span class="line"></span><br><span class="line">16 篇文章，共 609 次访问记录全部保留。</span><br></pre></td></tr></table></figure>
+<h3 id="部署"><a class="markdownIt-Anchor" href="#部署"></a> 部署</h3>
+<p>服务部署在 <code>CentOS Stream 10</code> 上，用 <code>systemd</code> 管理进程：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 Node.js</span></span><br><span class="line">dnf install -y nodejs</span><br><span class="line"></span><br><span class="line"><span class="comment"># 上传服务代码</span></span><br><span class="line">scp -r server/ root@server:/opt/blog-counter</span><br><span class="line"><span class="built_in">cd</span> /opt/blog-counter &amp;&amp; npm install --production</span><br><span class="line"></span><br><span class="line"><span class="comment"># systemd 服务：开机自启 + 崩溃重启</span></span><br><span class="line">systemctl <span class="built_in">enable</span> blog-counter</span><br><span class="line">systemctl start blog-counter</span><br></pre></td></tr></table></figure>
+<p>Nginx 反代配置：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> /counter-api/ &#123;</span><br><span class="line">    <span class="attribute">proxy_pass</span> http://127.0.0.1:3000/;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> Host <span class="variable">$host</span>;</span><br><span class="line">    <span class="attribute">proxy_set_header</span> X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主题配置只需改 <code>server_url</code>（<code>themes/next/_config.yml</code>）：</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">leancloud_visitors:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">server_url:</span> <span class="string">&quot;http://47.115.49.75/counter-api&quot;</span></span><br><span class="line">  <span class="attr">app_id:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">app_key:</span> <span class="string">&quot;&quot;</span></span><br><span class="line">  <span class="attr">security:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h3 id="踩坑记录-2"><a class="markdownIt-Anchor" href="#踩坑记录-2"></a> 踩坑记录</h3>
+<p><strong>迁移脚本的 Bug</strong>：第一次跑迁移时，匹配到的旧记录虽然插入了新 URL，但旧记录本身没有删除。结果数据库里同时存在新旧两条记录，计数翻倍。排查后发现是 <code>toDelete</code> 数组漏加了匹配记录的 <code>rowid</code>，补上后重新跑就正常了。</p>
+<p><strong>SSH 连接偶发退出码 255</strong>：连续执行多条 SSH 命令时，偶尔会出现 <code>Exit code 255</code>。原因可能是服务器资源紧张或 SSH 会话被复用。解决方法：加 <code>sleep</code> 间隔或将多个命令合并到一次 SSH 连接中执行。</p>
+<p><strong>NexT 主题的 hostname 校验导致计数不显示</strong>：部署完成后发现页面阅读数始终显示为 0，API 返回数据却是正常的。排查发现 NexT 的 <code>lean-analytics.swig</code> 模板中有这么一行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="variable constant_">CONFIG</span>.<span class="property">hostname</span> !== location.<span class="property">hostname</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>网站 <code>_config.yml</code> 中配置的 <code>url: http://mxhanks.github.io/</code> 决定了 <code>CONFIG.hostname</code> 的值。但自建服务器部署在 <code>47.115.49.75</code> 上，<code>location.hostname</code> 是 IP 地址，两者不相等，计数脚本直接 <code>return</code> 了。</p>
+<p>修复方法很简单——当使用自定义 <code>server_url</code>（自建 API）时，跳过这个 hostname 校验：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!server_url &amp;&amp; <span class="variable constant_">CONFIG</span>.<span class="property">hostname</span> !== location.<span class="property">hostname</span>) <span class="keyword">return</span>;</span><br></pre></td></tr></table></figure>
+<p>这样既保留了原版在 LeanCloud 下的保护行为（防止开发环境污染计数），又让自建 API 场景下能够正常工作。</p>
+<h3 id="https-问题"><a class="markdownIt-Anchor" href="#https-问题"></a> HTTPS 问题</h3>
+<p>计数器 API 目前通过 HTTP 提供服务。博客在 GitHub Pages（HTTPS）上访问时，浏览器会因<strong>混合内容</strong>策略阻止 HTTP 请求，所以计数只在自建服务器版本上生效。</p>
+<p>解决方案是申请一个域名配 Let’s Encrypt 证书，备案完成后将 <code>stats.你的域名.com</code> 解析到服务器，即可同时服务两个站点。</p>
+<h3 id="完整代码"><a class="markdownIt-Anchor" href="#完整代码"></a> 完整代码</h3>
+<p>服务端代码不到 100 行，放在博客项目的 <code>server/</code> 目录下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server/</span><br><span class="line">├── package.json</span><br><span class="line">├── index.js        # 主服务（Express + SQLite）</span><br><span class="line">├── import.js       # LeanCloud 数据导入</span><br><span class="line">├── migrate.js      # 旧 URL 迁移匹配</span><br><span class="line">├── counter.db      # SQLite 数据库</span><br><span class="line">└── blog-counter.service  # systemd 单元文件</span><br></pre></td></tr></table></figure>
+<hr />
+<h2 id="pagespeed-优化hexo-optimize"><a class="markdownIt-Anchor" href="#pagespeed-优化hexo-optimize"></a> PageSpeed 优化：hexo-optimize</h2>
+<h3 id="背景-2"><a class="markdownIt-Anchor" href="#背景-2"></a> 背景</h3>
+<p>博客一直缺少 CSS/JS/HTML 的自动化压缩优化，导致页面加载速度和 Google PageSpeed Insights 得分不太理想。Google 的 Lighthouse 审计跑下来，移动端性能分明显偏低，主要扣分项集中在<strong>未压缩的 CSS/JS 资源</strong>和<strong>阻塞渲染的 CSS</strong>上。</p>
+<p>常见的优化手段无非几样：压缩资源、内联关键 CSS、异步加载非关键样式、给静态资源加版本号。这些操作完全可以自动化，没必要每次构建手动处理。</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-optimize">hexo-optimize</a> 是 NexT 官方团队维护的 Hexo 插件，使用 Rust 编写（<code>minify-html</code> 是 Rust 编译的原生模块），专门解决这些问题。</p>
+<h3 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-optimize --save</span><br></pre></td></tr></table></figure>
+<p>当前版本 <code>v3.5.0</code>。</p>
+<h3 id="配置"><a class="markdownIt-Anchor" href="#配置"></a> 配置</h3>
+<p>在站点 <code>_config.yml</code> 中添加 <code>filter_optimize</code> 配置块：</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># hexo-optimize</span></span><br><span class="line"><span class="attr">filter_optimize:</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 静态资源版本号（添加内容哈希，解决缓存问题）</span></span><br><span class="line">  <span class="attr">versioning:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">css:</span></span><br><span class="line">    <span class="comment"># 压缩所有 CSS</span></span><br><span class="line">    <span class="attr">minify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">excludes:</span></span><br><span class="line">    <span class="comment"># 对 Font Awesome 和 Google Fonts 使用 preload 动态加载</span></span><br><span class="line">    <span class="attr">delivery:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;@fortawesome/fontawesome-free&#x27;</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">&#x27;fonts.googleapis.com&#x27;</span></span><br><span class="line">    <span class="comment"># 将关键 CSS 内联到 HTML 中</span></span><br><span class="line">    <span class="attr">inlines:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="string">css/main.css</span></span><br><span class="line">  <span class="attr">js:</span></span><br><span class="line">    <span class="comment"># 压缩所有 JS</span></span><br><span class="line">    <span class="attr">minify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">excludes:</span></span><br><span class="line">    <span class="comment"># 移除 JS 中的注释</span></span><br><span class="line">    <span class="attr">remove_comments:</span> <span class="literal">false</span></span><br><span class="line">  <span class="attr">html:</span></span><br><span class="line">    <span class="comment"># 压缩所有 HTML</span></span><br><span class="line">    <span class="attr">minify:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">excludes:</span></span><br><span class="line">  <span class="comment"># 插件执行优先级（值越小越先执行，Hexo 默认 10）</span></span><br><span class="line">  <span class="attr">priority:</span> <span class="number">12</span></span><br></pre></td></tr></table></figure>
+<h3 id="参数说明"><a class="markdownIt-Anchor" href="#参数说明"></a> 参数说明</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>作用</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>versioning</code></td>
+<td>给静态资源文件名追加内容哈希，浏览器缓存过期后自动加载新版本</td>
+<td>推荐开启</td>
+</tr>
+<tr>
+<td><code>css.minify</code></td>
+<td>压缩 CSS，删除多余空格和注释</td>
+<td>开启</td>
+</tr>
+<tr>
+<td><code>css.delivery</code></td>
+<td>指定哪些 CSS 用 <code>preload</code> 动态加载，不阻塞页面渲染</td>
+<td>Font Awesome、Google Fonts 等第三方字体库</td>
+</tr>
+<tr>
+<td><code>css.inlines</code></td>
+<td>指定哪些 CSS 直接内联到 HTML <code>&lt;head&gt;</code> 中</td>
+<td><code>css/main.css</code>（主题核心样式）</td>
+</tr>
+<tr>
+<td><code>js.minify</code></td>
+<td>压缩 JS 文件</td>
+<td>开启</td>
+</tr>
+<tr>
+<td><code>html.minify</code></td>
+<td>压缩 HTML，去掉多余空白</td>
+<td>开启</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td>插件执行顺序</td>
+<td>12（在 Hexo 默认过滤器之后执行）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="开发时禁用"><a class="markdownIt-Anchor" href="#开发时禁用"></a> 开发时禁用</h3>
+<p>构建时压缩会拖慢速度，开发阶段可以通过环境变量临时禁用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux / macOS</span></span><br><span class="line"><span class="built_in">export</span> NODE_ENV=development</span><br><span class="line"></span><br><span class="line"><span class="comment"># Windows (cmd)</span></span><br><span class="line"><span class="built_in">set</span> NODE_ENV=development</span><br><span class="line"></span><br><span class="line"><span class="comment"># Windows (PowerShell)</span></span><br><span class="line"><span class="variable">$env</span>:NODE_ENV=<span class="string">&quot;development&quot;</span></span><br></pre></td></tr></table></figure>
+<p>设置后 <code>hexo generate</code> 会跳过优化流程，预览时不会卡在构建上。</p>
+<h3 id="注意事项"><a class="markdownIt-Anchor" href="#注意事项"></a> 注意事项</h3>
+<ol>
+<li><strong>内联 CSS 路径</strong>：<code>css.inlines</code> 配置的是生成后的绝对路径。NexT 主题的 CSS 在 <code>css/main.css</code>，如果用了其他主题或自定义 CSS，需要对应调整。</li>
+<li><strong>CSS delivery 与 inlines 不冲突</strong>：<code>delivery</code> 是将指定 CSS 改为动态加载（不阻塞渲染），<code>inlines</code> 是将指定 CSS 嵌入 HTML（减少请求）。一般来说主题核心样式内联，第三方字体库动态加载，配合使用效果最好。</li>
+<li><strong>priority 的意义</strong>：Hexo 的过滤器系统按优先级顺序执行，默认值是 10。设成 12 表示在大部分 Hexo 内置过滤器之后执行优化，确保内容是最终状态再压缩。如果和其他优化插件搭配，需要注意执行顺序。</li>
+</ol>
+<hr />
+<h2 id="写在最后"><a class="markdownIt-Anchor" href="#写在最后"></a> 写在最后</h2>
+<p>从 2021 年初建到现在，博客的形态变了很多次。从一开始连 GitHub 都不会用，到后来自己写 Hexo 脚本、配服务器，每一步踩坑都成了经验。这些折腾的价值或许不只是技术本身——它让我习惯了记录、整理和分享，而这一点大概是写博客最大的收获。</p>
+<p>如果你也在折腾 Hexo 博客，希望这篇文章能帮你少走一些弯路。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+              <a href="/tags/%E5%8D%9A%E5%AE%A2/" rel="tag"># 博客</a>
+              <a href="/tags/NexT/" rel="tag"># NexT</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/posts/48643/" rel="next" title="CSP-J 游记">
+      CSP-J 游记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+    <div class="comments" id="valine-comments"></div>
+
+<script>
+  window.addEventListener('tabs:register', () => {
     let { activeClass } = CONFIG.comments;
     if (CONFIG.comments.storage) {
       activeClass = localStorage.getItem('comments_active') || activeClass;
@@ -40,7 +763,120 @@
       let commentClass = event.target.classList[1];
       localStorage.setItem('comments_active', commentClass);
     });
-  }</script></div><div class="toggle sidebar-toggle"><span class="toggle-line toggle-line-first"></span><span class="toggle-line toggle-line-middle"></span><span class="toggle-line toggle-line-last"></span></div><aside class=sidebar><div class=sidebar-inner><ul class="sidebar-nav motion-element"><li class=sidebar-nav-toc>文章目录<li class=sidebar-nav-overview>站点概览</ul><!--noindex--><div class="post-toc-wrap sidebar-panel"><div class="post-toc motion-element"><ol class=nav><li class="nav-item nav-level-2"><a class=nav-link href=#%E5%BB%BA%E7%AB%99%E4%B9%8B%E5%88%9D><span class=nav-number>1.</span> <span class=nav-text> 建站之初</span></a><li class="nav-item nav-level-2"><a class=nav-link href=#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%A4%8D%E6%B4%BB><span class=nav-number>2.</span> <span class=nav-text> 第一次复活</span></a><li class="nav-item nav-level-2"><a class=nav-link href=#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%A4%8D%E6%B4%BB%E5%85%A8%E9%9D%A2%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE><span class=nav-number>3.</span> <span class=nav-text> 第二次复活：全面功能配置</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#latex-%E6%94%AF%E6%8C%81><span class=nav-number>3.1.</span> <span class=nav-text> LaTeX 支持</span></a><ol class=nav-child><li class="nav-item nav-level-4"><a class=nav-link href=#%E6%96%B9%E6%A1%88%E4%B8%80hexo-renderer-kramed%E9%80%82%E7%94%A8%E4%BA%8E-matery-%E4%B8%BB%E9%A2%98><span class=nav-number>3.1.1.</span> <span class=nav-text> 方案一：hexo-renderer-kramed（适用于 matery 主题）</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-renderer-markdown-it-plus%E6%8E%A8%E8%8D%90><span class=nav-number>3.1.2.</span> <span class=nav-text> 方案二：hexo-renderer-markdown-it-plus（推荐）</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E6%B8%B2%E6%9F%93%E5%99%A8%E5%86%B2%E7%AA%81><span class=nav-number>3.1.3.</span> <span class=nav-text> 踩坑记录：渲染器冲突</span></a></ol><li class="nav-item nav-level-3"><a class=nav-link href=#ssh-deploy-key-%E9%85%8D%E7%BD%AE><span class=nav-number>3.2.</span> <span class=nav-text> SSH Deploy Key 配置</span></a><ol class=nav-child><li class="nav-item nav-level-4"><a class=nav-link href=#%E7%94%9F%E6%88%90-ssh-%E5%AF%86%E9%92%A5%E5%AF%B9><span class=nav-number>3.2.1.</span> <span class=nav-text> 生成 SSH 密钥对</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E6%B7%BB%E5%8A%A0-deploy-key><span class=nav-number>3.2.2.</span> <span class=nav-text> 添加 Deploy Key</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E9%85%8D%E7%BD%AE-ssh-config><span class=nav-number>3.2.3.</span> <span class=nav-text> 配置 SSH Config</span></a></ol><li class="nav-item nav-level-3"><a class=nav-link href=#leancloud-%E8%AF%84%E8%AE%BA%E4%B8%8E%E9%98%85%E8%AF%BB%E9%87%8F><span class=nav-number>3.3.</span> <span class=nav-text> LeanCloud 评论与阅读量</span></a><ol class=nav-child><li class="nav-item nav-level-4"><a class=nav-link href=#%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BDvaline><span class=nav-number>3.3.1.</span> <span class=nav-text> 评论功能（Valine）</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD><span class=nav-number>3.3.2.</span> <span class=nav-text> 阅读量功能</span></a></ol><li class="nav-item nav-level-3"><a class=nav-link href=#gitee-github-%E9%95%9C%E5%83%8F%E5%90%8C%E6%AD%A5><span class=nav-number>3.4.</span> <span class=nav-text> Gitee / GitHub 镜像同步</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#seo-%E4%BC%98%E5%8C%96><span class=nav-number>3.5.</span> <span class=nav-text> SEO 优化</span></a><ol class=nav-child><li class="nav-item nav-level-4"><a class=nav-link href=#%E7%94%9F%E6%88%90-sitemap><span class=nav-number>3.5.1.</span> <span class=nav-text> 生成 Sitemap</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E6%8E%A8%E9%80%81%E5%88%B0%E5%BF%85%E5%BA%94><span class=nav-number>3.5.2.</span> <span class=nav-text> 推送到必应</span></a></ol><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86><span class=nav-number>3.6.</span> <span class=nav-text> 文件目录管理</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E9%80%82%E9%85%8D-obsidian-%E5%8F%8C%E9%93%BE%E5%BC%95%E7%94%A8><span class=nav-number>3.7.</span> <span class=nav-text> 适配 Obsidian 双链引用</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1><span class=nav-number>3.8.</span> <span class=nav-text> 字数统计</span></a></ol><li class="nav-item nav-level-2"><a class=nav-link href=#%E6%96%87%E7%AB%A0%E7%9F%AD%E9%93%BE%E6%8E%A5abbrlink><span class=nav-number>4.</span> <span class=nav-text> 文章短链接（abbrlink）</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%96%B9%E6%A1%88%E4%B8%80hexo-permalink-pinyin%E6%8B%BC%E9%9F%B3%E8%BD%AC%E5%86%99><span class=nav-number>4.1.</span> <span class=nav-text> 方案一：hexo-permalink-pinyin（拼音转写）</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-abbrlink%E7%9F%AD%E9%93%BE%E6%8E%A5%E6%8E%A8%E8%8D%90><span class=nav-number>4.2.</span> <span class=nav-text> 方案二：hexo-abbrlink（短链接，推荐）</span></a><ol class=nav-child><li class="nav-item nav-level-4"><a class=nav-link href=#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95><span class=nav-number>4.2.1.</span> <span class=nav-text> 踩坑记录</span></a><li class="nav-item nav-level-4"><a class=nav-link href=#%E6%97%A7%E9%93%BE%E6%8E%A5%E5%85%BC%E5%AE%B9><span class=nav-number>4.2.2.</span> <span class=nav-text> 旧链接兼容</span></a></ol></ol><li class="nav-item nav-level-2"><a class=nav-link href=#post_asset_folder-%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%BF%AE%E5%A4%8D><span class=nav-number>5.</span> <span class=nav-text> post_asset_folder 图片路径修复</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF><span class=nav-number>5.1.</span> <span class=nav-text> 问题背景</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90><span class=nav-number>5.2.</span> <span class=nav-text> 原因分析</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88><span class=nav-number>5.3.</span> <span class=nav-text> 解决方案</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C><span class=nav-number>5.4.</span> <span class=nav-text> 最终效果</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%B9%E6%BA%90%E6%96%87%E4%BB%B6><span class=nav-number>5.5.</span> <span class=nav-text> 为什么不改源文件？</span></a></ol><li class="nav-item nav-level-2"><a class=nav-link href=#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2><span class=nav-number>6.</span> <span class=nav-text> 自建服务器部署</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#%E9%9C%80%E6%B1%82><span class=nav-number>6.1.</span> <span class=nav-text> 需求</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94><span class=nav-number>6.2.</span> <span class=nav-text> 方案对比</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#ssh-%E5%AF%86%E9%92%A5%E9%85%8D%E7%BD%AE><span class=nav-number>6.3.</span> <span class=nav-text> SSH 密钥配置</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#nginx-%E9%85%8D%E7%BD%AE><span class=nav-number>6.4.</span> <span class=nav-text> Nginx 配置</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%A0%B8%E5%BF%83tar-ssh-%E7%AE%A1%E9%81%93><span class=nav-number>6.5.</span> <span class=nav-text> 核心：tar + SSH 管道</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E8%B8%A9%E5%9D%91hexo-7-%E7%9A%84%E4%BA%8B%E4%BB%B6-vs-%E8%BF%87%E6%BB%A4%E5%99%A8><span class=nav-number>6.6.</span> <span class=nav-text> 踩坑：Hexo 7 的事件 vs 过滤器</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%9C%80%E7%BB%88%E8%84%9A%E6%9C%AC><span class=nav-number>6.7.</span> <span class=nav-text> 最终脚本</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E6%95%99%E8%AE%AD><span class=nav-number>6.8.</span> <span class=nav-text> 密钥格式教训</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C-2><span class=nav-number>6.9.</span> <span class=nav-text> 最终效果</span></a></ol><li class="nav-item nav-level-2"><a class=nav-link href=#leancloud-%E6%9B%BF%E4%BB%A3%E8%87%AA%E5%BB%BA%E9%98%85%E8%AF%BB%E9%87%8F%E8%AE%A1%E6%95%B0-api><span class=nav-number>7.</span> <span class=nav-text> LeanCloud 替代：自建阅读量计数 API</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#%E8%83%8C%E6%99%AF><span class=nav-number>7.1.</span> <span class=nav-text> 背景</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%96%B9%E6%A1%88%E9%80%89%E5%9E%8B><span class=nav-number>7.2.</span> <span class=nav-text> 方案选型</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84><span class=nav-number>7.3.</span> <span class=nav-text> 自建服务架构</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB><span class=nav-number>7.4.</span> <span class=nav-text> 数据迁移</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E9%83%A8%E7%BD%B2><span class=nav-number>7.5.</span> <span class=nav-text> 部署</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-2><span class=nav-number>7.6.</span> <span class=nav-text> 踩坑记录</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#https-%E9%97%AE%E9%A2%98><span class=nav-number>7.7.</span> <span class=nav-text> HTTPS 问题</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81><span class=nav-number>7.8.</span> <span class=nav-text> 完整代码</span></a></ol><li class="nav-item nav-level-2"><a class=nav-link href=#pagespeed-%E4%BC%98%E5%8C%96hexo-optimize><span class=nav-number>8.</span> <span class=nav-text> PageSpeed 优化：hexo-optimize</span></a><ol class=nav-child><li class="nav-item nav-level-3"><a class=nav-link href=#%E8%83%8C%E6%99%AF-2><span class=nav-number>8.1.</span> <span class=nav-text> 背景</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%AE%89%E8%A3%85><span class=nav-number>8.2.</span> <span class=nav-text> 安装</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E9%85%8D%E7%BD%AE><span class=nav-number>8.3.</span> <span class=nav-text> 配置</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E><span class=nav-number>8.4.</span> <span class=nav-text> 参数说明</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E5%BC%80%E5%8F%91%E6%97%B6%E7%A6%81%E7%94%A8><span class=nav-number>8.5.</span> <span class=nav-text> 开发时禁用</span></a><li class="nav-item nav-level-3"><a class=nav-link href=#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9><span class=nav-number>8.6.</span> <span class=nav-text> 注意事项</span></a></ol><li class="nav-item nav-level-2"><a class=nav-link href=#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E><span class=nav-number>9.</span> <span class=nav-text> 写在最后</span></a></ol></div></div><!--/noindex--><div class="site-overview-wrap sidebar-panel"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><p class=site-author-name itemprop=name>mxhanks<div class=site-description itemprop=description>MxHanks 的博客</div></div><div class="site-state-wrap motion-element"><nav class=site-state><div class="site-state-item site-state-posts"><a href=/archives/> <span class=site-state-item-count>18</span> <span class=site-state-item-name>日志</span> </a></div><div class="site-state-item site-state-categories"><a href=/categories/> <span class=site-state-item-count>8</span> <span class=site-state-item-name>分类</span></a></div><div class="site-state-item site-state-tags"><a href=/tags/> <span class=site-state-item-count>24</span> <span class=site-state-item-name>标签</span></a></div></nav></div><div class="sidebar-button motion-element"><i class="fa fa-comment"></i> Chat</div></div></div></aside><div id=sidebar-dimmer></div></div></main><footer class=footer><div class=footer-inner><div class=beian><a href=https://beian.miit.gov.cn/ rel=noopener target=_blank>湘ICP备2026030876号 </a></div><div class=copyright>© <span itemprop=copyrightYear>2026</span><span class=with-love> <i class="fa fa-heart"></i> </span><span class=author itemprop=copyrightHolder>mxhanks</span><span class=post-meta-divider>|</span><span class=post-meta-item-icon> <i class="fa fa-chart-area"></i> </span><span title=站点总字数>34k</span><span class=post-meta-divider>|</span><span class=post-meta-item-icon> <i class="fa fa-coffee"></i> </span><span title=站点阅读时长>2:04</span></div><div class=powered-by>由 <a class=theme-link href=https://hexo.io/ rel=noopener target=_blank>Hexo</a> & <a class=theme-link href=https://pisces.theme-next.org/ rel=noopener target=_blank>NexT.Pisces</a> 强力驱动</div><script>(function() {
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%99%E4%B9%8B%E5%88%9D"><span class="nav-number">1.</span> <span class="nav-text"> 建站之初</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%A4%8D%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text"> 第一次复活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%A4%8D%E6%B4%BB%E5%85%A8%E9%9D%A2%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text"> 第二次复活：全面功能配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.1.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80hexo-renderer-kramed%E9%80%82%E7%94%A8%E4%BA%8E-matery-%E4%B8%BB%E9%A2%98"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 方案一：hexo-renderer-kramed（适用于 matery 主题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-renderer-markdown-it-plus%E6%8E%A8%E8%8D%90"><span class="nav-number">3.1.2.</span> <span class="nav-text"> 方案二：hexo-renderer-markdown-it-plus（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E6%B8%B2%E6%9F%93%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-number">3.1.3.</span> <span class="nav-text"> 踩坑记录：渲染器冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-deploy-key-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text"> SSH Deploy Key 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90-ssh-%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 生成 SSH 密钥对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-deploy-key"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 添加 Deploy Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-ssh-config"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 配置 SSH Config</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leancloud-%E8%AF%84%E8%AE%BA%E4%B8%8E%E9%98%85%E8%AF%BB%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text"> LeanCloud 评论与阅读量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BDvaline"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 评论功能（Valine）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 阅读量功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitee-github-%E9%95%9C%E5%83%8F%E5%90%8C%E6%AD%A5"><span class="nav-number">3.4.</span> <span class="nav-text"> Gitee &#x2F; GitHub 镜像同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seo-%E4%BC%98%E5%8C%96"><span class="nav-number">3.5.</span> <span class="nav-text"> SEO 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90-sitemap"><span class="nav-number">3.5.1.</span> <span class="nav-text"> 生成 Sitemap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E5%BF%85%E5%BA%94"><span class="nav-number">3.5.2.</span> <span class="nav-text"> 推送到必应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="nav-number">3.6.</span> <span class="nav-text"> 文件目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E9%85%8D-obsidian-%E5%8F%8C%E9%93%BE%E5%BC%95%E7%94%A8"><span class="nav-number">3.7.</span> <span class="nav-text"> 适配 Obsidian 双链引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.8.</span> <span class="nav-text"> 字数统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%9F%AD%E9%93%BE%E6%8E%A5abbrlink"><span class="nav-number">4.</span> <span class="nav-text"> 文章短链接（abbrlink）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80hexo-permalink-pinyin%E6%8B%BC%E9%9F%B3%E8%BD%AC%E5%86%99"><span class="nav-number">4.1.</span> <span class="nav-text"> 方案一：hexo-permalink-pinyin（拼音转写）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-abbrlink%E7%9F%AD%E9%93%BE%E6%8E%A5%E6%8E%A8%E8%8D%90"><span class="nav-number">4.2.</span> <span class="nav-text"> 方案二：hexo-abbrlink（短链接，推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95"><span class="nav-number">4.2.1.</span> <span class="nav-text"> 踩坑记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E9%93%BE%E6%8E%A5%E5%85%BC%E5%AE%B9"><span class="nav-number">4.2.2.</span> <span class="nav-text"> 旧链接兼容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post_asset_folder-%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%BF%AE%E5%A4%8D"><span class="nav-number">5.</span> <span class="nav-text"> post_asset_folder 图片路径修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-number">5.1.</span> <span class="nav-text"> 问题背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="nav-number">5.2.</span> <span class="nav-text"> 原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">5.3.</span> <span class="nav-text"> 解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-number">5.4.</span> <span class="nav-text"> 最终效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%B9%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">5.5.</span> <span class="nav-text"> 为什么不改源文件？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">6.</span> <span class="nav-text"> 自建服务器部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">6.1.</span> <span class="nav-text"> 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94"><span class="nav-number">6.2.</span> <span class="nav-text"> 方案对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-%E5%AF%86%E9%92%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">6.3.</span> <span class="nav-text"> SSH 密钥配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-%E9%85%8D%E7%BD%AE"><span class="nav-number">6.4.</span> <span class="nav-text"> Nginx 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83tar-ssh-%E7%AE%A1%E9%81%93"><span class="nav-number">6.5.</span> <span class="nav-text"> 核心：tar + SSH 管道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91hexo-7-%E7%9A%84%E4%BA%8B%E4%BB%B6-vs-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">6.6.</span> <span class="nav-text"> 踩坑：Hexo 7 的事件 vs 过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E8%84%9A%E6%9C%AC"><span class="nav-number">6.7.</span> <span class="nav-text"> 最终脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E6%95%99%E8%AE%AD"><span class="nav-number">6.8.</span> <span class="nav-text"> 密钥格式教训</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C-2"><span class="nav-number">6.9.</span> <span class="nav-text"> 最终效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leancloud-%E6%9B%BF%E4%BB%A3%E8%87%AA%E5%BB%BA%E9%98%85%E8%AF%BB%E9%87%8F%E8%AE%A1%E6%95%B0-api"><span class="nav-number">7.</span> <span class="nav-text"> LeanCloud 替代：自建阅读量计数 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">7.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E9%80%89%E5%9E%8B"><span class="nav-number">7.2.</span> <span class="nav-text"> 方案选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">7.3.</span> <span class="nav-text"> 自建服务架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">7.4.</span> <span class="nav-text"> 数据迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">7.5.</span> <span class="nav-text"> 部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-2"><span class="nav-number">7.6.</span> <span class="nav-text"> 踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-%E9%97%AE%E9%A2%98"><span class="nav-number">7.7.</span> <span class="nav-text"> HTTPS 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">7.8.</span> <span class="nav-text"> 完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pagespeed-%E4%BC%98%E5%8C%96hexo-optimize"><span class="nav-number">8.</span> <span class="nav-text"> PageSpeed 优化：hexo-optimize</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-2"><span class="nav-number">8.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">8.2.</span> <span class="nav-text"> 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">8.3.</span> <span class="nav-text"> 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">8.4.</span> <span class="nav-text"> 参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%97%B6%E7%A6%81%E7%94%A8"><span class="nav-number">8.5.</span> <span class="nav-text"> 开发时禁用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">8.6.</span> <span class="nav-text"> 注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E"><span class="nav-number">9.</span> <span class="nav-text"> 写在最后</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">mxhanks</p>
+  <div class="site-description" itemprop="description">MxHanks 的博客</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="sidebar-button motion-element"><i class="fa fa-comment"></i>
+    Chat
+  </a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">湘ICP备2026030876号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">mxhanks</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+    <span title="站点总字数">34k</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:04</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+<script>
+  (function() {
     function leancloudSelector(url) {
       url = encodeURI(url);
       return document.getElementById(url).querySelector('.leancloud-visitors-count');
@@ -130,7 +966,57 @@
           fetchData('https://' + api_server);
         });
     }
-  })();</script></div></footer></div><script src=/lib/anime.min.js></script><script src=/lib/velocity/velocity.min.js></script><script src=/lib/velocity/velocity.ui.min.js></script><script src=/js/utils.js></script><script src=/js/motion.js></script><script src=/js/schemes/pisces.js></script><script src=/js/next-boot.js></script><script>NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  })();
+</script>
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
     var GUEST = ['nick', 'mail', 'link'];
     var guest = 'nick,mail,link';
@@ -154,4 +1040,8 @@
       serverURLs : ''
     });
   }, window.Valine);
-});</script>
+});
+</script>
+
+</body>
+</html>
