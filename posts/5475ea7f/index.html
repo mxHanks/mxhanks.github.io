@@ -40,8 +40,11 @@
 <meta property="og:image" content="http://mxhanks.github.io/posts/5475ea7f/image-11.png">
 <meta property="og:image" content="http://mxhanks.github.io/posts/5475ea7f/image-4.png">
 <meta property="og:image" content="http://mxhanks.github.io/posts/5475ea7f/image-12.png">
+<meta property="og:image" content="http://mxhanks.github.io/posts/5475ea7f/image-13.png">
+<meta property="og:image" content="http://mxhanks.github.io/posts/5475ea7f/image-14.png">
+<meta property="og:image" content="http://mxhanks.github.io/posts/5475ea7f/image-15.png">
 <meta property="article:published_time" content="2026-07-26T07:00:00.000Z">
-<meta property="article:modified_time" content="2026-07-27T16:55:11.434Z">
+<meta property="article:modified_time" content="2026-07-28T08:45:20.415Z">
 <meta property="article:author" content="mxhanks">
 <meta property="article:tag" content="STM32">
 <meta property="article:tag" content="嵌入式">
@@ -212,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-07-28 00:55:11" itemprop="dateModified" datetime="2026-07-28T00:55:11+08:00">2026-07-28</time>
+                <time title="修改时间：2026-07-28 16:45:20" itemprop="dateModified" datetime="2026-07-28T16:45:20+08:00">2026-07-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -250,13 +253,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>1.2k</span>
+              <span>1.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>4 分钟</span>
+              <span>7 分钟</span>
             </span>
 
         </div>
@@ -448,6 +451,80 @@
 <p><img src="image-4.png" alt="参考手册 I/O端口位的基本结构" /></p>
 <p>输入部分主要研究结构图的上半部分，即输入电路部分。</p>
 <p><img src="image-12.png" alt="输入电路结构示意" /></p>
+<h4 id="保护二极管的工作原理"><a class="markdownIt-Anchor" href="#保护二极管的工作原理"></a> 保护二极管的工作原理</h4>
+<p>静电电压较高，电流会随着保护二极管流出。</p>
+<h4 id="上拉电阻和下拉电阻"><a class="markdownIt-Anchor" href="#上拉电阻和下拉电阻"></a> 上拉电阻和下拉电阻</h4>
+<p>上拉电阻和下拉电阻可以保持电路的稳定。施密特触发器流入的电流始终为 0 ，不存在压降。</p>
+<p>当上拉电阻接入时，IO 接口悬空时，Vdd 的电压会使得施密特触发器两边形成电势差，从而向输入数据寄存器写入 1 。</p>
+<p>所以说，上拉电阻连通可以提供默认高电压，下拉电阻连通可以提供默认低电压，两个只需要连通一个就可以了。</p>
+<h3 id="按钮试验"><a class="markdownIt-Anchor" href="#按钮试验"></a> 按钮试验</h3>
+<h4 id="gpio-mode"><a class="markdownIt-Anchor" href="#gpio-mode"></a> GPIO Mode</h4>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>名称</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPIO_Mode_AIN</td>
+<td>模拟输入</td>
+<td>Analog Input ADC 采样等模拟信号输入</td>
+</tr>
+<tr>
+<td>GPIO_Mode_IN_FLOATING</td>
+<td>浮空输入</td>
+<td>输入电平不确定，需外部电路决定</td>
+</tr>
+<tr>
+<td>GPIO_Mode_IPD</td>
+<td>输入下拉</td>
+<td>Input Pull-up 内部下拉电阻，默认低电平</td>
+</tr>
+<tr>
+<td>GPIO_Mode_IPU</td>
+<td>输入上拉</td>
+<td>Input Pull-up 内部上拉电阻，默认高电平</td>
+</tr>
+<tr>
+<td>GPIO_Mode_Out_OD</td>
+<td>通用开漏输出</td>
+<td>OD = Open Drain，需外部上拉电阻</td>
+</tr>
+<tr>
+<td>GPIO_Mode_Out_PP</td>
+<td>通用推挽输出</td>
+<td>PP = Push Pull，可输出强高低电平</td>
+</tr>
+<tr>
+<td>GPIO_Mode_AF_OD</td>
+<td>复用开漏输出</td>
+<td>AF = Alternate Function 外设功能（如 I²C、USART 等）的开漏输出</td>
+</tr>
+<tr>
+<td>GPIO_Mode_AF_PP</td>
+<td>复用推挽输出</td>
+<td>外设功能（如 SPI、USART 等）的推挽输出</td>
+</tr>
+</tbody>
+</table>
+<h4 id="led-接线"><a class="markdownIt-Anchor" href="#led-接线"></a> LED 接线</h4>
+<p><img src="image-13.png" alt="LED 接线" /></p>
+<p>根据电路图安装好电路。</p>
+<p>通过检查 LED 点亮判断电路是否连接成功。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 开启 GIPOA 的时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 设置推挽模式</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 对应 GPIOA0</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_2MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	GPIO_WriteBit(GPIOA, GPIO_Pin_0, Bit_SET); <span class="comment">// 写1点亮 LED</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>LED 点亮成功！</p>
+<h4 id="按钮接线"><a class="markdownIt-Anchor" href="#按钮接线"></a> 按钮接线</h4>
+<p><img src="image-14.png" alt="按钮读入" /></p>
+<p>输入上拉模式时，当按钮按下时电路连通接地，没有电势差，写入 0 ；当按钮松开时，Vdd 通过连通的上拉电阻提供高位电压，写入 1 。</p>
+<p><img src="image-15.png" alt="按钮接线" /></p>
+<p>按图安装好按钮。要特别注意，按钮是具有方向的，不要左右装反了。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> <span class="title function_">GPIo_ReadInputDataBit</span><span class="params">(GPIOTypeDef *GPIOx,<span class="comment">//端口号</span></span></span><br><span class="line"><span class="params">    <span class="type">uint16_t</span> GPI0_Pin)</span>;<span class="comment">//引脚编号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 作用:读取IO引脚的值，BitSET=1 Bit_RESET=0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 开启 GIPOA 的时钟</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// LED 相关的初始化</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 设置推挽模式</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 对应 GPIOA0</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_2MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Button 相关的初始化</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU; <span class="comment">// 输入上拉模式</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1; <span class="comment">// 按钮接入 GPIOA1</span></span><br><span class="line">	<span class="comment">// 最大输出速度只对输出模式有效</span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1) == Bit_RESET) &#123;</span><br><span class="line">			<span class="comment">// 按钮按下</span></span><br><span class="line">			GPIO_WriteBit(GPIOA, GPIO_Pin_0, Bit_SET);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 按钮松开</span></span><br><span class="line">			GPIO_WriteBit(GPIOA, GPIO_Pin_0, Bit_RESET);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>效果：按钮按下时， LED 点亮。按钮松开时， LED 熄灭。</p>
+<p>| 本人因为把接地接到 R 去了所以一开始半天没效果，要记得接地是 G(Ground) 啊 TwT</p>
 
     </div>
 
@@ -531,7 +608,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text"> 准备阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E4%BA%86-keil5-%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text"> 完成了 keil5 工具的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stm32-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text"> stm32 的基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stm32-%E5%BC%95%E8%84%9A%E5%88%86%E5%B8%83"><span class="nav-number">1.3.</span> <span class="nav-text"> stm32 引脚分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%BC%95%E8%84%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text"> 特殊引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E4%B8%8D%E7%94%A8-vss"><span class="nav-number">1.3.2.</span> <span class="nav-text"> 为何不用 VSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E5%BC%95%E8%84%9A%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">1.3.3.</span> <span class="nav-text"> 普通引脚的命名规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gpio"><span class="nav-number">2.</span> <span class="nav-text"> GPIO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gpio-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text"> GPIO 是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9F%E8%83%BD"><span class="nav-number">2.2.</span> <span class="nav-text"> 有什么功能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9A%84%E5%85%AB%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text"> 的八种工作模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">2.4.</span> <span class="nav-text"> 输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E6%8C%BD"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 推挽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%BC%8F"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 开漏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%92%8C%E5%A4%8D%E7%94%A8"><span class="nav-number">2.4.3.</span> <span class="nav-text"> 通用和复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#io-%E7%9A%84%E6%9C%80%E5%A4%A7%E8%BE%93%E5%87%BA%E9%80%9F%E5%BA%A6"><span class="nav-number">2.4.4.</span> <span class="nav-text"> IO 的最大输出速度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#led-%E9%97%AA%E7%81%AF%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.5.</span> <span class="nav-text"> LED 闪灯实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%92%9F"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 时钟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gpio-%E6%A8%A1%E5%9D%97%E7%9A%84%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.5.2.</span> <span class="nav-text"> GPIO 模块的编程接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gpio_init"><span class="nav-number">2.5.2.1.</span> <span class="nav-text"> GPIO_Init</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gpio_writebit"><span class="nav-number">2.5.2.2.</span> <span class="nav-text"> GPIO_WriteBit</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">2.6.</span> <span class="nav-text"> 输入</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5"><span class="nav-number">1.</span> <span class="nav-text"> 准备阶段</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E4%BA%86-keil5-%E5%B7%A5%E5%85%B7%E7%9A%84%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text"> 完成了 keil5 工具的安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stm32-%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BF%A1%E6%81%AF"><span class="nav-number">1.2.</span> <span class="nav-text"> stm32 的基本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#stm32-%E5%BC%95%E8%84%9A%E5%88%86%E5%B8%83"><span class="nav-number">1.3.</span> <span class="nav-text"> stm32 引脚分布</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%BC%95%E8%84%9A"><span class="nav-number">1.3.1.</span> <span class="nav-text"> 特殊引脚</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BD%95%E4%B8%8D%E7%94%A8-vss"><span class="nav-number">1.3.2.</span> <span class="nav-text"> 为何不用 VSS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%99%AE%E9%80%9A%E5%BC%95%E8%84%9A%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="nav-number">1.3.3.</span> <span class="nav-text"> 普通引脚的命名规则</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gpio"><span class="nav-number">2.</span> <span class="nav-text"> GPIO</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#gpio-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">2.1.</span> <span class="nav-text"> GPIO 是什么？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%89%E4%BB%80%E4%B9%88%E5%8A%9F%E8%83%BD"><span class="nav-number">2.2.</span> <span class="nav-text"> 有什么功能？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9A%84%E5%85%AB%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%BC%8F"><span class="nav-number">2.3.</span> <span class="nav-text"> 的八种工作模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%87%BA"><span class="nav-number">2.4.</span> <span class="nav-text"> 输出</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E6%8C%BD"><span class="nav-number">2.4.1.</span> <span class="nav-text"> 推挽</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E6%BC%8F"><span class="nav-number">2.4.2.</span> <span class="nav-text"> 开漏</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%9A%E7%94%A8%E5%92%8C%E5%A4%8D%E7%94%A8"><span class="nav-number">2.4.3.</span> <span class="nav-text"> 通用和复用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#io-%E7%9A%84%E6%9C%80%E5%A4%A7%E8%BE%93%E5%87%BA%E9%80%9F%E5%BA%A6"><span class="nav-number">2.4.4.</span> <span class="nav-text"> IO 的最大输出速度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#led-%E9%97%AA%E7%81%AF%E5%AE%9E%E9%AA%8C"><span class="nav-number">2.5.</span> <span class="nav-text"> LED 闪灯实验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%B6%E9%92%9F"><span class="nav-number">2.5.1.</span> <span class="nav-text"> 时钟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#gpio-%E6%A8%A1%E5%9D%97%E7%9A%84%E7%BC%96%E7%A8%8B%E6%8E%A5%E5%8F%A3"><span class="nav-number">2.5.2.</span> <span class="nav-text"> GPIO 模块的编程接口</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#gpio_init"><span class="nav-number">2.5.2.1.</span> <span class="nav-text"> GPIO_Init</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#gpio_writebit"><span class="nav-number">2.5.2.2.</span> <span class="nav-text"> GPIO_WriteBit</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">2.5.3.</span> <span class="nav-text"> 完整代码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BE%93%E5%85%A5"><span class="nav-number">2.6.</span> <span class="nav-text"> 输入</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BF%9D%E6%8A%A4%E4%BA%8C%E6%9E%81%E7%AE%A1%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">2.6.1.</span> <span class="nav-text"> 保护二极管的工作原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8A%E6%8B%89%E7%94%B5%E9%98%BB%E5%92%8C%E4%B8%8B%E6%8B%89%E7%94%B5%E9%98%BB"><span class="nav-number">2.6.2.</span> <span class="nav-text"> 上拉电阻和下拉电阻</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E9%92%AE%E8%AF%95%E9%AA%8C"><span class="nav-number">2.7.</span> <span class="nav-text"> 按钮试验</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#gpio-mode"><span class="nav-number">2.7.1.</span> <span class="nav-text"> GPIO Mode</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#led-%E6%8E%A5%E7%BA%BF"><span class="nav-number">2.7.2.</span> <span class="nav-text"> LED 接线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E9%92%AE%E6%8E%A5%E7%BA%BF"><span class="nav-number">2.7.3.</span> <span class="nav-text"> 按钮接线</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -600,12 +677,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">34k</span>
+    <span title="站点总字数">35k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:04</span>
+    <span title="站点阅读时长">2:07</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
