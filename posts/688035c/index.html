@@ -47,8 +47,8 @@
     lang   : 'zh-CN'
   };
 </script>
-<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
-<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+<!-- PrismJS Theme: prism-coy - light with soft shadows and warm tint -->
+<link rel="stylesheet" href="/lib/prism/prism-coy.min.css">
 
 <!-- PrismJS Line Numbers CSS -->
 <link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
@@ -61,13 +61,9 @@
   pre[class*="language-"] {
     font-size: 0.85em;
     border-radius: 4px;
-    background: #2d2d2d;
   }
   code[class*="language-"] {
     text-shadow: none;
-  }
-  .line-numbers-rows {
-    border-right: 1px solid #404040;
   }
 </style>
 
@@ -259,13 +255,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>5.9k</span>
+              <span>6.3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>22 分钟</span>
+              <span>23 分钟</span>
             </span>
 
         </div>
@@ -924,35 +920,75 @@ systemctl start blog-counter<span aria-hidden="true" class="line-numbers-rows"><
 <span class="token comment"># 关闭 markdown-it-plus 的高亮，避免双重重叠</span>
 <span class="token key atrule">markdown_it_plus</span><span class="token punctuation">:</span>
   <span class="token key atrule">highlight</span><span class="token punctuation">:</span> <span class="token boolean important">false</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4 id="第二步修改-next-主题配置"><a class="markdownIt-Anchor" href="#第二步修改-next-主题配置"></a> 第二步：修改 NexT 主题配置</h4>
-<p><code>themes/next/_config.yml</code>：</p>
+<h4 id="第二步修改-next-主题配置可选"><a class="markdownIt-Anchor" href="#第二步修改-next-主题配置可选"></a> 第二步：修改 NexT 主题配置（可选）</h4>
+<p><code>themes/next/_config.yml</code> 的 <code>codeblock.highlight_theme</code> 控制的是旧 highlight.js 的配色，对 PrismJS 无影响。可以保持默认或随意设置：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">codeblock</span><span class="token punctuation">:</span>
-  <span class="token key atrule">highlight_theme</span><span class="token punctuation">:</span> night eighties  <span class="token comment"># 从 normal 改为深色主题</span>
+  <span class="token key atrule">highlight_theme</span><span class="token punctuation">:</span> night eighties  <span class="token comment"># 仅对 highlight.js 生效，PrismJS 不受此影响</span>
   <span class="token key atrule">copy_button</span><span class="token punctuation">:</span>
     <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>                   <span class="token comment"># 开启代码块复制按钮</span>
     <span class="token key atrule">show_result</span><span class="token punctuation">:</span> <span class="token boolean important">false</span>
     <span class="token key atrule">style</span><span class="token punctuation">:</span> flat<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="第三步本地托管-prismjs-资源"><a class="markdownIt-Anchor" href="#第三步本地托管-prismjs-资源"></a> 第三步：本地托管 PrismJS 资源</h4>
 <p>由于博客面向国内读者，CDN（如 <a target="_blank" rel="noopener" href="http://cdn.jsdelivr.net">cdn.jsdelivr.net</a>）在国内经常不稳定甚至被屏蔽。直接从 <code>node_modules</code> 中复制 PrismJS 文件到主题目录下本地托管：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 从 node_modules 复制必要文件</span>
-<span class="token function">cp</span> node_modules/prismjs/themes/prism-tomorrow.min.css themes/next/source/lib/prism/
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 创建主题 lib 目录</span>
+<span class="token function">mkdir</span> <span class="token parameter variable">-p</span> themes/next/source/lib/prism/
+
+<span class="token comment"># 复制 CSS 主题（可替换为其他主题：prism.min.css / prism-coy.min.css / prism-okaidia.min.css 等）</span>
+<span class="token function">cp</span> node_modules/prismjs/themes/prism-coy.min.css themes/next/source/lib/prism/
+
+<span class="token comment"># 复制 core（需要加 data-manual，见下文说明）</span>
 <span class="token function">cp</span> node_modules/prismjs/components/prism-core.min.js themes/next/source/lib/prism/
-<span class="token function">cp</span> node_modules/prismjs/plugins/autoloader/prism-autoloader.min.js themes/next/source/lib/prism/
-<span class="token function">cp</span> node_modules/prismjs/plugins/line-numbers/* themes/next/source/lib/prism/
-<span class="token function">cp</span> node_modules/prismjs/plugins/toolbar/* themes/next/source/lib/prism/
-<span class="token function">cp</span> node_modules/prismjs/plugins/copy-to-clipboard/* themes/next/source/lib/prism/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span class="token comment"># 复制 line-numbers 的 CSS（行号由 Hexo 构建时生成，只需 CSS 即可）</span>
+<span class="token function">cp</span> node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css themes/next/source/lib/prism/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>⚠️ <strong>关键踩坑</strong>：<code>prism-core.min.js</code> 加载后会自动执行 <code>Prism.highlightAll()</code>，将构建时已着色的 token 全部覆盖为纯文本，导致代码颜色消失。解决方案是在 script 标签上加 <code>data-manual</code> 属性阻止自动执行。详见下一步。</p>
+</blockquote>
 <h4 id="第四步通过主题自定义文件加载"><a class="markdownIt-Anchor" href="#第四步通过主题自定义文件加载"></a> 第四步：通过主题自定义文件加载</h4>
 <p>启用 NexT 的 <code>custom_file_path</code>，创建 <code>source/_data/head.swig</code> 和 <code>source/_data/body-end.swig</code>：</p>
 <pre class="line-numbers language-swig" data-language="swig"><code class="language-swig">&#123;# head.swig - 插入 &lt;head&gt; #&#125;
-&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-tomorrow.min.css&quot;&gt;
+&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-coy.min.css&quot;&gt;
 &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-line-numbers.min.css&quot;&gt;
-&lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-toolbar.min.css&quot;&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+&lt;style&gt;
+  pre[class*&#x3D;&quot;language-&quot;] &#123;
+    font-size: 0.85em;
+    border-radius: 4px;
+  &#125;
+  code[class*&#x3D;&quot;language-&quot;] &#123;
+    text-shadow: none;
+  &#125;
+&lt;&#x2F;style&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-swig" data-language="swig"><code class="language-swig">&#123;# body-end.swig - 插入 &lt;&#x2F;body&gt; 前 #&#125;
-&lt;script src&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-core.min.js&quot;&gt;&lt;&#x2F;script&gt;
-&lt;script src&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-autoloader.min.js&quot;&gt;&lt;&#x2F;script&gt;
-&lt;script src&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-line-numbers.min.js&quot;&gt;&lt;&#x2F;script&gt;
-&lt;script src&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-toolbar.min.js&quot;&gt;&lt;&#x2F;script&gt;
-&lt;script src&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-copy-to-clipboard.min.js&quot;&gt;&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+&lt;!-- data-manual 阻止自动 highlightAll，避免覆盖构建时生成的 token --&gt;
+&lt;script src&#x3D;&quot;&#x2F;lib&#x2F;prism&#x2F;prism-core.min.js&quot; data-manual&gt;&lt;&#x2F;script&gt;
+
+&lt;!-- 复制按钮手动实现（NexT 自带的只认 figure.highlight，不兼容 PrismJS） --&gt;
+&lt;script&gt;
+  (function() &#123;
+    document.querySelectorAll(&#39;pre[class*&#x3D;&quot;language-&quot;]&#39;).forEach(function(pre) &#123;
+      if (pre.parentNode &amp;&amp; pre.parentNode.classList.contains(&#39;highlight-container&#39;)) return;
+      var container &#x3D; document.createElement(&#39;div&#39;);
+      container.className &#x3D; &#39;highlight-container&#39;;
+      pre.parentNode.insertBefore(container, pre);
+      container.appendChild(pre);
+      var btn &#x3D; document.createElement(&#39;div&#39;);
+      btn.className &#x3D; &#39;copy-btn&#39;;
+      btn.innerHTML &#x3D; &#39;&lt;i class&#x3D;&quot;fa fa-clipboard fa-fw&quot;&gt;&lt;&#x2F;i&gt;&#39;;
+      container.appendChild(btn);
+      btn.addEventListener(&#39;click&#39;, function() &#123;
+        var code &#x3D; pre.querySelector(&#39;code&#39;);
+        if (!code) return;
+        navigator.clipboard.writeText(code.textContent).then(function() &#123;
+          btn.innerHTML &#x3D; &#39;&lt;i class&#x3D;&quot;fa fa-check fa-fw&quot;&gt;&lt;&#x2F;i&gt;&#39;;
+          setTimeout(function() &#123; btn.innerHTML &#x3D; &#39;&lt;i class&#x3D;&quot;fa fa-clipboard fa-fw&quot;&gt;&lt;&#x2F;i&gt;&#39;; &#125;, 2000);
+        &#125;);
+      &#125;);
+    &#125;);
+  &#125;)();
+&lt;&#x2F;script&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>为什么不加载 <code>prism-autoloader.min.js</code> 和 <code>prism-line-numbers.min.js</code>？因为 <code>preprocess: true</code> 模式下，Hexo 在构建时已完成所有着色和行号插入，客户端无需重复处理。加载 prism-core 只是为了给 NexT 的插件体系提供 <code>Prism</code> 命名空间。</p>
+</blockquote>
 <h3 id="最终效果-3"><a class="markdownIt-Anchor" href="#最终效果-3"></a> 最终效果</h3>
 <table>
 <thead>
@@ -966,27 +1002,27 @@ systemctl start blog-counter<span aria-hidden="true" class="line-numbers-rows"><
 <tr>
 <td>高亮引擎</td>
 <td>highlight.js + markdown-it-plus 冲突</td>
-<td>PrismJS 统一处理</td>
+<td>PrismJS 构建时预处理（<code>preprocess: true</code>）</td>
 </tr>
 <tr>
 <td>主题配色</td>
 <td>浅灰底 <code>#f7f7f7</code> + 深灰字 <code>#4d4d4c</code></td>
-<td>深色底 <code>#2d2d2d</code> + 80 年代经典配色</td>
+<td>可选多种主题（当前为 Coy：白底 <code>#fdfdfd</code>）</td>
 </tr>
 <tr>
 <td>关键字</td>
 <td>几乎看不见的暗色</td>
-<td>醒目的紫色</td>
+<td>主题配色，清晰可辨</td>
 </tr>
 <tr>
 <td>字符串</td>
 <td>不可区分的灰色</td>
-<td>鲜明绿色</td>
+<td>主题配色，鲜明区分</td>
 </tr>
 <tr>
 <td>行号</td>
 <td>有但样式平淡</td>
-<td>带分隔线、清晰显示</td>
+<td>构建时内联，带分隔线</td>
 </tr>
 <tr>
 <td>复制按钮</td>
@@ -998,8 +1034,16 @@ systemctl start blog-counter<span aria-hidden="true" class="line-numbers-rows"><
 <td>CDN（国内可能被墙）</td>
 <td>本地静态文件，秒加载</td>
 </tr>
+<tr>
+<td>防客户端覆盖</td>
+<td>❌ 未处理</td>
+<td>✅ <code>data-manual</code> 阻止 PrismJS 自动重绘</td>
+</tr>
 </tbody>
 </table>
+<blockquote>
+<p>可自由切换 PrismJS 主题：<code>prism.css</code>（默认）、<code>prism-coy.css</code>（当前）、<code>prism-dark.css</code>、<code>prism-funky.css</code>、<code>prism-okaidia.css</code>、<code>prism-solarizedlight.css</code>、<code>prism-twilight.css</code>。只需替换 <code>head.swig</code> 中的 CSS 链接即可。</p>
+</blockquote>
 <p>从 2021 年初建到现在，博客的形态变了很多次。从一开始连 GitHub 都不会用，到后来自己写 Hexo 脚本、配服务器，每一步踩坑都成了经验。这些折腾的价值或许不只是技术本身——它让我习惯了记录、整理和分享，而这一点大概是写博客最大的收获。</p>
 <p>如果你也在折腾 Hexo 博客，希望这篇文章能帮你少走一些弯路。</p>
 
@@ -1085,7 +1129,7 @@ systemctl start blog-counter<span aria-hidden="true" class="line-numbers-rows"><
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%99%E4%B9%8B%E5%88%9D"><span class="nav-number">1.</span> <span class="nav-text"> 建站之初</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%A4%8D%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text"> 第一次复活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%A4%8D%E6%B4%BB%E5%85%A8%E9%9D%A2%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text"> 第二次复活：全面功能配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.1.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80hexo-renderer-kramed%E9%80%82%E7%94%A8%E4%BA%8E-matery-%E4%B8%BB%E9%A2%98"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 方案一：hexo-renderer-kramed（适用于 matery 主题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-renderer-markdown-it-plus%E6%8E%A8%E8%8D%90"><span class="nav-number">3.1.2.</span> <span class="nav-text"> 方案二：hexo-renderer-markdown-it-plus（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E6%B8%B2%E6%9F%93%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-number">3.1.3.</span> <span class="nav-text"> 踩坑记录：渲染器冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-deploy-key-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text"> SSH Deploy Key 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90-ssh-%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 生成 SSH 密钥对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-deploy-key"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 添加 Deploy Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-ssh-config"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 配置 SSH Config</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leancloud-%E8%AF%84%E8%AE%BA%E4%B8%8E%E9%98%85%E8%AF%BB%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text"> LeanCloud 评论与阅读量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BDvaline"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 评论功能（Valine）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 阅读量功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitee-github-%E9%95%9C%E5%83%8F%E5%90%8C%E6%AD%A5"><span class="nav-number">3.4.</span> <span class="nav-text"> Gitee &#x2F; GitHub 镜像同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seo-%E4%BC%98%E5%8C%96"><span class="nav-number">3.5.</span> <span class="nav-text"> SEO 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90-sitemap"><span class="nav-number">3.5.1.</span> <span class="nav-text"> 生成 Sitemap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E5%BF%85%E5%BA%94"><span class="nav-number">3.5.2.</span> <span class="nav-text"> 推送到必应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="nav-number">3.6.</span> <span class="nav-text"> 文件目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E9%85%8D-obsidian-%E5%8F%8C%E9%93%BE%E5%BC%95%E7%94%A8"><span class="nav-number">3.7.</span> <span class="nav-text"> 适配 Obsidian 双链引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.8.</span> <span class="nav-text"> 字数统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%9F%AD%E9%93%BE%E6%8E%A5abbrlink"><span class="nav-number">4.</span> <span class="nav-text"> 文章短链接（abbrlink）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80hexo-permalink-pinyin%E6%8B%BC%E9%9F%B3%E8%BD%AC%E5%86%99"><span class="nav-number">4.1.</span> <span class="nav-text"> 方案一：hexo-permalink-pinyin（拼音转写）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-abbrlink%E7%9F%AD%E9%93%BE%E6%8E%A5%E6%8E%A8%E8%8D%90"><span class="nav-number">4.2.</span> <span class="nav-text"> 方案二：hexo-abbrlink（短链接，推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95"><span class="nav-number">4.2.1.</span> <span class="nav-text"> 踩坑记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E9%93%BE%E6%8E%A5%E5%85%BC%E5%AE%B9"><span class="nav-number">4.2.2.</span> <span class="nav-text"> 旧链接兼容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post_asset_folder-%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%BF%AE%E5%A4%8D"><span class="nav-number">5.</span> <span class="nav-text"> post_asset_folder 图片路径修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-number">5.1.</span> <span class="nav-text"> 问题背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="nav-number">5.2.</span> <span class="nav-text"> 原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">5.3.</span> <span class="nav-text"> 解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-number">5.4.</span> <span class="nav-text"> 最终效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%B9%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">5.5.</span> <span class="nav-text"> 为什么不改源文件？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">6.</span> <span class="nav-text"> 自建服务器部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">6.1.</span> <span class="nav-text"> 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94"><span class="nav-number">6.2.</span> <span class="nav-text"> 方案对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-%E5%AF%86%E9%92%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">6.3.</span> <span class="nav-text"> SSH 密钥配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-%E9%85%8D%E7%BD%AE"><span class="nav-number">6.4.</span> <span class="nav-text"> Nginx 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83tar-ssh-%E7%AE%A1%E9%81%93"><span class="nav-number">6.5.</span> <span class="nav-text"> 核心：tar + SSH 管道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91hexo-7-%E7%9A%84%E4%BA%8B%E4%BB%B6-vs-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">6.6.</span> <span class="nav-text"> 踩坑：Hexo 7 的事件 vs 过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E8%84%9A%E6%9C%AC"><span class="nav-number">6.7.</span> <span class="nav-text"> 最终脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E6%95%99%E8%AE%AD"><span class="nav-number">6.8.</span> <span class="nav-text"> 密钥格式教训</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C-2"><span class="nav-number">6.9.</span> <span class="nav-text"> 最终效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leancloud-%E6%9B%BF%E4%BB%A3%E8%87%AA%E5%BB%BA%E9%98%85%E8%AF%BB%E9%87%8F%E8%AE%A1%E6%95%B0-api"><span class="nav-number">7.</span> <span class="nav-text"> LeanCloud 替代：自建阅读量计数 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">7.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E9%80%89%E5%9E%8B"><span class="nav-number">7.2.</span> <span class="nav-text"> 方案选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">7.3.</span> <span class="nav-text"> 自建服务架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">7.4.</span> <span class="nav-text"> 数据迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">7.5.</span> <span class="nav-text"> 部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-2"><span class="nav-number">7.6.</span> <span class="nav-text"> 踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-%E9%97%AE%E9%A2%98"><span class="nav-number">7.7.</span> <span class="nav-text"> HTTPS 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">7.8.</span> <span class="nav-text"> 完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pagespeed-%E4%BC%98%E5%8C%96hexo-optimize"><span class="nav-number">8.</span> <span class="nav-text"> PageSpeed 优化：hexo-optimize</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-2"><span class="nav-number">8.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">8.2.</span> <span class="nav-text"> 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">8.3.</span> <span class="nav-text"> 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">8.4.</span> <span class="nav-text"> 参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%97%B6%E7%A6%81%E7%94%A8"><span class="nav-number">8.5.</span> <span class="nav-text"> 开发时禁用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">8.6.</span> <span class="nav-text"> 注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E5%8D%87%E7%BA%A7%E4%BB%8E-highlightjs-%E5%88%87%E6%8D%A2%E5%88%B0-prismjs"><span class="nav-number">9.</span> <span class="nav-text"> 代码高亮升级：从 highlight.js 切换到 PrismJS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-3"><span class="nav-number">9.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-2"><span class="nav-number">9.2.</span> <span class="nav-text"> 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9-_configyml"><span class="nav-number">9.2.1.</span> <span class="nav-text"> 第一步：修改站点 _config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E4%BF%AE%E6%94%B9-next-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE"><span class="nav-number">9.2.2.</span> <span class="nav-text"> 第二步：修改 NexT 主题配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E6%9C%AC%E5%9C%B0%E6%89%98%E7%AE%A1-prismjs-%E8%B5%84%E6%BA%90"><span class="nav-number">9.2.3.</span> <span class="nav-text"> 第三步：本地托管 PrismJS 资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E9%80%9A%E8%BF%87%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="nav-number">9.2.4.</span> <span class="nav-text"> 第四步：通过主题自定义文件加载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C-3"><span class="nav-number">9.3.</span> <span class="nav-text"> 最终效果</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BB%BA%E7%AB%99%E4%B9%8B%E5%88%9D"><span class="nav-number">1.</span> <span class="nav-text"> 建站之初</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%A4%8D%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text"> 第一次复活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AC%A1%E5%A4%8D%E6%B4%BB%E5%85%A8%E9%9D%A2%E5%8A%9F%E8%83%BD%E9%85%8D%E7%BD%AE"><span class="nav-number">3.</span> <span class="nav-text"> 第二次复活：全面功能配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#latex-%E6%94%AF%E6%8C%81"><span class="nav-number">3.1.</span> <span class="nav-text"> LaTeX 支持</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80hexo-renderer-kramed%E9%80%82%E7%94%A8%E4%BA%8E-matery-%E4%B8%BB%E9%A2%98"><span class="nav-number">3.1.1.</span> <span class="nav-text"> 方案一：hexo-renderer-kramed（适用于 matery 主题）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-renderer-markdown-it-plus%E6%8E%A8%E8%8D%90"><span class="nav-number">3.1.2.</span> <span class="nav-text"> 方案二：hexo-renderer-markdown-it-plus（推荐）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95%E6%B8%B2%E6%9F%93%E5%99%A8%E5%86%B2%E7%AA%81"><span class="nav-number">3.1.3.</span> <span class="nav-text"> 踩坑记录：渲染器冲突</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-deploy-key-%E9%85%8D%E7%BD%AE"><span class="nav-number">3.2.</span> <span class="nav-text"> SSH Deploy Key 配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90-ssh-%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="nav-number">3.2.1.</span> <span class="nav-text"> 生成 SSH 密钥对</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B7%BB%E5%8A%A0-deploy-key"><span class="nav-number">3.2.2.</span> <span class="nav-text"> 添加 Deploy Key</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE-ssh-config"><span class="nav-number">3.2.3.</span> <span class="nav-text"> 配置 SSH Config</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#leancloud-%E8%AF%84%E8%AE%BA%E4%B8%8E%E9%98%85%E8%AF%BB%E9%87%8F"><span class="nav-number">3.3.</span> <span class="nav-text"> LeanCloud 评论与阅读量</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BDvaline"><span class="nav-number">3.3.1.</span> <span class="nav-text"> 评论功能（Valine）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E9%87%8F%E5%8A%9F%E8%83%BD"><span class="nav-number">3.3.2.</span> <span class="nav-text"> 阅读量功能</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gitee-github-%E9%95%9C%E5%83%8F%E5%90%8C%E6%AD%A5"><span class="nav-number">3.4.</span> <span class="nav-text"> Gitee &#x2F; GitHub 镜像同步</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#seo-%E4%BC%98%E5%8C%96"><span class="nav-number">3.5.</span> <span class="nav-text"> SEO 优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%9F%E6%88%90-sitemap"><span class="nav-number">3.5.1.</span> <span class="nav-text"> 生成 Sitemap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%A8%E9%80%81%E5%88%B0%E5%BF%85%E5%BA%94"><span class="nav-number">3.5.2.</span> <span class="nav-text"> 推送到必应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E7%9B%AE%E5%BD%95%E7%AE%A1%E7%90%86"><span class="nav-number">3.6.</span> <span class="nav-text"> 文件目录管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%82%E9%85%8D-obsidian-%E5%8F%8C%E9%93%BE%E5%BC%95%E7%94%A8"><span class="nav-number">3.7.</span> <span class="nav-text"> 适配 Obsidian 双链引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AD%97%E6%95%B0%E7%BB%9F%E8%AE%A1"><span class="nav-number">3.8.</span> <span class="nav-text"> 字数统计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E7%AB%A0%E7%9F%AD%E9%93%BE%E6%8E%A5abbrlink"><span class="nav-number">4.</span> <span class="nav-text"> 文章短链接（abbrlink）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%B8%80hexo-permalink-pinyin%E6%8B%BC%E9%9F%B3%E8%BD%AC%E5%86%99"><span class="nav-number">4.1.</span> <span class="nav-text"> 方案一：hexo-permalink-pinyin（拼音转写）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E4%BA%8Chexo-abbrlink%E7%9F%AD%E9%93%BE%E6%8E%A5%E6%8E%A8%E8%8D%90"><span class="nav-number">4.2.</span> <span class="nav-text"> 方案二：hexo-abbrlink（短链接，推荐）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95"><span class="nav-number">4.2.1.</span> <span class="nav-text"> 踩坑记录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A7%E9%93%BE%E6%8E%A5%E5%85%BC%E5%AE%B9"><span class="nav-number">4.2.2.</span> <span class="nav-text"> 旧链接兼容</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#post_asset_folder-%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84%E4%BF%AE%E5%A4%8D"><span class="nav-number">5.</span> <span class="nav-text"> post_asset_folder 图片路径修复</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E8%83%8C%E6%99%AF"><span class="nav-number">5.1.</span> <span class="nav-text"> 问题背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%9F%E5%9B%A0%E5%88%86%E6%9E%90"><span class="nav-number">5.2.</span> <span class="nav-text"> 原因分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">5.3.</span> <span class="nav-text"> 解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C"><span class="nav-number">5.4.</span> <span class="nav-text"> 最终效果</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E6%94%B9%E6%BA%90%E6%96%87%E4%BB%B6"><span class="nav-number">5.5.</span> <span class="nav-text"> 为什么不改源文件？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="nav-number">6.</span> <span class="nav-text"> 自建服务器部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">6.1.</span> <span class="nav-text"> 需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E5%AF%B9%E6%AF%94"><span class="nav-number">6.2.</span> <span class="nav-text"> 方案对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-%E5%AF%86%E9%92%A5%E9%85%8D%E7%BD%AE"><span class="nav-number">6.3.</span> <span class="nav-text"> SSH 密钥配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nginx-%E9%85%8D%E7%BD%AE"><span class="nav-number">6.4.</span> <span class="nav-text"> Nginx 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%B8%E5%BF%83tar-ssh-%E7%AE%A1%E9%81%93"><span class="nav-number">6.5.</span> <span class="nav-text"> 核心：tar + SSH 管道</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91hexo-7-%E7%9A%84%E4%BA%8B%E4%BB%B6-vs-%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="nav-number">6.6.</span> <span class="nav-text"> 踩坑：Hexo 7 的事件 vs 过滤器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E8%84%9A%E6%9C%AC"><span class="nav-number">6.7.</span> <span class="nav-text"> 最终脚本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%A0%BC%E5%BC%8F%E6%95%99%E8%AE%AD"><span class="nav-number">6.8.</span> <span class="nav-text"> 密钥格式教训</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C-2"><span class="nav-number">6.9.</span> <span class="nav-text"> 最终效果</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#leancloud-%E6%9B%BF%E4%BB%A3%E8%87%AA%E5%BB%BA%E9%98%85%E8%AF%BB%E9%87%8F%E8%AE%A1%E6%95%B0-api"><span class="nav-number">7.</span> <span class="nav-text"> LeanCloud 替代：自建阅读量计数 API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">7.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B9%E6%A1%88%E9%80%89%E5%9E%8B"><span class="nav-number">7.2.</span> <span class="nav-text"> 方案选型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%BB%BA%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84"><span class="nav-number">7.3.</span> <span class="nav-text"> 自建服务架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="nav-number">7.4.</span> <span class="nav-text"> 数据迁移</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">7.5.</span> <span class="nav-text"> 部署</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95-2"><span class="nav-number">7.6.</span> <span class="nav-text"> 踩坑记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#https-%E9%97%AE%E9%A2%98"><span class="nav-number">7.7.</span> <span class="nav-text"> HTTPS 问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81"><span class="nav-number">7.8.</span> <span class="nav-text"> 完整代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pagespeed-%E4%BC%98%E5%8C%96hexo-optimize"><span class="nav-number">8.</span> <span class="nav-text"> PageSpeed 优化：hexo-optimize</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-2"><span class="nav-number">8.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">8.2.</span> <span class="nav-text"> 安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE"><span class="nav-number">8.3.</span> <span class="nav-text"> 配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E8%AF%B4%E6%98%8E"><span class="nav-number">8.4.</span> <span class="nav-text"> 参数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E6%97%B6%E7%A6%81%E7%94%A8"><span class="nav-number">8.5.</span> <span class="nav-text"> 开发时禁用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">8.6.</span> <span class="nav-text"> 注意事项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E9%AB%98%E4%BA%AE%E5%8D%87%E7%BA%A7%E4%BB%8E-highlightjs-%E5%88%87%E6%8D%A2%E5%88%B0-prismjs"><span class="nav-number">9.</span> <span class="nav-text"> 代码高亮升级：从 highlight.js 切换到 PrismJS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%83%8C%E6%99%AF-3"><span class="nav-number">9.1.</span> <span class="nav-text"> 背景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88-2"><span class="nav-number">9.2.</span> <span class="nav-text"> 解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%E4%BF%AE%E6%94%B9%E7%AB%99%E7%82%B9-_configyml"><span class="nav-number">9.2.1.</span> <span class="nav-text"> 第一步：修改站点 _config.yml</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%E4%BF%AE%E6%94%B9-next-%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE%E5%8F%AF%E9%80%89"><span class="nav-number">9.2.2.</span> <span class="nav-text"> 第二步：修改 NexT 主题配置（可选）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%E6%9C%AC%E5%9C%B0%E6%89%98%E7%AE%A1-prismjs-%E8%B5%84%E6%BA%90"><span class="nav-number">9.2.3.</span> <span class="nav-text"> 第三步：本地托管 PrismJS 资源</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%E9%80%9A%E8%BF%87%E4%B8%BB%E9%A2%98%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD"><span class="nav-number">9.2.4.</span> <span class="nav-text"> 第四步：通过主题自定义文件加载</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%80%E7%BB%88%E6%95%88%E6%9E%9C-3"><span class="nav-number">9.3.</span> <span class="nav-text"> 最终效果</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -1154,12 +1198,12 @@ systemctl start blog-counter<span aria-hidden="true" class="line-numbers-rows"><
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">37k</span>
+    <span title="站点总字数">38k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:16</span>
+    <span title="站点阅读时长">2:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1338,18 +1382,40 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
-<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
-<script src="/lib/prism/prism-core.min.js"></script>
+<!-- PrismJS Core (data-manual prevents auto-rehighlight which would overwrite build-time tokens) -->
+<script src="/lib/prism/prism-core.min.js" data-manual></script>
 
-<!-- PrismJS Autoloader - loads language definitions on demand -->
-<script src="/lib/prism/prism-autoloader.min.js"></script>
+<!-- PrismJS Autoloader not needed - highlighting done at build time (preprocess: true) -->
+<!-- Line Numbers JS not needed - line numbers embedded in HTML at build time -->
 
-<!-- PrismJS Line Numbers -->
-<script src="/lib/prism/prism-line-numbers.min.js"></script>
-
-<!-- PrismJS Toolbar + Copy to Clipboard -->
-<script src="/lib/prism/prism-toolbar.min.js"></script>
-<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
+<!-- NexT's built-in copy button only works for figure.highlight, not for PrismJS pre blocks -->
+<!-- So we manually add copy buttons for pre[class*="language-"] blocks here -->
+<script>
+  (function() {
+    // Add copy button for PrismJS code blocks (pre[class*="language-"])
+    document.querySelectorAll('pre[class*="language-"]').forEach(function(pre) {
+      // Skip if already wrapped in a highlight-container (NexT style)
+      if (pre.parentNode && pre.parentNode.classList.contains('highlight-container')) return;
+      var container = document.createElement('div');
+      container.className = 'highlight-container';
+      pre.parentNode.insertBefore(container, pre);
+      container.appendChild(pre);
+      var btn = document.createElement('div');
+      btn.className = 'copy-btn';
+      btn.innerHTML = '<i class="fa fa-clipboard fa-fw"></i>';
+      container.appendChild(btn);
+      btn.addEventListener('click', function() {
+        var code = pre.querySelector('code');
+        if (!code) return;
+        var text = code.textContent;
+        navigator.clipboard.writeText(text).then(function() {
+          btn.innerHTML = '<i class="fa fa-check fa-fw"></i>';
+          setTimeout(function() { btn.innerHTML = '<i class="fa fa-clipboard fa-fw"></i>'; }, 2000);
+        });
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>

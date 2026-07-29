@@ -270,6 +270,20 @@
   </url>
   
   <url>
+    <loc>http://mxhanks.github.io/tags/Java%E8%BF%9B%E9%98%B6/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://mxhanks.github.io/tags/Java%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://mxhanks.github.io/tags/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
@@ -291,14 +305,7 @@
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/tags/Java%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/tags/Java%E8%BF%9B%E9%98%B6/</loc>
+    <loc>http://mxhanks.github.io/tags/Pytorch/</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -306,13 +313,6 @@
   
   <url>
     <loc>http://mxhanks.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2026-07-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://mxhanks.github.io/tags/Pytorch/</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -391,14 +391,14 @@
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
+    <loc>http://mxhanks.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://mxhanks.github.io/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/</loc>
+    <loc>http://mxhanks.github.io/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

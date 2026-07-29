@@ -43,8 +43,8 @@
     lang   : 'zh-CN'
   };
 </script>
-<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
-<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+<!-- PrismJS Theme: prism-coy - light with soft shadows and warm tint -->
+<link rel="stylesheet" href="/lib/prism/prism-coy.min.css">
 
 <!-- PrismJS Line Numbers CSS -->
 <link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
@@ -57,13 +57,9 @@
   pre[class*="language-"] {
     font-size: 0.85em;
     border-radius: 4px;
-    background: #2d2d2d;
   }
   code[class*="language-"] {
     text-shadow: none;
-  }
-  .line-numbers-rows {
-    border-right: 1px solid #404040;
   }
 </style>
 
@@ -388,12 +384,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">37k</span>
+    <span title="站点总字数">38k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:16</span>
+    <span title="站点阅读时长">2:17</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -572,18 +568,40 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
-<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
-<script src="/lib/prism/prism-core.min.js"></script>
+<!-- PrismJS Core (data-manual prevents auto-rehighlight which would overwrite build-time tokens) -->
+<script src="/lib/prism/prism-core.min.js" data-manual></script>
 
-<!-- PrismJS Autoloader - loads language definitions on demand -->
-<script src="/lib/prism/prism-autoloader.min.js"></script>
+<!-- PrismJS Autoloader not needed - highlighting done at build time (preprocess: true) -->
+<!-- Line Numbers JS not needed - line numbers embedded in HTML at build time -->
 
-<!-- PrismJS Line Numbers -->
-<script src="/lib/prism/prism-line-numbers.min.js"></script>
-
-<!-- PrismJS Toolbar + Copy to Clipboard -->
-<script src="/lib/prism/prism-toolbar.min.js"></script>
-<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
+<!-- NexT's built-in copy button only works for figure.highlight, not for PrismJS pre blocks -->
+<!-- So we manually add copy buttons for pre[class*="language-"] blocks here -->
+<script>
+  (function() {
+    // Add copy button for PrismJS code blocks (pre[class*="language-"])
+    document.querySelectorAll('pre[class*="language-"]').forEach(function(pre) {
+      // Skip if already wrapped in a highlight-container (NexT style)
+      if (pre.parentNode && pre.parentNode.classList.contains('highlight-container')) return;
+      var container = document.createElement('div');
+      container.className = 'highlight-container';
+      pre.parentNode.insertBefore(container, pre);
+      container.appendChild(pre);
+      var btn = document.createElement('div');
+      btn.className = 'copy-btn';
+      btn.innerHTML = '<i class="fa fa-clipboard fa-fw"></i>';
+      container.appendChild(btn);
+      btn.addEventListener('click', function() {
+        var code = pre.querySelector('code');
+        if (!code) return;
+        var text = code.textContent;
+        navigator.clipboard.writeText(text).then(function() {
+          btn.innerHTML = '<i class="fa fa-check fa-fw"></i>';
+          setTimeout(function() { btn.innerHTML = '<i class="fa fa-clipboard fa-fw"></i>'; }, 2000);
+        });
+      });
+    });
+  })();
+</script>
 
 </body>
 </html>
