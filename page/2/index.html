@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="MxHanks 的博客">
@@ -43,6 +43,29 @@
     lang   : 'zh-CN'
   };
 </script>
+<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
+<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+
+<!-- PrismJS Line Numbers CSS -->
+<link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
+
+<!-- PrismJS Toolbar CSS (for copy button) -->
+<link rel="stylesheet" href="/lib/prism/prism-toolbar.min.css">
+
+<!-- Custom code block styling overrides -->
+<style>
+  pre[class*="language-"] {
+    font-size: 0.85em;
+    border-radius: 4px;
+    background: #2d2d2d;
+  }
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+  .line-numbers-rows {
+    border-right: 1px solid #404040;
+  }
+</style>
 
   <title>MxHanks' Blog</title>
   
@@ -257,7 +280,16 @@
 <p>书上的数据都过于简单了，虽然才刚刚开始学基础，但我还是想是一些比较实用的数据，能带给我一些成就感。这次我使用的是 <a target="_blank" rel="noopener" href="https://archive.ics.uci.edu/dataset/53/iris">iris 数据集</a>。这也是我第一次尝试通过数学概念直接写代码，不看书，希望自己能成功。</p>
 <p>数据中一共有五列，前四列代表着花萼长度、花萼宽度、花瓣长度、花瓣宽度，我们取前两列作分析。为了方便处理数据，我们将 “Iris-setosa” 定义为1, 将 “Iris-versicolor” 定义为 -1 , 暂时不研究第三类 “Iris-virginica” , 取到第 100 行, 先展示一下数据吧。</p>
 <p>因为 numpy 的 loadtxt 功能面对复杂的数据集实在不是很好用，我决定要慢慢地接受使用 pandas 了。目前会慢慢过度。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">train = np.array(pd.read_csv(<span class="string">&#x27;cf-iris.csv&#x27;</span>).iloc[:<span class="number">100</span>])   <span class="comment"># 前 100 行作为训练集</span></span><br><span class="line">train_x = train[:,<span class="number">0</span>:<span class="number">2</span>]</span><br><span class="line">train_y = np.where(train[:, <span class="number">4</span>] == <span class="string">&#x27;Iris-setosa&#x27;</span>, <span class="number">1</span>, -<span class="number">1</span>)  </span><br><span class="line"></span><br><span class="line">plt.plot(train_x[train_y == <span class="number">1</span>, <span class="number">0</span>], train_x[train_y == <span class="number">1</span>, <span class="number">1</span>], <span class="string">&#x27;o&#x27;</span>)</span><br><span class="line">plt.plot(train_x[train_y == -<span class="number">1</span>, <span class="number">0</span>], train_x[train_y == -<span class="number">1</span>, <span class="number">1</span>], <span class="string">&#x27;x&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt
+
+train <span class="token operator">=</span> np<span class="token punctuation">.</span>array<span class="token punctuation">(</span>pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span><span class="token string">'cf-iris.csv'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>iloc<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">)</span>   <span class="token comment"># 前 100 行作为训练集</span>
+train_x <span class="token operator">=</span> train<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span>
+train_y <span class="token operator">=</span> np<span class="token punctuation">.</span>where<span class="token punctuation">(</span>train<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Iris-setosa'</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>  
+
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>train_x<span class="token punctuation">[</span>train_y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> train_x<span class="token punctuation">[</span>train_y <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">)</span>
+plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>train_x<span class="token punctuation">[</span>train_y <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> train_x<span class="token punctuation">[</span>train_y <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token string">'x'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="output_3_1.png" alt></p>
 <h3 id="判别函数"><a class="markdownIt-Anchor" href="#判别函数"></a> 判别函数</h3>
           <!--noindex-->
@@ -376,7 +408,7 @@
           <p>我很烦那些安装在 C 盘里面的文件，这个 Xmind 又安装在了 C 盘里面，而且一般改注册表的方式也没用因为它安装在了 Appdata 文件夹里面。。</p>
 <p>这个时候就只能使用命令行大法了，我也不知道大佬是怎么发现这个方法的，反正被我发掘到了就记录下来吧，希望能帮助到其他人</p>
 <p>进入到安装包所在的目录输入一下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.\Xmind-for-Windows-x64bit-24.01.13311-202401310003.exe /D=<span class="string">&quot;D:\Program Files\Xmind&quot;</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">.<span class="token punctuation">\</span>Xmind-for-Windows-x64bit-24.01.13311-202401310003.exe /D<span class="token operator">=</span><span class="token string">"D:\Program Files\Xmind"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/posts/44654/#more" rel="contents">
@@ -615,11 +647,14 @@
       
           <h1 id="回归"><a class="markdownIt-Anchor" href="#回归"></a> 回归</h1>
 <h2 id="作为一次函数实现"><a class="markdownIt-Anchor" href="#作为一次函数实现"></a> 作为一次函数实现</h2>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>pyplot <span class="token keyword">as</span> plt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="读入训练数据"><a class="markdownIt-Anchor" href="#读入训练数据"></a> 读入训练数据</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">train = np.loadtxt(<span class="string">&#x27;click.csv&#x27;</span>, delimiter=<span class="string">&#x27;,&#x27;</span>, skiprows=<span class="number">1</span>)</span><br><span class="line">train_x = train[:,<span class="number">0</span>]</span><br><span class="line">train_y = train[:,<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">train <span class="token operator">=</span> np<span class="token punctuation">.</span>loadtxt<span class="token punctuation">(</span><span class="token string">'click.csv'</span><span class="token punctuation">,</span> delimiter<span class="token operator">=</span><span class="token string">','</span><span class="token punctuation">,</span> skiprows<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+train_x <span class="token operator">=</span> train<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span>
+train_y <span class="token operator">=</span> train<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="画图展示"><a class="markdownIt-Anchor" href="#画图展示"></a> 画图展示</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">plt.plot(train_x, train_y, <span class="string">&#x27;o&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">plt<span class="token punctuation">.</span>plot<span class="token punctuation">(</span>train_x<span class="token punctuation">,</span> train_y<span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <pre><code>[&lt;matplotlib.lines.Line2D at 0x7fc95f6b1410&gt;]
 </code></pre>
 <p><img src="output_6_1.png" alt="png"></p>
@@ -738,9 +773,20 @@
 
       
           <h3 id="方法一"><a class="markdownIt-Anchor" href="#方法一"></a> 方法一</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Log2[<span class="number">100001</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">log_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Log2[i] = Log2[i / <span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> Log2<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">log_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        Log2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Log2<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="方法二"><a class="markdownIt-Anchor" href="#方法二"></a> 方法二</h3>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> Log2[<span class="number">100001</span>];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">log_2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">2</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        Log2[i] = Log2[i / <span class="number">2</span>] + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> Log2<span class="token punctuation">[</span><span class="token number">100001</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">inline</span> <span class="token keyword">void</span> <span class="token function">log_2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        Log2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> Log2<span class="token punctuation">[</span>i <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>嘿嘿, 原理啥的自己研究一下就懂了。</p>
 
           <!--noindex-->
@@ -876,7 +922,9 @@
 <li>Calendar.DAY_OF_WEEK    ——星期几。</li>
 </ul>
 <h3 id="操作时间"><a class="markdownIt-Anchor" href="#操作时间"></a> 操作时间：</h3>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Calendar</span> <span class="variable">c1</span> <span class="operator">=</span> Calendar.getInstance();</span><br><span class="line">c1.add(Calendar.DATE, <span class="number">10</span>); </span><br><span class="line">c1.add(Calendar.DATE, -<span class="number">10</span>); <span class="comment">//把c1对象的日期加上-10，也就是c1所表的日期的10天前的日期，其它所有的数值会被重新计算。</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Calendar</span> c1 <span class="token operator">=</span> <span class="token class-name">Calendar</span><span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+c1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">Calendar</span><span class="token punctuation">.</span><span class="token constant">DATE</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+c1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">Calendar</span><span class="token punctuation">.</span><span class="token constant">DATE</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//把c1对象的日期加上-10，也就是c1所表的日期的10天前的日期，其它所有的数值会被重新计算。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>其他字段属性的add的意义以此类推。</p>
           <!--noindex-->
             <div class="post-button">
@@ -1058,7 +1106,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2026-07-27 12:00:00" itemprop="dateModified" datetime="2026-07-27T12:00:00+08:00">2026-07-27</time>
+                <time title="修改时间：2026-07-29 17:00:00" itemprop="dateModified" datetime="2026-07-29T17:00:00+08:00">2026-07-29</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1096,13 +1144,13 @@
               <span class="post-meta-item-icon">
                 <i class="far fa-file-word"></i>
               </span>
-              <span>5.3k</span>
+              <span>5.9k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="far fa-clock"></i>
               </span>
-              <span>19 分钟</span>
+              <span>22 分钟</span>
             </span>
 
         </div>
@@ -1266,7 +1314,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1445,6 +1493,18 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
+<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
+<script src="/lib/prism/prism-core.min.js"></script>
+
+<!-- PrismJS Autoloader - loads language definitions on demand -->
+<script src="/lib/prism/prism-autoloader.min.js"></script>
+
+<!-- PrismJS Line Numbers -->
+<script src="/lib/prism/prism-line-numbers.min.js"></script>
+
+<!-- PrismJS Toolbar + Copy to Clipboard -->
+<script src="/lib/prism/prism-toolbar.min.js"></script>
+<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
 
 </body>
 </html>

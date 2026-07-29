@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="MxHanks 的博客">
@@ -43,6 +43,29 @@
     lang   : 'zh-CN'
   };
 </script>
+<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
+<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+
+<!-- PrismJS Line Numbers CSS -->
+<link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
+
+<!-- PrismJS Toolbar CSS (for copy button) -->
+<link rel="stylesheet" href="/lib/prism/prism-toolbar.min.css">
+
+<!-- Custom code block styling overrides -->
+<style>
+  pre[class*="language-"] {
+    font-size: 0.85em;
+    border-radius: 4px;
+    background: #2d2d2d;
+  }
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+  .line-numbers-rows {
+    border-right: 1px solid #404040;
+  }
+</style>
 
   <title>标签: Pytorch | MxHanks' Blog</title>
   
@@ -327,7 +350,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -506,6 +529,18 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
+<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
+<script src="/lib/prism/prism-core.min.js"></script>
+
+<!-- PrismJS Autoloader - loads language definitions on demand -->
+<script src="/lib/prism/prism-autoloader.min.js"></script>
+
+<!-- PrismJS Line Numbers -->
+<script src="/lib/prism/prism-line-numbers.min.js"></script>
+
+<!-- PrismJS Toolbar + Copy to Clipboard -->
+<script src="/lib/prism/prism-toolbar.min.js"></script>
+<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
 
 </body>
 </html>

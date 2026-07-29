@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="前因 家里那台 12 年前的老联想实在是卡到受不了了，就想着装一个 Linux 系统。虽然我没有任何的 Linux 使用基础，但是为觉得 Linux 这种东西是早晚总要学会如何使用的，就趁着这个机会学习以下如何使用。  Linux-Ubuntu 系统安装  ISO 刻录 在清华镜像网站下载好了系统的镜像之后，就要把镜像刻录到U盘中。这一步说起来应该简单吧，但也让我折腾了许久的。一开始看的教程让我">
@@ -46,6 +46,29 @@
     lang   : 'zh-CN'
   };
 </script>
+<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
+<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+
+<!-- PrismJS Line Numbers CSS -->
+<link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
+
+<!-- PrismJS Toolbar CSS (for copy button) -->
+<link rel="stylesheet" href="/lib/prism/prism-toolbar.min.css">
+
+<!-- Custom code block styling overrides -->
+<style>
+  pre[class*="language-"] {
+    font-size: 0.85em;
+    border-radius: 4px;
+    background: #2d2d2d;
+  }
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+  .line-numbers-rows {
+    border-right: 1px solid #404040;
+  }
+</style>
 
   <title>Ubuntu 使用历程 | MxHanks' Blog</title>
   
@@ -266,14 +289,16 @@
 <p>在 <code>软件与更新</code> 中调整一下国内源，更改为阿里云的比较好，因为我之前在这里因为改成了清华源而被坑了。</p>
 <h3 id="anaconda"><a class="markdownIt-Anchor" href="#anaconda"></a> Anaconda</h3>
 <p>在 Anaconda 官网 (或清华的镜像网站中) 下载最新的安装包，然后通过命令安装:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;filename&gt;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">bash &lt;filename&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>测试：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda -info</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">conda -info<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>如果测试成功，就安装成功了。</p>
 <p>要是像我这样失败的花，就需要手动配置一下环境变量</p>
 <h4 id="环境变量配置"><a class="markdownIt-Anchor" href="#环境变量配置"></a> 环境变量配置</h4>
 <p>在 anaconda 文件夹根目录打开终端</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ export PATH=&quot;/home/mxhanks/anaconda3/bin:$PATH&quot;</span><br><span class="line">$ source /.bashrc</span><br><span class="line">$ conda -version</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">$ export PATH&#x3D;&quot;&#x2F;home&#x2F;mxhanks&#x2F;anaconda3&#x2F;bin:$PATH&quot;
+$ source &#x2F;.bashrc
+$ conda -version<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h3 id="visual-studio-code"><a class="markdownIt-Anchor" href="#visual-studio-code"></a> Visual Studio Code</h3>
 <p>在 <code>Ubuntu Software</code> 中搜索 <code>Code</code> 即可安装。</p>
 <h3 id="qq-与-wechat"><a class="markdownIt-Anchor" href="#qq-与-wechat"></a> QQ 与 Wechat</h3>
@@ -281,9 +306,10 @@
 <h5 id="卸载腾讯官方-linuxqq"><a class="markdownIt-Anchor" href="#卸载腾讯官方-linuxqq"></a> 卸载腾讯官方 LinuxQQ</h5>
 <p>我这样的老电脑是带不动腾讯那个臃肿的 LinuxQQ 的，还是安装第三方的 QQ 吧。</p>
 <p>找到安装的 Linux-QQ:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l| grep q</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">dpkg -l<span class="token operator">|</span> <span class="token function">grep</span> q<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>卸载:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get --purge remove libqqwing2v5:amd64</span><br><span class="line">sudo apt-get --purge remove linuxqq</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token parameter variable">--purge</span> remove libqqwing2v5:amd64
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token parameter variable">--purge</span> remove linuxqq<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>整整 500MB ，我不是嫌他大，主要是真没必要搞这么多东西，这又让我想起了手机版 QQ 赛了个虚幻4的事情…</p>
 <h5 id="安装-icalingua"><a class="markdownIt-Anchor" href="#安装-icalingua"></a> 安装 icalingua</h5>
 <p>基于Electron打造的前端通讯框架，可以通过实现的后端在 Linux 平台下使用 QQ。</p>
@@ -293,7 +319,7 @@
 <p>下载的是优麒麟里面的微信，就叫 Wechat 不带后缀，应该是网页版的，不影响使用。</p>
 <h3 id="watt-toolkit-steam-证书设置"><a class="markdownIt-Anchor" href="#watt-toolkit-steam-证书设置"></a> Watt Toolkit (Steam++) 证书设置</h3>
 <p>火狐浏览器，Git 以及其他软件的设置都差不多，这里以 Git 为例 (不设置的话挂加速提交可能会无法通过):</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global http.sslCAInfo /home/mxhanks/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> config <span class="token parameter variable">--global</span> http.sslCAInfo /home/mxhanks/.local/share/Steam++/Plugins/Accelerator/SteamTools.Certificate.cer<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h2 id="常用命令"><a class="markdownIt-Anchor" href="#常用命令"></a> 常用命令</h2>
 <h3 id="dpkg"><a class="markdownIt-Anchor" href="#dpkg"></a> dpkg</h3>
 <table>
@@ -497,7 +523,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -676,6 +702,18 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
+<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
+<script src="/lib/prism/prism-core.min.js"></script>
+
+<!-- PrismJS Autoloader - loads language definitions on demand -->
+<script src="/lib/prism/prism-autoloader.min.js"></script>
+
+<!-- PrismJS Line Numbers -->
+<script src="/lib/prism/prism-line-numbers.min.js"></script>
+
+<!-- PrismJS Toolbar + Copy to Clipboard -->
+<script src="/lib/prism/prism-toolbar.min.js"></script>
+<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
 
 </body>
 </html>

@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="准备阶段  完成了 keil5 工具的安装  stm32 的基本信息 由意法半导体公司开发的 32 位单片机，作为中控    ST M32 F103 C8T6     品牌 产品信息 产品系列 规格型号   意法半导体 32位单片机 主流型 M3内核 72MHz 48 引脚 64kFlash LQFP封装 -40~85℃    G系列 通用； F系列 主流； H系列 高性能； L系列 低功耗；">
@@ -71,6 +71,29 @@
     lang   : 'zh-CN'
   };
 </script>
+<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
+<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+
+<!-- PrismJS Line Numbers CSS -->
+<link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
+
+<!-- PrismJS Toolbar CSS (for copy button) -->
+<link rel="stylesheet" href="/lib/prism/prism-toolbar.min.css">
+
+<!-- Custom code block styling overrides -->
+<style>
+  pre[class*="language-"] {
+    font-size: 0.85em;
+    border-radius: 4px;
+    background: #2d2d2d;
+  }
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+  .line-numbers-rows {
+    border-right: 1px solid #404040;
+  }
+</style>
 
   <title>STM32 学习笔记 | MxHanks' Blog</title>
   
@@ -409,7 +432,8 @@
 <p>观看最小系统板电路图，发现使用的是开漏接法，连接的是 PC13 引脚。</p>
 <h4 id="时钟"><a class="markdownIt-Anchor" href="#时钟"></a> 时钟</h4>
 <p>时钟可以类比为人的心跳，在使用片上外设之前应该要开启对应的时钟</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 开启 GPIOx 的时钟</span></span><br><span class="line">RCC_APB2PriphClockCmd(RCC_APB2Periph_GPIOx, ENABLe);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// 开启 GPIOx 的时钟</span>
+<span class="token function">RCC_APB2PriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOx<span class="token punctuation">,</span> ENABLe<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h4 id="gpio-模块的编程接口"><a class="markdownIt-Anchor" href="#gpio-模块的编程接口"></a> GPIO 模块的编程接口</h4>
 <table>
 <thead>
@@ -445,9 +469,30 @@
 <h5 id="gpio_init"><a class="markdownIt-Anchor" href="#gpio_init"></a> GPIO_Init</h5>
 <p><img src="image-11.png" alt="GPIO_Init" /></p>
 <h5 id="gpio_writebit"><a class="markdownIt-Anchor" href="#gpio_writebit"></a> GPIO_WriteBit</h5>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">GPIO_WriteBit</span><span class="params">(GPIOTypeDef *GPI0x, <span class="comment">//端口号,取A B C D..</span></span></span><br><span class="line"><span class="params">    uint16t GPI0Pin，<span class="comment">//引脚编号</span></span></span><br><span class="line"><span class="params">    BitAction BitValue)</span>; <span class="comment">// 要写入的值 Bit_RESET/Bit_SET</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOTypeDef <span class="token operator">*</span>GPI0x<span class="token punctuation">,</span> <span class="token comment">//端口号,取A B C D..</span>
+    uint16t GPI0Pin，<span class="token comment">//引脚编号</span>
+    BitAction BitValue<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 要写入的值 Bit_RESET/Bit_SET</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <h4 id="完整代码"><a class="markdownIt-Anchor" href="#完整代码"></a> 完整代码</h4>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;delay.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	<span class="comment">// 1. 开启 GPIOC 的时钟</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC, ENABLE);</span><br><span class="line">	<span class="comment">// 2. 初始化 IO 引脚， PC13 通用开漏模式 2Mhz</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct = &#123;<span class="number">0</span>&#125;;</span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_13;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_OD;</span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_2MHz;</span><br><span class="line">	GPIO_Init(GPIOC, &amp;GPIO_InitStruct);</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">		GPIO_WriteBit(GPIOC, GPIO_Pin_13, Bit_SET); <span class="comment">// 1 灭</span></span><br><span class="line">		Delay(<span class="number">100</span>);</span><br><span class="line">		GPIO_WriteBit(GPIOC, GPIO_Pin_13, Bit_RESET); <span class="comment">// 0 亮</span></span><br><span class="line">		Delay(<span class="number">100</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"delay.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token comment">// 1. 开启 GPIOC 的时钟</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOC<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 2. 初始化 IO 引脚， PC13 通用开漏模式 2Mhz</span>
+	GPIO_InitTypeDef GPIO_InitStruct <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">0</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_13<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_Out_OD<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_2MHz<span class="token punctuation">;</span>
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOC<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOC<span class="token punctuation">,</span> GPIO_Pin_13<span class="token punctuation">,</span> Bit_SET<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 1 灭</span>
+		<span class="token function">Delay</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOC<span class="token punctuation">,</span> GPIO_Pin_13<span class="token punctuation">,</span> Bit_RESET<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 0 亮</span>
+		<span class="token function">Delay</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="输入"><a class="markdownIt-Anchor" href="#输入"></a> 输入</h3>
 <p><img src="image-4.png" alt="参考手册 I/O端口位的基本结构" /></p>
 <p>输入部分主要研究结构图的上半部分，即输入电路部分。</p>
@@ -515,15 +560,60 @@
 <p><img src="image-13.png" alt="LED 接线" /></p>
 <p>根据电路图安装好电路。</p>
 <p>通过检查 LED 点亮判断电路是否连接成功。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 开启 GIPOA 的时钟</span></span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 设置推挽模式</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 对应 GPIOA0</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_2MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	GPIO_WriteBit(GPIOA, GPIO_Pin_0, Bit_SET); <span class="comment">// 写1点亮 LED</span></span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 开启 GIPOA 的时钟</span>
+	
+	GPIO_InitTypeDef GPIO_InitStruct<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_Out_PP<span class="token punctuation">;</span> <span class="token comment">// 设置推挽模式</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0<span class="token punctuation">;</span> <span class="token comment">// 对应 GPIOA0</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_2MHz<span class="token punctuation">;</span>
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">,</span> Bit_SET<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 写1点亮 LED</span>
+	
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>LED 点亮成功！</p>
 <h4 id="按钮接线"><a class="markdownIt-Anchor" href="#按钮接线"></a> 按钮接线</h4>
 <p><img src="image-14.png" alt="按钮读入" /></p>
 <p>输入上拉模式时，当按钮按下时电路连通接地，没有电势差，写入 0 ；当按钮松开时，Vdd 通过连通的上拉电阻提供高位电压，写入 1 。</p>
 <p><img src="image-15.png" alt="按钮接线" /></p>
 <p>按图安装好按钮。要特别注意，按钮是具有方向的，不要左右装反了。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">uint8_t</span> <span class="title function_">GPIo_ReadInputDataBit</span><span class="params">(GPIOTypeDef *GPIOx,<span class="comment">//端口号</span></span></span><br><span class="line"><span class="params">    <span class="type">uint16_t</span> GPI0_Pin)</span>;<span class="comment">//引脚编号</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 作用:读取IO引脚的值，BitSET=1 Bit_RESET=0</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span>&#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE); <span class="comment">// 开启 GIPOA 的时钟</span></span><br><span class="line">	</span><br><span class="line">	<span class="comment">// LED 相关的初始化</span></span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_Out_PP; <span class="comment">// 设置推挽模式</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_0; <span class="comment">// 对应 GPIOA0</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_2MHz;</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Button 相关的初始化</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU; <span class="comment">// 输入上拉模式</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_1; <span class="comment">// 按钮接入 GPIOA1</span></span><br><span class="line">	<span class="comment">// 最大输出速度只对输出模式有效</span></span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">if</span>(GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1) == Bit_RESET) &#123;</span><br><span class="line">			<span class="comment">// 按钮按下</span></span><br><span class="line">			GPIO_WriteBit(GPIOA, GPIO_Pin_0, Bit_SET);</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="comment">// 按钮松开</span></span><br><span class="line">			GPIO_WriteBit(GPIOA, GPIO_Pin_0, Bit_RESET);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">uint8_t</span> <span class="token function">GPIo_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOTypeDef <span class="token operator">*</span>GPIOx<span class="token punctuation">,</span><span class="token comment">//端口号</span>
+    <span class="token class-name">uint16_t</span> GPI0_Pin<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//引脚编号</span>
+
+<span class="token comment">// 作用:读取IO引脚的值，BitSET=1 Bit_RESET=0</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 开启 GIPOA 的时钟</span>
+	
+	<span class="token comment">// LED 相关的初始化</span>
+	GPIO_InitTypeDef GPIO_InitStruct<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_Out_PP<span class="token punctuation">;</span> <span class="token comment">// 设置推挽模式</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_0<span class="token punctuation">;</span> <span class="token comment">// 对应 GPIOA0</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_2MHz<span class="token punctuation">;</span>
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// Button 相关的初始化</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IPU<span class="token punctuation">;</span> <span class="token comment">// 输入上拉模式</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_1<span class="token punctuation">;</span> <span class="token comment">// 按钮接入 GPIOA1</span>
+	<span class="token comment">// 最大输出速度只对输出模式有效</span>
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	
+	<span class="token keyword">while</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">GPIO_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_1<span class="token punctuation">)</span> <span class="token operator">==</span> Bit_RESET<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token comment">// 按钮按下</span>
+			<span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">,</span> Bit_SET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+			<span class="token comment">// 按钮松开</span>
+			<span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> GPIO_Pin_0<span class="token punctuation">,</span> Bit_RESET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+	
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>效果：按钮按下时， LED 点亮。按钮松开时， LED 熄灭。</p>
 <p>| 本人因为把接地接到 R 去了所以一开始半天没效果，要记得接地是 G(Ground) 啊 TwT</p>
 <h2 id="串口"><a class="markdownIt-Anchor" href="#串口"></a> 串口</h2>
@@ -534,10 +624,16 @@
 <h4 id="串口的数据格式"><a class="markdownIt-Anchor" href="#串口的数据格式"></a> 串口的数据格式</h4>
 <p>Tx 在空闲时是高电压，以低电压作为起始位。在数据位 (8~9位，最后一位可作为校验位) 结束后，以高电压作为停止位，同时回到空闲位。</p>
 <p>例如，通过串口发送十进制的数字 27:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">空闲|起|11011000|停|空闲</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">空闲|起|11011000|停|空闲<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>在发送字符串时，使用 ASCII 码。</p>
 <p>例如，发送字符串 “Hello”:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">空闲|</span><br><span class="line">起|11011000|停|</span><br><span class="line">起|10100110|停|</span><br><span class="line">起|00110110|停|</span><br><span class="line">起|00110110|停|</span><br><span class="line">起|11110110|停|</span><br><span class="line">空闲</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-none"><code class="language-none">空闲|
+起|11011000|停|
+起|10100110|停|
+起|00110110|停|
+起|00110110|停|
+起|11110110|停|
+空闲<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="校验位的使用方式"><a class="markdownIt-Anchor" href="#校验位的使用方式"></a> 校验位的使用方式</h4>
 <p>校验分为<code>奇校验</code>和<code>偶校验</code>。即判断 1 的个数位奇数还是偶数。</p>
 <h3 id="usart-模块的使用方法"><a class="markdownIt-Anchor" href="#usart-模块的使用方法"></a> USART 模块的使用方法</h3>
@@ -579,9 +675,39 @@
 <p>通过写入波特率寄存器来设置分频器，再叠加一个固定 1/16 的分频器，时钟频率经过两个分频器就会得到波特率。</p>
 <p>例如，希望使用 115200 的波特率，且时钟频率为 72MHz ，分频器就要设置为 39.0625。按照浮点数的寄存方式寄存在寄存器中。</p>
 <h4 id="编程接口"><a class="markdownIt-Anchor" href="#编程接口"></a> 编程接口</h4>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">USART_Init</span><span class="params">(USART_TypeDef *USARTx,          <span class="comment">// 串口名称</span></span></span><br><span class="line"><span class="params">    USART_InitTypeDef *USART_InitStruct)</span>;        <span class="comment">// 初始化参数结构体</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 作用: 初始化串口</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> &#123;</span></span><br><span class="line">    <span class="type">uint32_t</span> USART_BaudRate;                     <span class="comment">// 波特率 (如 9600, 115200, 921600)</span></span><br><span class="line">    <span class="type">uint16_t</span> USART_WordLength;                   <span class="comment">// 数据位长度</span></span><br><span class="line">        <span class="comment">// USART_WordLength_8b / USART_WordLength_9b</span></span><br><span class="line">    <span class="type">uint16_t</span> USART_StopBits;                     <span class="comment">// 停止位长度</span></span><br><span class="line">        <span class="comment">// USART_StopBits_0_5 / USART_StopBits_1 / USART_StopBits_1_5 / USART_StopBits_2</span></span><br><span class="line">    <span class="type">uint16_t</span> USART_Parity;                       <span class="comment">// 校验方式</span></span><br><span class="line">        <span class="comment">// USART_Parity_No / USART_Parity_Even / USART_Parity_Odd</span></span><br><span class="line">    <span class="type">uint16_t</span> USART_Mode;                         <span class="comment">// 数据收发方向</span></span><br><span class="line">        <span class="comment">// USART_Mode_Tx | USART_Mode_Rx (可同时开启)</span></span><br><span class="line">&#125; USART_InitTypeDef;</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">USART_Cmd</span><span class="params">(USARTTypeDef *USARTx, <span class="comment">// 串口名称</span></span></span><br><span class="line"><span class="params">        FunctionalState NewState)</span>;  <span class="comment">// ENABLE / DISABLE</span></span><br><span class="line"><span class="comment">// 控制 USART 模块的总开关</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);</span><br><span class="line">	</span><br><span class="line">USART_InitTypeDef USART_InitStruct;</span><br><span class="line">USART_InitStruct.USART_BaudRate = <span class="number">115200</span>;</span><br><span class="line">USART_InitStruct.USART_Mode =USART_Mode_Tx | USART_Mode_Rx;</span><br><span class="line">USART_InitStruct.USART_WordLength =USART_WordLength_8b;</span><br><span class="line">USART_InitStruct.USART_StopBits =USART_StopBits_1;</span><br><span class="line">USART_InitStruct.USART_Parity =USART_Parity_No;</span><br><span class="line">	</span><br><span class="line">USART_Init(USART1, &amp;USART_InitStruct);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 要记得闭合 USART 总控开关</span></span><br><span class="line">USART_Cmd(USART1, ENABLE);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">USART_Init</span><span class="token punctuation">(</span>USART_TypeDef <span class="token operator">*</span>USARTx<span class="token punctuation">,</span>          <span class="token comment">// 串口名称</span>
+    USART_InitTypeDef <span class="token operator">*</span>USART_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token comment">// 初始化参数结构体</span>
+
+<span class="token comment">// 作用: 初始化串口</span>
+
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">uint32_t</span> USART_BaudRate<span class="token punctuation">;</span>                     <span class="token comment">// 波特率 (如 9600, 115200, 921600)</span>
+    <span class="token class-name">uint16_t</span> USART_WordLength<span class="token punctuation">;</span>                   <span class="token comment">// 数据位长度</span>
+        <span class="token comment">// USART_WordLength_8b / USART_WordLength_9b</span>
+    <span class="token class-name">uint16_t</span> USART_StopBits<span class="token punctuation">;</span>                     <span class="token comment">// 停止位长度</span>
+        <span class="token comment">// USART_StopBits_0_5 / USART_StopBits_1 / USART_StopBits_1_5 / USART_StopBits_2</span>
+    <span class="token class-name">uint16_t</span> USART_Parity<span class="token punctuation">;</span>                       <span class="token comment">// 校验方式</span>
+        <span class="token comment">// USART_Parity_No / USART_Parity_Even / USART_Parity_Odd</span>
+    <span class="token class-name">uint16_t</span> USART_Mode<span class="token punctuation">;</span>                         <span class="token comment">// 数据收发方向</span>
+        <span class="token comment">// USART_Mode_Tx | USART_Mode_Rx (可同时开启)</span>
+<span class="token punctuation">&#125;</span> USART_InitTypeDef<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">USART_Cmd</span><span class="token punctuation">(</span>USARTTypeDef <span class="token operator">*</span>USARTx<span class="token punctuation">,</span> <span class="token comment">// 串口名称</span>
+        FunctionalState NewState<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// ENABLE / DISABLE</span>
+<span class="token comment">// 控制 USART 模块的总开关</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+USART_InitTypeDef USART_InitStruct<span class="token punctuation">;</span>
+USART_InitStruct<span class="token punctuation">.</span>USART_BaudRate <span class="token operator">=</span> <span class="token number">115200</span><span class="token punctuation">;</span>
+USART_InitStruct<span class="token punctuation">.</span>USART_Mode <span class="token operator">=</span>USART_Mode_Tx <span class="token operator">|</span> USART_Mode_Rx<span class="token punctuation">;</span>
+USART_InitStruct<span class="token punctuation">.</span>USART_WordLength <span class="token operator">=</span>USART_WordLength_8b<span class="token punctuation">;</span>
+USART_InitStruct<span class="token punctuation">.</span>USART_StopBits <span class="token operator">=</span>USART_StopBits_1<span class="token punctuation">;</span>
+USART_InitStruct<span class="token punctuation">.</span>USART_Parity <span class="token operator">=</span>USART_Parity_No<span class="token punctuation">;</span>
+	
+<span class="token function">USART_Init</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>USART_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 要记得闭合 USART 总控开关</span>
+<span class="token function">USART_Cmd</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="为串口初始化-io-引脚"><a class="markdownIt-Anchor" href="#为串口初始化-io-引脚"></a> 为串口初始化 IO 引脚</h3>
 <h4 id="usart-模块有哪些引脚"><a class="markdownIt-Anchor" href="#usart-模块有哪些引脚"></a> USART 模块有哪些引脚</h4>
 <p><img src="image-17.png" alt="USART 引脚" /></p>
@@ -978,10 +1104,50 @@
 <p>全双工模式时相比浮空最好选择输入上拉模式，因为一可以避免电磁干扰，二可以通过默认高电压保持空闲位。</p>
 <h4 id="编写代码"><a class="markdownIt-Anchor" href="#编写代码"></a> 编写代码</h4>
 <h5 id="使用默认引脚"><a class="markdownIt-Anchor" href="#使用默认引脚"></a> 使用默认引脚</h5>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Tx PA9 复用输出推挽</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_9;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;</span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_10MHz;</span><br><span class="line">	</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Rx PA10 输入浮空 输入上拉</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_10;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">	</span><br><span class="line">	GPIO_Init(GPIOA, &amp;GPIO_InitStruct);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOA<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	GPIO_InitTypeDef GPIO_InitStruct<span class="token punctuation">;</span>
+	
+	<span class="token comment">// Tx PA9 复用输出推挽</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_9<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_AF_PP<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_10MHz<span class="token punctuation">;</span>
+	
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// Rx PA10 输入浮空 输入上拉</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_10<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IPU<span class="token punctuation">;</span>
+	
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOA<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h5 id="重映射引脚"><a class="markdownIt-Anchor" href="#重映射引脚"></a> 重映射引脚</h5>
 <p>使用 AFIO 片上外设。</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 激活 AFIO 时钟</span></span><br><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);</span><br><span class="line"><span class="comment">// 配置重映射</span></span><br><span class="line">GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);</span><br><span class="line"></span><br><span class="line">RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line"></span><br><span class="line">GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Tx PA9 复用输出推挽</span></span><br><span class="line">GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6;</span><br><span class="line">GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;</span><br><span class="line">GPIO_InitStruct.GPIO_Speed = GPIO_Speed_10MHz;</span><br><span class="line"></span><br><span class="line">GPIO_Init(GPIOB, &amp;GPIO_InitStruct);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Rx PA10 输入浮空 输入上拉</span></span><br><span class="line">GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7;</span><br><span class="line">GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line"></span><br><span class="line">GPIO_Init(GPIOB, &amp;GPIO_InitStruct);</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">&#x2F;&#x2F; 激活 AFIO 时钟
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);
+&#x2F;&#x2F; 配置重映射
+GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);
+
+RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);
+
+GPIO_InitTypeDef GPIO_InitStruct;
+
+&#x2F;&#x2F; Tx PA9 复用输出推挽
+GPIO_InitStruct.GPIO_Pin &#x3D; GPIO_Pin_6;
+GPIO_InitStruct.GPIO_Mode &#x3D; GPIO_Mode_AF_PP;
+GPIO_InitStruct.GPIO_Speed &#x3D; GPIO_Speed_10MHz;
+
+GPIO_Init(GPIOB, &amp;GPIO_InitStruct);
+
+&#x2F;&#x2F; Rx PA10 输入浮空 输入上拉
+GPIO_InitStruct.GPIO_Pin &#x3D; GPIO_Pin_7;
+GPIO_InitStruct.GPIO_Mode &#x3D; GPIO_Mode_IPU;
+
+GPIO_Init(GPIOB, &amp;GPIO_InitStruct);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="使用串口发射数据"><a class="markdownIt-Anchor" href="#使用串口发射数据"></a> 使用串口发射数据</h3>
 <p><img src="image-16.png" alt="USART 模块示意图" /></p>
 <h4 id="txe-标志位"><a class="markdownIt-Anchor" href="#txe-标志位"></a> TxE 标志位</h4>
@@ -991,15 +1157,87 @@
 <h4 id="tc-标志位"><a class="markdownIt-Anchor" href="#tc-标志位"></a> TC 标志位</h4>
 <p>TC: Transmit Complete 即发送完成。当发送数据寄存器为空时，TC 为 1 否则为 0。</p>
 <h4 id="编程接口-2"><a class="markdownIt-Anchor" href="#编程接口-2"></a> 编程接口</h4>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">FlagStatus <span class="title function_">USART_GetFlagStatus</span><span class="params">(USARTTypeDef *USARTx, <span class="comment">// 串口名称</span></span></span><br><span class="line"><span class="params">        <span class="type">uint16_t</span> USART_FLAG <span class="comment">// 要查询的标志位</span></span></span><br><span class="line"><span class="params">)</span>;</span><br><span class="line"><span class="comment">// 返回值 SET / RESET</span></span><br><span class="line"><span class="comment">// 标志位： USART_FLAG_TXE, USART_FLAG_RXNE, USART_FLAG_TC, USART_FLAG_PE</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">USART_SendData</span><span class="params">(USARTTypeDef *USARTx,</span></span><br><span class="line"><span class="params">        <span class="type">uint16_t</span> Data)</span>; <span class="comment">// 要发送的数据</span></span><br><span class="line"><span class="comment">// 作用：将要发送的数据填到寄存器中</span></span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c">FlagStatus <span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USARTTypeDef <span class="token operator">*</span>USARTx<span class="token punctuation">,</span> <span class="token comment">// 串口名称</span>
+        <span class="token class-name">uint16_t</span> USART_FLAG <span class="token comment">// 要查询的标志位</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">// 返回值 SET / RESET</span>
+<span class="token comment">// 标志位： USART_FLAG_TXE, USART_FLAG_RXNE, USART_FLAG_TC, USART_FLAG_PE</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-C" data-language="C"><code class="language-C">void USART_SendData(USARTTypeDef *USARTx,
+        uint16_t Data); &#x2F;&#x2F; 要发送的数据
+&#x2F;&#x2F; 作用：将要发送的数据填到寄存器中<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>为什么使用 uint16_t (占两个字节)？9 数据位时数据大于一个字节。</p>
 <h4 id="串口发送数据的完整代码"><a class="markdownIt-Anchor" href="#串口发送数据的完整代码"></a> 串口发送数据的完整代码</h4>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// @作用: 使用串口一次性发送多个字节</span></span><br><span class="line"><span class="comment">// @para: pData: 要发送的数据</span></span><br><span class="line"><span class="comment">// @para: Size: 字节数量</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">My_USART_SendBytes</span><span class="params">(USART_TypeDef *USARTx, <span class="type">uint8_t</span> *pData, <span class="type">uint16_t</span> Size)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">uint32_t</span> i = <span class="number">0</span>; i &lt; Size; i++) &#123;</span><br><span class="line">        <span class="comment">// 等待发送寄存器空</span></span><br><span class="line">        <span class="keyword">while</span>(USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);</span><br><span class="line">        <span class="comment">// 写入数据</span></span><br><span class="line">        USART_SendData(USARTx, pData[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 等待数据发送完成</span></span><br><span class="line">    <span class="keyword">while</span>(USART_GetFlagStatus(USART1, USART_FLAG_TC == RESET));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token comment">// @作用: 使用串口一次性发送多个字节</span>
+<span class="token comment">// @para: pData: 要发送的数据</span>
+<span class="token comment">// @para: Size: 字节数量</span>
+<span class="token keyword">void</span> <span class="token function">My_USART_SendBytes</span><span class="token punctuation">(</span>USART_TypeDef <span class="token operator">*</span>USARTx<span class="token punctuation">,</span> <span class="token class-name">uint8_t</span> <span class="token operator">*</span>pData<span class="token punctuation">,</span> <span class="token class-name">uint16_t</span> Size<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> Size<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 等待发送寄存器空</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_FLAG_TXE<span class="token punctuation">)</span> <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 写入数据</span>
+        <span class="token function">USART_SendData</span><span class="token punctuation">(</span>USARTx<span class="token punctuation">,</span> pData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 等待数据发送完成</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_FLAG_TC <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="使用串口与电脑通信"><a class="markdownIt-Anchor" href="#使用串口与电脑通信"></a> 使用串口与电脑通信</h4>
 <p><img src="image-19.png" alt="与电脑通信 电路图" /></p>
 <p>使用串口给电脑发送数据：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;stm32f10x.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">My_USART_SendBytes</span><span class="params">(USART_TypeDef *USARTx, <span class="type">uint8_t</span> *pData, <span class="type">uint16_t</span> Size)</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span> &#123;</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);</span><br><span class="line">	</span><br><span class="line">	USART_InitTypeDef USART_InitStruct;</span><br><span class="line">	USART_InitStruct.USART_BaudRate = <span class="number">115200</span>;</span><br><span class="line">	USART_InitStruct.USART_Mode = USART_Mode_Tx | USART_Mode_Rx;</span><br><span class="line">	USART_InitStruct.USART_WordLength = USART_WordLength_8b;</span><br><span class="line">	USART_InitStruct.USART_StopBits = USART_StopBits_1;</span><br><span class="line">	USART_InitStruct.USART_Parity = USART_Parity_No;</span><br><span class="line">	</span><br><span class="line">	USART_Init(USART1, &amp;USART_InitStruct);</span><br><span class="line">	<span class="comment">// 激活 AFIO 时钟</span></span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO, ENABLE);</span><br><span class="line">	<span class="comment">// 配置重映射</span></span><br><span class="line">	GPIO_PinRemapConfig(GPIO_Remap_USART1, ENABLE);</span><br><span class="line">	</span><br><span class="line">	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOB, ENABLE);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 闭合 USART 开关</span></span><br><span class="line">	USART_Cmd(USART1, ENABLE);</span><br><span class="line">	</span><br><span class="line">	GPIO_InitTypeDef GPIO_InitStruct;</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Tx PA9 复用输出推挽</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_6;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_AF_PP;</span><br><span class="line">	GPIO_InitStruct.GPIO_Speed = GPIO_Speed_10MHz;</span><br><span class="line">	</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// Rx PA10 输入浮空 输入上拉</span></span><br><span class="line">	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_7;</span><br><span class="line">	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_IPU;</span><br><span class="line">	</span><br><span class="line">	GPIO_Init(GPIOB, &amp;GPIO_InitStruct);</span><br><span class="line">	</span><br><span class="line">	<span class="type">uint8_t</span> bytesToSend[] = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>&#125;;</span><br><span class="line">	</span><br><span class="line">	My_USART_SendBytes(USART1, bytesToSend, <span class="number">5</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">My_USART_SendBytes</span><span class="params">(USART_TypeDef *USARTx, <span class="type">uint8_t</span> *pData, <span class="type">uint16_t</span> Size)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">uint32_t</span> i = <span class="number">0</span>; i &lt; Size; i++) &#123;</span><br><span class="line">        <span class="comment">// 等待发送寄存器空</span></span><br><span class="line">        <span class="keyword">while</span>(USART_GetFlagStatus(USART1, USART_FLAG_TXE) == RESET);</span><br><span class="line">        <span class="comment">// 写入数据</span></span><br><span class="line">        USART_SendData(USARTx, pData[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 等待数据发送完成</span></span><br><span class="line">    <span class="keyword">while</span>(USART_GetFlagStatus(USART1, USART_FLAG_TC == RESET));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
+
+<span class="token keyword">void</span> <span class="token function">My_USART_SendBytes</span><span class="token punctuation">(</span>USART_TypeDef <span class="token operator">*</span>USARTx<span class="token punctuation">,</span> <span class="token class-name">uint8_t</span> <span class="token operator">*</span>pData<span class="token punctuation">,</span> <span class="token class-name">uint16_t</span> Size<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">void</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	USART_InitTypeDef USART_InitStruct<span class="token punctuation">;</span>
+	USART_InitStruct<span class="token punctuation">.</span>USART_BaudRate <span class="token operator">=</span> <span class="token number">115200</span><span class="token punctuation">;</span>
+	USART_InitStruct<span class="token punctuation">.</span>USART_Mode <span class="token operator">=</span> USART_Mode_Tx <span class="token operator">|</span> USART_Mode_Rx<span class="token punctuation">;</span>
+	USART_InitStruct<span class="token punctuation">.</span>USART_WordLength <span class="token operator">=</span> USART_WordLength_8b<span class="token punctuation">;</span>
+	USART_InitStruct<span class="token punctuation">.</span>USART_StopBits <span class="token operator">=</span> USART_StopBits_1<span class="token punctuation">;</span>
+	USART_InitStruct<span class="token punctuation">.</span>USART_Parity <span class="token operator">=</span> USART_Parity_No<span class="token punctuation">;</span>
+	
+	<span class="token function">USART_Init</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> <span class="token operator">&amp;</span>USART_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 激活 AFIO 时钟</span>
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_AFIO<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">// 配置重映射</span>
+	<span class="token function">GPIO_PinRemapConfig</span><span class="token punctuation">(</span>GPIO_Remap_USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token function">RCC_APB2PeriphClockCmd</span><span class="token punctuation">(</span>RCC_APB2Periph_GPIOB<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// 闭合 USART 开关</span>
+	<span class="token function">USART_Cmd</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	GPIO_InitTypeDef GPIO_InitStruct<span class="token punctuation">;</span>
+	
+	<span class="token comment">// Tx PA9 复用输出推挽</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_6<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_AF_PP<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Speed <span class="token operator">=</span> GPIO_Speed_10MHz<span class="token punctuation">;</span>
+	
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOB<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token comment">// Rx PA10 输入浮空 输入上拉</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Pin <span class="token operator">=</span> GPIO_Pin_7<span class="token punctuation">;</span>
+	GPIO_InitStruct<span class="token punctuation">.</span>GPIO_Mode <span class="token operator">=</span> GPIO_Mode_IPU<span class="token punctuation">;</span>
+	
+	<span class="token function">GPIO_Init</span><span class="token punctuation">(</span>GPIOB<span class="token punctuation">,</span> <span class="token operator">&amp;</span>GPIO_InitStruct<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	
+	<span class="token class-name">uint8_t</span> bytesToSend<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+	
+	<span class="token function">My_USART_SendBytes</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> bytesToSend<span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token function">My_USART_SendBytes</span><span class="token punctuation">(</span>USART_TypeDef <span class="token operator">*</span>USARTx<span class="token punctuation">,</span> <span class="token class-name">uint8_t</span> <span class="token operator">*</span>pData<span class="token punctuation">,</span> <span class="token class-name">uint16_t</span> Size<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token class-name">uint32_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> Size<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 等待发送寄存器空</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_FLAG_TXE<span class="token punctuation">)</span> <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 写入数据</span>
+        <span class="token function">USART_SendData</span><span class="token punctuation">(</span>USARTx<span class="token punctuation">,</span> pData<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token comment">// 等待数据发送完成</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_FLAG_TC <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p><img src="image-20.png" alt="使用串口给电脑发送数据" /></p>
 <p>成功了！</p>
 
@@ -1159,7 +1397,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -1338,6 +1576,18 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
+<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
+<script src="/lib/prism/prism-core.min.js"></script>
+
+<!-- PrismJS Autoloader - loads language definitions on demand -->
+<script src="/lib/prism/prism-autoloader.min.js"></script>
+
+<!-- PrismJS Line Numbers -->
+<script src="/lib/prism/prism-line-numbers.min.js"></script>
+
+<!-- PrismJS Toolbar + Copy to Clipboard -->
+<script src="/lib/prism/prism-toolbar.min.js"></script>
+<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
 
 </body>
 </html>

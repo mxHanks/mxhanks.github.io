@@ -17,7 +17,7 @@
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"mxhanks.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":"flat"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="Python os.symlink() - 实现文件夹映射  需求分析 最近因为使用了 obsidian 开始记笔记，发现这个软件实在是太好用了。之前写文章一直都是在 VSCode 上面，直接写在博客文件的 _post 目录下。但是最近我把所有的笔记都迁移到了 obsidian 的笔记库中，如果要更新博客的话就要把这个文件夹里面的所有文件都一次次复制到 _post 文件夹下，这样就很麻烦，于是就">
@@ -46,6 +46,29 @@
     lang   : 'zh-CN'
   };
 </script>
+<!-- PrismJS Theme: prism-tomorrow matches "night eighties" style -->
+<link rel="stylesheet" href="/lib/prism/prism-tomorrow.min.css">
+
+<!-- PrismJS Line Numbers CSS -->
+<link rel="stylesheet" href="/lib/prism/prism-line-numbers.min.css">
+
+<!-- PrismJS Toolbar CSS (for copy button) -->
+<link rel="stylesheet" href="/lib/prism/prism-toolbar.min.css">
+
+<!-- Custom code block styling overrides -->
+<style>
+  pre[class*="language-"] {
+    font-size: 0.85em;
+    border-radius: 4px;
+    background: #2d2d2d;
+  }
+  code[class*="language-"] {
+    text-shadow: none;
+  }
+  .line-numbers-rows {
+    border-right: 1px solid #404040;
+  }
+</style>
 
   <title>Python os.symlink() - 实现文件夹映射 | MxHanks' Blog</title>
   
@@ -258,7 +281,18 @@
 <p>最近因为使用了 obsidian 开始记笔记，发现这个软件实在是太好用了。之前写文章一直都是在 VSCode 上面，直接写在博客文件的 <code>_post</code> 目录下。但是最近我把所有的笔记都迁移到了 obsidian 的笔记库中，如果要更新博客的话就要把这个文件夹里面的所有文件都一次次复制到 <code>_post</code> 文件夹下，这样就很麻烦，于是就想通过镜像的方式来实现需求。</p>
 <h2 id="mklink-命令"><a class="markdownIt-Anchor" href="#mklink-命令"></a> mklink 命令</h2>
 <p>mklink 是 window s系统下创建符号链接和硬链接的命令工具，它是一个很好的解决文件系统问题的工具。使用它需要<strong>管理员权限</strong>。因为 powershell 不支持 mklink 命令，所以要在前面加cmd /c 表示用 cmd 来运行该命令，路径<strong>注意引号</strong>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\?&gt;mklink</span><br><span class="line">创建符号链接。</span><br><span class="line"></span><br><span class="line">MKLINK [[/D] | [/H] | [/J]] Link Target</span><br><span class="line"></span><br><span class="line">        /D      创建目录符号链接。默认为文件</span><br><span class="line">                符号链接。</span><br><span class="line">        /H      创建硬链接而非符号链接。</span><br><span class="line">        /J      创建目录联接。</span><br><span class="line">        Link    指定新的符号链接名称。</span><br><span class="line">        Target  指定新链接引用的路径</span><br><span class="line">                (相对或绝对)。</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">C:<span class="token punctuation">\</span>Users<span class="token punctuation">\</span>?<span class="token operator">></span>mklink
+创建符号链接。
+
+MKLINK <span class="token punctuation">[</span><span class="token punctuation">[</span>/D<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token punctuation">[</span>/H<span class="token punctuation">]</span> <span class="token operator">|</span> <span class="token punctuation">[</span>/J<span class="token punctuation">]</span><span class="token punctuation">]</span> Link Target
+
+        /D      创建目录符号链接。默认为文件
+                符号链接。
+        /H      创建硬链接而非符号链接。
+        /J      创建目录联接。
+        Link    指定新的符号链接名称。
+        Target  指定新链接引用的路径
+                <span class="token punctuation">(</span>相对或绝对<span class="token punctuation">)</span>。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>因为我想要忽略掉一些文件，但是又没有提供这个选项，所以我决定使用 python 来编写一个适合的程序。</p>
 <h2 id="python-ossymlink"><a class="markdownIt-Anchor" href="#python-ossymlink"></a> Python os.symlink()</h2>
 <h3 id="概述"><a class="markdownIt-Anchor" href="#概述"></a> 概述</h3>
@@ -266,14 +300,58 @@
 <p>符号链接是一种特殊的文件类型，它包含对另一个文件或目录的引用，可以在文件系统中指向不同的位置。</p>
 <h3 id="语法"><a class="markdownIt-Anchor" href="#语法"></a> 语法</h3>
 <p>synlink() 方法语法格式如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">os.symlink(src, dst)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">os<span class="token punctuation">.</span>symlink<span class="token punctuation">(</span>src<span class="token punctuation">,</span> dst<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <h3 id="参数"><a class="markdownIt-Anchor" href="#参数"></a> 参数</h3>
 <ul>
 <li><strong>src</strong> – 要创建符号链接的目标文件或目录的路径。</li>
 <li><strong>dst</strong> – 符号链接的路径和名称。</li>
 </ul>
 <h3 id="实战"><a class="markdownIt-Anchor" href="#实战"></a> 实战</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> os</span><br><span class="line"></span><br><span class="line">SRC = <span class="string">&quot;F:/Notes&quot;</span></span><br><span class="line">TGT = <span class="string">&quot;F:/Projects/Blog-Pages/source/_posts&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 忽略的目录 相对于 SRC 的相对路径</span></span><br><span class="line">IGNORE_DIRS = (<span class="string">&quot;.obsidian&quot;</span>, <span class="string">&quot;.stfolder&quot;</span>, <span class="string">&quot;模板&quot;</span>)</span><br><span class="line"><span class="comment"># 忽略的文件 相对于 SRC 的相对路径</span></span><br><span class="line">IGNORE_FILES = (<span class="string">&quot;.stignore&quot;</span>, <span class="string">&quot;mxHanks变强之路.xmind&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一步 检查要链接的路径是否已经存在</span></span><br><span class="line"><span class="comment"># 第二步 创造链接 并且捕捉异常</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">create_symlink</span>(<span class="params">src, tgt</span>):</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        os.symlink(src, tgt)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;创建软链接 <span class="subst">&#123;tgt&#125;</span> -&gt; <span class="subst">&#123;src&#125;</span>&quot;</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">f&quot;创建失败 <span class="subst">&#123;tgt&#125;</span> -&gt; <span class="subst">&#123;src&#125;</span>: <span class="subst">&#123;e&#125;</span>&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 第一步 获得根目录的所有文件夹</span></span><br><span class="line"><span class="comment"># 第二部 将所有文件(夹)创建软链接</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">screen</span>(<span class="params">src, tgt, ign_dirs, ign_files</span>):</span><br><span class="line">    names = os.listdir(src)</span><br><span class="line">    <span class="keyword">for</span> name <span class="keyword">in</span> names:</span><br><span class="line">        path = os.path.realpath(os.path.join(src, name))</span><br><span class="line">        <span class="comment"># 路径是目录且不受忽略</span></span><br><span class="line">        <span class="keyword">if</span> os.path.isdir(path) <span class="keyword">and</span> <span class="keyword">not</span> name <span class="keyword">in</span> ign_dirs:</span><br><span class="line">            target_dir = os.path.realpath(os.path.join(tgt, name))</span><br><span class="line">            <span class="keyword">if</span> os.path.exists(target_dir):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;target_dir&#125;</span> 目录已经存在，跳过建立&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                create_symlink(path, target_dir)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;target_dir&#125;</span> 目录不存在，建立与 <span class="subst">&#123;path&#125;</span> 的链接&quot;</span>)</span><br><span class="line">        <span class="keyword">elif</span> os.path.isfile(path) <span class="keyword">and</span> <span class="keyword">not</span> name <span class="keyword">in</span> ign_files:</span><br><span class="line">            target_file = os.path.realpath(os.path.join(tgt, name))</span><br><span class="line">            <span class="keyword">if</span> os.path.exists(target_file):</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;target_file&#125;</span> 文件已经存在，跳过建立&quot;</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                create_symlink(path, target_file)</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;<span class="subst">&#123;target_file&#125;</span> 文件不存在，建立与 <span class="subst">&#123;path&#125;</span> 的链接&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">screen(SRC, TGT, IGNORE_DIRS, IGNORE_FILES)</span><br></pre></td></tr></table></figure>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+
+SRC <span class="token operator">=</span> <span class="token string">"F:/Notes"</span>
+TGT <span class="token operator">=</span> <span class="token string">"F:/Projects/Blog-Pages/source/_posts"</span>
+
+<span class="token comment"># 忽略的目录 相对于 SRC 的相对路径</span>
+IGNORE_DIRS <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">".obsidian"</span><span class="token punctuation">,</span> <span class="token string">".stfolder"</span><span class="token punctuation">,</span> <span class="token string">"模板"</span><span class="token punctuation">)</span>
+<span class="token comment"># 忽略的文件 相对于 SRC 的相对路径</span>
+IGNORE_FILES <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">".stignore"</span><span class="token punctuation">,</span> <span class="token string">"mxHanks变强之路.xmind"</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 第一步 检查要链接的路径是否已经存在</span>
+<span class="token comment"># 第二步 创造链接 并且捕捉异常</span>
+<span class="token keyword">def</span> <span class="token function">create_symlink</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span> tgt<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        os<span class="token punctuation">.</span>symlink<span class="token punctuation">(</span>src<span class="token punctuation">,</span> tgt<span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"创建软链接 </span><span class="token interpolation"><span class="token punctuation">&#123;</span>tgt<span class="token punctuation">&#125;</span></span><span class="token string"> -> </span><span class="token interpolation"><span class="token punctuation">&#123;</span>src<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"创建失败 </span><span class="token interpolation"><span class="token punctuation">&#123;</span>tgt<span class="token punctuation">&#125;</span></span><span class="token string"> -> </span><span class="token interpolation"><span class="token punctuation">&#123;</span>src<span class="token punctuation">&#125;</span></span><span class="token string">: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>e<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 第一步 获得根目录的所有文件夹</span>
+<span class="token comment"># 第二部 将所有文件(夹)创建软链接</span>
+<span class="token keyword">def</span> <span class="token function">screen</span><span class="token punctuation">(</span>src<span class="token punctuation">,</span> tgt<span class="token punctuation">,</span> ign_dirs<span class="token punctuation">,</span> ign_files<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    names <span class="token operator">=</span> os<span class="token punctuation">.</span>listdir<span class="token punctuation">(</span>src<span class="token punctuation">)</span>
+    <span class="token keyword">for</span> name <span class="token keyword">in</span> names<span class="token punctuation">:</span>
+        path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>realpath<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>src<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token comment"># 路径是目录且不受忽略</span>
+        <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isdir<span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token keyword">not</span> name <span class="token keyword">in</span> ign_dirs<span class="token punctuation">:</span>
+            target_dir <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>realpath<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>tgt<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>target_dir<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>target_dir<span class="token punctuation">&#125;</span></span><span class="token string"> 目录已经存在，跳过建立"</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                create_symlink<span class="token punctuation">(</span>path<span class="token punctuation">,</span> target_dir<span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>target_dir<span class="token punctuation">&#125;</span></span><span class="token string"> 目录不存在，建立与 </span><span class="token interpolation"><span class="token punctuation">&#123;</span>path<span class="token punctuation">&#125;</span></span><span class="token string"> 的链接"</span></span><span class="token punctuation">)</span>
+        <span class="token keyword">elif</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>isfile<span class="token punctuation">(</span>path<span class="token punctuation">)</span> <span class="token keyword">and</span> <span class="token keyword">not</span> name <span class="token keyword">in</span> ign_files<span class="token punctuation">:</span>
+            target_file <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>realpath<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>tgt<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span>target_file<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>target_file<span class="token punctuation">&#125;</span></span><span class="token string"> 文件已经存在，跳过建立"</span></span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span><span class="token punctuation">:</span>
+                create_symlink<span class="token punctuation">(</span>path<span class="token punctuation">,</span> target_file<span class="token punctuation">)</span>
+                <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>target_file<span class="token punctuation">&#125;</span></span><span class="token string"> 文件不存在，建立与 </span><span class="token interpolation"><span class="token punctuation">&#123;</span>path<span class="token punctuation">&#125;</span></span><span class="token string"> 的链接"</span></span><span class="token punctuation">)</span>
+
+
+screen<span class="token punctuation">(</span>SRC<span class="token punctuation">,</span> TGT<span class="token punctuation">,</span> IGNORE_DIRS<span class="token punctuation">,</span> IGNORE_FILES<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>大功告成！</p>
 
     </div>
@@ -434,7 +512,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:13</span>
+    <span title="站点阅读时长">2:16</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
@@ -613,6 +691,18 @@ NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
   }, window.Valine);
 });
 </script>
+<!-- PrismJS Core (highlighting done at build time, needed only for plugins) -->
+<script src="/lib/prism/prism-core.min.js"></script>
+
+<!-- PrismJS Autoloader - loads language definitions on demand -->
+<script src="/lib/prism/prism-autoloader.min.js"></script>
+
+<!-- PrismJS Line Numbers -->
+<script src="/lib/prism/prism-line-numbers.min.js"></script>
+
+<!-- PrismJS Toolbar + Copy to Clipboard -->
+<script src="/lib/prism/prism-toolbar.min.js"></script>
+<script src="/lib/prism/prism-copy-to-clipboard.min.js"></script>
 
 </body>
 </html>
