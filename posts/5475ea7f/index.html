@@ -339,7 +339,7 @@
 </ul>
 <h3 id="stm32-引脚分布"><a class="markdownIt-Anchor" href="#stm32-引脚分布"></a> stm32 引脚分布</h3>
 <p>根据 LQFP48 找到引脚分布图</p>
-<p><img src="image-1.png" alt="alt text" /></p>
+<p><img src="/posts/5475ea7f/image-1.png" alt="alt text" /></p>
 <p>引脚排列规则：左上角为 1 号，逆时针排序</p>
 <h4 id="特殊引脚"><a class="markdownIt-Anchor" href="#特殊引脚"></a> 特殊引脚</h4>
 <ul>
@@ -350,7 +350,7 @@
 <li>BOOT0 : 启动模式选择</li>
 </ul>
 <h4 id="为何不用-vss"><a class="markdownIt-Anchor" href="#为何不用-vss"></a> 为何不用 VSS</h4>
-<p><img src="image-2.png" alt="alt text" /></p>
+<p><img src="/posts/5475ea7f/image-2.png" alt="alt text" /></p>
 <h4 id="普通引脚的命名规则"><a class="markdownIt-Anchor" href="#普通引脚的命名规则"></a> 普通引脚的命名规则</h4>
 <ol>
 <li>以字母作为组编号</li>
@@ -367,7 +367,7 @@
 <h2 id="gpio"><a class="markdownIt-Anchor" href="#gpio"></a> GPIO</h2>
 <h3 id="gpio-是什么"><a class="markdownIt-Anchor" href="#gpio-是什么"></a> GPIO 是什么？</h3>
 <p>GPIO 属于一种片上外设。片上外设类似于人体的器官，可以独立完成一些任务。</p>
-<p><img src="image-3.png" alt="alt text" /></p>
+<p><img src="/posts/5475ea7f/image-3.png" alt="alt text" /></p>
 <h3 id="有什么功能"><a class="markdownIt-Anchor" href="#有什么功能"></a> 有什么功能？</h3>
 <p>可以控制 IO 引脚，见 1.3.3 举例，GPIO 可以控制其对应的一组引脚</p>
 <h3 id="的八种工作模式"><a class="markdownIt-Anchor" href="#的八种工作模式"></a> 的八种工作模式</h3>
@@ -397,21 +397,21 @@
 </tr>
 </tbody>
 </table>
-<p><img src="image-4.png" alt="参考手册 I/O端口位的基本结构" /></p>
+<p><img src="/posts/5475ea7f/image-4.png" alt="参考手册 I/O端口位的基本结构" /></p>
 <h3 id="输出"><a class="markdownIt-Anchor" href="#输出"></a> 输出</h3>
-<p><img src="image-5.png" alt="输出结构示意" /></p>
+<p><img src="/posts/5475ea7f/image-5.png" alt="输出结构示意" /></p>
 <h4 id="推挽"><a class="markdownIt-Anchor" href="#推挽"></a> 推挽</h4>
 <ul>
 <li>推(Push): 寄存器为 0 接入 Vss 向外推电流</li>
 <li>挽(Pull): 寄存器为 1 接入 Vdd 从外向里拉电流</li>
 </ul>
-<p><img src="image-6.png" alt="推与挽" /></p>
+<p><img src="/posts/5475ea7f/image-6.png" alt="推与挽" /></p>
 <h4 id="开漏"><a class="markdownIt-Anchor" href="#开漏"></a> 开漏</h4>
 <p>开漏模式下，P-MOS 始终保持断开，寄存器为 0 时接入 Vss 输出低电压，寄存器位 1 时引脚悬空，进入高阻抗状态</p>
-<p><img src="image-7.png" alt="开漏" /></p>
+<p><img src="/posts/5475ea7f/image-7.png" alt="开漏" /></p>
 <h4 id="通用和复用"><a class="markdownIt-Anchor" href="#通用和复用"></a> 通用和复用</h4>
 <p>通用模式下，直接通过编程 CPU 控制 IO 引脚输出高/低电压；复用模式下，通过其它的<code>片上外设</code>来控制引脚</p>
-<p><img src="image-8.png" alt="通用和复用" /></p>
+<p><img src="/posts/5475ea7f/image-8.png" alt="通用和复用" /></p>
 <h4 id="io-的最大输出速度"><a class="markdownIt-Anchor" href="#io-的最大输出速度"></a> IO 的最大输出速度</h4>
 <p>IO 最大输出速度，指的是向 IO 交替写 0 和 1 且不失真的最快速度。</p>
 <p>在非理想情况下，电压上升和下降都需要一定时间，那么可以分为三个阶段：上升时间、下降时间、保持时间。这个时间就限制了 IO 的最大输出速度，当保持时间为 0 时，就达到了最大输出速度。</p>
@@ -422,9 +422,9 @@
 <h3 id="led-闪灯实验"><a class="markdownIt-Anchor" href="#led-闪灯实验"></a> LED 闪灯实验</h3>
 <p>二极管的导通压降为 0.7V ，通过限流电阻，使得 Vdd 输出 3.3V 的时候，电流为 5mA 左右，使得 LEd 点亮。</p>
 <p>推挽模式下控制 LED ，如下图：</p>
-<p><img src="image-9.png" alt="推挽模式控制 LED" /></p>
+<p><img src="/posts/5475ea7f/image-9.png" alt="推挽模式控制 LED" /></p>
 <p>开漏模式下控制 LED ，如下图：</p>
-<p><img src="image-10.png" alt="开漏模式控制 LED" /></p>
+<p><img src="/posts/5475ea7f/image-10.png" alt="开漏模式控制 LED" /></p>
 <p>观看最小系统板电路图，发现使用的是开漏接法，连接的是 PC13 引脚。</p>
 <h4 id="时钟"><a class="markdownIt-Anchor" href="#时钟"></a> 时钟</h4>
 <p>时钟可以类比为人的心跳，在使用片上外设之前应该要开启对应的时钟</p>
@@ -463,7 +463,7 @@
 </tbody>
 </table>
 <h5 id="gpio_init"><a class="markdownIt-Anchor" href="#gpio_init"></a> GPIO_Init</h5>
-<p><img src="image-11.png" alt="GPIO_Init" /></p>
+<p><img src="/posts/5475ea7f/image-11.png" alt="GPIO_Init" /></p>
 <h5 id="gpio_writebit"><a class="markdownIt-Anchor" href="#gpio_writebit"></a> GPIO_WriteBit</h5>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token keyword">void</span> <span class="token function">GPIO_WriteBit</span><span class="token punctuation">(</span>GPIOTypeDef <span class="token operator">*</span>GPI0x<span class="token punctuation">,</span> <span class="token comment">//端口号,取A B C D..</span>
     uint16t GPI0Pin，<span class="token comment">//引脚编号</span>
@@ -490,9 +490,9 @@
 <span class="token punctuation">&#125;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="输入"><a class="markdownIt-Anchor" href="#输入"></a> 输入</h3>
-<p><img src="image-4.png" alt="参考手册 I/O端口位的基本结构" /></p>
+<p><img src="/posts/5475ea7f/image-4.png" alt="参考手册 I/O端口位的基本结构" /></p>
 <p>输入部分主要研究结构图的上半部分，即输入电路部分。</p>
-<p><img src="image-12.png" alt="输入电路结构示意" /></p>
+<p><img src="/posts/5475ea7f/image-12.png" alt="输入电路结构示意" /></p>
 <h4 id="保护二极管的工作原理"><a class="markdownIt-Anchor" href="#保护二极管的工作原理"></a> 保护二极管的工作原理</h4>
 <p>静电电压较高，电流会随着保护二极管流出。</p>
 <h4 id="上拉电阻和下拉电阻"><a class="markdownIt-Anchor" href="#上拉电阻和下拉电阻"></a> 上拉电阻和下拉电阻</h4>
@@ -553,7 +553,7 @@
 </tbody>
 </table>
 <h4 id="led-接线"><a class="markdownIt-Anchor" href="#led-接线"></a> LED 接线</h4>
-<p><img src="image-13.png" alt="LED 接线" /></p>
+<p><img src="/posts/5475ea7f/image-13.png" alt="LED 接线" /></p>
 <p>根据电路图安装好电路。</p>
 <p>通过检查 LED 点亮判断电路是否连接成功。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
@@ -572,9 +572,9 @@
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>LED 点亮成功！</p>
 <h4 id="按钮接线"><a class="markdownIt-Anchor" href="#按钮接线"></a> 按钮接线</h4>
-<p><img src="image-14.png" alt="按钮读入" /></p>
+<p><img src="/posts/5475ea7f/image-14.png" alt="按钮读入" /></p>
 <p>输入上拉模式时，当按钮按下时电路连通接地，没有电势差，写入 0 ；当按钮松开时，Vdd 通过连通的上拉电阻提供高位电压，写入 1 。</p>
-<p><img src="image-15.png" alt="按钮接线" /></p>
+<p><img src="/posts/5475ea7f/image-15.png" alt="按钮接线" /></p>
 <p>按图安装好按钮。要特别注意，按钮是具有方向的，不要左右装反了。</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token class-name">uint8_t</span> <span class="token function">GPIo_ReadInputDataBit</span><span class="token punctuation">(</span>GPIOTypeDef <span class="token operator">*</span>GPIOx<span class="token punctuation">,</span><span class="token comment">//端口号</span>
     <span class="token class-name">uint16_t</span> GPI0_Pin<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//引脚编号</span>
@@ -634,10 +634,10 @@
 <p>校验分为<code>奇校验</code>和<code>偶校验</code>。即判断 1 的个数位奇数还是偶数。</p>
 <h3 id="usart-模块的使用方法"><a class="markdownIt-Anchor" href="#usart-模块的使用方法"></a> USART 模块的使用方法</h3>
 <h4 id="usart-简介"><a class="markdownIt-Anchor" href="#usart-简介"></a> USART 简介</h4>
-<p><img src="image-3.png" alt="alt text" /></p>
+<p><img src="/posts/5475ea7f/image-3.png" alt="alt text" /></p>
 <p>我们学习的单片机有三个 USART ，可以把 USART 模块看作人的耳朵和嘴巴的集合。</p>
 <h4 id="usart-基本用法"><a class="markdownIt-Anchor" href="#usart-基本用法"></a> USART 基本用法</h4>
-<p><img src="image-16.png" alt="USART 模块示意图" /></p>
+<p><img src="/posts/5475ea7f/image-16.png" alt="USART 模块示意图" /></p>
 <p>通过读取接收数据寄存器接收数据，通过发送数据寄存器发送数据。</p>
 <h4 id="移位寄存器和串并转换"><a class="markdownIt-Anchor" href="#移位寄存器和串并转换"></a> 移位寄存器和串并转换</h4>
 <p>在发送数据时，需要将并行的数据转换位串行，接收数据时则相反。</p>
@@ -706,7 +706,7 @@ USART_InitStruct<span class="token punctuation">.</span>USART_Parity <span class
 <span class="token function">USART_Cmd</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> ENABLE<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="为串口初始化-io-引脚"><a class="markdownIt-Anchor" href="#为串口初始化-io-引脚"></a> 为串口初始化 IO 引脚</h3>
 <h4 id="usart-模块有哪些引脚"><a class="markdownIt-Anchor" href="#usart-模块有哪些引脚"></a> USART 模块有哪些引脚</h4>
-<p><img src="image-17.png" alt="USART 引脚" /></p>
+<p><img src="/posts/5475ea7f/image-17.png" alt="USART 引脚" /></p>
 <h4 id="引脚分布表"><a class="markdownIt-Anchor" href="#引脚分布表"></a> 引脚分布表</h4>
 <p>根据 <code>C8T6</code> ，查看数据手册，找到 LQFP48 的表头</p>
 <table>
@@ -1096,7 +1096,7 @@ USART_InitStruct<span class="token punctuation">.</span>USART_Parity <span class
 <p>查表可以看到每个重映射后的引脚。</p>
 <h4 id="io-配置表"><a class="markdownIt-Anchor" href="#io-配置表"></a> IO 配置表</h4>
 <p>查表可以看到每个片上外设应该设置成什么模式。</p>
-<p><img src="image-18.png" alt="四种通信模式" /></p>
+<p><img src="/posts/5475ea7f/image-18.png" alt="四种通信模式" /></p>
 <p>全双工模式时相比浮空最好选择输入上拉模式，因为一可以避免电磁干扰，二可以通过默认高电压保持空闲位。</p>
 <h4 id="编写代码"><a class="markdownIt-Anchor" href="#编写代码"></a> 编写代码</h4>
 <h5 id="使用默认引脚"><a class="markdownIt-Anchor" href="#使用默认引脚"></a> 使用默认引脚</h5>
@@ -1145,7 +1145,7 @@ GPIO_InitStruct.GPIO_Mode &#x3D; GPIO_Mode_IPU;
 
 GPIO_Init(GPIOB, &amp;GPIO_InitStruct);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="使用串口发射数据"><a class="markdownIt-Anchor" href="#使用串口发射数据"></a> 使用串口发射数据</h3>
-<p><img src="image-16.png" alt="USART 模块示意图" /></p>
+<p><img src="/posts/5475ea7f/image-16.png" alt="USART 模块示意图" /></p>
 <h4 id="txe-标志位"><a class="markdownIt-Anchor" href="#txe-标志位"></a> TxE 标志位</h4>
 <p>我们可以查询标志位的值来获得 USART 模块工作的相关信息。</p>
 <p>TxE: Transmit Data Register Empty 用于判断发送数据寄存器里是否有数据。</p>
@@ -1177,7 +1177,7 @@ GPIO_Init(GPIOB, &amp;GPIO_InitStruct);<span aria-hidden="true" class="line-numb
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_FLAG_TC <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="使用串口与电脑通信"><a class="markdownIt-Anchor" href="#使用串口与电脑通信"></a> 使用串口与电脑通信</h4>
-<p><img src="image-19.png" alt="与电脑通信 电路图" /></p>
+<p><img src="/posts/5475ea7f/image-19.png" alt="与电脑通信 电路图" /></p>
 <p>使用串口给电脑发送数据：</p>
 <pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"stm32f10x.h"</span></span>
 
@@ -1234,7 +1234,7 @@ GPIO_Init(GPIOB, &amp;GPIO_InitStruct);<span aria-hidden="true" class="line-numb
     <span class="token comment">// 等待数据发送完成</span>
     <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token function">USART_GetFlagStatus</span><span class="token punctuation">(</span>USART1<span class="token punctuation">,</span> USART_FLAG_TC <span class="token operator">==</span> RESET<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="image-20.png" alt="使用串口给电脑发送数据" /></p>
+<p><img src="/posts/5475ea7f/image-20.png" alt="使用串口给电脑发送数据" /></p>
 <p>成功了！</p>
 
     </div>
